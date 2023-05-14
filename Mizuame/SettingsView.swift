@@ -18,7 +18,7 @@ struct SettingsView: View {
                 Label("Settings", systemImage: "slider.horizontal.3")
             }
         }
-        .frame(width: 300, height: .none)
+        .frame(width: 400, height: 200)
     }
 }
 
