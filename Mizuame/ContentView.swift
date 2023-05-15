@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    // This app not work when enable fetch request. why??
+    // But, it may not be a feature that this app need.
+    //@FetchRequest(something)
+    
     @State private var dummyText: String = "aaa"
     
     var body: some View {
