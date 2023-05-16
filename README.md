@@ -2,7 +2,7 @@
 The app Mizuame is sticky note on status bar of Mac.  
 This app is NOT a high performance note app.
 
-# Demo
+# Sample
 Not ready.
 
 # Features
