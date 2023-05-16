@@ -8,31 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var dummyText: String = "aaa"
+    @State private var stickyText: String = "abc"
+    
+    @State private var isErase: Bool = false
     
     var body: some View {
         VStack {
-            Button(action: { NSApplication.shared.terminate(self) }) {
-                Label("Quit", systemImage: "x.square.fill")
-            }
-            Text("Stickey")
-            TextField("Stickey", text: $dummyText)
             HStack {
-                Image(systemName: "pencil")
+                Image(systemName: "power")
+                    .foregroundColor(Color.red)
+                    .onTapGesture {
+                        NSApplication.shared.terminate(self)
+                    }
+                
+                Spacer()
+                    .layoutPriority(1)
+                
                 Image(systemName: "eraser")
+                    .onTapGesture {
+                        isErase.toggle()
+                    }
             }
-            TextEditor(text: $dummyText)
+            .padding(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
+            
+            TextEditor(text: $stickyText)
+                .layoutPriority(1)
         }
         .frame(width: 300, height: 150)
     }
 }
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
