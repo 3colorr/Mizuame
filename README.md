@@ -1,2 +1,15 @@
-# Mizuame
-something something
+# About
+The app Mizuame is sticky note on status bar of Mac.  
+This app is NOT a high performance note app.
+
+# Demo
+Not ready.
+
+# Features
+- When you click a icon on status bar, a sticky will open.
+- something something
+
+# What is Mizuame?
+This is a mucilaginous candy called `Mizuame` in Japan.  
+In Japanese kanji, it is written as `水飴`.  
+Mizuame is eaten as sweets and also widely used as an ingredient in cooking. Mizuame is very, very sweet and delicious.
