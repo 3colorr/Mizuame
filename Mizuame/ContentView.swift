@@ -14,7 +14,8 @@ struct ContentView: View {
     
     @State private var stickyText: String = "abc"
     
-    @State private var isErase: Bool = false
+    @State private var isShowMessagebar: Bool = false
+    @State private var userAction: MessagebarEnum = .NONE
     
     var body: some View {
         VStack {
@@ -22,7 +23,8 @@ struct ContentView: View {
                 Image(systemName: "power")
                     .foregroundColor(Color.red)
                     .onTapGesture {
-                        NSApplication.shared.terminate(self)
+                        userAction = .QUIT
+                        isShowMessagebar.toggle()
                     }
                 
                 Spacer()
@@ -30,15 +32,39 @@ struct ContentView: View {
                 
                 Image(systemName: "eraser")
                     .onTapGesture {
-                        isErase.toggle()
+                        userAction = .ALL_DELETE
+                        isShowMessagebar.toggle()
                     }
             }
             .padding(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
+            
+            if isShowMessagebar {
+                MessagebarView(flag: $isShowMessagebar, selected: $userAction)
+                    .onDisappear {
+                        userActionDispatcher()
+                    }
+            }
             
             TextEditor(text: $stickyText)
                 .layoutPriority(1)
         }
         .frame(width: 300, height: 150)
+    }
+    
+    private func userActionDispatcher() {
+        switch userAction {
+        case .QUIT:
+            self.userAction = .NONE
+            NSApplication.shared.terminate(self)
+
+        case .ALL_DELETE:
+            self.userAction = .NONE
+            self.stickyText = ""
+
+        default:
+            // No action
+            userAction = .NONE
+        }
     }
 }
 

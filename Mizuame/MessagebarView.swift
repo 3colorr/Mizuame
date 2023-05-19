@@ -11,13 +11,27 @@ struct MessagebarView: View {
     @Binding var isShowFlag: Bool
     @Binding var messageType: MessagebarEnum
     
+    init(flag isShowFlag: Binding<Bool>, selected messageType: Binding<MessagebarEnum>) {
+        _isShowFlag = isShowFlag
+        _messageType = messageType
+    }
+    
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Text(messageType.rawValue)
             HStack {
                 Spacer()
-                Text("OK")
-                Text("Cancel")
+                
+                Button("OK") {
+                    isShowFlag.toggle()
+                }
+                .buttonStyle(.borderless)
+
+                Button("Cancel", role: .cancel) {
+                    messageType = .NONE
+                    isShowFlag.toggle()
+                }
+                .buttonStyle(.borderless)
             }
         }
     }
@@ -25,6 +39,6 @@ struct MessagebarView: View {
 
 struct MessagebarView_Previews: PreviewProvider {
     static var previews: some View {
-        MessagebarView(isShowFlag: .constant(true), messageType: .constant(.QUIT))
+        MessagebarView(flag: .constant(true), selected: .constant(.QUIT))
     }
 }
