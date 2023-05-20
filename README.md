@@ -6,8 +6,12 @@ This app is NOT a high performance note app.
 Not ready.
 
 # Features
-- When you click a icon on status bar, a sticky will open.
-- something something
+- [ ] Release on AppStore.
+- [x] When you click a icon on status bar, a sticky note will open.
+- [ ] you can save sticky note.
+- [ ] you can resize sticky note and font.
+
+something something.
 
 # What is Mizuame?
 This is a mucilaginous candy called `Mizuame` in Japan.  
