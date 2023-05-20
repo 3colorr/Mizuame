@@ -22,12 +22,25 @@ final class MizuameUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
+    func testMizuame() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        // FIX ME!!
+        // UI test of statusbar don't work.
+        // Is it impossible?
+        
+        //let mizuame = app.menuBarItems["Mizuame"]
+        
+        //Work
+        //XCTAssertEqual(mizuame.isEnabled, true)
+        
+        //print("!!!!!!!!!:\(mizuame.isHittable)")
+        //print("!!!!!!!!!:\(mizuame.title)")
+
+        // Not work
+        //mizuame.click()        
     }
 
     func testLaunchPerformance() throws {
