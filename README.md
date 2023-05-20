@@ -7,7 +7,7 @@ Not ready.
 
 # Features
 - [ ] Release on AppStore.
-- [x] When you click a icon on status bar, a - [ ] sticky note will open.
+- [x] When you click a icon on status bar, a sticky note will open.
 - [ ] you can save sticky note.
 - [ ] you can resize sticky note and font.
 
