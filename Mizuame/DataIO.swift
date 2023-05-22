@@ -13,10 +13,10 @@ import Foundation
 //  - func readJSON() -> Data?
 //  - func writeJSON(of json: Data) -> Bool
 // Also, this class has following that JSON data decode/encode public functions.
-//  - func read() -> StickyNote?
-//  - func write(data: StickyNote) -> Bool
+//  - func fetchSticky() -> StickyNote?
+//  - func writeSticky(data: StickyNote) -> Bool
 
-public class DataIO {
+class DataIO {
 
     private let stickyNoteJson = "stickyNote.json"
 
@@ -52,11 +52,11 @@ public class DataIO {
         }
     }
     
-    public func read() -> StickNote? {
+    public func readStickyNote() -> StickNote? {
         return nil
     }
     
-    public func write() -> Bool {
+    public func writeStickyNote() -> Bool {
         return false
     }
 }
