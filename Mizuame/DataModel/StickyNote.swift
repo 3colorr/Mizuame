@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct StickNote: Codable {
+struct StickyNote: Codable {
     private var tab: Int
     private var contents: [Content]
 }
