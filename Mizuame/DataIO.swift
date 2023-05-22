@@ -14,7 +14,7 @@ import Foundation
 //  - func writeJSON(of json: Data) -> Bool
 // Also, this class has following that JSON data decode/encode public functions.
 //  - func fetchSticky() -> StickyNote?
-//  - func writeSticky(data: StickyNote) -> Bool
+//  - func writeSticky(of data: StickyNote) -> Bool
 
 class DataIO {
 
@@ -30,6 +30,7 @@ class DataIO {
 
         do {
             return try Data(contentsOf: stikyNoteUrl)
+            
         } catch {
             return nil
         }
@@ -46,17 +47,40 @@ class DataIO {
         do {
             try json.write(to: stikyNoteUrl)
             return true
+            
         } catch {
             print("Fatal error: Could not write JSON data to file.")
             return false
         }
     }
     
-    public func readStickyNote() -> StickNote? {
-        return nil
+    public func readStickyNote() -> StickyNote? {
+        guard let json = readJSON() else {
+            print("Fatal error: Failed to read JSON data.")
+            return nil
+        }
+        
+        let jsonDecoder = JSONDecoder()
+
+        do {
+            return try jsonDecoder.decode(StickyNote.self, from: json)
+            
+        } catch {
+            print("Fatal error: Failed to encode data to JSON")
+            return nil
+        }
     }
     
-    public func writeStickyNote() -> Bool {
-        return false
+    public func writeStickyNote(of data: StickyNote) -> Bool {
+        let encoder = JSONEncoder()
+        
+        do {
+            let data = try encoder.encode(data)
+            return writeJSON(of: data)
+            
+        } catch {
+            print("Fatal error: Failed to encode data to JSON")
+            return false
+        }
     }
 }
