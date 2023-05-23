@@ -8,11 +8,11 @@
 import Foundation
 
 struct StickyNote: Codable {
-    private var tab: Int
-    private var contents: [Content]
+    var tab: Int
+    var contents: [Content]
 }
 
 struct Content: Codable {
-    private var markercolor: String
-    private var body: String
+    var markercolor: String
+    var body: String
 }

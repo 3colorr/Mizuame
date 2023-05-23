@@ -33,4 +33,35 @@ final class MizuameTests: XCTestCase {
         }
     }
 
+    // Test DataIO class.
+    //
+    // JSON data for testing
+    //   testContent1 = Content(markercolor = "ffffff", body = "test1")
+    //   testContent2 = Content(markercolor = "000000", body = "test2")
+    //   jsonData = StickyNote(tab = 1, contents = [testContent1, testContent2])
+    //
+    // test 1: write JSON data to JSON file(= stickyNote.json).
+    // expected 1: writeStickyNote(of data: StickyNote) returns true.
+    //
+    // test 2: read JSON file(= stickyNote.json) to Data object, and then Data object convert to JSON data.
+    // expected 2: writeStickyNote(of data: StickyNote) returns true.
+    //
+    func testDataIO() throws {
+        let io = DataIO()
+
+        // test 1
+        let testContent1 = Content(markercolor: "ffffff", body: "test1")
+        let testContent2 = Content(markercolor: "000000", body: "test2")
+        let jsonData = StickyNote(tab: 1, contents: [testContent1, testContent2])
+        XCTAssertTrue(io.writeStickyNote(of: jsonData))
+
+        // test 2
+        let data = io.readStickyNote()
+        XCTAssertNotNil(data)
+        XCTAssertEqual(data?.tab, 1)
+        XCTAssertEqual(data?.contents[0].markercolor, "ffffff")
+        XCTAssertEqual(data?.contents[0].body, "test1")
+        XCTAssertEqual(data?.contents[1].markercolor, "000000")
+        XCTAssertEqual(data?.contents[1].body, "test2")
+    }
 }
