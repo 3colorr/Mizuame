@@ -11,11 +11,32 @@ struct SettingsView: View {
     var body: some View {
         TabView {
             Form {
-                Text("Hello pref")
+                Text("Hello General")
             }
             .padding(5)
             .tabItem {
-                Label("Settings", systemImage: "slider.horizontal.3")
+                Label("General", systemImage: "gearshape")
+            }
+            Form {
+                Text("Hello window")
+            }
+            .padding(5)
+            .tabItem {
+                Label("Windows", systemImage: "macwindow")
+            }
+            Form {
+                Text("Hello Help")
+            }
+            .padding(5)
+            .tabItem {
+                Label("Help", systemImage: "questionmark.circle")
+            }
+            Form {
+                Text("Hello Info")
+            }
+            .padding(5)
+            .tabItem {
+                Label("Info", systemImage: "info.square")
             }
         }
         .frame(width: 400, height: 200)
