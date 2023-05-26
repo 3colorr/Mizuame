@@ -6,14 +6,11 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct TabGeneral: View {
-    @State private var fontSize: Int
-    
-    init() {
-        _fontSize = State(initialValue: 11)
-    }
-    
+    @AppStorage("fontSize") private var fontSize: Int = 11
+
     var body: some View {
         VStack(alignment: .leading) {
             Picker("Font Size: ", selection: $fontSize) {

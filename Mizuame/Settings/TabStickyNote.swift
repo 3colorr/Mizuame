@@ -6,16 +6,12 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct TabStickyNote: View {
-    @State private var width: String
-    @State private var height: String
+    @AppStorage("stickyNoteWidth") private var width: String = "300"
+    @AppStorage("stickyNoteHeight") private var height: String = "150"
     
-    init() {
-        _width = State(initialValue: "300")
-        _height = State(initialValue: "150")
-    }
-
     var body: some View {
         VStack(alignment: .leading) {
             Text("Sticky Note Size:")
