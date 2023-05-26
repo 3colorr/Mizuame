@@ -11,6 +11,8 @@ import StoreKit
 struct TabGeneral: View {
     @AppStorage("fontSize") private var fontSize: Int = 11
 
+    private let INIT_FONT_SIZE: Int = 11
+    
     var body: some View {
         VStack(alignment: .leading) {
             Picker("Font Size: ", selection: $fontSize) {
@@ -19,8 +21,18 @@ struct TabGeneral: View {
                 }
             }
             .frame(width: 150)
+            
+            Spacer()
+
+            Text("Reset: ")
+            Button(action: {
+                self.fontSize = INIT_FONT_SIZE
+            }) {
+                Text("Reset Font size to initial value")
+                    .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))
+            }
         }
-        .padding(10)
+        .padding(EdgeInsets(top: 10, leading: 50, bottom: 10, trailing: 50))
     }
 }
 
