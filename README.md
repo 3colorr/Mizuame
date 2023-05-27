@@ -18,6 +18,8 @@ Not ready.
 - [x] When you click a icon on status bar, a sticky note will open.
 - [x] You can save sticky note.
 - [x] You can resize sticky note and font.
+- [ ] You can change background color.
+- [ ] You can change font color.
 
 something something.
 
