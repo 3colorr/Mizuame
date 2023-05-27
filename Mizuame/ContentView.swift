@@ -21,6 +21,8 @@ struct ContentView: View {
     @State private var isShowMessagebar: Bool = false
     @State private var userAction: MessagebarEnum = .NONE
     
+    @State private var isExecutableSave: Bool = true
+    
     private let io: DataIO
     private var data: StickyNote
     
@@ -43,7 +45,7 @@ struct ContentView: View {
                     .foregroundColor(Color.red)
                     .onTapGesture {
                         userAction = .QUIT
-                        isShowMessagebar.toggle()
+                        isShowMessagebar = true
                     }
                 
                 Spacer()
@@ -52,7 +54,7 @@ struct ContentView: View {
                 Image(systemName: "eraser")
                     .onTapGesture {
                         userAction = .ALL_DELETE
-                        isShowMessagebar.toggle()
+                        isShowMessagebar = true
                     }
             }
             .padding(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
@@ -67,12 +69,22 @@ struct ContentView: View {
             TextEditor(text: $stickyText)
                 .layoutPriority(1)
                 .font(.system(size: CGFloat(self.fontSize)))
-            // FIX ME!!
-            // onDisappear() not work
-//                .onDisappear {
-//                    print("onDisappear!! -> TextEditor")
-//                    saveData()
-//                }
+                .onChange(of: stickyText) { val in
+                    if isExecutableSave {
+                        Task {
+                            do {
+                                isExecutableSave = false
+                                try await Task.sleep(nanoseconds: 3 * 1000000000)
+                                saveData()
+
+                            } catch {
+                                print("Fatal error: Failed to save JSON data.")
+                                userAction = .DO_NOT_SAVE_JSON
+                                isShowMessagebar = true
+                            }
+                        }
+                    }
+                }
         }
         .frame(width: CGFloat(self.width), height: CGFloat(self.height))
     }
@@ -87,6 +99,10 @@ struct ContentView: View {
         case .ALL_DELETE:
             self.userAction = .NONE
             self.stickyText = ""
+            
+        case .DO_NOT_SAVE_JSON:
+            self.userAction = .NONE
+            saveData()
 
         default:
             // No action
@@ -99,6 +115,8 @@ struct ContentView: View {
         let newData = StickyNote(tab: 1, contents: [newContent])
         
         _ = self.io.writeStickyNote(of: newData)
+        
+        isExecutableSave = true
     }
 }
 
