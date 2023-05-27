@@ -69,7 +69,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
             let menu = NSMenu()
             menu.addItem(
-                withTitle: "Preference",
+                withTitle: "Preferences",
                 action: #selector(showSettings),
                 keyEquivalent: ""
             )

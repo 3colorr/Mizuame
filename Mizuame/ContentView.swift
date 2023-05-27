@@ -12,6 +12,10 @@ struct ContentView: View {
     // But, it may not be a feature that this app need.
     //@FetchRequest(something)
     
+    @AppStorage(SettingKeys.StickyNote().keyWidth) private var width: Int = SettingKeys.StickyNote().initialWidth
+    @AppStorage(SettingKeys.StickyNote().keyHeight) private var height: Int = SettingKeys.StickyNote().initialHeight
+    @AppStorage(SettingKeys.FontSize().key) private var fontSize: Int = SettingKeys.FontSize().initialValue
+
     @State private var stickyText: String = "abc"
     
     @State private var isShowMessagebar: Bool = false
@@ -62,6 +66,7 @@ struct ContentView: View {
             
             TextEditor(text: $stickyText)
                 .layoutPriority(1)
+                .font(.system(size: CGFloat(self.fontSize)))
             // FIX ME!!
             // onDisappear() not work
 //                .onDisappear {
@@ -69,7 +74,7 @@ struct ContentView: View {
 //                    saveData()
 //                }
         }
-        .frame(width: 300, height: 150)
+        .frame(width: CGFloat(self.width), height: CGFloat(self.height))
     }
     
     private func userActionDispatcher() {
