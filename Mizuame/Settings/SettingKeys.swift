@@ -16,9 +16,7 @@ struct SettingKeys {
     struct StickyNote {
         let keyWidth: String = "stickyNoteWidth"
         let keyHeight: String = "stickyNoteHeight"
-        let initialWidth: String = "300"
-        let initialHeight: String = "150"
-        let initialNumberWidth: CGFloat = 300
-        let initialNumberHeigh: CGFloat = 150
+        let initialWidth: Int = 300
+        let initialHeight: Int = 150
     }
 }
