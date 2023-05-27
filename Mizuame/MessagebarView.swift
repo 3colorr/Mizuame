@@ -23,15 +23,17 @@ struct MessagebarView: View {
                 Spacer()
                 
                 Button("OK") {
-                    isShowFlag.toggle()
+                    isShowFlag = false
                 }
                 .buttonStyle(.borderless)
 
-                Button("Cancel", role: .cancel) {
-                    messageType = .NONE
-                    isShowFlag.toggle()
+                if messageType != .DO_NOT_SAVE_JSON {
+                    Button("Cancel", role: .cancel) {
+                        messageType = .NONE
+                        isShowFlag = false
+                    }
+                    .buttonStyle(.borderless)
                 }
-                .buttonStyle(.borderless)
             }
         }
     }
