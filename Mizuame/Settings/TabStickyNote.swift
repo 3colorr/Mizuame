@@ -9,23 +9,26 @@ import SwiftUI
 import StoreKit
 
 struct TabStickyNote: View {
-    @AppStorage("stickyNoteWidth") private var width: String = "300"
-    @AppStorage("stickyNoteHeight") private var height: String = "150"
+    @AppStorage(SettingKeys.StickyNote().keyWidth) private var width: Int =  SettingKeys.StickyNote().initialWidth
+    @AppStorage(SettingKeys.StickyNote().keyHeight) private var height: Int = SettingKeys.StickyNote().initialHeight
     
-    private let INIT_WIDTH: String = "300"
-    private let INIT_HEIGHT: String = "150"
+    private let INIT_WIDTH: Int = SettingKeys.StickyNote().initialWidth
+    private let INIT_HEIGHT: Int = SettingKeys.StickyNote().initialHeight
 
     var body: some View {
         VStack(alignment: .leading) {
             Text("Sticky Note Size:")
+            
+            // FIX ME!!
+            // TextField() want to receive only numelic values.
             HStack {
                 Text("Width:")
-                TextField("e.g. \(INIT_WIDTH)", text: $width)
+                TextField("e.g. \(INIT_WIDTH)", value: $width, formatter: NumberFormatter())
                     .frame(width: 80)
                     .padding(EdgeInsets(top: 2, leading: 0, bottom: 2, trailing: 10))
                 
                 Text("Height:")
-                TextField("e.g. \(INIT_HEIGHT)", text: $height)
+                TextField("e.g. \(INIT_HEIGHT)", value: $height, formatter: NumberFormatter())
                     .frame(width: 80)
                     .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 0))
             }

@@ -9,9 +9,9 @@ import SwiftUI
 import StoreKit
 
 struct TabGeneral: View {
-    @AppStorage("fontSize") private var fontSize: Int = 11
+    @AppStorage(SettingKeys.FontSize().key) private var fontSize: Int = SettingKeys.FontSize().initialValue
 
-    private let INIT_FONT_SIZE: Int = 11
+    private let INIT_FONT_SIZE: Int = SettingKeys.FontSize().initialValue
     
     var body: some View {
         VStack(alignment: .leading) {
