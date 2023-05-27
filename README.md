@@ -9,14 +9,14 @@ This app is NOT a high performance note app.
 # Install
 - [ ] AppStore
 - [x] Build it yourself
-  - `git clone` -> Build it Xcode
+  - `git clone` -> Build by Xcode
 
 # Sample
 Not ready.
 
 # Features
 - [x] When you click a icon on status bar, a sticky note will open.
-- [x] You can save sticky note.
+- [x] Auto save.
 - [x] You can resize sticky note and font.
 - [ ] You can change background color.
 - [ ] You can change font color.
