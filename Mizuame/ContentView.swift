@@ -23,6 +23,8 @@ struct ContentView: View {
     
     @State private var isExecutableSave: Bool = true
     
+    private let delegate = AppDelegate()
+    
     private let io: DataIO
     private var data: StickyNote
     
@@ -55,6 +57,11 @@ struct ContentView: View {
                     .onTapGesture {
                         userAction = .ALL_DELETE
                         isShowMessagebar = true
+                    }
+
+                Image(systemName: "gearshape.fill")
+                    .onTapGesture {
+                        delegate.showSettings()
                     }
             }
             .padding(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
