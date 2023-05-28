@@ -11,16 +11,17 @@ struct TabHelp: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
-                Text("Hi. I'm the app Mizuame is sticky note on status bar of Mac. My favorite place is application folder. Someday I would like to go to Antarctica and drink hot soup.")
-
-                Text("#Attention")
+                Text("Hi.")
                     .bold()
 
-                Text("I'm NOT a high performance note app.")
+                Text("I'm Mizuame, a sticky note app that sits in your Mac's menu bar. My favorite place is application folder. Someday I would like to go to Antarctica and have hot tomato soup.")
+
+                Text("Attention")
+                    .bold()
+
+                Text("I'm NOT a high performance note app so that you should use other better apps to save your important data.")
                 
-                Text("So, You should use other better apps to save your important data.")
-                
-                Text("#Menu")
+                Text("Menu")
                     .bold()
                 
                 HStack {
@@ -28,7 +29,13 @@ struct TabHelp: View {
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
                     Text("Power-off button.")
                 }
-                
+
+                HStack {
+                    Image(systemName: "gearshape.fill")
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
+                    Text("Open preference window.")
+                }
+
                 HStack {
                     Image(systemName: "eraser")
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
