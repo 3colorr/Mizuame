@@ -2,7 +2,7 @@
 //  MizuameUITests.swift
 //  MizuameUITests
 //
-//  Created by becomefoolish on 2023/05/07.
+//  Created by Nakamura Akira(3colorr) on 2023/05/07.
 //
 
 import XCTest
