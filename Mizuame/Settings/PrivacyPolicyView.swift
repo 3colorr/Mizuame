@@ -10,9 +10,6 @@ import SwiftUI
 struct PrivacyPolicyView: View {
     @Binding var state: Int
     
-    //private let lisence: String = "https://www.apple.com/legal/privacy/data/ja/app-store/"
-    private let lisence: String = "https://www.apple.com/legal/privacy/data/en/app-store/"
-    
     var body: some View {
         ZStack {
             Color(.white)
@@ -33,9 +30,9 @@ struct PrivacyPolicyView: View {
 
                         Text("The Apps dose not collect any your data.")
                         
-                        Text("I may know the user\'s email address or SNS acount when I receive a question from the user. The user\'s email address or SNS acount will only be used to reply to the user who asked the question.")
+                        Text("I may know the user\'s email address when I receive a question from the user. The user\'s email address will only be used to reply to the user who asked the question.")
                         
-                        Text("After answering the question, we delete information that the user\'s email address or SNS acount immediately. We never be shared information with third parties.")
+                        Text("After answering the question, we delete the user\'s email address immediately. We never be shared information with third parties.")
                         
                         Text("If you do not agree, please uninstall The Apps.")
                             .bold()
