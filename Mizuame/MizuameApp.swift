@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import StoreKit
 
 //@main
 //struct MizuameApp: App {
@@ -32,7 +33,9 @@ struct Mizuame: App {
 }
 
 class AppDelegate: NSObject, NSApplicationDelegate {
-    
+
+    @AppStorage(SettingKeys.UserConfirm().keyAgreement) private var viewState: Int = SettingKeys.UserConfirm().initialViewState
+
     private var statusItem: NSStatusItem?
     private var popover: NSPopover = NSPopover()
     
@@ -68,12 +71,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             print("Event -> rightMouseUp")
 
             let menu = NSMenu()
-            menu.addItem(
-                withTitle: "Preferences",
-                action: #selector(showSettings),
-                keyEquivalent: ""
-            )
-            menu.addItem(.separator())
+            
+            // If the user don't agree terms of service and privacy policy,
+            // Mizuame don't show preferences.
+            if viewState == SettingsViewState.PREFERENCE.rawValue {
+                menu.addItem(
+                    withTitle: "Preferences",
+                    action: #selector(showSettings),
+                    keyEquivalent: ""
+                )
+                menu.addItem(.separator())
+            }
+            
             menu.addItem(
                 withTitle: "Quit",
                 action: #selector(quitApp),

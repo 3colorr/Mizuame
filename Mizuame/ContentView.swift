@@ -16,6 +16,8 @@ struct ContentView: View {
     @AppStorage(SettingKeys.StickyNote().keyHeight) private var height: Int = SettingKeys.StickyNote().initialHeight
     @AppStorage(SettingKeys.FontSize().key) private var fontSize: Int = SettingKeys.FontSize().initialValue
 
+    @AppStorage(SettingKeys.UserConfirm().keyAgreement) private var viewState: Int = SettingKeys.UserConfirm().initialViewState
+
     @State private var stickyText: String = "abc"
     
     @State private var isShowMessagebar: Bool = false
@@ -41,59 +43,68 @@ struct ContentView: View {
     }
     
     var body: some View {
-        VStack {
-            HStack {
-                Image(systemName: "power")
-                    .foregroundColor(Color.red)
-                    .onTapGesture {
-                        userAction = .QUIT
-                        isShowMessagebar = true
-                    }
+        switch viewState {
+        case SettingsViewState.TERMS_OF_SERVICE.rawValue:
+            TermsOfServiceView(state: $viewState)
+            
+        case SettingsViewState.PRIVACY_POLICY.rawValue:
+            PrivacyPolicyView(state: $viewState)
+            
+        default:
+            VStack {
+                HStack {
+                    Image(systemName: "power")
+                        .foregroundColor(Color.red)
+                        .onTapGesture {
+                            userAction = .QUIT
+                            isShowMessagebar = true
+                        }
+                    
+                    Spacer()
+                        .layoutPriority(1)
+                    
+                    Image(systemName: "eraser")
+                        .onTapGesture {
+                            userAction = .ALL_DELETE
+                            isShowMessagebar = true
+                        }
+                    
+                    Image(systemName: "gearshape.fill")
+                        .onTapGesture {
+                            delegate.showSettings()
+                        }
+                }
+                .padding(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
                 
-                Spacer()
+                if isShowMessagebar {
+                    MessagebarView(flag: $isShowMessagebar, selected: $userAction)
+                        .onDisappear {
+                            userActionDispatcher()
+                        }
+                }
+                
+                TextEditor(text: $stickyText)
                     .layoutPriority(1)
-                
-                Image(systemName: "eraser")
-                    .onTapGesture {
-                        userAction = .ALL_DELETE
-                        isShowMessagebar = true
-                    }
-
-                Image(systemName: "gearshape.fill")
-                    .onTapGesture {
-                        delegate.showSettings()
-                    }
-            }
-            .padding(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
-            
-            if isShowMessagebar {
-                MessagebarView(flag: $isShowMessagebar, selected: $userAction)
-                    .onDisappear {
-                        userActionDispatcher()
-                    }
-            }
-            
-            TextEditor(text: $stickyText)
-                .layoutPriority(1)
-                .font(.system(size: CGFloat(self.fontSize)))
-                .onChange(of: stickyText) { val in
-                    if isExecutableSave {
-                        Task {
-                            do {
-                                isExecutableSave = false
-                                try await Task.sleep(nanoseconds: 3 * 1000000000)
-                                saveData()
-
-                            } catch {
-                                print("Fatal error: Failed to save JSON data.")
-                                userAction = .DO_NOT_SAVE_JSON
-                                isShowMessagebar = true
+                    .font(.system(size: CGFloat(self.fontSize)))
+                    .onChange(of: stickyText) { val in
+                        if isExecutableSave {
+                            Task {
+                                do {
+                                    isExecutableSave = false
+                                    try await Task.sleep(nanoseconds: 3 * 1000000000)
+                                    saveData()
+                                    
+                                } catch {
+                                    print("Fatal error: Failed to save JSON data.")
+                                    userAction = .DO_NOT_SAVE_JSON
+                                    isShowMessagebar = true
+                                }
                             }
                         }
                     }
-                }
+            }
+            .frame(width: CGFloat(self.width), height: CGFloat(self.height))
         }
-        .frame(width: CGFloat(self.width), height: CGFloat(self.height))
     }
     
     private func userActionDispatcher() {
