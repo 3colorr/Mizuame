@@ -1,5 +1,5 @@
 # About
-The app Mizuame is sticky note on status bar of Mac.  
+The app Mizuame is sticky note on menu bar of Mac.  
 This app is NOT a high performance note app.
 
 # Current state
@@ -15,7 +15,7 @@ This app is NOT a high performance note app.
 Not ready.
 
 # Features
-- [x] When you click a icon on status bar, a sticky note will open.
+- [x] When you click a icon on menu bar, a sticky note will open.
 - [x] Auto save.
 - [x] You can resize sticky note and font.
 - [ ] You can change background color.
