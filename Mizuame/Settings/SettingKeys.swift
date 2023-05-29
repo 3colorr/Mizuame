@@ -19,4 +19,9 @@ struct SettingKeys {
         let initialWidth: Int = 300
         let initialHeight: Int = 150
     }
+    
+    struct UserConfirm {
+        let keyAgreement: String = "agreement"
+        let initialViewState: Int = SettingsViewState.TERMS_OF_SERVICE.rawValue
+    }
 }
