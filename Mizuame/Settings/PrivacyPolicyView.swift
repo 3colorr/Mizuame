@@ -2,7 +2,7 @@
 //  PrivacyPolicyView.swift
 //  Mizuame
 //
-//  Created by becomefoolish on 2023/05/28.
+//  Created by Nakamura Akira(3colorr) on 2023/05/28.
 //
 
 import SwiftUI
