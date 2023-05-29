@@ -8,18 +8,6 @@
 import SwiftUI
 import StoreKit
 
-//@main
-//struct MizuameApp: App {
-//    let persistenceController = PersistenceController.shared
-//
-//    var body: some Scene {
-//        MenuBarExtra("Mizuame", systemImage: "text.bubble") {
-//            ContentView()
-//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-//        }
-//    }
-//}
-
 @main
 struct Mizuame: App {
 
