@@ -77,7 +77,7 @@ struct ContentView: View {
                 .padding(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
                 
                 if isShowMessagebar {
-                    MessagebarView(flag: $isShowMessagebar, selected: $userAction)
+                    MessagebarView(flag: $isShowMessagebar, selected: $userAction, fontSize: self.fontSize)
                         .onDisappear {
                             userActionDispatcher()
                         }
