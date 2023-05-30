@@ -10,9 +10,9 @@ import SwiftUI
 struct MessagebarView: View {
     @AppStorage(SettingKeys.FontSize().key) private var fontSize: Int = SettingKeys.FontSize().initialValue
 
-    @AppStorage(SettingKeys.MessagebarColor().keyR) private var msgR: Double = SettingKeys.MessageColor().initialR
-    @AppStorage(SettingKeys.MessagebarColor().keyG) private var msgG: Double = SettingKeys.MessageColor().initialG
-    @AppStorage(SettingKeys.MessagebarColor().keyB) private var msgB: Double = SettingKeys.MessageColor().initialB
+    @AppStorage(SettingKeys.MessageColor().keyR) private var msgR: Double = SettingKeys.MessageColor().initialR
+    @AppStorage(SettingKeys.MessageColor().keyG) private var msgG: Double = SettingKeys.MessageColor().initialG
+    @AppStorage(SettingKeys.MessageColor().keyB) private var msgB: Double = SettingKeys.MessageColor().initialB
 
     @AppStorage(SettingKeys.MessagebarColor().keyR) private var barR: Double = SettingKeys.MessagebarColor().initialR
     @AppStorage(SettingKeys.MessagebarColor().keyG) private var barG: Double = SettingKeys.MessagebarColor().initialG
