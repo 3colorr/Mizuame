@@ -51,7 +51,7 @@ struct ContentView: View {
             PrivacyPolicyView(state: $viewState)
             
         default:
-            VStack {
+            VStack(spacing: 0) {
                 HStack {
                     Image(systemName: "power")
                         .foregroundColor(Color.red)
@@ -77,7 +77,7 @@ struct ContentView: View {
                 .padding(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
                 
                 if isShowMessagebar {
-                    MessagebarView(flag: $isShowMessagebar, selected: $userAction, fontSize: self.fontSize)
+                    MessagebarView(flag: $isShowMessagebar, selected: $userAction)
                         .onDisappear {
                             userActionDispatcher()
                         }

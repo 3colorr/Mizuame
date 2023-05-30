@@ -8,48 +8,60 @@
 import SwiftUI
 
 struct MessagebarView: View {
+    @AppStorage(SettingKeys.FontSize().key) private var fontSize: Int = SettingKeys.FontSize().initialValue
+
+    @AppStorage(SettingKeys.MessagebarColor().keyR) private var msgR: Double = SettingKeys.MessageColor().initialR
+    @AppStorage(SettingKeys.MessagebarColor().keyG) private var msgG: Double = SettingKeys.MessageColor().initialG
+    @AppStorage(SettingKeys.MessagebarColor().keyB) private var msgB: Double = SettingKeys.MessageColor().initialB
+
+    @AppStorage(SettingKeys.MessagebarColor().keyR) private var barR: Double = SettingKeys.MessagebarColor().initialR
+    @AppStorage(SettingKeys.MessagebarColor().keyG) private var barG: Double = SettingKeys.MessagebarColor().initialG
+    @AppStorage(SettingKeys.MessagebarColor().keyB) private var barB: Double = SettingKeys.MessagebarColor().initialB
+
     @Binding private var isShowFlag: Bool
     @Binding private var messageType: MessagebarEnum
     
-    private let fontSize: Int
-    private let barColor: Color
-    
-    init(flag isShowFlag: Binding<Bool>, selected messageType: Binding<MessagebarEnum>, fontSize: Int, barColor: Color) {
+    init(flag isShowFlag: Binding<Bool>, selected messageType: Binding<MessagebarEnum>) {
         _isShowFlag = isShowFlag
         _messageType = messageType
-        self.fontSize = fontSize
-        
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(messageType.rawValue)
-                .font(.system(size: CGFloat(fontSize)))
+        ZStack {
+            Color(red: barR, green: barG, blue: barB)
             
-            HStack {
-                Spacer()
+            VStack(alignment: .leading) {
+                Text(messageType.rawValue)
+                    .font(.system(size: CGFloat(fontSize)))
+                    .foregroundColor(Color(red: msgR, green: msgG, blue: msgB))
                 
-                Button(action: {
-                    isShowFlag = false
-                }, label: {
-                  Text("OK")
-                        .font(.system(size: CGFloat(fontSize)))
-                })
-                .buttonStyle(.borderless)
-
-                if messageType != .DO_NOT_SAVE_JSON {
+                HStack {
+                    Spacer()
+                    
                     Button(action: {
-                        messageType = .NONE
                         isShowFlag = false
                     }, label: {
-                        Text("Cancel")
-                              .font(.system(size: CGFloat(fontSize)))
+                        Text("OK")
+                            .font(.system(size: CGFloat(fontSize)))
+                            .foregroundColor(Color(red: msgR, green: msgG, blue: msgB))
                     })
                     .buttonStyle(.borderless)
+                    
+                    if messageType != .DO_NOT_SAVE_JSON {
+                        Button(action: {
+                            messageType = .NONE
+                            isShowFlag = false
+                        }, label: {
+                            Text("Cancel")
+                                .font(.system(size: CGFloat(fontSize)))
+                                .foregroundColor(Color(red: msgR, green: msgG, blue: msgB))
+                        })
+                        .buttonStyle(.borderless)
+                    }
                 }
             }
+            .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
         }
-        .padding(EdgeInsets(top: 2, leading: 5, bottom: 2, trailing: 5))
     }
 }
 
