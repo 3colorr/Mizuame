@@ -12,11 +12,13 @@ struct MessagebarView: View {
     @Binding private var messageType: MessagebarEnum
     
     private let fontSize: Int
+    private let barColor: Color
     
-    init(flag isShowFlag: Binding<Bool>, selected messageType: Binding<MessagebarEnum>, fontSize: Int = SettingKeys.FontSize().initialValue) {
+    init(flag isShowFlag: Binding<Bool>, selected messageType: Binding<MessagebarEnum>, fontSize: Int, barColor: Color) {
         _isShowFlag = isShowFlag
         _messageType = messageType
         self.fontSize = fontSize
+        
     }
     
     var body: some View {
