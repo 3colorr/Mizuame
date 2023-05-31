@@ -27,7 +27,6 @@ struct SettingsView: View {
                     Label("Info", systemImage: "info.square")
                 }
         }
-        .frame(width: 400, height: 200)
     }
 }
 
