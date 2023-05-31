@@ -10,7 +10,7 @@ import Foundation
 struct SettingKeys {
     struct FontSize {
         let key: String = "fontSize"
-        let initialValue: Int = 11
+        let initialValue: Int = 12
     }
 
     struct MessageColor {
