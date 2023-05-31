@@ -44,7 +44,8 @@ struct TabStickyNote: View {
                     .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))
             }
         }
-        .padding(EdgeInsets(top: 10, leading: 50, bottom: 10, trailing: 50))
+        .frame(width: 400, height: 200)
+        .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
     }
 }
 

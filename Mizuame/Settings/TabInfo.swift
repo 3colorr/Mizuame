@@ -9,15 +9,18 @@ import SwiftUI
 
 struct TabInfo: View {
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("Mizuame").font(.title)
-            Text("Version: 0.0.0").font(.body)
-            Text("License: MIT license").font(.body)
-            Text("Developed by: @3colorr").font(.body)
-            Text("Terms Of Service: Something").font(.body)
-            Text("Privacy Policy: Something").font(.body)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Mizuame").font(.title)
+                Text("Version: 0.0.0").font(.body)
+                Text("License: MIT license").font(.body)
+                Text("Developed by: @3colorr").font(.body)
+                Text("Terms Of Service: Something").font(.body)
+                Text("Privacy Policy: Something").font(.body)
+            }
         }
-        .padding(10)
+        .frame(width: 400, height: 200)
+        .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
     }
 }
 
