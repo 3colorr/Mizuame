@@ -41,8 +41,13 @@ struct TabStickyNote: View {
 
     var body: some View {
         VStack {
-            StickyNotePreview(fontSize: fontSize, msgR: msgR, msgG: msgG, msgB: msgB, barR: barR, barG: barG, barB: barB)
-                .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
+            VStack(alignment: .leading) {
+                Text("Previews:\nSize is NOT correct. Check the real size. Sorry!")
+                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 5, trailing: 0))
+            }
+            
+            StickyNotePreview(fontSize: fontSize, width: width, height: height, msgR: msgR, msgG: msgG, msgB: msgB, barR: barR, barG: barG, barB: barB)
+                .padding(EdgeInsets(top: 5, leading: 0, bottom: 10, trailing: 0))
             
             ScrollView {
                 VStack(alignment: .leading) {
@@ -108,7 +113,7 @@ struct TabStickyNote: View {
             }
             .padding(EdgeInsets(top: 10, leading: 50, bottom: 20, trailing: 50))
         }
-        .frame(width: 400, height: 400)
+        .frame(width: 400, height: 500)
     }
 }
 
