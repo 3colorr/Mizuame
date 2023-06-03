@@ -12,7 +12,7 @@ struct TabGeneral: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("General tab")
+            Text("I'm not ready.")
         }
         .frame(width: 400, height: 200)
         .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
