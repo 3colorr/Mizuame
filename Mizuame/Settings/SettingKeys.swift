@@ -36,6 +36,10 @@ struct SettingKeys {
         let keyHeight: String = "stickyNoteHeight"
         let initialWidth: Int = 300
         let initialHeight: Int = 150
+        let minWidth: Int = 150
+        let maxWidth: Int = 1000
+        let minHeight: Int = 80
+        let maxHeight: Int = 1000
     }
     
     struct UserConfirm {
