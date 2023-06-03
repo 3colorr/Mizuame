@@ -9,6 +9,8 @@ import SwiftUI
 
 struct StickyNotePreview: View {
     let fontSize: Int
+    let width: CGFloat
+    let height: CGFloat
     let msgR: Double
     let msgG: Double
     let msgB: Double
@@ -16,24 +18,74 @@ struct StickyNotePreview: View {
     let barG: Double
     let barB: Double
     
+    init(fontSize: Int, width: Int, height: Int, msgR: Double, msgG: Double, msgB: Double, barR: Double, barG: Double, barB: Double) {
+        self.fontSize = fontSize
+        self.msgR = msgR
+        self.msgG = msgG
+        self.msgB = msgB
+        self.barR = barR
+        self.barG = barG
+        self.barB = barB
+
+        // Calcurate a ratio width to height for preview of window size
+        // This is NOT correct.
+        let ratioWtoH: Double = Double(height) / Double(width)
+        if ratioWtoH < 0.5 {
+            let preWidth = 200.0 * (1 / ratioWtoH)
+            let preHeight = 100.0
+            
+            if preWidth > 250.0 {
+                self.width = 250.0
+                self.height = 100.0 * ratioWtoH
+            } else {
+                self.width = preWidth
+                self.height = preHeight
+            }
+            
+        } else if ratioWtoH < 1.0 {
+            self.width = 200.0
+            self.height = 150.0
+
+        } else if ratioWtoH > 1.5 {
+            let preWidth = 200.0
+            let preHeight = 100.0 * ratioWtoH
+            
+            if preHeight > 150.0 {
+                self.width = 200.0 * (1 / ratioWtoH)
+                self.height = 150.0
+            } else {
+                self.width = preWidth
+                self.height = preHeight
+            }
+
+        } else if ratioWtoH > 1.0 {
+            self.width = 150.0
+            self.height = 200.0
+
+        } else {
+            self.width = 150
+            self.height = 150
+        }
+    }
+    
     var body: some View {
         ZStack(alignment: .top) {
             Rectangle()
                 .fill(Color(red: 0.9, green: 0.9, blue: 0.9))
-                .frame(width: 200, height: 100)
+                .frame(width: width, height: height)
             
             VStack(spacing: 0) {
                 Spacer()
-                    .frame(width: 200, height: 20)
+                    .frame(width: width, height: height / 5)
                 
                 Text("Messagebar")
-                    .frame(width: 200, height: 20)
+                    .frame(width: width, height: height / 5)
                     .font(.system(size: CGFloat(fontSize)))
                     .foregroundColor(Color(red: msgR, green: msgG, blue: msgB))
                     .background(Color(red: barR, green: barG, blue: barB))
                 
                 Text("StickyNote")
-                    .frame(width: 200, height: 60)
+                    .frame(width: width, height: height * 3 / 5)
                     .font(.system(size: CGFloat(fontSize)))
                     .background(Color.white)
             }
