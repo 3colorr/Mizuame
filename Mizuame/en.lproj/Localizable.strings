@@ -28,3 +28,12 @@
 "agreement.privacypolicy.privacy.email.purpose" = "I may know the user\'s email address when I receive a question from the user. The user\'s email address will only be used to reply to the user who asked the question.";
 "agreement.privacypolicy.privacy.email.action" = "After answering the question, we delete the user\'s email address immediately. We never be shared information with third parties.";
 "agreement.privacypolicy.confirm" = "If you do not agree, please uninstall The Apps.";
+
+"settings.tab.help.greeting" = "Hi.";
+"settings.tab.help.introduce" = "I'm Mizuame, a sticky note app that sits in your Mac's menu bar. My favorite place is application folder. Someday I would like to go to Antarctica and have hot tomato soup.";
+"settings.tab.help.attention.title" = "Attention";
+"settings.tab.help.attention.body" = "I'm NOT a high performance note app so that you should use other better apps to save your important data.";
+"settings.tab.help.menu.title" = "Menu";
+"settings.tab.help.menu.power.description" = "Quit the app.";
+"settings.tab.help.menu.preference.description" = "Open preference window.";
+"settings.tab.help.menu.eraser.description" = "Deletes all sticky note contents.";

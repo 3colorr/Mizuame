@@ -28,3 +28,12 @@
 "agreement.privacypolicy.privacy.email.purpose" = "私は、ユーザーから質問を受け取ったときに、ユーザーの電子メール アドレスを知ることがあります。 ユーザーの電子メール アドレスは、質問をしたユーザーに返信するためにのみ使用します。";
 "agreement.privacypolicy.privacy.email.action" = "私は、ユーザーの質問に回答した後、ユーザーのメールアドレスはすぐに廃棄します。第三者には共有しません。";
 "agreement.privacypolicy.confirm" = "このプライバシーポリシーに同意できない場合は、当アプリをアンインストールしてください。";
+
+"settings.tab.help.greeting" = "こんにちわ";
+"settings.tab.help.introduce" = "私は Mizuame です。あなたのMacのメニューバーにいる付箋アプリです。お気に入りの場所はアプリケーションフォルダです。いつの日か、南極に行って温かいトマトスープを飲んでみたいです。";
+"settings.tab.help.attention.title" = "気をつけて！";
+"settings.tab.help.attention.body" = "私は高機能なノートアプリではありません。なので、あなたの大切なデータは、他のもっと良いアプリに保存すべきです。";
+"settings.tab.help.menu.title" = "メニュー";
+"settings.tab.help.menu.power.description" = "アプリを終了します。";
+"settings.tab.help.menu.preference.description" = "設定画面を開きます。";
+"settings.tab.help.menu.eraser.description" = "付箋の文章を全て消します。";
