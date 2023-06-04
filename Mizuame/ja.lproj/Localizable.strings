@@ -29,6 +29,9 @@
 "agreement.privacypolicy.privacy.email.action" = "私は、ユーザーの質問に回答した後、ユーザーのメールアドレスはすぐに廃棄します。第三者には共有しません。";
 "agreement.privacypolicy.confirm" = "このプライバシーポリシーに同意できない場合は、当アプリをアンインストールしてください。";
 
+"menubar.clickevent.right.menu.item.preference" = "設定...";
+"menubar.clickevent.right.menu.item.quit" = "Mizuameを終了";
+
 "settings.tab.system.name.1" = "一般";
 "settings.tab.system.name.2" = "ふせん";
 "settings.tab.system.name.3" = "ヘルプ";

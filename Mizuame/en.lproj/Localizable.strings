@@ -29,6 +29,9 @@
 "agreement.privacypolicy.privacy.email.action" = "After answering the question, we delete the user\'s email address immediately. We never be shared information with third parties.";
 "agreement.privacypolicy.confirm" = "If you do not agree, please uninstall The Apps.";
 
+"menubar.clickevent.right.menu.item.preference" = "Preferences...";
+"menubar.clickevent.right.menu.item.quit" = "Quit Mizuame";
+
 "settings.tab.system.name.1" = "General";
 "settings.tab.system.name.2" = "Sticky Note";
 "settings.tab.system.name.3" = "Help";
