@@ -1,5 +1,5 @@
 //
-//  TabWindow.swift
+//  TabGeneral.swift
 //  Mizuame
 //
 //  Created by Nakamura Akira(3colorr) on 2023/05/25.
@@ -21,6 +21,6 @@ struct TabGeneral: View {
 
 struct TabStickyNote_Previews: PreviewProvider {
     static var previews: some View {
-        TabStickyNote()
+        TabGeneral()
     }
 }
