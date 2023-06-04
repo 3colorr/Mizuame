@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  Mizuame
+
+  Created by Nakamura Akira(3colorr) on 2023/06/04.
+  
+*/
+
+"agreement.common.quit" = "終了.";
+"agreement.common.back" = "戻る.";
+"agreement.common.agree" = "同意する.";
+
+"agreement.termsofservice.title.main" = "利用規約";
+"agreement.termsofservice.define" = "\"Mizuame(当アプリと呼びます)\"はAkira Nakamura(3Colorr)(私または作者または著作権者と呼びます)が所有しています。この利用規約では、あなたはユーザーと呼ばれます。";
+"agreement.termsofservice.consider" = "当アプリを利用するには、利用規約に同意することが必要です。ユーザーは当アプリを利用することで、この利用規約に同意したとみなされます。";
+"agreement.termsofservice.views" = "この利用規約は当アプリ内でいつでも確認できます。";
+"agreement.termsofservice.title.about" = "ご使用について";
+"agreement.termsofservice.lisence" = "当アプリは、MITライセンスのオープンソースソフトウェアです。";
+"agreement.termsofservice.blame" = "当アプリは無料で使用できます。ユーザーによる当アプリの使用はユーザーの単独の責任において行われます。当アプリは「現状のまま」で、何らの保証もなく提供されます。";
+"agreement.termsofservice.disclaimer" = "作者または著作権者は、当アプリまたは当アプリの使用またはその他の扱いによって生じる一切の請求、損害、その他の義務について何らの責任も負わないものとします。";
+"agreement.termsofservice.confirm" = "この利用規約に同意できない場合は、当アプリをアンインストールしてください。";
+
+"agreement.privacypolicy.title.main" = "プライバシーポリシー";
+"agreement.privacypolicy.define" = "\"Mizuame(当アプリと呼びます)\"はAkira Nakamura(3Colorr)(私または作者または著作権者と呼びます)が所有しています。このプライバシーポリシーでは、あなたはユーザーと呼ばれます。";
+"agreement.privacypolicy.views" = "このプライバシーポリシーは当アプリ内でいつでも確認できます。";
+"agreement.privacypolicy.title.privacy" = "データとプライバシー";
+"agreement.privacypolicy.privacy.data" = "当アプリは、一切のデータを収集しません。";
+"agreement.privacypolicy.privacy.email.purpose" = "私は、ユーザーから質問を受け取ったときに、ユーザーの電子メール アドレスを知ることがあります。 ユーザーの電子メール アドレスは、質問をしたユーザーに返信するためにのみ使用します。";
+"agreement.privacypolicy.privacy.email.action" = "私は、ユーザーの質問に回答した後、ユーザーのメールアドレスはすぐに廃棄します。第三者には共有しません。";
+"agreement.privacypolicy.confirm" = "このプライバシーポリシーに同意できない場合は、当アプリをアンインストールしてください。";

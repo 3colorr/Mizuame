@@ -2,7 +2,7 @@
 //  PrivacyPolicyBodyView.swift
 //  Mizuame
 //
-//  Created by becomefoolish on 2023/06/01.
+//  Created by Nakamura Akira(3colorr) on 2023/06/01.
 //
 
 import SwiftUI
@@ -10,24 +10,24 @@ import SwiftUI
 struct PrivacyPolicyBodyView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("Privacy Policy")
+            Text("agreement.privacypolicy.title.main")
                 .font(.title)
                 .bold()
             
-            Text("\"Mizuame (referred to as \"The Apps\")\" is owned by Akira Nakamura(3Colorr). (referred to as \"I\", \"Me\", \"Our\", \"We\", \"The Authors\" or \"Copyright holders\"). you are a \"User\" or \"You\" according to this policy.")
+            Text("agreement.privacypolicy.define")
 
-            Text("You can always review our Privacy Policy on the apps.")
+            Text("agreement.privacypolicy.views")
 
-            Text("Data and Privacy")
+            Text("agreement.privacypolicy.title.privacy")
                 .bold()
 
-            Text("The Apps dose not collect any your data.")
+            Text("agreement.privacypolicy.privacy.data")
             
-            Text("I may know the user\'s email address when I receive a question from the user. The user\'s email address will only be used to reply to the user who asked the question.")
+            Text("agreement.privacypolicy.privacy.email.purpose")
             
-            Text("After answering the question, we delete the user\'s email address immediately. We never be shared information with third parties.")
+            Text("agreement.privacypolicy.privacy.email.action")
             
-            Text("If you do not agree, please uninstall The Apps.")
+            Text("agreement.privacypolicy.confirm")
                 .bold()
                 .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
         }
@@ -36,6 +36,11 @@ struct PrivacyPolicyBodyView: View {
 
 struct PrivacyPolicyBodyView_Previews: PreviewProvider {
     static var previews: some View {
-        PrivacyPolicyBodyView()
+        let localizations = ["en", "ja"]
+        ForEach(localizations, id: \.self) { lang in
+            PrivacyPolicyBodyView()
+                .previewDisplayName("lcal:\(lang)")
+                .environment(\.locale, .init(identifier: lang))
+        }
     }
 }

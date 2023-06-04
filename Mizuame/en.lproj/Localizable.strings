@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  Mizuame
+
+  Created by Nakamura Akira(3colorr) on 2023/06/04.
+  
+*/
+
+"agreement.common.quit" = "Quit.";
+"agreement.common.back" = "Back.";
+"agreement.common.agree" = "I Agree.";
+
+"agreement.termsofservice.title.main" = "Terms Of Service";
+"agreement.termsofservice.define" = "\"Mizuame (referred to as \"The Apps\")\" is owned by Akira Nakamura(3Colorr). (referred to as \"I\", \"Me\", \"Our\", \"We\", \"The Authors\" or \"Copyright holders\"). you are a \"User\" or \"You\" according to this agreement.";
+"agreement.termsofservice.consider" = "Your access to and use of the Apps are conditioned on your acceptance of and compliance with these Terms. By accessing or using the Apps you agree to be bound by these Terms.";
+"agreement.termsofservice.views" = "You can always review our Terms of Service and Privacy Policy on the apps.";
+"agreement.termsofservice.title.about" = "About the use";
+"agreement.termsofservice.lisence" = "The Apps is open source software, under the MIT Lisence.";
+"agreement.termsofservice.blame" = "The Apps is free. Your use of the Apps is at your sole risk. The Apps is provided \"as is\", without warranty of any kind.";
+"agreement.termsofservice.disclaimer" = "In no event shall the authors or copyright holders be liable for any the software or the use or other dealings in the software.";
+"agreement.termsofservice.confirm" = "If you do not agree, please uninstall The Apps.";
+
+"agreement.privacypolicy.title.main" = "Privacy Policy";
+"agreement.privacypolicy.define" = "\"Mizuame (referred to as \"The Apps\")\" is owned by Akira Nakamura(3Colorr). (referred to as \"I\", \"Me\", \"Our\", \"We\", \"The Authors\" or \"Copyright holders\"). you are a \"User\" or \"You\" according to this policy.";
+"agreement.privacypolicy.views" = "You can always review our Privacy Policy on the apps.";
+"agreement.privacypolicy.title.privacy" = "Data and Privacy";
+"agreement.privacypolicy.privacy.data" = "The Apps dose not collect any your data.";
+"agreement.privacypolicy.privacy.email.purpose" = "I may know the user\'s email address when I receive a question from the user. The user\'s email address will only be used to reply to the user who asked the question.";
+"agreement.privacypolicy.privacy.email.action" = "After answering the question, we delete the user\'s email address immediately. We never be shared information with third parties.";
+"agreement.privacypolicy.confirm" = "If you do not agree, please uninstall The Apps.";
