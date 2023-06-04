@@ -29,6 +29,11 @@
 "agreement.privacypolicy.privacy.email.action" = "私は、ユーザーの質問に回答した後、ユーザーのメールアドレスはすぐに廃棄します。第三者には共有しません。";
 "agreement.privacypolicy.confirm" = "このプライバシーポリシーに同意できない場合は、当アプリをアンインストールしてください。";
 
+"settings.tab.system.name.1" = "一般";
+"settings.tab.system.name.2" = "ふせん";
+"settings.tab.system.name.3" = "ヘルプ";
+"settings.tab.system.name.4" = "情報";
+
 "settings.tab.help.greeting" = "こんにちわ";
 "settings.tab.help.introduce" = "私は Mizuame です。あなたのMacのメニューバーにいる、ふせんアプリです。お気に入りの場所はアプリケーションフォルダです。いつの日か、南極に行って温かいトマトスープを飲んでみたいです。";
 "settings.tab.help.attention.title" = "気をつけて！";

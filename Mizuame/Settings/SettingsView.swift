@@ -12,19 +12,19 @@ struct SettingsView: View {
         TabView {
             TabGeneral()
                 .tabItem {
-                    Label("General", systemImage: "gearshape")
+                    Label(LocalizedStringKey("settings.tab.system.name.1"), systemImage: "gearshape")
                 }
             TabStickyNote()
                 .tabItem {
-                    Label("Sticky Note", systemImage: "macwindow")
+                    Label(LocalizedStringKey("settings.tab.system.name.2"), systemImage: "macwindow")
                 }
             TabHelp()
                 .tabItem {
-                    Label("Help", systemImage: "questionmark.circle")
+                    Label(LocalizedStringKey("settings.tab.system.name.3"), systemImage: "questionmark.circle")
                 }
             TabInfo()
                 .tabItem {
-                    Label("Info", systemImage: "info.square")
+                    Label(LocalizedStringKey("settings.tab.system.name.4"), systemImage: "info.square")
                 }
         }
     }
@@ -32,6 +32,11 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        let localizations = ["en", "ja"]
+        ForEach(localizations, id: \.self) { lang in
+            SettingsView()
+                .previewDisplayName("lcal:\(lang)")
+                .environment(\.locale, .init(identifier: lang))
+        }
     }
 }
