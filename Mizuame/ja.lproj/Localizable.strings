@@ -30,10 +30,22 @@
 "agreement.privacypolicy.confirm" = "このプライバシーポリシーに同意できない場合は、当アプリをアンインストールしてください。";
 
 "settings.tab.help.greeting" = "こんにちわ";
-"settings.tab.help.introduce" = "私は Mizuame です。あなたのMacのメニューバーにいる付箋アプリです。お気に入りの場所はアプリケーションフォルダです。いつの日か、南極に行って温かいトマトスープを飲んでみたいです。";
+"settings.tab.help.introduce" = "私は Mizuame です。あなたのMacのメニューバーにいる、ふせんアプリです。お気に入りの場所はアプリケーションフォルダです。いつの日か、南極に行って温かいトマトスープを飲んでみたいです。";
 "settings.tab.help.attention.title" = "気をつけて！";
 "settings.tab.help.attention.body" = "私は高機能なノートアプリではありません。なので、あなたの大切なデータは、他のもっと良いアプリに保存すべきです。";
 "settings.tab.help.menu.title" = "メニュー";
 "settings.tab.help.menu.power.description" = "アプリを終了します。";
 "settings.tab.help.menu.preference.description" = "設定画面を開きます。";
-"settings.tab.help.menu.eraser.description" = "付箋の文章を全て消します。";
+"settings.tab.help.menu.eraser.description" = "文章を全て消します。";
+
+"settings.tab.stickynote.greeting" = "プレビュー:\nサイズは不正確です。実際にふせんを確認してください。ごめんね！";
+"settings.tab.stickynote.font.size" = "フォントサイズ: ";
+"settings.tab.stickynote.window.size" = "ふせんサイズ:";
+"settings.tab.stickynote.window.size.width" = "幅:";
+"settings.tab.stickynote.window.size.height" = "高さ:";
+"settings.tab.stickynote.window.preview.messagebar" = "メッセージバー";
+"settings.tab.stickynote.window.preview.stickynote" = "ふせん";
+"settings.tab.stickynote.messagebar.font.color" = "メッセージバーのフォントの色:";
+"settings.tab.stickynote.messagebar.body.color" = "メッセージバーの色:";
+"settings.tab.stickynote.reset.title" = "リセット:";
+"settings.tab.stickynote.reset.button.caption" = "ふせんのスタイルをリセットします";

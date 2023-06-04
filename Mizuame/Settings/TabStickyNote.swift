@@ -1,5 +1,5 @@
 //
-//  TabGeneral.swift
+//  TabStickyNote.swift
 //  Mizuame
 //
 //  Created by Nakamura Akira(3colorr) on 2023/05/25.
@@ -42,7 +42,7 @@ struct TabStickyNote: View {
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
-                Text("Previews:\nSize is NOT correct. Check the real size. Sorry!")
+                Text("settings.tab.stickynote.greeting")
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 5, trailing: 0))
             }
             
@@ -51,18 +51,18 @@ struct TabStickyNote: View {
             
             ScrollView {
                 VStack(alignment: .leading) {
-                    Picker("Font Size: ", selection: $fontSize) {
+                    Picker("settings.tab.stickynote.font.size", selection: $fontSize) {
                         ForEach(1..<40, id: \.self) { num in
                             Text("\(num)")
                         }
                     }
                     .frame(width: 150)
                     
-                    Text("Sticky Note Size:")
+                    Text("settings.tab.stickynote.window.size")
                     
                     HStack {
-                        Text("Width:")
-                        TextField("e.g. \(INIT_WIDTH)", value: $width, formatter: NumberFormatter())
+                        Text("settings.tab.stickynote.window.size.width")
+                        TextField("\(INIT_WIDTH)", value: $width, formatter: NumberFormatter())
                             .frame(width: 80)
                             .padding(EdgeInsets(top: 2, leading: 0, bottom: 2, trailing: 10))
                             .onChange(of: width) { val in
@@ -74,8 +74,8 @@ struct TabStickyNote: View {
                                 }
                             }
                         
-                        Text("Height:")
-                        TextField("e.g. \(INIT_HEIGHT)", value: $height, formatter: NumberFormatter())
+                        Text("settings.tab.stickynote.window.size.height")
+                        TextField("\(INIT_HEIGHT)", value: $height, formatter: NumberFormatter())
                             .frame(width: 80)
                             .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 0))
                             .onChange(of: height) { val in
@@ -88,13 +88,13 @@ struct TabStickyNote: View {
                             }
                     }
                     
-                    ColorSliderView(title: "Message Font Color:", rr: $msgR, gg: $msgG, bb: $msgB)
+                    ColorSliderView(title: "settings.tab.stickynote.messagebar.font.color", rr: $msgR, gg: $msgG, bb: $msgB)
                     
-                    ColorSliderView(title: "Messagebar Color:", rr: $barR, gg: $barG, bb: $barB)
+                    ColorSliderView(title: "settings.tab.stickynote.messagebar.body.color", rr: $barR, gg: $barG, bb: $barB)
                     
                     Spacer()
                     
-                    Text("Reset: ")
+                    Text("settings.tab.stickynote.reset.title")
                     Button(action: {
                         self.fontSize = INIT_FONT_SIZE
                         self.width = INIT_WIDTH
@@ -106,7 +106,7 @@ struct TabStickyNote: View {
                         self.barG = INIT_MSGBAR_COLOR_G
                         self.barB = INIT_MSGBAR_COLOR_B
                     }) {
-                        Text("Reset windowd style to initial value")
+                        Text("settings.tab.stickynote.reset.button.caption")
                             .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))
                     }
                 }
@@ -119,6 +119,11 @@ struct TabStickyNote: View {
 
 struct TabGeneral_Previews: PreviewProvider {
     static var previews: some View {
-        TabGeneral()
+        let localizations = ["en", "ja"]
+        ForEach(localizations, id: \.self) { lang in
+            TabStickyNote()
+                .previewDisplayName("lcal:\(lang)")
+                .environment(\.locale, .init(identifier: lang))
+        }
     }
 }

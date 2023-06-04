@@ -78,13 +78,13 @@ struct StickyNotePreview: View {
                 Spacer()
                     .frame(width: width, height: height / 5)
                 
-                Text("Messagebar")
+                Text("settings.tab.stickynote.window.preview.messagebar")
                     .frame(width: width, height: height / 5)
                     .font(.system(size: CGFloat(fontSize)))
                     .foregroundColor(Color(red: msgR, green: msgG, blue: msgB))
                     .background(Color(red: barR, green: barG, blue: barB))
                 
-                Text("StickyNote")
+                Text("settings.tab.stickynote.window.preview.stickynote")
                     .frame(width: width, height: height * 3 / 5)
                     .font(.system(size: CGFloat(fontSize)))
                     .background(Color.white)

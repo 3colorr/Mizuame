@@ -37,3 +37,15 @@
 "settings.tab.help.menu.power.description" = "Quit the app.";
 "settings.tab.help.menu.preference.description" = "Open preference window.";
 "settings.tab.help.menu.eraser.description" = "Deletes all sticky note contents.";
+
+"settings.tab.stickynote.greeting" = "Previews:\nSize is NOT correct. Check the real size. Sorry!";
+"settings.tab.stickynote.font.size" = "Font Size: ";
+"settings.tab.stickynote.window.size" = "Sticky Note Size:";
+"settings.tab.stickynote.window.size.width" = "Width:";
+"settings.tab.stickynote.window.size.height" = "Height:";
+"settings.tab.stickynote.window.preview.messagebar" = "Messagebar";
+"settings.tab.stickynote.window.preview.stickynote" = "StickyNote";
+"settings.tab.stickynote.messagebar.font.color" = "Message Font Color:";
+"settings.tab.stickynote.messagebar.body.color" = "Messagebar Color:";
+"settings.tab.stickynote.reset.title" = "Reset:";
+"settings.tab.stickynote.reset.button.caption" = "Reset window style to initial value";
