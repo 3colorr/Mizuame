@@ -49,3 +49,8 @@
 "settings.tab.stickynote.messagebar.body.color" = "メッセージバーの色:";
 "settings.tab.stickynote.reset.title" = "リセット:";
 "settings.tab.stickynote.reset.button.caption" = "ふせんのスタイルをリセットします";
+
+"settings.tab.info.src" = "ソースコード:";
+"settings.tab.info.autor" = "作者: Akira Nakamura";
+"settings.tab.info.termsofservice.button.caption" = "利用規約";
+"settings.tab.info.privacypolicy.button.caption" = "プライバシーポリシー";

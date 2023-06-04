@@ -49,3 +49,8 @@
 "settings.tab.stickynote.messagebar.body.color" = "Messagebar Color:";
 "settings.tab.stickynote.reset.title" = "Reset:";
 "settings.tab.stickynote.reset.button.caption" = "Reset window style to initial value";
+
+"settings.tab.info.src" = "Source code:";
+"settings.tab.info.autor" = "Autor: Akira Nakamura";
+"settings.tab.info.termsofservice.button.caption" = "Terms Of Service";
+"settings.tab.info.privacypolicy.button.caption" = "Privacy Policy";
