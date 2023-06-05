@@ -38,15 +38,6 @@ struct MessagebarView: View {
                 HStack {
                     Spacer()
                     
-                    Button(action: {
-                        isShowFlag = false
-                    }, label: {
-                        Text("sitickynote.messagebar.action.button.ok")
-                            .font(.system(size: CGFloat(fontSize)))
-                            .foregroundColor(Color(red: msgR, green: msgG, blue: msgB))
-                    })
-                    .buttonStyle(.borderless)
-                    
                     if messageType != .DO_NOT_SAVE_JSON {
                         Button(action: {
                             messageType = .NONE
@@ -58,6 +49,16 @@ struct MessagebarView: View {
                         })
                         .buttonStyle(.borderless)
                     }
+
+                    Button(action: {
+                        isShowFlag = false
+                    }, label: {
+                        Text("sitickynote.messagebar.action.button.ok")
+                            .bold()
+                            .font(.system(size: CGFloat(fontSize)))
+                            .foregroundColor(Color(red: msgR, green: msgG, blue: msgB))
+                    })
+                    .buttonStyle(.borderless)
                 }
             }
             .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
