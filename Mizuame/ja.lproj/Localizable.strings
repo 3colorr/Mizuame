@@ -32,6 +32,12 @@
 "menubar.clickevent.right.menu.item.preference" = "設定...";
 "menubar.clickevent.right.menu.item.quit" = "Mizuameを終了";
 
+"sitickynote.messagebar.message.quit" = "アプリを終了しますか？";
+"sitickynote.messagebar.message.deleteall" = "すべて削除しますか？";
+"sitickynote.messagebar.message.notsave" = "保存できませんでした。もう一度、保存してください。";
+"sitickynote.messagebar.action.button.ok" = "OK";
+"sitickynote.messagebar.action.button.cancel" = "キャンセル";
+
 "settings.tab.system.name.1" = "一般";
 "settings.tab.system.name.2" = "ふせん";
 "settings.tab.system.name.3" = "ヘルプ";

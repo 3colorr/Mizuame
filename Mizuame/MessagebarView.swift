@@ -31,7 +31,7 @@ struct MessagebarView: View {
             Color(red: barR, green: barG, blue: barB)
             
             VStack(alignment: .leading) {
-                Text(messageType.rawValue)
+                Text(LocalizedStringKey(messageType.rawValue))
                     .font(.system(size: CGFloat(fontSize)))
                     .foregroundColor(Color(red: msgR, green: msgG, blue: msgB))
                 
@@ -41,7 +41,7 @@ struct MessagebarView: View {
                     Button(action: {
                         isShowFlag = false
                     }, label: {
-                        Text("OK")
+                        Text("sitickynote.messagebar.action.button.ok")
                             .font(.system(size: CGFloat(fontSize)))
                             .foregroundColor(Color(red: msgR, green: msgG, blue: msgB))
                     })
@@ -52,7 +52,7 @@ struct MessagebarView: View {
                             messageType = .NONE
                             isShowFlag = false
                         }, label: {
-                            Text("Cancel")
+                            Text("sitickynote.messagebar.action.button.cancel")
                                 .font(.system(size: CGFloat(fontSize)))
                                 .foregroundColor(Color(red: msgR, green: msgG, blue: msgB))
                         })
@@ -67,6 +67,11 @@ struct MessagebarView: View {
 
 struct MessagebarView_Previews: PreviewProvider {
     static var previews: some View {
-        MessagebarView(flag: .constant(true), selected: .constant(.QUIT))
+        let localizations = ["en", "ja"]
+        ForEach(localizations, id: \.self) { lang in
+            MessagebarView(flag: .constant(true), selected: .constant(.QUIT))
+                .previewDisplayName("lcal:\(lang)")
+                .environment(\.locale, .init(identifier: lang))
+        }
     }
 }
