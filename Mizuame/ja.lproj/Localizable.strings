@@ -1,0 +1,70 @@
+/* 
+  Localizable.strings
+  Mizuame
+
+  Created by Nakamura Akira(3colorr) on 2023/06/04.
+  
+*/
+
+"agreement.common.quit" = "終了.";
+"agreement.common.back" = "戻る.";
+"agreement.common.agree" = "同意する.";
+
+"agreement.termsofservice.title.main" = "利用規約";
+"agreement.termsofservice.define" = "\"Mizuame(当アプリと呼びます)\"はAkira Nakamura(3Colorr)(私または作者または著作権者と呼びます)が所有しています。この利用規約では、あなたはユーザーと呼ばれます。";
+"agreement.termsofservice.consider" = "当アプリを利用するには、利用規約に同意することが必要です。ユーザーは当アプリを利用することで、この利用規約に同意したとみなされます。";
+"agreement.termsofservice.views" = "この利用規約は当アプリ内でいつでも確認できます。";
+"agreement.termsofservice.title.about" = "ご使用について";
+"agreement.termsofservice.lisence" = "当アプリは、MITライセンスのオープンソースソフトウェアです。";
+"agreement.termsofservice.blame" = "当アプリは無料で使用できます。ユーザーによる当アプリの使用はユーザーの単独の責任において行われます。当アプリは「現状のまま」で、何らの保証もなく提供されます。";
+"agreement.termsofservice.disclaimer" = "作者または著作権者は、当アプリまたは当アプリの使用またはその他の扱いによって生じる一切の請求、損害、その他の義務について何らの責任も負わないものとします。";
+"agreement.termsofservice.confirm" = "この利用規約に同意できない場合は、当アプリをアンインストールしてください。";
+
+"agreement.privacypolicy.title.main" = "プライバシーポリシー";
+"agreement.privacypolicy.define" = "\"Mizuame(当アプリと呼びます)\"はAkira Nakamura(3Colorr)(私または作者または著作権者と呼びます)が所有しています。このプライバシーポリシーでは、あなたはユーザーと呼ばれます。";
+"agreement.privacypolicy.views" = "このプライバシーポリシーは当アプリ内でいつでも確認できます。";
+"agreement.privacypolicy.title.privacy" = "データとプライバシー";
+"agreement.privacypolicy.privacy.data" = "当アプリは、一切のデータを収集しません。";
+"agreement.privacypolicy.privacy.email.purpose" = "私は、ユーザーから質問を受け取ったときに、ユーザーの電子メール アドレスを知ることがあります。 ユーザーの電子メール アドレスは、質問をしたユーザーに返信するためにのみ使用します。";
+"agreement.privacypolicy.privacy.email.action" = "私は、ユーザーの質問に回答した後、ユーザーのメールアドレスはすぐに廃棄します。第三者には共有しません。";
+"agreement.privacypolicy.confirm" = "このプライバシーポリシーに同意できない場合は、当アプリをアンインストールしてください。";
+
+"menubar.clickevent.right.menu.item.preference" = "設定...";
+"menubar.clickevent.right.menu.item.quit" = "Mizuameを終了";
+
+"sitickynote.messagebar.message.quit" = "アプリを終了しますか？";
+"sitickynote.messagebar.message.deleteall" = "すべて削除しますか？";
+"sitickynote.messagebar.message.notsave" = "保存できませんでした。もう一度、保存してください。";
+"sitickynote.messagebar.action.button.ok" = "OK";
+"sitickynote.messagebar.action.button.cancel" = "キャンセル";
+
+"settings.tab.system.name.1" = "一般";
+"settings.tab.system.name.2" = "ふせん";
+"settings.tab.system.name.3" = "ヘルプ";
+"settings.tab.system.name.4" = "情報";
+
+"settings.tab.help.greeting" = "こんにちわ";
+"settings.tab.help.introduce" = "私は Mizuame です。あなたのMacのメニューバーにいる、ふせんアプリです。お気に入りの場所はアプリケーションフォルダです。いつの日か、南極に行って温かいトマトスープを飲んでみたいです。";
+"settings.tab.help.attention.title" = "気をつけて！";
+"settings.tab.help.attention.body" = "私は高機能なノートアプリではありません。なので、あなたの大切なデータは、他のもっと良いアプリに保存すべきです。";
+"settings.tab.help.menu.title" = "メニュー";
+"settings.tab.help.menu.power.description" = "アプリを終了します。";
+"settings.tab.help.menu.preference.description" = "設定画面を開きます。";
+"settings.tab.help.menu.eraser.description" = "文章を全て消します。";
+
+"settings.tab.stickynote.greeting" = "プレビュー:\nサイズは不正確です。実際にふせんを確認してください。ごめんね！";
+"settings.tab.stickynote.font.size" = "フォントサイズ: ";
+"settings.tab.stickynote.window.size" = "ふせんサイズ:";
+"settings.tab.stickynote.window.size.width" = "幅:";
+"settings.tab.stickynote.window.size.height" = "高さ:";
+"settings.tab.stickynote.window.preview.messagebar" = "メッセージバー";
+"settings.tab.stickynote.window.preview.stickynote" = "ふせん";
+"settings.tab.stickynote.messagebar.font.color" = "メッセージバーのフォントの色:";
+"settings.tab.stickynote.messagebar.body.color" = "メッセージバーの色:";
+"settings.tab.stickynote.reset.title" = "リセット:";
+"settings.tab.stickynote.reset.button.caption" = "ふせんのスタイルをリセットします";
+
+"settings.tab.info.src" = "ソースコード:";
+"settings.tab.info.autor" = "作者: Akira Nakamura";
+"settings.tab.info.termsofservice.button.caption" = "利用規約";
+"settings.tab.info.privacypolicy.button.caption" = "プライバシーポリシー";

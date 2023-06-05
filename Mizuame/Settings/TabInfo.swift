@@ -31,7 +31,7 @@ struct TabInfo: View {
                     Text("Version: 0.0.0").font(.body)
                     Text("License: MIT license").font(.body)
                     HStack {
-                        Text("Source code:").font(.body)
+                        Text("settings.tab.info.src").font(.body)
                         if let url = URL(string: src) {
                             Link(src, destination: url)
                         } else {
@@ -41,7 +41,7 @@ struct TabInfo: View {
                 }
 
                 VStack(alignment: .leading, spacing: 5) {
-                    Text("Autor: Nakamura Akira").font(.body)
+                    Text("settings.tab.info.autor").font(.body)
                     Text("Email: 3colorr@gmail.com").font(.body)
                 }
 
@@ -60,7 +60,7 @@ struct TabInfo: View {
                         } else {
                             Image(systemName: "square")
                         }
-                        Text("Terms Of Service").font(.body)
+                        Text("settings.tab.info.termsofservice.button.caption").font(.body)
                     }
                     .padding(EdgeInsets(top: 2, leading: 5, bottom: 2, trailing: 5))
                 }
@@ -80,7 +80,7 @@ struct TabInfo: View {
                         } else {
                             Image(systemName: "square")
                         }
-                        Text("Privacy Policy").font(.body)
+                        Text("settings.tab.info.privacypolicy.button.caption").font(.body)
                     }
                     .padding(EdgeInsets(top: 2, leading: 5, bottom: 2, trailing: 5))
                 }
@@ -103,6 +103,11 @@ struct TabInfo: View {
 
 struct TabInfo_Previews: PreviewProvider {
     static var previews: some View {
-        TabInfo()
+        let localizations = ["en", "ja"]
+        ForEach(localizations, id: \.self) { lang in
+            TabInfo()
+                .previewDisplayName("lcal:\(lang)")
+                .environment(\.locale, .init(identifier: lang))
+        }
     }
 }

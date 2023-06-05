@@ -11,35 +11,35 @@ struct TabHelp: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
-                Text("Hi.")
+                Text("settings.tab.help.greeting")
                     .bold()
 
-                Text("I'm Mizuame, a sticky note app that sits in your Mac's menu bar. My favorite place is application folder. Someday I would like to go to Antarctica and have hot tomato soup.")
+                Text("settings.tab.help.introduce")
 
-                Text("Attention")
+                Text("settings.tab.help.attention.title")
                     .bold()
 
-                Text("I'm NOT a high performance note app so that you should use other better apps to save your important data.")
+                Text("settings.tab.help.attention.body")
                 
-                Text("Menu")
+                Text("settings.tab.help.menu.title")
                     .bold()
                 
                 HStack {
                     Image(systemName: "power")
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
-                    Text("Power-off button.")
+                    Text("settings.tab.help.menu.power.description")
                 }
 
                 HStack {
                     Image(systemName: "gearshape.fill")
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
-                    Text("Open preference window.")
+                    Text("settings.tab.help.menu.preference.description")
                 }
 
                 HStack {
                     Image(systemName: "eraser")
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
-                    Text("Deletes all sticky note contents.")
+                    Text("settings.tab.help.menu.eraser.description")
                 }
                 
                 Spacer()
@@ -52,6 +52,11 @@ struct TabHelp: View {
 
 struct TabHelp_Previews: PreviewProvider {
     static var previews: some View {
-        TabHelp()
+        let localizations = ["en", "ja"]
+        ForEach(localizations, id: \.self) { lang in
+            TabHelp()
+                .previewDisplayName("lcal:\(lang)")
+                .environment(\.locale, .init(identifier: lang))
+        }
     }
 }

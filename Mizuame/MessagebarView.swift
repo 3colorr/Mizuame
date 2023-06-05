@@ -31,33 +31,34 @@ struct MessagebarView: View {
             Color(red: barR, green: barG, blue: barB)
             
             VStack(alignment: .leading) {
-                Text(messageType.rawValue)
+                Text(LocalizedStringKey(messageType.rawValue))
                     .font(.system(size: CGFloat(fontSize)))
                     .foregroundColor(Color(red: msgR, green: msgG, blue: msgB))
                 
                 HStack {
                     Spacer()
                     
-                    Button(action: {
-                        isShowFlag = false
-                    }, label: {
-                        Text("OK")
-                            .font(.system(size: CGFloat(fontSize)))
-                            .foregroundColor(Color(red: msgR, green: msgG, blue: msgB))
-                    })
-                    .buttonStyle(.borderless)
-                    
                     if messageType != .DO_NOT_SAVE_JSON {
                         Button(action: {
                             messageType = .NONE
                             isShowFlag = false
                         }, label: {
-                            Text("Cancel")
+                            Text("sitickynote.messagebar.action.button.cancel")
                                 .font(.system(size: CGFloat(fontSize)))
                                 .foregroundColor(Color(red: msgR, green: msgG, blue: msgB))
                         })
                         .buttonStyle(.borderless)
                     }
+
+                    Button(action: {
+                        isShowFlag = false
+                    }, label: {
+                        Text("sitickynote.messagebar.action.button.ok")
+                            .bold()
+                            .font(.system(size: CGFloat(fontSize)))
+                            .foregroundColor(Color(red: msgR, green: msgG, blue: msgB))
+                    })
+                    .buttonStyle(.borderless)
                 }
             }
             .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
@@ -67,6 +68,11 @@ struct MessagebarView: View {
 
 struct MessagebarView_Previews: PreviewProvider {
     static var previews: some View {
-        MessagebarView(flag: .constant(true), selected: .constant(.QUIT))
+        let localizations = ["en", "ja"]
+        ForEach(localizations, id: \.self) { lang in
+            MessagebarView(flag: .constant(true), selected: .constant(.QUIT))
+                .previewDisplayName("lcal:\(lang)")
+                .environment(\.locale, .init(identifier: lang))
+        }
     }
 }

@@ -22,7 +22,7 @@ struct PrivacyPolicyView: View {
                         Button(action: {
                             state = SettingsViewState.TERMS_OF_SERVICE.rawValue
                         }, label: {
-                            Text("Back.")
+                            Text("agreement.common.back")
                                 .foregroundColor(.red)
                                 .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
                         })
@@ -32,7 +32,7 @@ struct PrivacyPolicyView: View {
                         Button(action: {
                             state = SettingsViewState.PREFERENCE.rawValue
                         }, label: {
-                            Text("I Agree.")
+                            Text("agreement.common.agree")
                                 .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
                         })
                     }
@@ -47,6 +47,11 @@ struct PrivacyPolicyView: View {
 
 struct PrivacyPolicyView_Previews: PreviewProvider {
     static var previews: some View {
-        PrivacyPolicyView(state: .constant(1))
+        let localizations = ["en", "ja"]
+        ForEach(localizations, id: \.self) { lang in
+            PrivacyPolicyView(state: .constant(1))
+                .previewDisplayName("lcal:\(lang)")
+                .environment(\.locale, .init(identifier: lang))
+        }
     }
 }

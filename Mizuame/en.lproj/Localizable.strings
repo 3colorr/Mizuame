@@ -1,0 +1,70 @@
+/* 
+  Localizable.strings
+  Mizuame
+
+  Created by Nakamura Akira(3colorr) on 2023/06/04.
+  
+*/
+
+"agreement.common.quit" = "Quit.";
+"agreement.common.back" = "Back.";
+"agreement.common.agree" = "I Agree.";
+
+"agreement.termsofservice.title.main" = "Terms Of Service";
+"agreement.termsofservice.define" = "\"Mizuame (referred to as \"The Apps\")\" is owned by Akira Nakamura(3Colorr). (referred to as \"I\", \"Me\", \"Our\", \"We\", \"The Authors\" or \"Copyright holders\"). you are a \"User\" or \"You\" according to this agreement.";
+"agreement.termsofservice.consider" = "Your access to and use of the Apps are conditioned on your acceptance of and compliance with these Terms. By accessing or using the Apps you agree to be bound by these Terms.";
+"agreement.termsofservice.views" = "You can always review our Terms of Service and Privacy Policy on the apps.";
+"agreement.termsofservice.title.about" = "About the use";
+"agreement.termsofservice.lisence" = "The Apps is open source software, under the MIT Lisence.";
+"agreement.termsofservice.blame" = "The Apps is free. Your use of the Apps is at your sole risk. The Apps is provided \"as is\", without warranty of any kind.";
+"agreement.termsofservice.disclaimer" = "In no event shall the authors or copyright holders be liable for any the software or the use or other dealings in the software.";
+"agreement.termsofservice.confirm" = "If you do not agree, please uninstall The Apps.";
+
+"agreement.privacypolicy.title.main" = "Privacy Policy";
+"agreement.privacypolicy.define" = "\"Mizuame (referred to as \"The Apps\")\" is owned by Akira Nakamura(3Colorr). (referred to as \"I\", \"Me\", \"Our\", \"We\", \"The Authors\" or \"Copyright holders\"). you are a \"User\" or \"You\" according to this policy.";
+"agreement.privacypolicy.views" = "You can always review our Privacy Policy on the apps.";
+"agreement.privacypolicy.title.privacy" = "Data and Privacy";
+"agreement.privacypolicy.privacy.data" = "The Apps dose not collect any your data.";
+"agreement.privacypolicy.privacy.email.purpose" = "I may know the user\'s email address when I receive a question from the user. The user\'s email address will only be used to reply to the user who asked the question.";
+"agreement.privacypolicy.privacy.email.action" = "After answering the question, we delete the user\'s email address immediately. We never be shared information with third parties.";
+"agreement.privacypolicy.confirm" = "If you do not agree, please uninstall The Apps.";
+
+"menubar.clickevent.right.menu.item.preference" = "Preferences...";
+"menubar.clickevent.right.menu.item.quit" = "Quit Mizuame";
+
+"sitickynote.messagebar.message.quit" = "Do you quit the app?";
+"sitickynote.messagebar.message.deleteall" = "Do you delete all?";
+"sitickynote.messagebar.message.notsave" = "Failed to save data. Try again.";
+"sitickynote.messagebar.action.button.ok" = "OK";
+"sitickynote.messagebar.action.button.cancel" = "Cancel";
+
+"settings.tab.system.name.1" = "General";
+"settings.tab.system.name.2" = "Sticky Note";
+"settings.tab.system.name.3" = "Help";
+"settings.tab.system.name.4" = "Info";
+
+"settings.tab.help.greeting" = "Hi.";
+"settings.tab.help.introduce" = "I'm Mizuame, a sticky note app that sits in your Mac's menu bar. My favorite place is application folder. Someday I would like to go to Antarctica and have hot tomato soup.";
+"settings.tab.help.attention.title" = "Attention";
+"settings.tab.help.attention.body" = "I'm NOT a high performance note app so that you should use other better apps to save your important data.";
+"settings.tab.help.menu.title" = "Menu";
+"settings.tab.help.menu.power.description" = "Quit the app.";
+"settings.tab.help.menu.preference.description" = "Open preference window.";
+"settings.tab.help.menu.eraser.description" = "Deletes all sticky note contents.";
+
+"settings.tab.stickynote.greeting" = "Previews:\nSize is NOT correct. Check the real size. Sorry!";
+"settings.tab.stickynote.font.size" = "Font Size: ";
+"settings.tab.stickynote.window.size" = "Sticky Note Size:";
+"settings.tab.stickynote.window.size.width" = "Width:";
+"settings.tab.stickynote.window.size.height" = "Height:";
+"settings.tab.stickynote.window.preview.messagebar" = "Messagebar";
+"settings.tab.stickynote.window.preview.stickynote" = "StickyNote";
+"settings.tab.stickynote.messagebar.font.color" = "Message Font Color:";
+"settings.tab.stickynote.messagebar.body.color" = "Messagebar Color:";
+"settings.tab.stickynote.reset.title" = "Reset:";
+"settings.tab.stickynote.reset.button.caption" = "Reset window style to initial value";
+
+"settings.tab.info.src" = "Source code:";
+"settings.tab.info.autor" = "Autor: Akira Nakamura";
+"settings.tab.info.termsofservice.button.caption" = "Terms Of Service";
+"settings.tab.info.privacypolicy.button.caption" = "Privacy Policy";

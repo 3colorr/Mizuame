@@ -24,7 +24,7 @@ struct TermsOfServiceView: View {
                         Button(action: {
                             delegate.quitApp()
                         }, label: {
-                            Text("Quit.")
+                            Text("agreement.common.quit")
                                 .foregroundColor(.red)
                                 .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
                         })
@@ -34,7 +34,7 @@ struct TermsOfServiceView: View {
                         Button(action: {
                             state = SettingsViewState.PRIVACY_POLICY.rawValue
                         }, label: {
-                            Text("I Agree.")
+                            Text("agreement.common.agree")
                                 .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
                         })
                     }
@@ -49,6 +49,11 @@ struct TermsOfServiceView: View {
 
 struct TermsOfServiceView_Previews: PreviewProvider {
     static var previews: some View {
-        TermsOfServiceView(state: .constant(0))
+        let localizations = ["en", "ja"]
+        ForEach(localizations, id: \.self) { lang in
+            TermsOfServiceView(state: .constant(0))
+                    .previewDisplayName("lcal:\(lang)")
+                    .environment(\.locale, .init(identifier: lang))
+        }
     }
 }

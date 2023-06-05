@@ -64,7 +64,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             // Mizuame don't show preferences.
             if viewState == SettingsViewState.PREFERENCE.rawValue {
                 menu.addItem(
-                    withTitle: "Preferences",
+                    withTitle: NSLocalizedString("menubar.clickevent.right.menu.item.preference", comment: ""),
                     action: #selector(showSettings),
                     keyEquivalent: ""
                 )
@@ -72,7 +72,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             
             menu.addItem(
-                withTitle: "Quit",
+                withTitle: NSLocalizedString("menubar.clickevent.right.menu.item.quit", comment: ""),
                 action: #selector(quitApp),
                 keyEquivalent: ""
             )
