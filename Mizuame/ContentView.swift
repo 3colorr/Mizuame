@@ -57,7 +57,11 @@ struct ContentView: View {
                         .foregroundColor(Color.red)
                         .onTapGesture {
                             userAction = .QUIT
-                            isShowMessagebar = true
+                            isShowMessagebar.toggle()
+                            
+                            if !isShowMessagebar {
+                                userAction = .NONE
+                            }
                         }
                     
                     Spacer()
@@ -66,15 +70,22 @@ struct ContentView: View {
                     Image(systemName: "eraser")
                         .onTapGesture {
                             userAction = .ALL_DELETE
-                            isShowMessagebar = true
+                            isShowMessagebar.toggle()
+
+                            if !isShowMessagebar {
+                                userAction = .NONE
+                            }
                         }
                     
                     Image(systemName: "gearshape.fill")
                         .onTapGesture {
+                            isShowMessagebar = false
+                            userAction = .NONE
+                            
                             delegate.showSettings()
                         }
                 }
-                .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                 
                 if isShowMessagebar {
                     MessagebarView(flag: $isShowMessagebar, selected: $userAction)
@@ -112,7 +123,7 @@ struct ContentView: View {
         case .QUIT:
             self.userAction = .NONE
             saveData()
-            NSApplication.shared.terminate(self)
+            delegate.quitApp()
 
         case .ALL_DELETE:
             self.userAction = .NONE
