@@ -57,7 +57,11 @@ struct ContentView: View {
                         .foregroundColor(Color.red)
                         .onTapGesture {
                             userAction = .QUIT
-                            isShowMessagebar = true
+                            isShowMessagebar.toggle()
+                            
+                            if !isShowMessagebar {
+                                userAction = .NONE
+                            }
                         }
                     
                     Spacer()
@@ -66,11 +70,18 @@ struct ContentView: View {
                     Image(systemName: "eraser")
                         .onTapGesture {
                             userAction = .ALL_DELETE
-                            isShowMessagebar = true
+                            isShowMessagebar.toggle()
+
+                            if !isShowMessagebar {
+                                userAction = .NONE
+                            }
                         }
                     
                     Image(systemName: "gearshape.fill")
                         .onTapGesture {
+                            isShowMessagebar = false
+                            userAction = .NONE
+                            
                             delegate.showSettings()
                         }
                 }
