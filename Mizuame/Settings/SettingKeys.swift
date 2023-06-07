@@ -14,18 +14,22 @@ struct SettingKeys {
     }
 
     struct MessageColor {
+        let keyTheme: String = "msgColor"
         let keyR: String = "msgColorR"
         let keyG: String = "msgColorG"
         let keyB: String = "msgColorB"
+        let initialTheme: String = "Light-Mint-Message"
         let initialR: Double = 0.0
         let initialG: Double = 0.0
         let initialB: Double = 0.0
     }
 
     struct MessagebarColor {
+        let keyTheme: String = "msgbarColor"
         let keyR: String = "msgbarColorR"
         let keyG: String = "msgbarColorG"
         let keyB: String = "msgbarColorB"
+        let initialTheme: String = "Light-Mint-Messagebar"
         let initialR: Double = 0.750
         let initialG: Double = 0.885
         let initialB: Double = 0.860
@@ -42,6 +46,18 @@ struct SettingKeys {
         let maxHeight: Int = 1000
     }
     
+    struct ThemePalette {
+        struct LightMint {
+            let name: String = "Light and Mint"
+            let message: String = "Light-Mint-Message"
+            let messagebar: String = "Light-Mint-Messagebar"
+        }
+        struct LightOrange {
+            let name: String = "Light and Orange"
+            let message: String = "Light-Orange-Message"
+            let messagebar: String = "Light-Orange-Messagebar"
+        }
+    }
     struct UserConfirm {
         let keyAgreement: String = "agreement"
         let initialViewState: Int = SettingsViewState.TERMS_OF_SERVICE.rawValue

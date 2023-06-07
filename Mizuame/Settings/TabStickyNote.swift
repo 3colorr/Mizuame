@@ -14,6 +14,9 @@ struct TabStickyNote: View {
     @AppStorage(SettingKeys.StickyNote().keyWidth) private var width: Int =  SettingKeys.StickyNote().initialWidth
     @AppStorage(SettingKeys.StickyNote().keyHeight) private var height: Int = SettingKeys.StickyNote().initialHeight
 
+    @AppStorage(SettingKeys.MessageColor().keyTheme) private var msgTheme: String = SettingKeys.MessageColor().initialTheme
+    @AppStorage(SettingKeys.MessagebarColor().keyTheme) private var barTheme: String = SettingKeys.MessagebarColor().initialTheme
+
     @AppStorage(SettingKeys.MessageColor().keyR) private var msgR: Double = SettingKeys.MessageColor().initialR
     @AppStorage(SettingKeys.MessageColor().keyG) private var msgG: Double = SettingKeys.MessageColor().initialG
     @AppStorage(SettingKeys.MessageColor().keyB) private var msgB: Double = SettingKeys.MessageColor().initialB
@@ -88,10 +91,14 @@ struct TabStickyNote: View {
                             }
                     }
                     
+                    ThemePalette(message: $msgTheme, messagebar: $barTheme)
+                    
+                    /*
                     ColorSliderView(title: "settings.tab.stickynote.messagebar.font.color", rr: $msgR, gg: $msgG, bb: $msgB)
                     
                     ColorSliderView(title: "settings.tab.stickynote.messagebar.body.color", rr: $barR, gg: $barG, bb: $barB)
-                    
+                    */
+                     
                     Spacer()
                     
                     Text("settings.tab.stickynote.reset.title")

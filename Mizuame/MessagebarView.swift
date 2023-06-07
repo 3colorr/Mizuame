@@ -28,7 +28,8 @@ struct MessagebarView: View {
     
     var body: some View {
         ZStack {
-            Color(red: barR, green: barG, blue: barB)
+            //Color(red: barR, green: barG, blue: barB)
+            Color("messagebar")
             
             VStack(alignment: .leading) {
                 Text(LocalizedStringKey(messageType.rawValue))
