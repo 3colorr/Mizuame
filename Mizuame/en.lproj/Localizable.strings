@@ -59,6 +59,7 @@
 "settings.tab.stickynote.window.size.height" = "Height:";
 "settings.tab.stickynote.window.preview.messagebar" = "Messagebar";
 "settings.tab.stickynote.window.preview.stickynote" = "StickyNote";
+"settings.tab.stickynote.theme" = "Theme:";
 "settings.tab.stickynote.messagebar.font.color" = "Message Font Color:";
 "settings.tab.stickynote.messagebar.body.color" = "Messagebar Color:";
 "settings.tab.stickynote.reset.title" = "Reset:";

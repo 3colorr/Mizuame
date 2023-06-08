@@ -11,21 +11,14 @@ struct StickyNotePreview: View {
     let fontSize: Int
     let width: CGFloat
     let height: CGFloat
-    let msgR: Double
-    let msgG: Double
-    let msgB: Double
-    let barR: Double
-    let barG: Double
-    let barB: Double
-    
-    init(fontSize: Int, width: Int, height: Int, msgR: Double, msgG: Double, msgB: Double, barR: Double, barG: Double, barB: Double) {
+    let message: String
+    let messagebar: String
+
+    init(fontSize: Int, width: Int, height: Int, msg: String, bar: String) {
+
         self.fontSize = fontSize
-        self.msgR = msgR
-        self.msgG = msgG
-        self.msgB = msgB
-        self.barR = barR
-        self.barG = barG
-        self.barB = barB
+        self.message = msg
+        self.messagebar = bar
 
         // Calcurate a ratio width to height for preview of window size
         // This is NOT correct.
@@ -81,8 +74,8 @@ struct StickyNotePreview: View {
                 Text("settings.tab.stickynote.window.preview.messagebar")
                     .frame(width: width, height: height / 5)
                     .font(.system(size: CGFloat(fontSize)))
-                    .foregroundColor(Color(red: msgR, green: msgG, blue: msgB))
-                    .background(Color(red: barR, green: barG, blue: barB))
+                    .foregroundColor(Color(message))
+                    .background(Color(messagebar))
                 
                 Text("settings.tab.stickynote.window.preview.stickynote")
                     .frame(width: width, height: height * 3 / 5)

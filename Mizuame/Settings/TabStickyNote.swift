@@ -17,23 +17,11 @@ struct TabStickyNote: View {
     @AppStorage(SettingKeys.MessageColor().keyTheme) private var msgTheme: String = SettingKeys.MessageColor().initialTheme
     @AppStorage(SettingKeys.MessagebarColor().keyTheme) private var barTheme: String = SettingKeys.MessagebarColor().initialTheme
 
-    @AppStorage(SettingKeys.MessageColor().keyR) private var msgR: Double = SettingKeys.MessageColor().initialR
-    @AppStorage(SettingKeys.MessageColor().keyG) private var msgG: Double = SettingKeys.MessageColor().initialG
-    @AppStorage(SettingKeys.MessageColor().keyB) private var msgB: Double = SettingKeys.MessageColor().initialB
-
-    @AppStorage(SettingKeys.MessagebarColor().keyR) private var barR: Double = SettingKeys.MessagebarColor().initialR
-    @AppStorage(SettingKeys.MessagebarColor().keyG) private var barG: Double = SettingKeys.MessagebarColor().initialG
-    @AppStorage(SettingKeys.MessagebarColor().keyB) private var barB: Double = SettingKeys.MessagebarColor().initialB
-
     private let INIT_FONT_SIZE: Int = SettingKeys.FontSize().initialValue
     private let INIT_WIDTH: Int = SettingKeys.StickyNote().initialWidth
     private let INIT_HEIGHT: Int = SettingKeys.StickyNote().initialHeight
-    private let INIT_MSG_COLOR_R: Double = SettingKeys.MessageColor().initialR
-    private let INIT_MSG_COLOR_G: Double = SettingKeys.MessageColor().initialG
-    private let INIT_MSG_COLOR_B: Double = SettingKeys.MessageColor().initialB
-    private let INIT_MSGBAR_COLOR_R: Double = SettingKeys.MessagebarColor().initialR
-    private let INIT_MSGBAR_COLOR_G: Double = SettingKeys.MessagebarColor().initialG
-    private let INIT_MSGBAR_COLOR_B: Double = SettingKeys.MessagebarColor().initialB
+    private let INIT_MSG_THEME: String = SettingKeys.ThemePalette.LightMint().message
+    private let INIT_BAR_THEME: String = SettingKeys.ThemePalette.LightMint().messagebar
 
     private var numberFormatter = NumberFormatter()
 
@@ -49,7 +37,7 @@ struct TabStickyNote: View {
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 5, trailing: 0))
             }
             
-            StickyNotePreview(fontSize: fontSize, width: width, height: height, msgR: msgR, msgG: msgG, msgB: msgB, barR: barR, barG: barG, barB: barB)
+            StickyNotePreview(fontSize: fontSize, width: width, height: height, msg: msgTheme, bar: barTheme)
                 .padding(EdgeInsets(top: 5, leading: 0, bottom: 10, trailing: 0))
             
             ScrollView {
@@ -91,13 +79,8 @@ struct TabStickyNote: View {
                             }
                     }
                     
-                    ThemePalette(message: $msgTheme, messagebar: $barTheme)
-                    
-                    /*
-                    ColorSliderView(title: "settings.tab.stickynote.messagebar.font.color", rr: $msgR, gg: $msgG, bb: $msgB)
-                    
-                    ColorSliderView(title: "settings.tab.stickynote.messagebar.body.color", rr: $barR, gg: $barG, bb: $barB)
-                    */
+                    Text("settings.tab.stickynote.theme")
+                    ThemePalette(msg: $msgTheme, msgbar: $barTheme, checked: msgTheme)
                      
                     Spacer()
                     
@@ -106,12 +89,8 @@ struct TabStickyNote: View {
                         self.fontSize = INIT_FONT_SIZE
                         self.width = INIT_WIDTH
                         self.height = INIT_HEIGHT
-                        self.msgR = INIT_MSG_COLOR_R
-                        self.msgG = INIT_MSG_COLOR_G
-                        self.msgB = INIT_MSG_COLOR_B
-                        self.barR = INIT_MSGBAR_COLOR_R
-                        self.barG = INIT_MSGBAR_COLOR_G
-                        self.barB = INIT_MSGBAR_COLOR_B
+                        self.msgTheme = INIT_MSG_THEME
+                        self.barTheme = INIT_BAR_THEME
                     }) {
                         Text("settings.tab.stickynote.reset.button.caption")
                             .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))

@@ -15,24 +15,12 @@ struct SettingKeys {
 
     struct MessageColor {
         let keyTheme: String = "msgColor"
-        let keyR: String = "msgColorR"
-        let keyG: String = "msgColorG"
-        let keyB: String = "msgColorB"
         let initialTheme: String = "Light-Mint-Message"
-        let initialR: Double = 0.0
-        let initialG: Double = 0.0
-        let initialB: Double = 0.0
     }
 
     struct MessagebarColor {
         let keyTheme: String = "msgbarColor"
-        let keyR: String = "msgbarColorR"
-        let keyG: String = "msgbarColorG"
-        let keyB: String = "msgbarColorB"
         let initialTheme: String = "Light-Mint-Messagebar"
-        let initialR: Double = 0.750
-        let initialG: Double = 0.885
-        let initialB: Double = 0.860
     }
 
     struct StickyNote {
