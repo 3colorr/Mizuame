@@ -28,41 +28,43 @@ struct ThemePalette: View {
     }
     
     var body: some View {
-        Button(action: {
-            isCheckedLightMint = true
-            isCheckedLightOrange = false
+        VStack {
+            Button(action: {
+                isCheckedLightMint = true
+                isCheckedLightOrange = false
+                
+                let lightMint = SettingKeys.ThemePalette.LightMint()
+                message = lightMint.message
+                messagebar = lightMint.messagebar
+                
+            }, label: {
+                if isCheckedLightMint {
+                    Image(systemName: "checkmark.square.fill")
+                } else {
+                    Image(systemName: "square")
+                }
+                Text(SettingKeys.ThemePalette.LightMint().name).font(.body)
+            })
+            .buttonStyle(.plain)
             
-            let lightMint = SettingKeys.ThemePalette.LightMint()
-            message = lightMint.message
-            messagebar = lightMint.messagebar
-            
-        }, label: {
-            if isCheckedLightMint {
-                Image(systemName: "checkmark.square.fill")
-            } else {
-                Image(systemName: "square")
-            }
-            Text(SettingKeys.ThemePalette.LightMint().name).font(.body)
-        })
-        .buttonStyle(.plain)
-
-        Button(action: {
-            isCheckedLightMint = false
-            isCheckedLightOrange = true
-            
-            let lightOrange = SettingKeys.ThemePalette.LightOrange()
-            message = lightOrange.message
-            messagebar = lightOrange.messagebar
-            
-        }, label: {
-            if isCheckedLightOrange {
-                Image(systemName: "checkmark.square.fill")
-            } else {
-                Image(systemName: "square")
-            }
-            Text(SettingKeys.ThemePalette.LightOrange().name).font(.body)
-        })
-        .buttonStyle(.plain)
+            Button(action: {
+                isCheckedLightMint = false
+                isCheckedLightOrange = true
+                
+                let lightOrange = SettingKeys.ThemePalette.LightOrange()
+                message = lightOrange.message
+                messagebar = lightOrange.messagebar
+                
+            }, label: {
+                if isCheckedLightOrange {
+                    Image(systemName: "checkmark.square.fill")
+                } else {
+                    Image(systemName: "square")
+                }
+                Text(SettingKeys.ThemePalette.LightOrange().name).font(.body)
+            })
+            .buttonStyle(.plain)
+        }
     }
 }
 
