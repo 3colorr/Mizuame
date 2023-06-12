@@ -14,8 +14,8 @@ struct TabStickyNote: View {
     @AppStorage(SettingKeys.StickyNote().keyWidth) private var width: Int =  SettingKeys.StickyNote().initialWidth
     @AppStorage(SettingKeys.StickyNote().keyHeight) private var height: Int = SettingKeys.StickyNote().initialHeight
 
-    @AppStorage(SettingKeys.MessageColor().keyTheme) private var msgTheme: String = SettingKeys.MessageColor().initialTheme
-    @AppStorage(SettingKeys.MessagebarColor().keyTheme) private var barTheme: String = SettingKeys.MessagebarColor().initialTheme
+    @AppStorage(SettingKeys.MessageColor().keyTheme) private var messageTheme: String = SettingKeys.MessageColor().initialTheme
+    @AppStorage(SettingKeys.MessagebarColor().keyTheme) private var messagebarTheme: String = SettingKeys.MessagebarColor().initialTheme
 
     @AppStorage(SettingKeys.StickyNoteColor().keyForeground) private var bodyForegroundTheme: String = SettingKeys.StickyNoteColor().initialForegroundTheme
     @AppStorage(SettingKeys.StickyNoteColor().keyBackground) private var bodyBackgroundTheme: String = SettingKeys.StickyNoteColor().initialBackgroundTheme
@@ -42,7 +42,7 @@ struct TabStickyNote: View {
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 5, trailing: 0))
             }
             
-            StickyNotePreview(fontSize: fontSize, width: width, height: height, message: msgTheme, messagebar: barTheme, bodyForeground: bodyForegroundTheme, bodyBackground: bodyBackgroundTheme)
+            StickyNotePreview(fontSize: fontSize, width: width, height: height, message: messageTheme, messagebar: messagebarTheme, bodyForeground: bodyForegroundTheme, bodyBackground: bodyBackgroundTheme)
                 .padding(EdgeInsets(top: 5, leading: 0, bottom: 10, trailing: 0))
             
             ScrollView {
@@ -85,7 +85,7 @@ struct TabStickyNote: View {
                     }
                     
                     Text("settings.tab.stickynote.theme")
-                    ThemePalette(checked: msgTheme, message: $msgTheme, messagebar: $barTheme, bodyForeground: $bodyForegroundTheme, bodyBackground: $bodyBackgroundTheme)
+                    ThemePalette(checked: messageTheme, message: $messageTheme, messagebar: $messagebarTheme, bodyForeground: $bodyForegroundTheme, bodyBackground: $bodyBackgroundTheme)
                      
                     Spacer()
                     
@@ -94,8 +94,8 @@ struct TabStickyNote: View {
                         self.fontSize = INIT_FONT_SIZE
                         self.width = INIT_WIDTH
                         self.height = INIT_HEIGHT
-                        self.msgTheme = INIT_MSG_THEME
-                        self.barTheme = INIT_BAR_THEME
+                        self.messageTheme = INIT_MSG_THEME
+                        self.messagebarTheme = INIT_BAR_THEME
                         self.bodyForegroundTheme = INIT_FOREGROUND_THEME
                         self.bodyBackgroundTheme = INIT_BACKGROUND_THEME
                     }) {

@@ -10,8 +10,8 @@ import SwiftUI
 struct MessagebarView: View {
     @AppStorage(SettingKeys.FontSize().key) private var fontSize: Int = SettingKeys.FontSize().initialValue
 
-    @AppStorage(SettingKeys.MessageColor().keyTheme) private var msgTheme: String = SettingKeys.MessageColor().initialTheme
-    @AppStorage(SettingKeys.MessagebarColor().keyTheme) private var barTheme: String = SettingKeys.MessagebarColor().initialTheme
+    @AppStorage(SettingKeys.MessageColor().keyTheme) private var messageTheme: String = SettingKeys.MessageColor().initialTheme
+    @AppStorage(SettingKeys.MessagebarColor().keyTheme) private var messagebarTheme: String = SettingKeys.MessagebarColor().initialTheme
 
     @Binding private var isShowFlag: Bool
     @Binding private var messageType: MessagebarEnum
@@ -23,12 +23,12 @@ struct MessagebarView: View {
     
     var body: some View {
         ZStack {
-            Color(barTheme)
+            Color(messagebarTheme)
             
             VStack(alignment: .leading) {
                 Text(LocalizedStringKey(messageType.rawValue))
                     .font(.system(size: CGFloat(fontSize)))
-                    .foregroundColor(Color(msgTheme))
+                    .foregroundColor(Color(messageTheme))
                 
                 HStack {
                     Spacer()
@@ -40,7 +40,7 @@ struct MessagebarView: View {
                         }, label: {
                             Text("sitickynote.messagebar.action.button.cancel")
                                 .font(.system(size: CGFloat(fontSize)))
-                                .foregroundColor(Color(msgTheme))
+                                .foregroundColor(Color(messageTheme))
                         })
                         .buttonStyle(.borderless)
                     }
@@ -51,7 +51,7 @@ struct MessagebarView: View {
                         Text("sitickynote.messagebar.action.button.ok")
                             .bold()
                             .font(.system(size: CGFloat(fontSize)))
-                            .foregroundColor(Color(msgTheme))
+                            .foregroundColor(Color(messageTheme))
                     })
                     .buttonStyle(.borderless)
                 }
