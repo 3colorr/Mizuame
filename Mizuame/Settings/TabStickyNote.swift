@@ -25,14 +25,10 @@ struct TabStickyNote: View {
     private let INIT_FONT_SIZE: Int = SettingKeys.FontSize().initialValue
     private let INIT_WIDTH: Int = SettingKeys.StickyNote().initialWidth
     private let INIT_HEIGHT: Int = SettingKeys.StickyNote().initialHeight
-    //FIX ME!!
-    // Shoud use initial value -->
-    // And MSG -> Message, BAR -> Messagebar
-    private let INIT_MSG_THEME: String = SettingKeys.ThemePalette.LightMint().message
-    private let INIT_BAR_THEME: String = SettingKeys.ThemePalette.LightMint().messagebar
-    private let INIT_FOREGROUND_THEME: String = SettingKeys.ThemePalette.LightMint().foreground
-    private let INIT_BACKGROUND_THEME: String = SettingKeys.ThemePalette.LightMint().background
-    //<--
+    private let INIT_MESSAGE_THEME: String = SettingKeys.MessageColor().initialTheme
+    private let INIT_MESSAGEBAR_THEME: String = SettingKeys.MessagebarColor().initialTheme
+    private let INIT_BODY_FOREGROUND_THEME: String = SettingKeys.StickyNoteColor().initialForegroundTheme
+    private let INIT_BODY_BACKGROUND_THEME: String = SettingKeys.StickyNoteColor().initialBackgroundTheme
     private let INIT_FRAME_THEME: String = SettingKeys.FrameColor().initialTheme
 
     private var numberFormatter = NumberFormatter()
@@ -101,10 +97,10 @@ struct TabStickyNote: View {
                         self.fontSize = INIT_FONT_SIZE
                         self.width = INIT_WIDTH
                         self.height = INIT_HEIGHT
-                        self.messageTheme = INIT_MSG_THEME
-                        self.messagebarTheme = INIT_BAR_THEME
-                        self.bodyForegroundTheme = INIT_FOREGROUND_THEME
-                        self.bodyBackgroundTheme = INIT_BACKGROUND_THEME
+                        self.messageTheme = INIT_MESSAGE_THEME
+                        self.messagebarTheme = INIT_MESSAGEBAR_THEME
+                        self.bodyForegroundTheme = INIT_BODY_FOREGROUND_THEME
+                        self.bodyBackgroundTheme = INIT_BODY_BACKGROUND_THEME
                         self.frameTheme = INIT_FRAME_THEME
                     }) {
                         Text("settings.tab.stickynote.reset.button.caption")
