@@ -16,6 +16,9 @@ struct ContentView: View {
     @AppStorage(SettingKeys.StickyNote().keyHeight) private var height: Int = SettingKeys.StickyNote().initialHeight
     @AppStorage(SettingKeys.FontSize().key) private var fontSize: Int = SettingKeys.FontSize().initialValue
 
+    @AppStorage(SettingKeys.StickyNoteColor().keyForeground) private var bodyForegroundTheme: String = SettingKeys.StickyNoteColor().initialForegroundTheme
+    @AppStorage(SettingKeys.StickyNoteColor().keyBackground) private var bodyBackgroundTheme: String = SettingKeys.StickyNoteColor().initialBackgroundTheme
+
     @AppStorage(SettingKeys.UserConfirm().keyAgreement) private var viewState: Int = SettingKeys.UserConfirm().initialViewState
 
     @State private var stickyText: String = "abc"
@@ -97,6 +100,9 @@ struct ContentView: View {
                 TextEditor(text: $stickyText)
                     .layoutPriority(1)
                     .font(.system(size: CGFloat(self.fontSize)))
+                    .foregroundColor(Color(bodyForegroundTheme))
+                    .scrollContentBackground(.hidden)
+                    .background(Color(bodyBackgroundTheme))
                     .onChange(of: stickyText) { val in
                         if isExecutableSave {
                             Task {

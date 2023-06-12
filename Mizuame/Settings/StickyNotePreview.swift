@@ -13,12 +13,16 @@ struct StickyNotePreview: View {
     let height: CGFloat
     let message: String
     let messagebar: String
+    let bodyForeground: String
+    let bodyBackground: String
 
-    init(fontSize: Int, width: Int, height: Int, msg: String, bar: String) {
+    init(fontSize: Int, width: Int, height: Int, message: String, messagebar: String, bodyForeground: String, bodyBackground: String) {
 
         self.fontSize = fontSize
-        self.message = msg
-        self.messagebar = bar
+        self.message = message
+        self.messagebar = messagebar
+        self.bodyForeground = bodyForeground
+        self.bodyBackground = bodyBackground
 
         // Calcurate a ratio width to height for preview of window size
         // This is NOT correct.
@@ -80,7 +84,8 @@ struct StickyNotePreview: View {
                 Text("settings.tab.stickynote.window.preview.stickynote")
                     .frame(width: width, height: height * 3 / 5)
                     .font(.system(size: CGFloat(fontSize)))
-                    .background(Color.white)
+                    .foregroundColor(Color(bodyForeground))
+                    .background(Color(bodyBackground))
             }
         }
         .overlay {
