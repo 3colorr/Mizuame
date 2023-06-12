@@ -19,6 +19,8 @@ struct ContentView: View {
     @AppStorage(SettingKeys.StickyNoteColor().keyForeground) private var bodyForegroundTheme: String = SettingKeys.StickyNoteColor().initialForegroundTheme
     @AppStorage(SettingKeys.StickyNoteColor().keyBackground) private var bodyBackgroundTheme: String = SettingKeys.StickyNoteColor().initialBackgroundTheme
 
+    @AppStorage(SettingKeys.FrameColor().keyTheme) private var frameTheme: String = SettingKeys.FrameColor().initialTheme
+
     @AppStorage(SettingKeys.UserConfirm().keyAgreement) private var viewState: Int = SettingKeys.UserConfirm().initialViewState
 
     @State private var stickyText: String = "abc"
@@ -54,71 +56,76 @@ struct ContentView: View {
             PrivacyPolicyView(state: $viewState)
             
         default:
-            VStack(spacing: 0) {
-                HStack {
-                    Image(systemName: "power")
-                        .foregroundColor(Color.red)
-                        .onTapGesture {
-                            userAction = .QUIT
-                            isShowMessagebar.toggle()
-                            
-                            if !isShowMessagebar {
-                                userAction = .NONE
+            ZStack {
+                Color(frameTheme)
+                
+                VStack(spacing: 0) {
+                    HStack {
+                        Image(systemName: "power")
+                            .foregroundColor(Color.red)
+                            .onTapGesture {
+                                userAction = .QUIT
+                                isShowMessagebar.toggle()
+                                
+                                if !isShowMessagebar {
+                                    userAction = .NONE
+                                }
                             }
-                        }
+                        
+                        Spacer()
+                            .layoutPriority(1)
+                        
+                        Image(systemName: "eraser")
+                            .onTapGesture {
+                                userAction = .ALL_DELETE
+                                isShowMessagebar.toggle()
+                                
+                                if !isShowMessagebar {
+                                    userAction = .NONE
+                                }
+                            }
+                        
+                        Image(systemName: "gearshape.fill")
+                            .onTapGesture {
+                                isShowMessagebar = false
+                                userAction = .NONE
+                                
+                                delegate.showSettings()
+                            }
+                    }
+                    .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                     
-                    Spacer()
+                    if isShowMessagebar {
+                        MessagebarView(flag: $isShowMessagebar, selected: $userAction)
+                            .onDisappear {
+                                userActionDispatcher()
+                            }
+                    }
+                    
+                    TextEditor(text: $stickyText)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .layoutPriority(1)
-                    
-                    Image(systemName: "eraser")
-                        .onTapGesture {
-                            userAction = .ALL_DELETE
-                            isShowMessagebar.toggle()
-
-                            if !isShowMessagebar {
-                                userAction = .NONE
-                            }
-                        }
-                    
-                    Image(systemName: "gearshape.fill")
-                        .onTapGesture {
-                            isShowMessagebar = false
-                            userAction = .NONE
-                            
-                            delegate.showSettings()
-                        }
-                }
-                .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-                
-                if isShowMessagebar {
-                    MessagebarView(flag: $isShowMessagebar, selected: $userAction)
-                        .onDisappear {
-                            userActionDispatcher()
-                        }
-                }
-                
-                TextEditor(text: $stickyText)
-                    .layoutPriority(1)
-                    .font(.system(size: CGFloat(self.fontSize)))
-                    .foregroundColor(Color(bodyForegroundTheme))
-                    .scrollContentBackground(.hidden)
-                    .background(Color(bodyBackgroundTheme))
-                    .onChange(of: stickyText) { val in
-                        if isExecutableSave {
-                            Task {
-                                do {
-                                    isExecutableSave = false
-                                    try await Task.sleep(nanoseconds: 3 * 1000000000)
-                                    saveData()
-                                    
-                                } catch {
-                                    print("Fatal error: Failed to save JSON data.")
-                                    userAction = .DO_NOT_SAVE_JSON
-                                    isShowMessagebar = true
+                        .font(.system(size: CGFloat(self.fontSize)))
+                        .foregroundColor(Color(bodyForegroundTheme))
+                        .scrollContentBackground(.hidden)
+                        .background(Color(bodyBackgroundTheme))
+                        .onChange(of: stickyText) { val in
+                            if isExecutableSave {
+                                Task {
+                                    do {
+                                        isExecutableSave = false
+                                        try await Task.sleep(nanoseconds: 3 * 1000000000)
+                                        saveData()
+                                        
+                                    } catch {
+                                        print("Fatal error: Failed to save JSON data.")
+                                        userAction = .DO_NOT_SAVE_JSON
+                                        isShowMessagebar = true
+                                    }
                                 }
                             }
                         }
-                    }
+                }
             }
             .frame(width: CGFloat(self.width), height: CGFloat(self.height))
         }

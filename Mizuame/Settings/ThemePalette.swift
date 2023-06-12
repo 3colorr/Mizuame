@@ -12,15 +12,17 @@ struct ThemePalette: View {
     @Binding var messagebar: String
     @Binding var bodyForeground: String
     @Binding var bodyBackground: String
+    @Binding var bodyFrame: String
 
     @State var isCheckedLightMint: Bool
     @State var isCheckedLightOrange: Bool
 
-    init(checked: String, message: Binding<String>, messagebar: Binding<String>, bodyForeground: Binding<String>, bodyBackground: Binding<String>) {
+    init(checked: String, message: Binding<String>, messagebar: Binding<String>, bodyForeground: Binding<String>, bodyBackground: Binding<String>, bodyFrame: Binding<String>) {
         _message = message
         _messagebar = messagebar
         _bodyForeground = bodyForeground
         _bodyBackground = bodyBackground
+        _bodyFrame = bodyFrame
 
         if checked == SettingKeys.ThemePalette.LightOrange().message {
             _isCheckedLightMint = State(initialValue: false)
@@ -42,6 +44,7 @@ struct ThemePalette: View {
                 messagebar = lightMint.messagebar
                 bodyForeground = lightMint.foreground
                 bodyBackground = lightMint.background
+                bodyFrame = lightMint.frame
                 
             }, label: {
                 if isCheckedLightMint {
@@ -62,6 +65,7 @@ struct ThemePalette: View {
                 messagebar = lightOrange.messagebar
                 bodyForeground = lightOrange.foreground
                 bodyBackground = lightOrange.background
+                bodyFrame = lightOrange.frame
                 
             }, label: {
                 if isCheckedLightOrange {
@@ -78,6 +82,6 @@ struct ThemePalette: View {
 
 struct ThemePalette_Previews: PreviewProvider {
     static var previews: some View {
-        ThemePalette(checked: "checked", message: .constant("message"), messagebar: .constant("messagebar"), bodyForeground: .constant("foreground"), bodyBackground: .constant("background"))
+        ThemePalette(checked: "checked", message: .constant("message"), messagebar: .constant("messagebar"), bodyForeground: .constant("foreground"), bodyBackground: .constant("background"), bodyFrame: .constant("frame"))
     }
 }

@@ -15,14 +15,16 @@ struct StickyNotePreview: View {
     let messagebar: String
     let bodyForeground: String
     let bodyBackground: String
+    let bodyFrame: String
 
-    init(fontSize: Int, width: Int, height: Int, message: String, messagebar: String, bodyForeground: String, bodyBackground: String) {
+    init(fontSize: Int, width: Int, height: Int, message: String, messagebar: String, bodyForeground: String, bodyBackground: String, bodyFrame: String) {
 
         self.fontSize = fontSize
         self.message = message
         self.messagebar = messagebar
         self.bodyForeground = bodyForeground
         self.bodyBackground = bodyBackground
+        self.bodyFrame = bodyFrame
 
         // Calcurate a ratio width to height for preview of window size
         // This is NOT correct.
@@ -68,7 +70,7 @@ struct StickyNotePreview: View {
     var body: some View {
         ZStack(alignment: .top) {
             Rectangle()
-                .fill(Color(red: 0.9, green: 0.9, blue: 0.9))
+                .fill(Color(bodyFrame))
                 .frame(width: width, height: height)
             
             VStack(spacing: 0) {

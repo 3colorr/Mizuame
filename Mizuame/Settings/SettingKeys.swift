@@ -29,7 +29,12 @@ struct SettingKeys {
         let initialForegroundTheme: String = "Light-Mint-Foreground"
         let initialBackgroundTheme: String = "Light-Mint-Background"
     }
-    
+
+    struct FrameColor {
+        let keyTheme: String = "frameColor"
+        let initialTheme: String = "Light-Mint-Frame"
+    }
+
     struct StickyNote {
         let keyWidth: String = "stickyNoteWidth"
         let keyHeight: String = "stickyNoteHeight"
@@ -48,6 +53,7 @@ struct SettingKeys {
             let messagebar: String = "Light-Mint-Messagebar"
             let foreground: String = "Light-Mint-Foreground"
             let background: String = "Light-Mint-Background"
+            let frame: String = "Light-Mint-Frame"
         }
         struct LightOrange {
             let name: String = "Light and Orange"
@@ -55,6 +61,7 @@ struct SettingKeys {
             let messagebar: String = "Light-Orange-Messagebar"
             let foreground: String = "Light-Orange-Foreground"
             let background: String = "Light-Orange-Background"
+            let frame: String = "Light-Orange-Frame"
         }
     }
     struct UserConfirm {
