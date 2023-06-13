@@ -10,13 +10,8 @@ import SwiftUI
 struct MessagebarView: View {
     @AppStorage(SettingKeys.FontSize().key) private var fontSize: Int = SettingKeys.FontSize().initialValue
 
-    @AppStorage(SettingKeys.MessageColor().keyR) private var msgR: Double = SettingKeys.MessageColor().initialR
-    @AppStorage(SettingKeys.MessageColor().keyG) private var msgG: Double = SettingKeys.MessageColor().initialG
-    @AppStorage(SettingKeys.MessageColor().keyB) private var msgB: Double = SettingKeys.MessageColor().initialB
-
-    @AppStorage(SettingKeys.MessagebarColor().keyR) private var barR: Double = SettingKeys.MessagebarColor().initialR
-    @AppStorage(SettingKeys.MessagebarColor().keyG) private var barG: Double = SettingKeys.MessagebarColor().initialG
-    @AppStorage(SettingKeys.MessagebarColor().keyB) private var barB: Double = SettingKeys.MessagebarColor().initialB
+    @AppStorage(SettingKeys.MessageColor().keyTheme) private var messageTheme: String = SettingKeys.MessageColor().initialTheme
+    @AppStorage(SettingKeys.MessagebarColor().keyTheme) private var messagebarTheme: String = SettingKeys.MessagebarColor().initialTheme
 
     @Binding private var isShowFlag: Bool
     @Binding private var messageType: MessagebarEnum
@@ -28,12 +23,12 @@ struct MessagebarView: View {
     
     var body: some View {
         ZStack {
-            Color(red: barR, green: barG, blue: barB)
+            Color(messagebarTheme)
             
             VStack(alignment: .leading) {
                 Text(LocalizedStringKey(messageType.rawValue))
                     .font(.system(size: CGFloat(fontSize)))
-                    .foregroundColor(Color(red: msgR, green: msgG, blue: msgB))
+                    .foregroundColor(Color(messageTheme))
                 
                 HStack {
                     Spacer()
@@ -45,7 +40,7 @@ struct MessagebarView: View {
                         }, label: {
                             Text("sitickynote.messagebar.action.button.cancel")
                                 .font(.system(size: CGFloat(fontSize)))
-                                .foregroundColor(Color(red: msgR, green: msgG, blue: msgB))
+                                .foregroundColor(Color(messageTheme))
                         })
                         .buttonStyle(.borderless)
                     }
@@ -56,7 +51,7 @@ struct MessagebarView: View {
                         Text("sitickynote.messagebar.action.button.ok")
                             .bold()
                             .font(.system(size: CGFloat(fontSize)))
-                            .foregroundColor(Color(red: msgR, green: msgG, blue: msgB))
+                            .foregroundColor(Color(messageTheme))
                     })
                     .buttonStyle(.borderless)
                 }

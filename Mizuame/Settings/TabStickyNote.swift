@@ -14,23 +14,22 @@ struct TabStickyNote: View {
     @AppStorage(SettingKeys.StickyNote().keyWidth) private var width: Int =  SettingKeys.StickyNote().initialWidth
     @AppStorage(SettingKeys.StickyNote().keyHeight) private var height: Int = SettingKeys.StickyNote().initialHeight
 
-    @AppStorage(SettingKeys.MessageColor().keyR) private var msgR: Double = SettingKeys.MessageColor().initialR
-    @AppStorage(SettingKeys.MessageColor().keyG) private var msgG: Double = SettingKeys.MessageColor().initialG
-    @AppStorage(SettingKeys.MessageColor().keyB) private var msgB: Double = SettingKeys.MessageColor().initialB
+    @AppStorage(SettingKeys.MessageColor().keyTheme) private var messageTheme: String = SettingKeys.MessageColor().initialTheme
+    @AppStorage(SettingKeys.MessagebarColor().keyTheme) private var messagebarTheme: String = SettingKeys.MessagebarColor().initialTheme
 
-    @AppStorage(SettingKeys.MessagebarColor().keyR) private var barR: Double = SettingKeys.MessagebarColor().initialR
-    @AppStorage(SettingKeys.MessagebarColor().keyG) private var barG: Double = SettingKeys.MessagebarColor().initialG
-    @AppStorage(SettingKeys.MessagebarColor().keyB) private var barB: Double = SettingKeys.MessagebarColor().initialB
+    @AppStorage(SettingKeys.StickyNoteColor().keyForeground) private var bodyForegroundTheme: String = SettingKeys.StickyNoteColor().initialForegroundTheme
+    @AppStorage(SettingKeys.StickyNoteColor().keyBackground) private var bodyBackgroundTheme: String = SettingKeys.StickyNoteColor().initialBackgroundTheme
+
+    @AppStorage(SettingKeys.FrameColor().keyTheme) private var frameTheme: String = SettingKeys.FrameColor().initialTheme
 
     private let INIT_FONT_SIZE: Int = SettingKeys.FontSize().initialValue
     private let INIT_WIDTH: Int = SettingKeys.StickyNote().initialWidth
     private let INIT_HEIGHT: Int = SettingKeys.StickyNote().initialHeight
-    private let INIT_MSG_COLOR_R: Double = SettingKeys.MessageColor().initialR
-    private let INIT_MSG_COLOR_G: Double = SettingKeys.MessageColor().initialG
-    private let INIT_MSG_COLOR_B: Double = SettingKeys.MessageColor().initialB
-    private let INIT_MSGBAR_COLOR_R: Double = SettingKeys.MessagebarColor().initialR
-    private let INIT_MSGBAR_COLOR_G: Double = SettingKeys.MessagebarColor().initialG
-    private let INIT_MSGBAR_COLOR_B: Double = SettingKeys.MessagebarColor().initialB
+    private let INIT_MESSAGE_THEME: String = SettingKeys.MessageColor().initialTheme
+    private let INIT_MESSAGEBAR_THEME: String = SettingKeys.MessagebarColor().initialTheme
+    private let INIT_BODY_FOREGROUND_THEME: String = SettingKeys.StickyNoteColor().initialForegroundTheme
+    private let INIT_BODY_BACKGROUND_THEME: String = SettingKeys.StickyNoteColor().initialBackgroundTheme
+    private let INIT_FRAME_THEME: String = SettingKeys.FrameColor().initialTheme
 
     private var numberFormatter = NumberFormatter()
 
@@ -46,7 +45,7 @@ struct TabStickyNote: View {
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 5, trailing: 0))
             }
             
-            StickyNotePreview(fontSize: fontSize, width: width, height: height, msgR: msgR, msgG: msgG, msgB: msgB, barR: barR, barG: barG, barB: barB)
+            StickyNotePreview(fontSize: fontSize, width: width, height: height, message: messageTheme, messagebar: messagebarTheme, bodyForeground: bodyForegroundTheme, bodyBackground: bodyBackgroundTheme, bodyFrame: frameTheme)
                 .padding(EdgeInsets(top: 5, leading: 0, bottom: 10, trailing: 0))
             
             ScrollView {
@@ -88,10 +87,9 @@ struct TabStickyNote: View {
                             }
                     }
                     
-                    ColorSliderView(title: "settings.tab.stickynote.messagebar.font.color", rr: $msgR, gg: $msgG, bb: $msgB)
-                    
-                    ColorSliderView(title: "settings.tab.stickynote.messagebar.body.color", rr: $barR, gg: $barG, bb: $barB)
-                    
+                    Text("settings.tab.stickynote.theme")
+                    ThemePalette(message: $messageTheme, messagebar: $messagebarTheme, bodyForeground: $bodyForegroundTheme, bodyBackground: $bodyBackgroundTheme, bodyFrame: $frameTheme)
+                     
                     Spacer()
                     
                     Text("settings.tab.stickynote.reset.title")
@@ -99,12 +97,11 @@ struct TabStickyNote: View {
                         self.fontSize = INIT_FONT_SIZE
                         self.width = INIT_WIDTH
                         self.height = INIT_HEIGHT
-                        self.msgR = INIT_MSG_COLOR_R
-                        self.msgG = INIT_MSG_COLOR_G
-                        self.msgB = INIT_MSG_COLOR_B
-                        self.barR = INIT_MSGBAR_COLOR_R
-                        self.barG = INIT_MSGBAR_COLOR_G
-                        self.barB = INIT_MSGBAR_COLOR_B
+                        self.messageTheme = INIT_MESSAGE_THEME
+                        self.messagebarTheme = INIT_MESSAGEBAR_THEME
+                        self.bodyForegroundTheme = INIT_BODY_FOREGROUND_THEME
+                        self.bodyBackgroundTheme = INIT_BODY_BACKGROUND_THEME
+                        self.frameTheme = INIT_FRAME_THEME
                     }) {
                         Text("settings.tab.stickynote.reset.button.caption")
                             .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))

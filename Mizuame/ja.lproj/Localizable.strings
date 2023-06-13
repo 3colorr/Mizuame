@@ -59,6 +59,7 @@
 "settings.tab.stickynote.window.size.height" = "高さ:";
 "settings.tab.stickynote.window.preview.messagebar" = "メッセージバー";
 "settings.tab.stickynote.window.preview.stickynote" = "ふせん";
+"settings.tab.stickynote.theme" = "テーマ:";
 "settings.tab.stickynote.messagebar.font.color" = "メッセージバーのフォントの色:";
 "settings.tab.stickynote.messagebar.body.color" = "メッセージバーの色:";
 "settings.tab.stickynote.reset.title" = "リセット:";

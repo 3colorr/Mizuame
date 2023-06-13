@@ -14,21 +14,25 @@ struct SettingKeys {
     }
 
     struct MessageColor {
-        let keyR: String = "msgColorR"
-        let keyG: String = "msgColorG"
-        let keyB: String = "msgColorB"
-        let initialR: Double = 0.0
-        let initialG: Double = 0.0
-        let initialB: Double = 0.0
+        let keyTheme: String = "msgColor"
+        let initialTheme: String = "Light-Mint-Message"
     }
 
     struct MessagebarColor {
-        let keyR: String = "msgbarColorR"
-        let keyG: String = "msgbarColorG"
-        let keyB: String = "msgbarColorB"
-        let initialR: Double = 0.750
-        let initialG: Double = 0.885
-        let initialB: Double = 0.860
+        let keyTheme: String = "msgbarColor"
+        let initialTheme: String = "Light-Mint-Messagebar"
+    }
+
+    struct StickyNoteColor {
+        let keyForeground: String = "foregroundColor"
+        let keyBackground: String = "BackgroundColor"
+        let initialForegroundTheme: String = "Light-Mint-Foreground"
+        let initialBackgroundTheme: String = "Light-Mint-Background"
+    }
+
+    struct FrameColor {
+        let keyTheme: String = "frameColor"
+        let initialTheme: String = "Light-Mint-Frame"
     }
 
     struct StickyNote {
@@ -42,6 +46,24 @@ struct SettingKeys {
         let maxHeight: Int = 1000
     }
     
+    struct ThemePalette {
+        struct LightMint {
+            let name: String = "Light and Mint"
+            let message: String = "Light-Mint-Message"
+            let messagebar: String = "Light-Mint-Messagebar"
+            let foreground: String = "Light-Mint-Foreground"
+            let background: String = "Light-Mint-Background"
+            let frame: String = "Light-Mint-Frame"
+        }
+        struct LightOrange {
+            let name: String = "Light and Orange"
+            let message: String = "Light-Orange-Message"
+            let messagebar: String = "Light-Orange-Messagebar"
+            let foreground: String = "Light-Orange-Foreground"
+            let background: String = "Light-Orange-Background"
+            let frame: String = "Light-Orange-Frame"
+        }
+    }
     struct UserConfirm {
         let keyAgreement: String = "agreement"
         let initialViewState: Int = SettingsViewState.TERMS_OF_SERVICE.rawValue

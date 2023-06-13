@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+/**
+ 
+  THIS IS DEPRECATED STURCT.
+ 
+ */
 struct ColorSliderView: View {
     let title: String
     
