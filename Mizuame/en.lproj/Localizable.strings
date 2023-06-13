@@ -54,6 +54,7 @@
 
 "settings.tab.stickynote.greeting" = "Previews:\nSize is NOT correct. Check the real size. Sorry!";
 "settings.tab.stickynote.font.size" = "Font Size: ";
+"settings.tab.stickynote.linespacing" = "Line Spacing: ";
 "settings.tab.stickynote.window.size" = "Sticky Note Size:";
 "settings.tab.stickynote.window.size.width" = "Width:";
 "settings.tab.stickynote.window.size.height" = "Height:";

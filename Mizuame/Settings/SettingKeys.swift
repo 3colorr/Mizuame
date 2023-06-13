@@ -36,6 +36,9 @@ struct SettingKeys {
     }
 
     struct StickyNote {
+        let keyLineSpacing: String = "linespacing"
+        let initialLineSpacing: Int = 2
+        
         let keyWidth: String = "stickyNoteWidth"
         let keyHeight: String = "stickyNoteHeight"
         let initialWidth: Int = 300
