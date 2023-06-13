@@ -9,23 +9,27 @@ import SwiftUI
 
 struct SettingsView: View {
     var body: some View {
-        TabView {
-            TabGeneral()
-                .tabItem {
-                    Label(LocalizedStringKey("settings.tab.system.name.1"), systemImage: "gearshape")
-                }
-            TabStickyNote()
-                .tabItem {
-                    Label(LocalizedStringKey("settings.tab.system.name.2"), systemImage: "macwindow")
-                }
-            TabHelp()
-                .tabItem {
-                    Label(LocalizedStringKey("settings.tab.system.name.3"), systemImage: "questionmark.circle")
-                }
-            TabInfo()
-                .tabItem {
-                    Label(LocalizedStringKey("settings.tab.system.name.4"), systemImage: "info.square")
-                }
+        ZStack {
+            Color("SettingsBackground")
+            
+            TabView {
+                TabGeneral()
+                    .tabItem {
+                        Label(LocalizedStringKey("settings.tab.system.name.1"), systemImage: "gearshape")
+                    }
+                TabStickyNote()
+                    .tabItem {
+                        Label(LocalizedStringKey("settings.tab.system.name.2"), systemImage: "macwindow")
+                    }
+                TabHelp()
+                    .tabItem {
+                        Label(LocalizedStringKey("settings.tab.system.name.3"), systemImage: "questionmark.circle")
+                    }
+                TabInfo()
+                    .tabItem {
+                        Label(LocalizedStringKey("settings.tab.system.name.4"), systemImage: "info.square")
+                    }
+            }
         }
     }
 }
