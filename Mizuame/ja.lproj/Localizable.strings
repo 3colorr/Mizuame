@@ -53,8 +53,9 @@
 "settings.tab.help.menu.eraser.description" = "文章を全て消します。";
 
 "settings.tab.stickynote.greeting" = "プレビュー:\nサイズは不正確です。実際にふせんを確認してください。ごめんね！";
-"settings.tab.stickynote.font.size" = "フォントサイズ: ";
-"settings.tab.stickynote.window.size" = "ふせんサイズ:";
+"settings.tab.stickynote.font.size" = "文字の大きさ: ";
+"settings.tab.stickynote.linespacing" = "行間: ";
+"settings.tab.stickynote.window.size" = "ふせんの大きさ:";
 "settings.tab.stickynote.window.size.width" = "幅:";
 "settings.tab.stickynote.window.size.height" = "高さ:";
 "settings.tab.stickynote.window.preview.messagebar" = "メッセージバー";

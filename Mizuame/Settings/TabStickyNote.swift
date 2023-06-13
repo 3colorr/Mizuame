@@ -10,6 +10,7 @@ import StoreKit
 
 struct TabStickyNote: View {
     @AppStorage(SettingKeys.FontSize().key) private var fontSize: Int = SettingKeys.FontSize().initialValue
+    @AppStorage(SettingKeys.StickyNote().keyLineSpacing) private var lineSpacing: Int = SettingKeys.StickyNote().initialLineSpacing
 
     @AppStorage(SettingKeys.StickyNote().keyWidth) private var width: Int =  SettingKeys.StickyNote().initialWidth
     @AppStorage(SettingKeys.StickyNote().keyHeight) private var height: Int = SettingKeys.StickyNote().initialHeight
@@ -23,6 +24,7 @@ struct TabStickyNote: View {
     @AppStorage(SettingKeys.FrameColor().keyTheme) private var frameTheme: String = SettingKeys.FrameColor().initialTheme
 
     private let INIT_FONT_SIZE: Int = SettingKeys.FontSize().initialValue
+    private let INIT_LINE_SPACING: Int = SettingKeys.StickyNote().initialLineSpacing
     private let INIT_WIDTH: Int = SettingKeys.StickyNote().initialWidth
     private let INIT_HEIGHT: Int = SettingKeys.StickyNote().initialHeight
     private let INIT_MESSAGE_THEME: String = SettingKeys.MessageColor().initialTheme
@@ -56,7 +58,14 @@ struct TabStickyNote: View {
                         }
                     }
                     .frame(width: 150)
-                    
+
+                    Picker("settings.tab.stickynote.linespacing", selection: $lineSpacing) {
+                        ForEach(0..<21, id: \.self) { num in
+                            Text("\(num)")
+                        }
+                    }
+                    .frame(width: 150)
+
                     Text("settings.tab.stickynote.window.size")
                     
                     HStack {
@@ -95,6 +104,7 @@ struct TabStickyNote: View {
                     Text("settings.tab.stickynote.reset.title")
                     Button(action: {
                         self.fontSize = INIT_FONT_SIZE
+                        self.lineSpacing = INIT_LINE_SPACING
                         self.width = INIT_WIDTH
                         self.height = INIT_HEIGHT
                         self.messageTheme = INIT_MESSAGE_THEME
