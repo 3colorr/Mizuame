@@ -14,31 +14,17 @@ struct ThemePalette: View {
     @Binding var bodyBackground: String
     @Binding var bodyFrame: String
 
-    @State var isCheckedLightMint: Bool
-    @State var isCheckedLightOrange: Bool
-
-    init(checked: String, message: Binding<String>, messagebar: Binding<String>, bodyForeground: Binding<String>, bodyBackground: Binding<String>, bodyFrame: Binding<String>) {
+    init(message: Binding<String>, messagebar: Binding<String>, bodyForeground: Binding<String>, bodyBackground: Binding<String>, bodyFrame: Binding<String>) {
         _message = message
         _messagebar = messagebar
         _bodyForeground = bodyForeground
         _bodyBackground = bodyBackground
         _bodyFrame = bodyFrame
-
-        if checked == SettingKeys.ThemePalette.LightOrange().message {
-            _isCheckedLightMint = State(initialValue: false)
-            _isCheckedLightOrange = State(initialValue: true)
-        } else {
-            _isCheckedLightMint = State(initialValue: true)
-            _isCheckedLightOrange = State(initialValue: false)
-        }
     }
     
     var body: some View {
         VStack {
             Button(action: {
-                isCheckedLightMint = true
-                isCheckedLightOrange = false
-                
                 let lightMint = SettingKeys.ThemePalette.LightMint()
                 message = lightMint.message
                 messagebar = lightMint.messagebar
@@ -47,7 +33,7 @@ struct ThemePalette: View {
                 bodyFrame = lightMint.frame
                 
             }, label: {
-                if isCheckedLightMint {
+                if message == SettingKeys.ThemePalette.LightMint().message {
                     Image(systemName: "checkmark.square.fill")
                 } else {
                     Image(systemName: "square")
@@ -57,9 +43,6 @@ struct ThemePalette: View {
             .buttonStyle(.plain)
             
             Button(action: {
-                isCheckedLightMint = false
-                isCheckedLightOrange = true
-                
                 let lightOrange = SettingKeys.ThemePalette.LightOrange()
                 message = lightOrange.message
                 messagebar = lightOrange.messagebar
@@ -68,7 +51,7 @@ struct ThemePalette: View {
                 bodyFrame = lightOrange.frame
                 
             }, label: {
-                if isCheckedLightOrange {
+                if message == SettingKeys.ThemePalette.LightOrange().message {
                     Image(systemName: "checkmark.square.fill")
                 } else {
                     Image(systemName: "square")
@@ -82,6 +65,6 @@ struct ThemePalette: View {
 
 struct ThemePalette_Previews: PreviewProvider {
     static var previews: some View {
-        ThemePalette(checked: "checked", message: .constant("message"), messagebar: .constant("messagebar"), bodyForeground: .constant("foreground"), bodyBackground: .constant("background"), bodyFrame: .constant("frame"))
+        ThemePalette(message: .constant("message"), messagebar: .constant("messagebar"), bodyForeground: .constant("foreground"), bodyBackground: .constant("background"), bodyFrame: .constant("frame"))
     }
 }

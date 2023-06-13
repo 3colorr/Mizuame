@@ -88,7 +88,7 @@ struct TabStickyNote: View {
                     }
                     
                     Text("settings.tab.stickynote.theme")
-                    ThemePalette(checked: messageTheme, message: $messageTheme, messagebar: $messagebarTheme, bodyForeground: $bodyForegroundTheme, bodyBackground: $bodyBackgroundTheme, bodyFrame: $frameTheme)
+                    ThemePalette(message: $messageTheme, messagebar: $messagebarTheme, bodyForeground: $bodyForegroundTheme, bodyBackground: $bodyBackgroundTheme, bodyFrame: $frameTheme)
                      
                     Spacer()
                     
