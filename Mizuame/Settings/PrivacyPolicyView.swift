@@ -12,7 +12,7 @@ struct PrivacyPolicyView: View {
     
     var body: some View {
         ZStack {
-            Color(.white)
+            Color("UserAgreementBackground")
             
             ScrollView {
                 VStack {
