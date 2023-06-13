@@ -53,7 +53,7 @@ struct TabStickyNote: View {
             ScrollView {
                 VStack(alignment: .leading) {
                     Picker("settings.tab.stickynote.font.size", selection: $fontSize) {
-                        ForEach(1..<40, id: \.self) { num in
+                        ForEach(1..<41, id: \.self) { num in
                             Text("\(num)")
                         }
                     }
