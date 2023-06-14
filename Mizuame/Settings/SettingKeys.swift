@@ -74,6 +74,14 @@ struct SettingKeys {
             let background: String = "Light-Blue-Background"
             let frame: String = "Light-Blue-Frame"
         }
+        struct LightYellow {
+            let name: String = "Light and Yellow"
+            let message: String = "Light-Yellow-Message"
+            let messagebar: String = "Light-Yellow-Messagebar"
+            let foreground: String = "Light-Yellow-Foreground"
+            let background: String = "Light-Yellow-Background"
+            let frame: String = "Light-Yellow-Frame"
+        }
     }
     struct UserConfirm {
         let keyAgreement: String = "agreement"
