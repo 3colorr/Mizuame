@@ -16,8 +16,8 @@ struct ThemePalette: View {
     
     let lightMint = SettingKeys.ThemePalette.LightMint()
     let lightOrange = SettingKeys.ThemePalette.LightOrange()
-
-
+    let lightBlue = SettingKeys.ThemePalette.LightBlue()
+    
     init(message: Binding<String>, messagebar: Binding<String>, bodyForeground: Binding<String>, bodyBackground: Binding<String>, bodyFrame: Binding<String>) {
         _message = message
         _messagebar = messagebar
@@ -46,6 +46,8 @@ struct ThemePalette: View {
                 })
                 .buttonStyle(.plain)
                 
+                Spacer()
+
                 ColorBlocks(
                     bodyFrame: lightMint.frame,
                     messagebar: lightMint.messagebar,
@@ -72,12 +74,42 @@ struct ThemePalette: View {
                 })
                 .buttonStyle(.plain)
                 
+                Spacer()
+
                 ColorBlocks(
                     bodyFrame: lightOrange.frame,
                     messagebar: lightOrange.messagebar,
                     message: lightOrange.message,
                     bodyBackground: lightOrange.background,
                     bodyForeground: lightOrange.foreground)
+            }
+            
+            HStack {
+                Button(action: {
+                    message = lightBlue.message
+                    messagebar = lightBlue.messagebar
+                    bodyForeground = lightBlue.foreground
+                    bodyBackground = lightBlue.background
+                    bodyFrame = lightBlue.frame
+                    
+                }, label: {
+                    if message == lightBlue.message {
+                        Image(systemName: "checkmark.square.fill")
+                    } else {
+                        Image(systemName: "square")
+                    }
+                    Text(lightBlue.name).font(.body)
+                })
+                .buttonStyle(.plain)
+                
+                Spacer()
+                
+                ColorBlocks(
+                    bodyFrame: lightBlue.frame,
+                    messagebar: lightBlue.messagebar,
+                    message: lightBlue.message,
+                    bodyBackground: lightBlue.background,
+                    bodyForeground: lightBlue.foreground)
             }
         }
     }
