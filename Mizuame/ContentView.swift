@@ -94,7 +94,14 @@ struct ContentView: View {
                                     userAction = .NONE
                                 }
                             }
-                        
+
+                        Image(systemName: "printer")
+                            .onTapGesture {
+                                isShowMessagebar = false
+                                userAction = .NONE
+                                
+                            }
+
                         Image(systemName: "gearshape.fill")
                             .foregroundColor(Color(bodyForegroundTheme))
                             .onTapGesture {
