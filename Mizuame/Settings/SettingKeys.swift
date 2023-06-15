@@ -82,6 +82,38 @@ struct SettingKeys {
             let background: String = "Light-Yellow-Background"
             let frame: String = "Light-Yellow-Frame"
         }
+        struct MintMint {
+            let name: String = "Mint and Mint"
+            let message: String = "Mint-Mint-Message"
+            let messagebar: String = "Mint-Mint-Messagebar"
+            let foreground: String = "Mint-Mint-Foreground"
+            let background: String = "Mint-Mint-Background"
+            let frame: String = "Mint-Mint-Frame"
+        }
+        struct OrangeOrange {
+            let name: String = "Orange and Orange"
+            let message: String = "Orange-Orange-Message"
+            let messagebar: String = "Orange-Orange-Messagebar"
+            let foreground: String = "Orange-Orange-Foreground"
+            let background: String = "Orange-Orange-Background"
+            let frame: String = "Orange-Orange-Frame"
+        }
+        struct BlueBlue {
+            let name: String = "Blue and Blue"
+            let message: String = "Blue-Blue-Message"
+            let messagebar: String = "Blue-Blue-Messagebar"
+            let foreground: String = "Blue-Blue-Foreground"
+            let background: String = "Blue-Blue-Background"
+            let frame: String = "Blue-Blue-Frame"
+        }
+        struct YellowYellow {
+            let name: String = "Yellow and Yellow"
+            let message: String = "Yellow-Yellow-Message"
+            let messagebar: String = "Yellow-Yellow-Messagebar"
+            let foreground: String = "Yellow-Yellow-Foreground"
+            let background: String = "Yellow-Yellow-Background"
+            let frame: String = "Yellow-Yellow-Frame"
+        }
     }
     struct UserConfirm {
         let keyAgreement: String = "agreement"
