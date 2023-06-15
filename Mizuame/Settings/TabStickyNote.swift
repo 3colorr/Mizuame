@@ -98,27 +98,30 @@ struct TabStickyNote: View {
                     
                     Text("settings.tab.stickynote.theme")
                     ThemePalette(message: $messageTheme, messagebar: $messagebarTheme, bodyForeground: $bodyForegroundTheme, bodyBackground: $bodyBackgroundTheme, bodyFrame: $frameTheme)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 20))
                      
                     Spacer()
                     
-                    Text("settings.tab.stickynote.reset.title")
-                    Button(action: {
-                        self.fontSize = INIT_FONT_SIZE
-                        self.lineSpacing = INIT_LINE_SPACING
-                        self.width = INIT_WIDTH
-                        self.height = INIT_HEIGHT
-                        self.messageTheme = INIT_MESSAGE_THEME
-                        self.messagebarTheme = INIT_MESSAGEBAR_THEME
-                        self.bodyForegroundTheme = INIT_BODY_FOREGROUND_THEME
-                        self.bodyBackgroundTheme = INIT_BODY_BACKGROUND_THEME
-                        self.frameTheme = INIT_FRAME_THEME
-                    }) {
-                        Text("settings.tab.stickynote.reset.button.caption")
-                            .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))
+                    HStack {
+                        Text("settings.tab.stickynote.reset.title")
+                        Button(action: {
+                            self.fontSize = INIT_FONT_SIZE
+                            self.lineSpacing = INIT_LINE_SPACING
+                            self.width = INIT_WIDTH
+                            self.height = INIT_HEIGHT
+                            self.messageTheme = INIT_MESSAGE_THEME
+                            self.messagebarTheme = INIT_MESSAGEBAR_THEME
+                            self.bodyForegroundTheme = INIT_BODY_FOREGROUND_THEME
+                            self.bodyBackgroundTheme = INIT_BODY_BACKGROUND_THEME
+                            self.frameTheme = INIT_FRAME_THEME
+                        }) {
+                            Text("settings.tab.stickynote.reset.button.caption")
+                                .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))
+                        }
                     }
                 }
             }
-            .padding(EdgeInsets(top: 10, leading: 50, bottom: 20, trailing: 50))
+            .padding(EdgeInsets(top: 10, leading: 30, bottom: 0, trailing: 30))
         }
         .frame(width: 400, height: 500)
     }
