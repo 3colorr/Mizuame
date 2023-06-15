@@ -18,8 +18,8 @@ Not ready.
 - [x] When you click a icon on menu bar, a sticky note will open.
 - [x] Auto save.
 - [x] You can resize sticky note and font.
-- [ ] You can change background color.
-- [ ] You can change font color.
+- [x] You can change theme.
+- [ ] Printing.
 
 something something.
 
