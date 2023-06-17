@@ -114,6 +114,14 @@ struct SettingKeys {
             let background: String = "Yellow-Yellow-Background"
             let frame: String = "Yellow-Yellow-Frame"
         }
+        struct WhitePink {
+            let name: String = "White and Pink"
+            let message: String = "White-Pink-Message"
+            let messagebar: String = "White-Pink-Messagebar"
+            let foreground: String = "White-Pink-Foreground"
+            let background: String = "White-Pink-Background"
+            let frame: String = "White-Pink-Frame"
+        }
     }
     struct UserConfirm {
         let keyAgreement: String = "agreement"
