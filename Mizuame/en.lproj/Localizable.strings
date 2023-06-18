@@ -32,6 +32,8 @@
 "menubar.clickevent.right.menu.item.preference" = "Preferences...";
 "menubar.clickevent.right.menu.item.quit" = "Quit Mizuame";
 
+"sitickynote.menu.message.saving" = "Saving...";
+
 "sitickynote.messagebar.message.quit" = "Do you quit the app?";
 "sitickynote.messagebar.message.deleteall" = "Do you delete all?";
 "sitickynote.messagebar.message.notsave" = "Failed to save data. Try again.";

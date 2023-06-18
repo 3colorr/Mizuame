@@ -74,6 +74,11 @@ struct ContentView: View {
                                 }
                             }
                         
+                        if !isExecutableSave {
+                            Text("sitickynote.menu.message.saving")
+                                .padding(.horizontal, 5)
+                        }
+                        
                         Spacer()
                             .layoutPriority(1)
                         
