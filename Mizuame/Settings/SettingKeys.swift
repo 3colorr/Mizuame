@@ -8,6 +8,11 @@
 import Foundation
 
 struct SettingKeys {
+    struct Menubar {
+        let keySavingMessage: String = "saving-message"
+        let initialSavingMessage: Bool = true
+    }
+    
     struct FontSize {
         let key: String = "fontSize"
         let initialValue: Int = 12

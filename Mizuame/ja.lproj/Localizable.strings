@@ -32,6 +32,8 @@
 "menubar.clickevent.right.menu.item.preference" = "設定...";
 "menubar.clickevent.right.menu.item.quit" = "Mizuameを終了";
 
+"sitickynote.menu.message.saving" = "ほぞんしてるよ...";
+
 "sitickynote.messagebar.message.quit" = "アプリを終了しますか？";
 "sitickynote.messagebar.message.deleteall" = "すべて削除しますか？";
 "sitickynote.messagebar.message.notsave" = "保存できませんでした。もう一度、保存してください。";
@@ -70,3 +72,6 @@
 "settings.tab.info.autor" = "作者: Akira Nakamura";
 "settings.tab.info.termsofservice.button.caption" = "利用規約";
 "settings.tab.info.privacypolicy.button.caption" = "プライバシーポリシー";
+
+"settings.tab.general.menubar" = "メニューバー:";
+"settings.tab.general.menubar.saving" = "保存中のメッセージを表示する";

@@ -10,9 +10,16 @@ import StoreKit
 
 struct TabGeneral: View {
     
+    @AppStorage(SettingKeys.Menubar().keySavingMessage) private var isShowSavingMessage: Bool = SettingKeys.Menubar().initialSavingMessage
+
     var body: some View {
         VStack(alignment: .leading) {
-            Text("I'm not ready.")
+            HStack {
+                Text("settings.tab.general.menubar")
+                Toggle(isOn: $isShowSavingMessage) {
+                    Text("settings.tab.general.menubar.saving")
+                }
+            }
         }
         .frame(width: 400, height: 200)
         .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))

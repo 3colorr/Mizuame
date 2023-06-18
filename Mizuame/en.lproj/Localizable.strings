@@ -32,6 +32,8 @@
 "menubar.clickevent.right.menu.item.preference" = "Preferences...";
 "menubar.clickevent.right.menu.item.quit" = "Quit Mizuame";
 
+"sitickynote.menu.message.saving" = "Saving...";
+
 "sitickynote.messagebar.message.quit" = "Do you quit the app?";
 "sitickynote.messagebar.message.deleteall" = "Do you delete all?";
 "sitickynote.messagebar.message.notsave" = "Failed to save data. Try again.";
@@ -70,3 +72,6 @@
 "settings.tab.info.autor" = "Autor: Akira Nakamura";
 "settings.tab.info.termsofservice.button.caption" = "Terms Of Service";
 "settings.tab.info.privacypolicy.button.caption" = "Privacy Policy";
+
+"settings.tab.general.menubar" = "Menu bar:";
+"settings.tab.general.menubar.saving" = "Display a saving message";
