@@ -72,3 +72,6 @@
 "settings.tab.info.autor" = "作者: Akira Nakamura";
 "settings.tab.info.termsofservice.button.caption" = "利用規約";
 "settings.tab.info.privacypolicy.button.caption" = "プライバシーポリシー";
+
+"settings.tab.general.menubar" = "メニューバー:";
+"settings.tab.general.menubar.saving" = "保存中のメッセージを表示する";

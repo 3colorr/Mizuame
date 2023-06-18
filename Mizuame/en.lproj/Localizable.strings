@@ -72,3 +72,6 @@
 "settings.tab.info.autor" = "Autor: Akira Nakamura";
 "settings.tab.info.termsofservice.button.caption" = "Terms Of Service";
 "settings.tab.info.privacypolicy.button.caption" = "Privacy Policy";
+
+"settings.tab.general.menubar" = "Menu bar:";
+"settings.tab.general.menubar.saving" = "Display a saving message";

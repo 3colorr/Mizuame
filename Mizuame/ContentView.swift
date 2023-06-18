@@ -12,6 +12,8 @@ struct ContentView: View {
     // But, it may not be a feature that this app need.
     //@FetchRequest(something)
     
+    @AppStorage(SettingKeys.Menubar().keySavingMessage) private var isShowSavingMessage: Bool = SettingKeys.Menubar().initialSavingMessage
+
     @AppStorage(SettingKeys.StickyNote().keyWidth) private var width: Int = SettingKeys.StickyNote().initialWidth
     @AppStorage(SettingKeys.StickyNote().keyHeight) private var height: Int = SettingKeys.StickyNote().initialHeight
     
@@ -74,7 +76,7 @@ struct ContentView: View {
                                 }
                             }
                         
-                        if !isExecutableSave {
+                        if isShowSavingMessage && !isExecutableSave {
                             Text("sitickynote.menu.message.saving")
                                 .padding(.horizontal, 5)
                         }
