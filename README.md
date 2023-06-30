@@ -1,6 +1,8 @@
 # About
 The app Mizuame is sticky note on menu bar of Mac.  
-This app is NOT a high performance note app.
+This app is NOT a high performance note app.  
+
+<img src="MizuameLogo.png" alt="Mizuame Logo." />
 
 # Current state
 - main branch
