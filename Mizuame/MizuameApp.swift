@@ -37,7 +37,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         if let button = unwrapped.button {
-            button.image = NSImage(systemSymbolName: "text.bubble", accessibilityDescription: nil)
+            //button.image = NSImage(systemSymbolName: "text.bubble", accessibilityDescription: nil)
+            button.image = NSImage(named: "MenubarIcon")
             button.action = #selector(showPopover)
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }

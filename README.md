@@ -1,6 +1,10 @@
-# About
+<div align="center">
+  <img src="MizuameLogo.png" alt="Mizuame Logo." width="256" height="256"/>
+  <h1>Mizuame</h1>
+</div>
+
 The app Mizuame is sticky note on menu bar of Mac.  
-This app is NOT a high performance note app.
+This app is NOT a high performance note app.  
 
 # Current state
 - main branch
