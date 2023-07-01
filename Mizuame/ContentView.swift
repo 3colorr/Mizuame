@@ -96,6 +96,7 @@ struct ContentView: View {
                             }
 
                         Image(systemName: "printer")
+                            .foregroundColor(Color(bodyForegroundTheme))
                             .onTapGesture {
                                 isShowMessagebar = false
                                 userAction = .NONE
