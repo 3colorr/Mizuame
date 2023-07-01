@@ -85,6 +85,7 @@ struct ContentView: View {
                             .layoutPriority(1)
                         
                         Image(systemName: "eraser")
+                            .foregroundColor(Color(bodyForegroundTheme))
                             .onTapGesture {
                                 userAction = .ALL_DELETE
                                 isShowMessagebar.toggle()
@@ -95,6 +96,7 @@ struct ContentView: View {
                             }
                         
                         Image(systemName: "gearshape.fill")
+                            .foregroundColor(Color(bodyForegroundTheme))
                             .onTapGesture {
                                 isShowMessagebar = false
                                 userAction = .NONE
