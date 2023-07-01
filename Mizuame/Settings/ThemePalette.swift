@@ -24,6 +24,8 @@ struct ThemePalette: View {
     let YellowYellow = SettingKeys.ThemePalette.YellowYellow()
     let whitePink = SettingKeys.ThemePalette.WhitePink()
     let whiteBlue = SettingKeys.ThemePalette.WhiteBlue()
+    let whiteMint = SettingKeys.ThemePalette.WhiteMint()
+    let whiteYellow = SettingKeys.ThemePalette.WhiteYellow()
 
     init(message: Binding<String>, messagebar: Binding<String>, bodyForeground: Binding<String>, bodyBackground: Binding<String>, bodyFrame: Binding<String>) {
         _message = message
@@ -319,6 +321,62 @@ struct ThemePalette: View {
                         message: whiteBlue.message,
                         bodyBackground: whiteBlue.background,
                         bodyForeground: whiteBlue.foreground)
+                }
+
+                HStack {
+                    Button(action: {
+                        message = whiteMint.message
+                        messagebar = whiteMint.messagebar
+                        bodyForeground = whiteMint.foreground
+                        bodyBackground = whiteMint.background
+                        bodyFrame = whiteMint.frame
+
+                    }, label: {
+                        if message == whiteMint.message {
+                            Image(systemName: "checkmark.square.fill")
+                        } else {
+                            Image(systemName: "square")
+                        }
+                        Text(whiteMint.name).font(.body)
+                    })
+                    .buttonStyle(.plain)
+
+                    Spacer()
+                    
+                    ColorBlocks(
+                        bodyFrame: whiteMint.frame,
+                        messagebar: whiteMint.messagebar,
+                        message: whiteMint.message,
+                        bodyBackground: whiteMint.background,
+                        bodyForeground: whiteMint.foreground)
+                }
+
+                HStack {
+                    Button(action: {
+                        message = whiteYellow.message
+                        messagebar = whiteYellow.messagebar
+                        bodyForeground = whiteYellow.foreground
+                        bodyBackground = whiteYellow.background
+                        bodyFrame = whiteYellow.frame
+
+                    }, label: {
+                        if message == whiteYellow.message {
+                            Image(systemName: "checkmark.square.fill")
+                        } else {
+                            Image(systemName: "square")
+                        }
+                        Text(whiteYellow.name).font(.body)
+                    })
+                    .buttonStyle(.plain)
+
+                    Spacer()
+
+                    ColorBlocks(
+                        bodyFrame: whiteYellow.frame,
+                        messagebar: whiteYellow.messagebar,
+                        message: whiteYellow.message,
+                        bodyBackground: whiteYellow.background,
+                        bodyForeground: whiteYellow.foreground)
                 }
             }
         }
