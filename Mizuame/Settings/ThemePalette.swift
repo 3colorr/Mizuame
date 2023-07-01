@@ -25,6 +25,7 @@ struct ThemePalette: View {
     let whitePink = SettingKeys.ThemePalette.WhitePink()
     let whiteBlue = SettingKeys.ThemePalette.WhiteBlue()
     let whiteMint = SettingKeys.ThemePalette.WhiteMint()
+    let whiteYellow = SettingKeys.ThemePalette.WhiteYellow()
 
     init(message: Binding<String>, messagebar: Binding<String>, bodyForeground: Binding<String>, bodyBackground: Binding<String>, bodyFrame: Binding<String>) {
         _message = message
@@ -348,6 +349,34 @@ struct ThemePalette: View {
                         message: whiteMint.message,
                         bodyBackground: whiteMint.background,
                         bodyForeground: whiteMint.foreground)
+                }
+
+                HStack {
+                    Button(action: {
+                        message = whiteYellow.message
+                        messagebar = whiteYellow.messagebar
+                        bodyForeground = whiteYellow.foreground
+                        bodyBackground = whiteYellow.background
+                        bodyFrame = whiteYellow.frame
+
+                    }, label: {
+                        if message == whiteYellow.message {
+                            Image(systemName: "checkmark.square.fill")
+                        } else {
+                            Image(systemName: "square")
+                        }
+                        Text(whiteYellow.name).font(.body)
+                    })
+                    .buttonStyle(.plain)
+
+                    Spacer()
+
+                    ColorBlocks(
+                        bodyFrame: whiteYellow.frame,
+                        messagebar: whiteYellow.messagebar,
+                        message: whiteYellow.message,
+                        bodyBackground: whiteYellow.background,
+                        bodyForeground: whiteYellow.foreground)
                 }
             }
         }
