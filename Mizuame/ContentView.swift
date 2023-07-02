@@ -101,6 +101,7 @@ struct ContentView: View {
                                 isShowMessagebar = false
                                 userAction = .NONE
                                 
+                                Printing().doPrinting(content: stickyText)
                             }
 
                         Image(systemName: "gearshape.fill")
