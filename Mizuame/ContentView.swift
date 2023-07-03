@@ -12,6 +12,8 @@ struct ContentView: View {
     // But, it may not be a feature that this app need.
     //@FetchRequest(something)
     
+    @ObservedObject var printer = PrinterModel()
+    
     @AppStorage(SettingKeys.Menubar().keySavingMessage) private var isShowSavingMessage: Bool = SettingKeys.Menubar().initialSavingMessage
 
     @AppStorage(SettingKeys.StickyNote().keyWidth) private var width: Int = SettingKeys.StickyNote().initialWidth
@@ -101,7 +103,7 @@ struct ContentView: View {
                                 isShowMessagebar = false
                                 userAction = .NONE
                                 
-                                Printing().doPrinting(content: stickyText)
+                                printer.doPrinting(content: stickyText)
                             }
 
                         Image(systemName: "gearshape.fill")
