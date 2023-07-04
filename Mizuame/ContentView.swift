@@ -103,6 +103,7 @@ struct ContentView: View {
                                 isShowMessagebar = false
                                 userAction = .NONE
                                 
+                                printer.textColor = bodyForegroundTheme
                                 printer.doPrinting(content: stickyText)
                             }
 

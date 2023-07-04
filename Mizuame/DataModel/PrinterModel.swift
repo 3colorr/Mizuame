@@ -16,6 +16,7 @@ class PrinterModel: ObservableObject {
     @Published var rightMargin = 1.0
     @Published var paperSize = NSSize(width: 595, height: 842)
     @Published var targetSize = NSRect(x: 0, y: 0, width: 595, height: 842)
+    @Published var textColor = SettingKeys.StickyNoteColor().initialForegroundTheme
 
     func doPrinting(content: String) {
         print("content:\(content)")
@@ -32,6 +33,7 @@ class PrinterModel: ObservableObject {
 
         let target = NSText(frame: self.targetSize)
         target.string = content
+        target.textColor = NSColor(named: self.textColor)
 
         let printOperation = NSPrintOperation(view: target, printInfo: printInfo)
         printOperation.showsPrintPanel = true
