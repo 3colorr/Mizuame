@@ -9,18 +9,20 @@ import AppKit
 
 class PrinterModel: ObservableObject {
     
-    @Published var scalingFactor = 1.0
-    @Published var topMargin = 1.0
-    @Published var bottomMargin = 1.0
-    @Published var leftMargin = 1.0
-    @Published var rightMargin = 1.0
-    @Published var paperSize = NSSize(width: 595, height: 842)
-    @Published var targetSize = NSRect(x: 0, y: 0, width: 595, height: 842)
+    @Published var scalingFactor = SettingKeys.Printer().initialScalingFactor
+    
+    @Published var topMargin = SettingKeys.Printer().initialTopMargin
+    @Published var bottomMargin = SettingKeys.Printer().initialBottomMargin
+    @Published var leftMargin = SettingKeys.Printer().initialLeftMargin
+    @Published var rightMargin = SettingKeys.Printer().initialRightMargin
+    
+    @Published var paperSize = NSSize(width: SettingKeys.Printer().pixel72dpiA4.width, height: SettingKeys.Printer().pixel72dpiA4.height)
+    
+    @Published var targetSize = NSRect(x: 0, y: 0, width: SettingKeys.Printer().pixel72dpiA4.width, height: SettingKeys.Printer().pixel72dpiA4.height)
+    
     @Published var textColor = SettingKeys.StickyNoteColor().initialForegroundTheme
 
     func doPrinting(content: String) {
-        print("content:\(content)")
-        
         let printInfo = NSPrintInfo.shared
         printInfo.scalingFactor = self.scalingFactor
         printInfo.topMargin = self.topMargin
@@ -40,5 +42,4 @@ class PrinterModel: ObservableObject {
         printOperation.showsProgressPanel = true
         printOperation.run()
     }
-
 }

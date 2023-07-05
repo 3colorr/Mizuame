@@ -13,6 +13,20 @@ struct SettingKeys {
         let initialSavingMessage: Bool = true
     }
     
+    struct Printer {
+        let keyTextColorApplyBlack: String = "text-color-apply-black"
+        let initialTextColorApplyBlack: Bool = false
+        let initialScalingFactor: CGFloat = 1.0
+        let initialTopMargin: CGFloat = 1.0
+        let initialBottomMargin: CGFloat = 1.0
+        let initialLeftMargin: CGFloat = 1.0
+        let initialRightMargin: CGFloat = 1.0
+        
+        //pixel A4 72dpi
+        let pixel72dpiA4 = (width: 595.0, height: 842.0)
+        
+    }
+    
     struct FontSize {
         let key: String = "fontSize"
         let initialValue: Int = 12
