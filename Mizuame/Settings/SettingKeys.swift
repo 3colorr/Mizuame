@@ -14,13 +14,24 @@ struct SettingKeys {
     }
     
     struct Printer {
-        let keyTextColorApplyBlack: String = "text-color-apply-black"
+        let keyTextColorApplyBlack: String = "print-text-color-apply-black"
+        let keyScalingFactor: String = "print-scaling-factor"
+        let keyTopMargin: String = "print-top-margin"
+        let keyBottomMargin: String = "print-bottom-margin"
+        let keyLeftMargin: String = "print-left-margin"
+        let keyRightMargin: String = "print-right-margin"
+        let keyVerticallyCentered: String = "print-vertically-centered"
+        let keyHorizontallyCentered: String = "print-horizontally-centered"
+
         let initialTextColorApplyBlack: Bool = false
         let initialScalingFactor: CGFloat = 1.0
-        let initialTopMargin: CGFloat = 1.0
-        let initialBottomMargin: CGFloat = 1.0
-        let initialLeftMargin: CGFloat = 1.0
-        let initialRightMargin: CGFloat = 1.0
+        let initialTopMargin: CGFloat = 20.0
+        let initialBottomMargin: CGFloat = 20.0
+        let initialLeftMargin: CGFloat = 20.0
+        let initialRightMargin: CGFloat = 20.0
+        let initialVerticallyCentered: Bool = false
+        let initialHorizontallyCentered: Bool = false
+
         
         //pixel A4 72dpi
         let pixel72dpiA4 = (width: 595.0, height: 842.0)

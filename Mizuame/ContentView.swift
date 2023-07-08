@@ -103,7 +103,9 @@ struct ContentView: View {
                                 isShowMessagebar = false
                                 userAction = .NONE
                                 
-                                printer.textColor = bodyForegroundTheme
+                                printer.textFontSize = self.fontSize
+                                printer.textColor = self.bodyForegroundTheme
+                                printer.printSize = NSRect(x: 0, y: 0, width: self.width, height: self.height)
                                 printer.doPrinting(content: stickyText)
                             }
 
