@@ -12,6 +12,8 @@ struct ContentView: View {
     // But, it may not be a feature that this app need.
     //@FetchRequest(something)
     
+    @ObservedObject var printer = PrinterModel()
+    
     @AppStorage(SettingKeys.Menubar().keySavingMessage) private var isShowSavingMessage: Bool = SettingKeys.Menubar().initialSavingMessage
 
     @AppStorage(SettingKeys.StickyNote().keyWidth) private var width: Int = SettingKeys.StickyNote().initialWidth
@@ -94,7 +96,19 @@ struct ContentView: View {
                                     userAction = .NONE
                                 }
                             }
-                        
+
+                        Image(systemName: "printer")
+                            .foregroundColor(Color(bodyForegroundTheme))
+                            .onTapGesture {
+                                isShowMessagebar = false
+                                userAction = .NONE
+                                
+                                printer.textFontSize = self.fontSize
+                                printer.textColor = self.bodyForegroundTheme
+                                printer.printSize = NSRect(x: 0, y: 0, width: self.width, height: self.height)
+                                printer.doPrinting(content: stickyText)
+                            }
+
                         Image(systemName: "gearshape.fill")
                             .foregroundColor(Color(bodyForegroundTheme))
                             .onTapGesture {
