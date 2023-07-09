@@ -44,6 +44,7 @@
 "settings.tab.system.name.2" = "Sticky Note";
 "settings.tab.system.name.3" = "Help";
 "settings.tab.system.name.4" = "Info";
+"settings.tab.system.name.5" = "Print";
 
 "settings.tab.help.greeting" = "Hi.";
 "settings.tab.help.introduce" = "I'm Mizuame, a sticky note app that sits in your Mac's menu bar. My favorite place is application folder. Someday I would like to go to Antarctica and have hot tomato soup.";
@@ -75,3 +76,9 @@
 
 "settings.tab.general.menubar" = "Menu bar:";
 "settings.tab.general.menubar.saving" = "Display a saving message";
+
+"settings.tab.print.margin" = "Margin:";
+"settings.tab.print.margin.top" = "Top:";
+"settings.tab.print.margin.bottom" = "Bottom:";
+"settings.tab.print.margin.left" = "Left:";
+"settings.tab.print.margin.right" = "Right:";
