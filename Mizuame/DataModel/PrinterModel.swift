@@ -9,15 +9,15 @@ import AppKit
 
 class PrinterModel: ObservableObject {
     
-    @Published var scalingFactor = SettingKeys.Printer().initialScalingFactor
+    @Published var scalingFactor: Int = SettingKeys.Printer().initialScalingFactor
     
     // Edit the margins and the centered in the settings tab.
-    @Published var topMargin = SettingKeys.Printer().initialTopMargin
-    @Published var bottomMargin = SettingKeys.Printer().initialBottomMargin
-    @Published var leftMargin = SettingKeys.Printer().initialLeftMargin
-    @Published var rightMargin = SettingKeys.Printer().initialRightMargin
-    @Published var isVerticallyCentered = SettingKeys.Printer().initialVerticallyCentered
-    @Published var isHorizontallyCentered = SettingKeys.Printer().initialHorizontallyCentered
+    @Published var topMargin: Int = SettingKeys.Printer().initialTopMargin
+    @Published var bottomMargin: Int = SettingKeys.Printer().initialBottomMargin
+    @Published var leftMargin:Int = SettingKeys.Printer().initialLeftMargin
+    @Published var rightMargin:Int = SettingKeys.Printer().initialRightMargin
+    @Published var isVerticallyCentered: Bool = SettingKeys.Printer().initialVerticallyCentered
+    @Published var isHorizontallyCentered: Bool = SettingKeys.Printer().initialHorizontallyCentered
 
     // Inherit tha current settings.
     @Published var printSize = NSRect(x: 0, y: 0, width: SettingKeys.Printer().pixel72dpiA4.width, height: SettingKeys.Printer().pixel72dpiA4.height)
@@ -26,11 +26,11 @@ class PrinterModel: ObservableObject {
 
     func doPrinting(content: String) {
         let printInfo = NSPrintInfo.shared
-        printInfo.scalingFactor = self.scalingFactor
-        printInfo.topMargin = self.topMargin
-        printInfo.bottomMargin = self.bottomMargin
-        printInfo.leftMargin = self.leftMargin
-        printInfo.rightMargin = self.rightMargin
+        printInfo.scalingFactor = CGFloat(self.scalingFactor)
+        printInfo.topMargin = CGFloat(self.topMargin)
+        printInfo.bottomMargin = CGFloat(self.bottomMargin)
+        printInfo.leftMargin = CGFloat(self.leftMargin)
+        printInfo.rightMargin = CGFloat(self.rightMargin)
         printInfo.isVerticallyCentered = self.isVerticallyCentered
         printInfo.isHorizontallyCentered = self.isHorizontallyCentered
 
