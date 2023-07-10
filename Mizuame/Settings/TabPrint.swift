@@ -20,7 +20,33 @@ struct TabPrint: View {
     private let INIT_RIGHT_MARGIN: Int = SettingKeys.Printer().initialRightMargin
 
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 10) {
+            ZStack(alignment: .center) {
+                Rectangle()
+                    .fill(Color("PrintMarginImageFill"))
+                    .border(Color("PrintMarginImageBorder"))
+                    .frame(width: 190, height: 180)
+
+                Rectangle()
+                    .stroke(Color("PrintMarginImageBorder"), style: StrokeStyle(lineWidth: 2, dash: [10, 10, 10, 10]))
+                    .frame(width: 100, height: 100)
+
+                VStack {
+                    Text("settings.tab.print.margin.image.top")
+                    Spacer()
+                    Text("settings.tab.print.margin.image.bottom")
+                }
+                .padding(.vertical, 10)
+
+                HStack {
+                    Text("settings.tab.print.margin.image.left")
+                    Spacer()
+                    Text("settings.tab.print.margin.image.right")
+                }
+                .padding(.horizontal, 5)
+            }
+            .frame(width: 190, height: 180)
+
             Text("settings.tab.print.margin")
             HStack {
                 Text("settings.tab.print.margin.top")
@@ -47,7 +73,7 @@ struct TabPrint: View {
                     .padding(EdgeInsets(top: 2, leading: 0, bottom: 2, trailing: 10))
             }
         }
-        .frame(width: 400, height: 200)
+        .frame(width: 400, height: 400)
         .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
     }
 }

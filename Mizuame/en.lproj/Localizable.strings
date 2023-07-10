@@ -82,3 +82,7 @@
 "settings.tab.print.margin.bottom" = "Bottom:";
 "settings.tab.print.margin.left" = "Left:";
 "settings.tab.print.margin.right" = "Right:";
+"settings.tab.print.margin.image.top" = "Top";
+"settings.tab.print.margin.image.bottom" = "Bottom";
+"settings.tab.print.margin.image.left" = "Left";
+"settings.tab.print.margin.image.right" = "Right";
