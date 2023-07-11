@@ -24,7 +24,7 @@ struct SettingKeys {
         let keyHorizontallyCentered: String = "print-horizontally-centered"
 
         let initialTextColorApplyBlack: Bool = false
-        let initialScalingFactor: Int = 1
+        let initialScalingFactor: Int = 100
         let initialTopMargin: Int = 20
         let initialBottomMargin: Int = 20
         let initialLeftMargin: Int = 20

@@ -26,11 +26,18 @@ class PrinterModel: ObservableObject {
 
     func doPrinting(content: String) {
         let printInfo = NSPrintInfo.shared
-        printInfo.scalingFactor = CGFloat(self.scalingFactor)
         printInfo.topMargin = CGFloat(self.topMargin)
         printInfo.bottomMargin = CGFloat(self.bottomMargin)
         printInfo.leftMargin = CGFloat(self.leftMargin)
         printInfo.rightMargin = CGFloat(self.rightMargin)
+
+        // Why divide by 100.0?
+        // The scaling-factor is in % and 1 treated as 100%.
+        // And the apps save value of scaling-factor in %.
+        // Therefore, the value of scaling-factor divide by 100.
+        printInfo.scalingFactor = CGFloat(self.scalingFactor) / 100.0
+
+        // Centered
         printInfo.isVerticallyCentered = self.isVerticallyCentered
         printInfo.isHorizontallyCentered = self.isHorizontallyCentered
 

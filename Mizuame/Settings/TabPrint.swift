@@ -14,10 +14,14 @@ struct TabPrint: View {
     @AppStorage(SettingKeys.Printer().keyLeftMargin) private var imageLeftMargin: Int = SettingKeys.Printer().initialLeftMargin
     @AppStorage(SettingKeys.Printer().keyRightMargin) private var imageRightMargin: Int = SettingKeys.Printer().initialRightMargin
     
+    @AppStorage(SettingKeys.Printer().keyScalingFactor) private var imageScaling: Int = SettingKeys.Printer().initialScalingFactor
+    
     private let INIT_TOP_MARGIN: Int = SettingKeys.Printer().initialTopMargin
     private let INIT_BOTTOM_MARGIN: Int = SettingKeys.Printer().initialBottomMargin
     private let INIT_LEFT_MARGIN: Int = SettingKeys.Printer().initialLeftMargin
     private let INIT_RIGHT_MARGIN: Int = SettingKeys.Printer().initialRightMargin
+    
+    private let INIT_SCALING: Int = SettingKeys.Printer().initialScalingFactor
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -69,6 +73,13 @@ struct TabPrint: View {
             HStack {
                 Text("settings.tab.print.margin.right")
                 TextField("\(INIT_RIGHT_MARGIN)", value: $imageRightMargin, formatter: NumberFormatter())
+                    .frame(width: 80)
+                    .padding(EdgeInsets(top: 2, leading: 0, bottom: 2, trailing: 10))
+            }
+
+            HStack {
+                Text("settings.tab.print.scaling")
+                TextField("\(INIT_SCALING)", value: $imageScaling, formatter: NumberFormatter())
                     .frame(width: 80)
                     .padding(EdgeInsets(top: 2, leading: 0, bottom: 2, trailing: 10))
             }

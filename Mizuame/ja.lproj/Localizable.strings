@@ -86,3 +86,5 @@
 "settings.tab.print.margin.image.bottom" = "下";
 "settings.tab.print.margin.image.left" = "左";
 "settings.tab.print.margin.image.right" = "右";
+
+"settings.tab.print.scaling" = "拡大縮小:";
