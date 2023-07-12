@@ -91,3 +91,7 @@
 
 "settings.tab.print.centered.vertical" = "垂直方向の中央揃え";
 "settings.tab.print.centered.horizontal" = "水平方向の中央揃え";
+
+"settings.tab.print.reset.title" = "リセット:";
+"settings.tab.print.reset.button.caption" = "印刷設定をリセットします";
+

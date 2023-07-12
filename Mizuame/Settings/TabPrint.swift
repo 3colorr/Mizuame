@@ -118,6 +118,24 @@ struct TabPrint: View {
                 Text("settings.tab.print.centered.horizontal").font(.body)
             })
             .buttonStyle(.plain)
+            
+            Spacer()
+            
+            HStack {
+                Text("settings.tab.print.reset.title")
+                Button(action: {
+                    self.imageTopMargin = INIT_TOP_MARGIN
+                    self.imageBottomMargin = INIT_BOTTOM_MARGIN
+                    self.imageLeftMargin = INIT_LEFT_MARGIN
+                    self.imageRightMargin = INIT_RIGHT_MARGIN
+                    self.imageScaling = INIT_SCALING
+                    self.imageVerticallyCentered = INI_VERTICALLY_CENTERED
+                    self.imageHorizontallyCentered = INI_HORIZONTALLY_CENTERED
+                }) {
+                    Text("settings.tab.print.reset.button.caption")
+                        .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))
+                }
+            }
         }
         .frame(width: 400, height: 400)
         .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))

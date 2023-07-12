@@ -91,3 +91,6 @@
 
 "settings.tab.print.centered.vertical" = "Vertically centered";
 "settings.tab.print.centered.horizontal" = "Horizontally centered";
+
+"settings.tab.print.reset.title" = "Reset:";
+"settings.tab.print.reset.button.caption" = "Reset print settings to initial value";
