@@ -16,12 +16,18 @@ struct TabPrint: View {
     
     @AppStorage(SettingKeys.Printer().keyScalingFactor) private var imageScaling: Int = SettingKeys.Printer().initialScalingFactor
     
+    @AppStorage(SettingKeys.Printer().keyVerticallyCentered) private var imageVerticallyCentered: Bool = SettingKeys.Printer().initialVerticallyCentered
+    @AppStorage(SettingKeys.Printer().keyHorizontallyCentered) private var imageHorizontallyCentered: Bool = SettingKeys.Printer().initialHorizontallyCentered
+
     private let INIT_TOP_MARGIN: Int = SettingKeys.Printer().initialTopMargin
     private let INIT_BOTTOM_MARGIN: Int = SettingKeys.Printer().initialBottomMargin
     private let INIT_LEFT_MARGIN: Int = SettingKeys.Printer().initialLeftMargin
     private let INIT_RIGHT_MARGIN: Int = SettingKeys.Printer().initialRightMargin
     
     private let INIT_SCALING: Int = SettingKeys.Printer().initialScalingFactor
+    
+    private let INI_VERTICALLY_CENTERED: Bool = SettingKeys.Printer().initialVerticallyCentered
+    private let INI_HORIZONTALLY_CENTERED: Bool = SettingKeys.Printer().initialHorizontallyCentered
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -86,6 +92,32 @@ struct TabPrint: View {
                     .frame(width: 80)
                     .padding(EdgeInsets(top: 2, leading: 0, bottom: 2, trailing: 10))
             }
+            
+            Button(action: {
+                imageVerticallyCentered.toggle()
+            }, label: {
+                if imageVerticallyCentered {
+                    Image(systemName: "checkmark.square.fill")
+                } else {
+                    Image(systemName: "square")
+                }
+                
+                Text("settings.tab.print.centered.vertical").font(.body)
+            })
+            .buttonStyle(.plain)
+
+            Button(action: {
+                imageHorizontallyCentered.toggle()
+            }, label: {
+                if imageHorizontallyCentered {
+                    Image(systemName: "checkmark.square.fill")
+                } else {
+                    Image(systemName: "square")
+                }
+                
+                Text("settings.tab.print.centered.horizontal").font(.body)
+            })
+            .buttonStyle(.plain)
         }
         .frame(width: 400, height: 400)
         .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))

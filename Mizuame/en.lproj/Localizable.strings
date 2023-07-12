@@ -88,3 +88,6 @@
 "settings.tab.print.margin.image.right" = "Right";
 
 "settings.tab.print.scaling" = "Scaling:";
+
+"settings.tab.print.centered.vertical" = "Vertically centered";
+"settings.tab.print.centered.horizontal" = "Horizontally centered";
