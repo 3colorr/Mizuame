@@ -21,6 +21,10 @@ struct SettingsView: View {
                     .tabItem {
                         Label(LocalizedStringKey("settings.tab.system.name.2"), systemImage: "macwindow")
                     }
+                TabPrint()
+                    .tabItem{
+                        Label(LocalizedStringKey("settings.tab.system.name.5"), systemImage: "printer")
+                    }
                 TabHelp()
                     .tabItem {
                         Label(LocalizedStringKey("settings.tab.system.name.3"), systemImage: "questionmark.circle")
