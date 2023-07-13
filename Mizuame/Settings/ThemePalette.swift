@@ -151,7 +151,8 @@ struct ThemePalette: View {
                         bodyForeground: whiteYellow.foreground)
                 }
             }
-            
+            .padding(.leading, 20)
+
             VStack {
                 HStack {
                     Button(action: {
@@ -265,7 +266,8 @@ struct ThemePalette: View {
                         bodyForeground: lightYellow.foreground)
                 }
             }
-            
+            .padding(.leading, 20)
+
             VStack {
                 HStack {
                     Button(action: {
@@ -379,6 +381,8 @@ struct ThemePalette: View {
                         bodyForeground: YellowYellow.foreground)
                 }
             }
+            .padding(.leading, 20)
+
         }
     }
 }
