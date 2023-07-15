@@ -45,24 +45,24 @@ struct SettingKeys {
 
     struct MessageColor {
         let keyTheme: String = "msgColor"
-        let initialTheme: String = "Light-Mint-Message"
+        let initialTheme: String = "White-Mint-Message"
     }
 
     struct MessagebarColor {
         let keyTheme: String = "msgbarColor"
-        let initialTheme: String = "Light-Mint-Messagebar"
+        let initialTheme: String = "White-Mint-Messagebar"
     }
 
     struct StickyNoteColor {
         let keyForeground: String = "foregroundColor"
         let keyBackground: String = "BackgroundColor"
-        let initialForegroundTheme: String = "Light-Mint-Foreground"
-        let initialBackgroundTheme: String = "Light-Mint-Background"
+        let initialForegroundTheme: String = "White-Mint-Foreground"
+        let initialBackgroundTheme: String = "White-Mint-Background"
     }
 
     struct FrameColor {
         let keyTheme: String = "frameColor"
-        let initialTheme: String = "Light-Mint-Frame"
+        let initialTheme: String = "White-Mint-Frame"
     }
 
     struct StickyNote {

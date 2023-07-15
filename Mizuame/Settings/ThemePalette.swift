@@ -41,6 +41,121 @@ struct ThemePalette: View {
             VStack {
                 HStack {
                     Button(action: {
+                        message = whiteMint.message
+                        messagebar = whiteMint.messagebar
+                        bodyForeground = whiteMint.foreground
+                        bodyBackground = whiteMint.background
+                        bodyFrame = whiteMint.frame
+
+                    }, label: {
+                        if message == whiteMint.message {
+                            Image(systemName: "checkmark.square.fill")
+                        } else {
+                            Image(systemName: "square")
+                        }
+                        Text(whiteMint.name).font(.body)
+                    })
+                    .buttonStyle(.plain)
+
+                    Spacer()
+                    
+                    ColorBlocks(
+                        bodyFrame: whiteMint.frame,
+                        messagebar: whiteMint.messagebar,
+                        message: whiteMint.message,
+                        bodyBackground: whiteMint.background,
+                        bodyForeground: whiteMint.foreground)
+                }
+
+                HStack {
+                    Button(action: {
+                        message = whiteBlue.message
+                        messagebar = whiteBlue.messagebar
+                        bodyForeground = whiteBlue.foreground
+                        bodyBackground = whiteBlue.background
+                        bodyFrame = whiteBlue.frame
+
+                    }, label: {
+                        if message == whiteBlue.message {
+                            Image(systemName: "checkmark.square.fill")
+                        } else {
+                            Image(systemName: "square")
+                        }
+                        Text(whiteBlue.name).font(.body)
+                    })
+                    .buttonStyle(.plain)
+                    
+                    Spacer()
+                    
+                    ColorBlocks(
+                        bodyFrame: whiteBlue.frame,
+                        messagebar: whiteBlue.messagebar,
+                        message: whiteBlue.message,
+                        bodyBackground: whiteBlue.background,
+                        bodyForeground: whiteBlue.foreground)
+                }
+
+                HStack {
+                    Button(action: {
+                        message = whitePink.message
+                        messagebar = whitePink.messagebar
+                        bodyForeground = whitePink.foreground
+                        bodyBackground = whitePink.background
+                        bodyFrame = whitePink.frame
+
+                    }, label: {
+                        if message == whitePink.message {
+                            Image(systemName: "checkmark.square.fill")
+                        } else {
+                            Image(systemName: "square")
+                        }
+                        Text(whitePink.name).font(.body)
+                    })
+                    .buttonStyle(.plain)
+                    
+                    Spacer()
+                    
+                    ColorBlocks(
+                        bodyFrame: whitePink.frame,
+                        messagebar: whitePink.messagebar,
+                        message: whitePink.message,
+                        bodyBackground: whitePink.background,
+                        bodyForeground: whitePink.foreground)
+                }
+
+                HStack {
+                    Button(action: {
+                        message = whiteYellow.message
+                        messagebar = whiteYellow.messagebar
+                        bodyForeground = whiteYellow.foreground
+                        bodyBackground = whiteYellow.background
+                        bodyFrame = whiteYellow.frame
+
+                    }, label: {
+                        if message == whiteYellow.message {
+                            Image(systemName: "checkmark.square.fill")
+                        } else {
+                            Image(systemName: "square")
+                        }
+                        Text(whiteYellow.name).font(.body)
+                    })
+                    .buttonStyle(.plain)
+
+                    Spacer()
+
+                    ColorBlocks(
+                        bodyFrame: whiteYellow.frame,
+                        messagebar: whiteYellow.messagebar,
+                        message: whiteYellow.message,
+                        bodyBackground: whiteYellow.background,
+                        bodyForeground: whiteYellow.foreground)
+                }
+            }
+            .padding(.leading, 20)
+
+            VStack {
+                HStack {
+                    Button(action: {
                         message = lightMint.message
                         messagebar = lightMint.messagebar
                         bodyForeground = lightMint.foreground
@@ -151,7 +266,8 @@ struct ThemePalette: View {
                         bodyForeground: lightYellow.foreground)
                 }
             }
-            
+            .padding(.leading, 20)
+
             VStack {
                 HStack {
                     Button(action: {
@@ -265,120 +381,8 @@ struct ThemePalette: View {
                         bodyForeground: YellowYellow.foreground)
                 }
             }
-            
-            VStack {
-                HStack {
-                    Button(action: {
-                        message = whitePink.message
-                        messagebar = whitePink.messagebar
-                        bodyForeground = whitePink.foreground
-                        bodyBackground = whitePink.background
-                        bodyFrame = whitePink.frame
+            .padding(.leading, 20)
 
-                    }, label: {
-                        if message == whitePink.message {
-                            Image(systemName: "checkmark.square.fill")
-                        } else {
-                            Image(systemName: "square")
-                        }
-                        Text(whitePink.name).font(.body)
-                    })
-                    .buttonStyle(.plain)
-                    
-                    Spacer()
-                    
-                    ColorBlocks(
-                        bodyFrame: whitePink.frame,
-                        messagebar: whitePink.messagebar,
-                        message: whitePink.message,
-                        bodyBackground: whitePink.background,
-                        bodyForeground: whitePink.foreground)
-                }
-
-                HStack {
-                    Button(action: {
-                        message = whiteBlue.message
-                        messagebar = whiteBlue.messagebar
-                        bodyForeground = whiteBlue.foreground
-                        bodyBackground = whiteBlue.background
-                        bodyFrame = whiteBlue.frame
-
-                    }, label: {
-                        if message == whiteBlue.message {
-                            Image(systemName: "checkmark.square.fill")
-                        } else {
-                            Image(systemName: "square")
-                        }
-                        Text(whiteBlue.name).font(.body)
-                    })
-                    .buttonStyle(.plain)
-                    
-                    Spacer()
-                    
-                    ColorBlocks(
-                        bodyFrame: whiteBlue.frame,
-                        messagebar: whiteBlue.messagebar,
-                        message: whiteBlue.message,
-                        bodyBackground: whiteBlue.background,
-                        bodyForeground: whiteBlue.foreground)
-                }
-
-                HStack {
-                    Button(action: {
-                        message = whiteMint.message
-                        messagebar = whiteMint.messagebar
-                        bodyForeground = whiteMint.foreground
-                        bodyBackground = whiteMint.background
-                        bodyFrame = whiteMint.frame
-
-                    }, label: {
-                        if message == whiteMint.message {
-                            Image(systemName: "checkmark.square.fill")
-                        } else {
-                            Image(systemName: "square")
-                        }
-                        Text(whiteMint.name).font(.body)
-                    })
-                    .buttonStyle(.plain)
-
-                    Spacer()
-                    
-                    ColorBlocks(
-                        bodyFrame: whiteMint.frame,
-                        messagebar: whiteMint.messagebar,
-                        message: whiteMint.message,
-                        bodyBackground: whiteMint.background,
-                        bodyForeground: whiteMint.foreground)
-                }
-
-                HStack {
-                    Button(action: {
-                        message = whiteYellow.message
-                        messagebar = whiteYellow.messagebar
-                        bodyForeground = whiteYellow.foreground
-                        bodyBackground = whiteYellow.background
-                        bodyFrame = whiteYellow.frame
-
-                    }, label: {
-                        if message == whiteYellow.message {
-                            Image(systemName: "checkmark.square.fill")
-                        } else {
-                            Image(systemName: "square")
-                        }
-                        Text(whiteYellow.name).font(.body)
-                    })
-                    .buttonStyle(.plain)
-
-                    Spacer()
-
-                    ColorBlocks(
-                        bodyFrame: whiteYellow.frame,
-                        messagebar: whiteYellow.messagebar,
-                        message: whiteYellow.message,
-                        bodyBackground: whiteYellow.background,
-                        bodyForeground: whiteYellow.foreground)
-                }
-            }
         }
     }
 }
