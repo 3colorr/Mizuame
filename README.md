@@ -8,6 +8,8 @@ This app is NOT a high performance note app.
 
 # Current state
 - main branch
+  - v0.1.0
+- Others
   - Development
 
 # Install
@@ -23,7 +25,7 @@ Not ready.
 - [x] Auto save.
 - [x] You can resize sticky note and font.
 - [x] You can change theme.
-- [ ] Printing.
+- [x] Printing.
 
 something something.
 
