@@ -28,6 +28,7 @@ struct PrivacyPolicyBodyView: View {
             Text("agreement.privacypolicy.privacy.email.action")
             
             Text("agreement.privacypolicy.confirm")
+                .fixedSize(horizontal: false, vertical: true)
                 .bold()
                 .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
         }
