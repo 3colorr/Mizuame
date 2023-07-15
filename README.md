@@ -25,7 +25,7 @@ This app is NOT a high performance note app.
     <img src="sample-light.png" alt="Light Mode." width="256" height="128"/>
   </div>
   <div style="margin: 0px 10px 0px 10px">
-    <h4>Light mode</h4>
+    <h4>Dark mode</h4>
     <img src="sample-dark.png" alt="Dark Mode." width="256" height="128"/>
   </div>
 </div>
