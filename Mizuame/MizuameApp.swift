@@ -57,7 +57,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         if currentEvent.type == NSEvent.EventType.rightMouseUp {
-            print("Event -> rightMouseUp")
 
             let menu = NSMenu()
             
@@ -83,7 +82,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             unwrappedStatusItem.menu = nil
             
         } else if currentEvent.type == NSEvent.EventType.leftMouseUp {
-            print("Event -> leftMouseUp")
             popover.show(relativeTo: sender.bounds, of: sender, preferredEdge: NSRectEdge.maxY)
             popover.contentViewController?.view.window?.makeKey()
         }
