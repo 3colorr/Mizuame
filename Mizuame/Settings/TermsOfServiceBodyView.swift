@@ -39,6 +39,7 @@ struct TermsOfServiceBodyView: View {
             Text("agreement.termsofservice.disclaimer")
             
             Text("agreement.termsofservice.confirm")
+                .fixedSize(horizontal: false, vertical: true)
                 .bold()
                 .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
         }

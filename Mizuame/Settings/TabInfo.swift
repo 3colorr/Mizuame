@@ -15,7 +15,8 @@ struct TabInfo: View {
     private let initHeightSize: CGFloat = 300
     private let expandHeightSize: CGFloat = 600
 
-    private let src: String = "https://github.com/3colorr/Mizuame"
+    private let projectUrl: String = "https://github.com/3colorr/Mizuame"
+    private let twUrl: String = "https://twitter.com/3colorr"
     
     var body: some View {
         ScrollView {
@@ -28,14 +29,14 @@ struct TabInfo: View {
                 }
                 
                 VStack(alignment: .leading, spacing: 5) {
-                    Text("Version: 0.0.0").font(.body)
+                    Text("Version: 0.1.0").font(.body)
                     Text("License: MIT license").font(.body)
                     HStack {
                         Text("settings.tab.info.src").font(.body)
-                        if let url = URL(string: src) {
-                            Link(src, destination: url)
+                        if let url = URL(string: projectUrl) {
+                            Link(projectUrl, destination: url)
                         } else {
-                            Text(src)
+                            Text(projectUrl)
                         }
                     }
                 }
@@ -43,6 +44,14 @@ struct TabInfo: View {
                 VStack(alignment: .leading, spacing: 5) {
                     Text("settings.tab.info.autor").font(.body)
                     Text("Email: 3colorr@gmail.com").font(.body)
+                    HStack {
+                        Text("Twitter:")
+                        if let url = URL(string: twUrl) {
+                            Link(twUrl, destination: url)
+                        } else {
+                            Text(twUrl)
+                        }
+                    }
                 }
 
                 Button(action: {
