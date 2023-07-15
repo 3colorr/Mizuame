@@ -8,7 +8,10 @@ This app is NOT a high performance note app.
 
 # Current state
 - main branch
-  - Development
+  - Releases
+- Others
+  - Development.
+  - It likely contain errors.
 
 # Install
 - [ ] AppStore
@@ -16,14 +19,24 @@ This app is NOT a high performance note app.
   - `git clone` -> Build by Xcode
 
 # Sample
-Not ready.
+<div align="center" style="display: flex;">
+  <div style="margin: 0px 10px 0px 10px">
+    <h4>Light mode</h4>
+    <img src="sample-light.png" alt="Light Mode." width="256" height="128"/>
+  </div>
+  <div style="margin: 0px 10px 0px 10px">
+    <h4>Light mode</h4>
+    <img src="sample-dark.png" alt="Dark Mode." width="256" height="128"/>
+  </div>
+</div>
+
 
 # Features
 - [x] When you click a icon on menu bar, a sticky note will open.
 - [x] Auto save.
 - [x] You can resize sticky note and font.
 - [x] You can change theme.
-- [ ] Printing.
+- [x] Printing.
 
 something something.
 
