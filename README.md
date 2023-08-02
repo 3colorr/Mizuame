@@ -6,6 +6,12 @@
 The app Mizuame is sticky note on menu bar of Mac.  
 This app is NOT a high performance note app.  
 
+# Website
+- Website
+  - https://3colorr.github.io/Mizuame-pages/
+- Repository
+  - https://github.com/3colorr/Mizuame-pages
+
 # Current state
 - main branch
   - Releases
