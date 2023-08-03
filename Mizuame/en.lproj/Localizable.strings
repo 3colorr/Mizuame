@@ -41,24 +41,25 @@
 "sitickynote.messagebar.action.button.cancel" = "Cancel";
 
 "settings.tab.system.name.1" = "General";
-"settings.tab.system.name.2" = "Sticky Note";
+"settings.tab.system.name.2" = "Note";
 "settings.tab.system.name.3" = "Help";
 "settings.tab.system.name.4" = "Info";
 "settings.tab.system.name.5" = "Print";
 
 "settings.tab.help.greeting" = "Hi.";
-"settings.tab.help.introduce" = "I'm Mizuame, a sticky note app that sits in your Mac's menu bar. My favorite place is application folder. Someday I would like to go to Antarctica and have hot tomato soup.";
+"settings.tab.help.introduce" = "I'm Mizuame, a note app that sits in your Mac's menu bar. My favorite place is application folder. Someday I would like to go to Antarctica and have hot tomato soup.";
 "settings.tab.help.attention.title" = "Attention";
 "settings.tab.help.attention.body" = "I'm NOT a high performance note app so that you should use other better apps to save your important data.";
 "settings.tab.help.menu.title" = "Menu";
 "settings.tab.help.menu.power.description" = "Quit the app.";
 "settings.tab.help.menu.preference.description" = "Open preference window.";
-"settings.tab.help.menu.eraser.description" = "Deletes all sticky note contents.";
+"settings.tab.help.menu.eraser.description" = "Deletes all note contents.";
+"settings.tab.help.menu.printer.description" = "Print all note contents.";
 
 "settings.tab.stickynote.greeting" = "Previews:\nSize is NOT correct. Check the real size. Sorry!";
 "settings.tab.stickynote.font.size" = "Font Size: ";
 "settings.tab.stickynote.linespacing" = "Line Spacing: ";
-"settings.tab.stickynote.window.size" = "Sticky Note Size:";
+"settings.tab.stickynote.window.size" = "Note Size:";
 "settings.tab.stickynote.window.size.width" = "Width:";
 "settings.tab.stickynote.window.size.height" = "Height:";
 "settings.tab.stickynote.window.preview.messagebar" = "Messagebar";

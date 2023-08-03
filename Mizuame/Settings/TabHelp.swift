@@ -41,7 +41,13 @@ struct TabHelp: View {
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
                     Text("settings.tab.help.menu.eraser.description")
                 }
-                
+
+                HStack {
+                    Image(systemName: "printer")
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
+                    Text("settings.tab.help.menu.printer.description")
+                }
+
                 Spacer()
             }
             .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
