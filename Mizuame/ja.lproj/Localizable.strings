@@ -41,13 +41,13 @@
 "sitickynote.messagebar.action.button.cancel" = "キャンセル";
 
 "settings.tab.system.name.1" = "一般";
-"settings.tab.system.name.2" = "ふせん";
+"settings.tab.system.name.2" = "ノート";
 "settings.tab.system.name.3" = "ヘルプ";
 "settings.tab.system.name.4" = "情報";
 "settings.tab.system.name.5" = "印刷";
 
 "settings.tab.help.greeting" = "こんにちわ";
-"settings.tab.help.introduce" = "私は Mizuame です。あなたのMacのメニューバーにいる、ふせんアプリです。お気に入りの場所はアプリケーションフォルダです。いつの日か、南極に行って温かいトマトスープを飲んでみたいです。";
+"settings.tab.help.introduce" = "私は Mizuame です。あなたのMacのメニューバーにいる、ノートアプリです。お気に入りの場所はアプリケーションフォルダです。いつの日か、南極に行って温かいトマトスープを飲んでみたいです。";
 "settings.tab.help.attention.title" = "気をつけて！";
 "settings.tab.help.attention.body" = "私は高機能なノートアプリではありません。なので、あなたの大切なデータは、他のもっと良いアプリに保存すべきです。";
 "settings.tab.help.menu.title" = "メニュー";
@@ -56,19 +56,19 @@
 "settings.tab.help.menu.eraser.description" = "文章を全て消します。";
 "settings.tab.help.menu.printer.description" = "ノートの内容を全て印刷します。";
 
-"settings.tab.stickynote.greeting" = "プレビュー:\nサイズは不正確です。実際にふせんを確認してください。ごめんね！";
+"settings.tab.stickynote.greeting" = "プレビュー:\nサイズは不正確です。実際にノートを確認してください。ごめんね！";
 "settings.tab.stickynote.font.size" = "文字の大きさ: ";
 "settings.tab.stickynote.linespacing" = "行間: ";
-"settings.tab.stickynote.window.size" = "ふせんの大きさ:";
+"settings.tab.stickynote.window.size" = "ノートの大きさ:";
 "settings.tab.stickynote.window.size.width" = "幅:";
 "settings.tab.stickynote.window.size.height" = "高さ:";
 "settings.tab.stickynote.window.preview.messagebar" = "メッセージバー";
-"settings.tab.stickynote.window.preview.stickynote" = "ふせん";
+"settings.tab.stickynote.window.preview.stickynote" = "ノート";
 "settings.tab.stickynote.theme" = "テーマ:";
 "settings.tab.stickynote.messagebar.font.color" = "メッセージバーのフォントの色:";
 "settings.tab.stickynote.messagebar.body.color" = "メッセージバーの色:";
 "settings.tab.stickynote.reset.title" = "リセット:";
-"settings.tab.stickynote.reset.button.caption" = "ふせんのスタイルをリセットします";
+"settings.tab.stickynote.reset.button.caption" = "ノートのスタイルをリセットします";
 
 "settings.tab.info.src" = "ソースコード:";
 "settings.tab.info.autor" = "作者: Akira Nakamura";
