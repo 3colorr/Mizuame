@@ -54,6 +54,7 @@
 "settings.tab.help.menu.power.description" = "アプリを終了します。";
 "settings.tab.help.menu.preference.description" = "設定画面を開きます。";
 "settings.tab.help.menu.eraser.description" = "文章を全て消します。";
+"settings.tab.help.menu.printer.description" = "ノートの内容を全て印刷します。";
 
 "settings.tab.stickynote.greeting" = "プレビュー:\nサイズは不正確です。実際にふせんを確認してください。ごめんね！";
 "settings.tab.stickynote.font.size" = "文字の大きさ: ";
