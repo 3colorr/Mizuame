@@ -78,6 +78,7 @@
 "settings.tab.general.menubar" = "Menu bar:";
 "settings.tab.general.menubar.saving" = "Display a saving message";
 
+"settings.tab.print.greeting" = "Print Settings";
 "settings.tab.print.margin" = "Margin:";
 "settings.tab.print.margin.top" = "Top:";
 "settings.tab.print.margin.bottom" = "Bottom:";

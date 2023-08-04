@@ -31,6 +31,9 @@ struct TabPrint: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
+            Text("settings.tab.print.greeting")
+
+            Text("settings.tab.print.margin")
             ZStack(alignment: .center) {
                 Rectangle()
                     .fill(Color("PrintMarginImageFill"))
@@ -57,7 +60,6 @@ struct TabPrint: View {
             }
             .frame(width: 190, height: 180)
 
-            Text("settings.tab.print.margin")
             VStack {
                 HStack {
                     Text("settings.tab.print.margin.top")
@@ -84,7 +86,7 @@ struct TabPrint: View {
                         .padding(EdgeInsets(top: 2, leading: 0, bottom: 2, trailing: 10))
                 }
             }
-            .padding(.leading, 20)
+            .padding(.leading, 0)
 
             HStack {
                 Text("settings.tab.print.scaling")
@@ -137,13 +139,18 @@ struct TabPrint: View {
                 }
             }
         }
-        .frame(width: 400, height: 400)
+        .frame(width: 400, height: 500)
         .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
     }
 }
 
 struct TabPrint_Previews: PreviewProvider {
     static var previews: some View {
-        TabPrint()
+        let localizations = ["en", "ja"]
+        ForEach(localizations, id: \.self) { lang in
+            TabPrint()
+                .previewDisplayName("lcal:\(lang)")
+                .environment(\.locale, .init(identifier: lang))
+        }
     }
 }

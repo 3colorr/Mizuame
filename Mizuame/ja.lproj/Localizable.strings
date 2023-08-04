@@ -78,6 +78,7 @@
 "settings.tab.general.menubar" = "メニューバー:";
 "settings.tab.general.menubar.saving" = "保存中のメッセージを表示する";
 
+"settings.tab.print.greeting" = "印刷設定";
 "settings.tab.print.margin" = "余白:";
 "settings.tab.print.margin.top" = "上:";
 "settings.tab.print.margin.bottom" = "下:";
