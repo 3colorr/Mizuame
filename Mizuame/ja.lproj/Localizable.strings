@@ -32,7 +32,7 @@
 "menubar.clickevent.right.menu.item.preference" = "設定...";
 "menubar.clickevent.right.menu.item.quit" = "Mizuameを終了";
 
-"sitickynote.menu.message.saving" = "ほぞんしてるよ...";
+"sitickynote.menu.message.saving" = "セーブ...";
 
 "sitickynote.messagebar.message.quit" = "アプリを終了しますか？";
 "sitickynote.messagebar.message.deleteall" = "すべて削除しますか？";
