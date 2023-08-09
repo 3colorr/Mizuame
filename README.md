@@ -3,8 +3,8 @@
   <h1>Mizuame</h1>
 </div>
 
-The app Mizuame is sticky note on menu bar of Mac.  
-This app is NOT a high performance note app.  
+The app Mizuame is a note on menu bar of Mac.  
+However, this app is NOT a high performance note app so that you should use other better apps to save your important data.  
 
 # Website
 - Website
@@ -20,7 +20,8 @@ This app is NOT a high performance note app.
   - It likely contain errors.
 
 # Install
-- [ ] AppStore
+- [x] AppStore
+  - Search for "Mizuame"
 - [x] Build it yourself
   - `git clone` -> Build by Xcode
 
@@ -38,9 +39,9 @@ This app is NOT a high performance note app.
 
 
 # Features
-- [x] When you click a icon on menu bar, a sticky note will open.
+- [x] When you click a icon on menu bar, a note will open.
 - [x] Auto save.
-- [x] You can resize sticky note and font.
+- [x] You can resize a note and font.
 - [x] You can change theme.
 - [x] Printing.
 
