@@ -17,6 +17,7 @@ struct TabInfo: View {
 
     private let projectUrl: String = "https://github.com/3colorr/Mizuame"
     private let twUrl: String = "https://twitter.com/3colorr"
+    private let websiteUrl: String = "https://3colorr.github.io/Mizuame-pages/"
     
     var body: some View {
         ScrollView {
@@ -29,7 +30,7 @@ struct TabInfo: View {
                 }
                 
                 VStack(alignment: .leading, spacing: 5) {
-                    Text("Version: 0.1.0").font(.body)
+                    Text("Version: 1.0.2").font(.body)
                     Text("License: MIT license").font(.body)
                     HStack {
                         Text("settings.tab.info.src").font(.body)
@@ -50,6 +51,14 @@ struct TabInfo: View {
                             Link(twUrl, destination: url)
                         } else {
                             Text(twUrl)
+                        }
+                    }
+                    HStack {
+                        Text("Web:")
+                        if let url = URL(string: websiteUrl) {
+                            Link(websiteUrl, destination: url)
+                        } else {
+                            Text(websiteUrl)
                         }
                     }
                 }
