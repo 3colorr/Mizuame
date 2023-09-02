@@ -44,6 +44,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
      
         popover.contentViewController = NSHostingController(rootView: ContentView())
+        
+        // when a user tap the desktop, close note if popover.behavior is .transient.
+        // when a user tap the desktop, close note if popover.behavior is .applicationDefined.
         popover.behavior = .transient
     }
     
@@ -83,6 +86,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
         } else if currentEvent.type == NSEvent.EventType.leftMouseUp {
             popover.show(relativeTo: sender.bounds, of: sender, preferredEdge: NSRectEdge.maxY)
+            
+            // The note will not close if the following are disable.
             popover.contentViewController?.view.window?.makeKey()
         }
     }
