@@ -20,12 +20,16 @@ struct Mizuame: App {
     }
 }
 
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
 
     @AppStorage(SettingKeys.UserConfirm().keyAgreement) private var viewState: Int = SettingKeys.UserConfirm().initialViewState
+    
+    @AppStorage(SettingKeys.StickyNote().keyPinNote) private var isPinNote: Bool = SettingKeys.StickyNote().initialPinNote
 
     private var statusItem: NSStatusItem?
     private var popover: NSPopover = NSPopover()
+    
+    private var isOpenNote: Bool = true
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(.accessory)
@@ -45,9 +49,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      
         popover.contentViewController = NSHostingController(rootView: ContentView())
         
-        // when a user tap the desktop, close note if popover.behavior is .transient.
-        // when a user tap the desktop, close note if popover.behavior is .applicationDefined.
-        popover.behavior = .transient
+        if isPinNote {
+            enablePinning()
+        } else {
+            disablePinning()
+        }
     }
     
     @objc func showPopover(sender: NSStatusBarButton) {
@@ -85,8 +91,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             unwrappedStatusItem.menu = nil
             
         } else if currentEvent.type == NSEvent.EventType.leftMouseUp {
-            popover.show(relativeTo: sender.bounds, of: sender, preferredEdge: NSRectEdge.maxY)
-            
+            if isOpenNote {
+                popover.show(relativeTo: sender.bounds, of: sender, preferredEdge: NSRectEdge.maxY)
+            } else {
+                popover.close()
+            }
+
+            isOpenNote.toggle()
+
             // The note will not close if the following are disable.
             popover.contentViewController?.view.window?.makeKey()
         }
@@ -104,5 +116,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // The settings move to front.
         NSApp.activate(ignoringOtherApps: true)
+    }
+    
+    // when a user tap the desktop, close note if popover.behavior is .transient.
+    // when a user tap the desktop, NOT close note if popover.behavior is .applicationDefined.
+    func enablePinning() {
+        popover.behavior = .applicationDefined
+    }
+    
+    func disablePinning() {
+        popover.behavior = .transient
     }
 }

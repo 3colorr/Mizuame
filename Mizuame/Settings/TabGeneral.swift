@@ -10,7 +10,11 @@ import StoreKit
 
 struct TabGeneral: View {
     
+    @EnvironmentObject var delegate: AppDelegate
+    
     @AppStorage(SettingKeys.Menubar().keySavingMessage) private var isShowSavingMessage: Bool = SettingKeys.Menubar().initialSavingMessage
+
+    @AppStorage(SettingKeys.StickyNote().keyPinNote) private var isPinNote: Bool = SettingKeys.StickyNote().initialPinNote
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -18,6 +22,20 @@ struct TabGeneral: View {
                 Text("settings.tab.general.menubar")
                 Toggle(isOn: $isShowSavingMessage) {
                     Text("settings.tab.general.menubar.saving")
+                }
+            }
+
+            HStack {
+                Text("pinning")
+                Toggle(isOn: $isPinNote) {
+                    Text("pinning")
+                }
+                .onChange(of: isPinNote) { isPinning in
+                    if isPinning {
+                        delegate.enablePinning()
+                    } else {
+                        delegate.disablePinning()
+                    }
                 }
             }
         }
