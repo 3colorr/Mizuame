@@ -26,9 +26,9 @@ struct TabGeneral: View {
             }
 
             HStack {
-                Text("pinning")
+                Text("settings.tab.general.note")
                 Toggle(isOn: $isPinNote) {
-                    Text("pinning")
+                    Text("settings.tab.general.note.pin")
                 }
                 .onChange(of: isPinNote) { isPinning in
                     if isPinning {

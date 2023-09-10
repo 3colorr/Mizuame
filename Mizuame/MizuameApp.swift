@@ -47,7 +47,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
      
-        popover.contentViewController = NSHostingController(rootView: ContentView())
+        popover.contentViewController = NSHostingController(rootView: ContentView(delegate: self))
         
         if isPinNote {
             enablePinning()
@@ -91,13 +91,22 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
             unwrappedStatusItem.menu = nil
             
         } else if currentEvent.type == NSEvent.EventType.leftMouseUp {
-            if isOpenNote {
-                popover.show(relativeTo: sender.bounds, of: sender, preferredEdge: NSRectEdge.maxY)
+            
+            if isPinNote {
+                
+                isOpenNote.toggle()
+                
+                if isOpenNote {
+                    popover.show(relativeTo: sender.bounds, of: sender, preferredEdge: NSRectEdge.maxY)
+                } else {
+                    popover.close()
+                }
             } else {
-                popover.close()
+                popover.show(relativeTo: sender.bounds, of: sender, preferredEdge: NSRectEdge.maxY)
+                
+                // Initialize "isOpenNote" when "pin a note" is enable next time.
+                isOpenNote = false
             }
-
-            isOpenNote.toggle()
 
             // The note will not close if the following are disable.
             popover.contentViewController?.view.window?.makeKey()
