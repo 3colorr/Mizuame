@@ -108,7 +108,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
                 isOpenNote = false
             }
 
-            // The note will not close if the following are disable.
             popover.contentViewController?.view.window?.makeKey()
         }
     }
