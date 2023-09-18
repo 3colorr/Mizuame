@@ -10,8 +10,6 @@ import SwiftUI
 struct TermsOfServiceView: View {
     @Binding var state: Int
     
-    private let delegate = AppDelegate()
-
     var body: some View {
         ZStack {
             Color("UserAgreementBackground")
@@ -22,7 +20,7 @@ struct TermsOfServiceView: View {
                     
                     HStack {
                         Button(action: {
-                            delegate.quitApp()
+                            NSApplication.shared.terminate(self)
                         }, label: {
                             Text("agreement.common.quit")
                                 .foregroundColor(.red)

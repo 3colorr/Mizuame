@@ -157,7 +157,7 @@ struct ContentView: View {
                                 Task {
                                     do {
                                         isExecutableSave = false
-                                        try await Task.sleep(nanoseconds: 3 * 1000000000)
+                                        try await Task.sleep(nanoseconds: 15 * 100000000)
                                         saveData()
                                         
                                     } catch {
