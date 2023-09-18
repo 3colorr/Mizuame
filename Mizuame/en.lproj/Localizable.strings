@@ -55,6 +55,7 @@
 "settings.tab.help.menu.preference.description" = "Open preference window.";
 "settings.tab.help.menu.eraser.description" = "Deletes all note contents.";
 "settings.tab.help.menu.printer.description" = "Print all note contents.";
+"settings.tab.help.menu.pin.description" = "Keep the note open.";
 
 "settings.tab.stickynote.greeting" = "Previews:\nSize is NOT correct. Check the real size. Sorry!";
 "settings.tab.stickynote.font.size" = "Font Size: ";
