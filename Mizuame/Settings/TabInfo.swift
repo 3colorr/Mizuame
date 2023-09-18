@@ -24,7 +24,7 @@ struct TabInfo: View {
             VStack(alignment: .leading, spacing: 20) {
                 
                 HStack(alignment: .center) {
-                    Image(systemName: "text.bubble").font(.title)
+                    Image("MenubarIcon").font(.title)
                     Text("Mizuame").font(.title)
                     Spacer()
                 }
