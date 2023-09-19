@@ -38,6 +38,19 @@ struct TabGeneral: View {
                     }
                 }
             }
+            
+            Spacer()
+            
+            HStack {
+                Text("settings.tab.general.reset.title")
+                Button(action: {
+                    self.isShowSavingMessage = SettingKeys.Menubar().initialSavingMessage
+                    self.isPinNote = SettingKeys.StickyNote().initialPinNote
+                }) {
+                    Text("settings.tab.general.reset.button.caption")
+                        .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))
+                }
+            }
         }
         .frame(width: 400, height: 200)
         .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
@@ -46,6 +59,11 @@ struct TabGeneral: View {
 
 struct TabStickyNote_Previews: PreviewProvider {
     static var previews: some View {
-        TabGeneral()
+        let localizations = ["en", "ja"]
+        ForEach(localizations, id: \.self) { lang in
+            TabGeneral()
+                .previewDisplayName("lcal:\(lang)")
+                .environment(\.locale, .init(identifier: lang))
+        }
     }
 }
