@@ -12,8 +12,12 @@ struct ContentView: View {
     // But, it may not be a feature that this app need.
     //@FetchRequest(something)
     
+    let delegate: AppDelegate
+
     @ObservedObject var printer = PrinterModel()
-    
+
+    @AppStorage(SettingKeys.StickyNote().keyPinNote) private var isPinNote: Bool = SettingKeys.StickyNote().initialPinNote
+
     @AppStorage(SettingKeys.Menubar().keySavingMessage) private var isShowSavingMessage: Bool = SettingKeys.Menubar().initialSavingMessage
 
     @AppStorage(SettingKeys.StickyNote().keyWidth) private var width: Int = SettingKeys.StickyNote().initialWidth
@@ -35,13 +39,12 @@ struct ContentView: View {
     @State private var userAction: MessagebarEnum = .NONE
     
     @State private var isExecutableSave: Bool = true
-    
-    private let delegate = AppDelegate()
-    
+
     private let io: DataIO
     private var data: StickyNote
     
-    init() {
+    init(delegate: AppDelegate) {
+        self.delegate = delegate
         self.io = DataIO()
         
         if let data = self.io.readStickyNote() {
@@ -86,6 +89,20 @@ struct ContentView: View {
                         Spacer()
                             .layoutPriority(1)
                         
+                        if isPinNote {
+                            Image(systemName: "pin")
+                                .foregroundColor(Color.red)
+                                .onTapGesture {
+                                    togglePinningNote()
+                                }
+                        } else {
+                            Image(systemName: "pin.slash")
+                                .foregroundColor(Color(bodyForegroundTheme))
+                                .onTapGesture {
+                                    togglePinningNote()
+                                }
+                        }
+
                         Image(systemName: "eraser")
                             .foregroundColor(Color(bodyForegroundTheme))
                             .onTapGesture {
@@ -140,7 +157,7 @@ struct ContentView: View {
                                 Task {
                                     do {
                                         isExecutableSave = false
-                                        try await Task.sleep(nanoseconds: 3 * 1000000000)
+                                        try await Task.sleep(nanoseconds: 15 * 100000000)
                                         saveData()
                                         
                                     } catch {
@@ -186,10 +203,20 @@ struct ContentView: View {
         
         isExecutableSave = true
     }
+    
+    private func togglePinningNote() {
+        isPinNote.toggle()
+        
+        if isPinNote {
+            delegate.enablePinning()
+        } else {
+            delegate.disablePinning()
+        }
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(delegate: AppDelegate())
     }
 }

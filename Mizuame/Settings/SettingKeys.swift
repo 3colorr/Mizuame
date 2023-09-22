@@ -77,6 +77,9 @@ struct SettingKeys {
         let maxWidth: Int = 1000
         let minHeight: Int = 80
         let maxHeight: Int = 1000
+        
+        let keyPinNote: String = "stickyNotePin"
+        let initialPinNote: Bool = false
     }
     
     struct ThemePalette {

@@ -24,13 +24,13 @@ struct TabInfo: View {
             VStack(alignment: .leading, spacing: 20) {
                 
                 HStack(alignment: .center) {
-                    Image(systemName: "text.bubble").font(.title)
+                    Image("MenubarIcon").font(.title)
                     Text("Mizuame").font(.title)
                     Spacer()
                 }
                 
                 VStack(alignment: .leading, spacing: 5) {
-                    Text("Version: 1.0.2").font(.body)
+                    Text("Version: 1.1.0").font(.body)
                     Text("License: MIT license").font(.body)
                     HStack {
                         Text("settings.tab.info.src").font(.body)

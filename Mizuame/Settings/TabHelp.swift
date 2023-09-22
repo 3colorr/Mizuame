@@ -11,18 +11,20 @@ struct TabHelp: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
-                Text("settings.tab.help.greeting")
-                    .bold()
-
-                Text("settings.tab.help.introduce")
-
-                Text("settings.tab.help.attention.title")
-                    .bold()
-
-                Text("settings.tab.help.attention.body")
-                
-                Text("settings.tab.help.menu.title")
-                    .bold()
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("settings.tab.help.greeting")
+                        .bold()
+                    
+                    Text("settings.tab.help.introduce")
+                    
+                    Text("settings.tab.help.attention.title")
+                        .bold()
+                    
+                    Text("settings.tab.help.attention.body")
+                    
+                    Text("settings.tab.help.menu.title")
+                        .bold()
+                }
                 
                 HStack {
                     Image(systemName: "power")
@@ -34,6 +36,12 @@ struct TabHelp: View {
                     Image(systemName: "gearshape.fill")
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
                     Text("settings.tab.help.menu.preference.description")
+                }
+
+                HStack {
+                    Image(systemName: "pin")
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
+                    Text("settings.tab.help.menu.pin.description")
                 }
 
                 HStack {
