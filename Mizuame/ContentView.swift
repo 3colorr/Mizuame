@@ -84,6 +84,7 @@ struct ContentView: View {
                         if isShowSavingMessage && !isExecutableSave {
                             Text("sitickynote.menu.message.saving")
                                 .padding(.horizontal, 5)
+                                .layoutPriority(1)
                         }
                         
                         Spacer()
@@ -126,14 +127,29 @@ struct ContentView: View {
                                 printer.doPrinting(content: stickyText)
                             }
 
-                        Image(systemName: "gearshape.fill")
-                            .foregroundColor(Color(bodyForegroundTheme))
-                            .onTapGesture {
+                        if #available(macOS 14, *) {
+                            SettingsLink {
+                                Image(systemName: "gearshape.fill")
+                                    .foregroundColor(Color(bodyForegroundTheme))
+                            }
+                            .buttonStyle(SettingsLinkStyle())
+                            .onHover { _ in
                                 isShowMessagebar = false
                                 userAction = .NONE
-                                
-                                delegate.showSettings()
                             }
+                            // Not work.
+                            // .onTapGesture {}
+
+                        } else {
+                            Image(systemName: "gearshape.fill")
+                                .foregroundColor(Color(bodyForegroundTheme))
+                                .onTapGesture {
+                                    isShowMessagebar = false
+                                    userAction = .NONE
+                                    
+                                    delegate.showSettings()
+                                }
+                        }
                     }
                     .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                     
