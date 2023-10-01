@@ -69,17 +69,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
 
             let menu = NSMenu()
             
-            // If the user don't agree terms of service and privacy policy,
-            // Mizuame don't show preferences.
-            if viewState == SettingsViewState.PREFERENCE.rawValue {
-                menu.addItem(
-                    withTitle: NSLocalizedString("menubar.clickevent.right.menu.item.preference", comment: ""),
-                    action: #selector(showSettings),
-                    keyEquivalent: ""
-                )
-                menu.addItem(.separator())
-            }
-            
             menu.addItem(
                 withTitle: NSLocalizedString("menubar.clickevent.right.menu.item.quit", comment: ""),
                 action: #selector(quitApp),
