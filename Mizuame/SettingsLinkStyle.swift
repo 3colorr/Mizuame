@@ -1,5 +1,5 @@
 //
-//  SettingsViewStyle.swift
+//  SettingsLinkStyle.swift
 //  Mizuame
 //
 //  Created by Nakamura Akira(3colorr) on 2023/09/30.
