@@ -2,7 +2,7 @@
 //  Printing.swift
 //  Mizuame
 //
-//  Created by becomefoolish on 2023/07/02.
+//  Created by Nakamura Akira(3colorr) on 2023/07/02.
 //
 
 import AppKit

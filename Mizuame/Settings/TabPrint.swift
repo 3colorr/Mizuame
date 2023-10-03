@@ -2,7 +2,7 @@
 //  TabPrint.swift
 //  Mizuame
 //
-//  Created by becomefoolish on 2023/07/09.
+//  Created by Nakamura Akira(3colorr) on 2023/07/09.
 //
 
 import SwiftUI
