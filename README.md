@@ -44,6 +44,8 @@ However, this app is NOT a high performance note app so that you should use othe
 - [x] You can resize a note and font.
 - [x] You can change theme.
 - [x] Printing.
+- [x] Pin a note.
+- [ ] Calculation.(e.g. If you type "1+2=", "3" will be displayed.)
 
 something something.
 
