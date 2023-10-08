@@ -12,9 +12,9 @@ However, this app is NOT a high performance note app so that you should use othe
 - Repository
   - https://github.com/3colorr/Mizuame-pages
 
-# Current state
-- main branch
-  - Releases
+# Branch
+- main
+  - Releases.
 - Others
   - Development.
   - It likely contain errors.
