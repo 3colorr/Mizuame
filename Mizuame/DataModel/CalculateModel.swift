@@ -26,7 +26,55 @@ class CalculateModel {
     // If failure, return array size zero.
     private func tokenize(formula: String) -> [String] {
         
-        return []
+        let splited = Array(formula).map(String.init)
+        
+        var token: String = ""
+        var tokens: [String] = []
+        
+        for n in splited {
+            switch n {
+            case "+":
+                tokens.append(token)
+                tokens.append("+")
+                token = ""
+            case "-":
+                tokens.append(token)
+                tokens.append("-")
+                token = ""
+            case "*":
+                tokens.append(token)
+                tokens.append("*")
+                token = ""
+            case "/":
+                tokens.append(token)
+                tokens.append("/")
+                token = ""
+            case "^":
+                tokens.append(token)
+                tokens.append("^")
+                token = ""
+            case "(":
+                tokens.append(token)
+                tokens.append("(")
+                token = ""
+            case ")":
+                tokens.append(token)
+                tokens.append(")")
+                token = ""
+            case ".":
+                token += n
+            default:
+                // Pick up character that can be convert to numeric.
+                // If failure, stop tokenaizing.
+                if Double(n) != nil {
+                    token += n
+                } else {
+                    return []
+                }
+            }
+        }
+        
+        return tokens
     }
     
     // The postfixNotation function return formula in postfix notation.
