@@ -13,8 +13,6 @@ class RedoUndo {
     private var currentIndex: Int = 0
     private var noteHistories: [String] = []
     
-    private var isSkipSnapshot: Bool = false
-    
     init(initialNote: String) {
         noteHistories.append(initialNote)
     }
@@ -23,8 +21,7 @@ class RedoUndo {
     // If user was executing redo or undo, this function is not store snapshot of note.
     public func snapshot(of note: String) -> Bool {
         
-        if isSkipSnapshot {
-            isSkipSnapshot = false
+        if note == noteHistories[currentIndex] {
             return false
         }
         
@@ -67,8 +64,6 @@ class RedoUndo {
         if currentIndex > 0 {
             currentIndex -= 1
         }
-
-        isSkipSnapshot = true
 
         return noteHistories[currentIndex]
     }
