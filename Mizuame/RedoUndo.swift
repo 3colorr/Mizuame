@@ -54,11 +54,9 @@ class RedoUndo {
     // Return a next generation note.
     // If there is no next generation, return the current generation.
     public func redo() -> String {
-        if currentIndex + 1 < MAX_HISTORIES {
+        if currentIndex + 1 < noteHistories.count {
             currentIndex += 1
         }
-        
-        isSkipSnapshot = true
         
         return noteHistories[currentIndex]
     }
