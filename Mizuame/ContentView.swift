@@ -88,7 +88,7 @@ struct ContentView: View {
                         if isShowSavingMessage && !isExecutableSave {
                             Text("sitickynote.menu.message.saving")
                                 .padding(.horizontal, 5)
-                                .layoutPriority(1)
+                                .layoutPriority(2)
                         }
                         
                         Spacer()
