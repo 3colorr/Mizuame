@@ -33,11 +33,19 @@ struct TabStickyNote: View {
     private let INIT_BODY_BACKGROUND_THEME: String = SettingKeys.StickyNoteColor().initialBackgroundTheme
     private let INIT_FRAME_THEME: String = SettingKeys.FrameColor().initialTheme
 
-    private var numberFormatter = NumberFormatter()
+    private var noteWidthFormatter = NumberFormatter()
+    private var noteHeightFormatter = NumberFormatter()
 
     init() {
-        numberFormatter.minimumIntegerDigits = 1
-        numberFormatter.maximumIntegerDigits = 4
+        noteWidthFormatter.minimumIntegerDigits = 1
+        noteWidthFormatter.maximumIntegerDigits = 4
+        noteWidthFormatter.minimum = SettingKeys.StickyNote().minWidth
+        noteWidthFormatter.maximum = SettingKeys.StickyNote().maxWidth
+        
+        noteHeightFormatter.minimumIntegerDigits = 1
+        noteHeightFormatter.maximumIntegerDigits = 4
+        noteHeightFormatter.minimum = SettingKeys.StickyNote().minHeight
+        noteHeightFormatter.maximum = SettingKeys.StickyNote().maxHeight
     }
 
     var body: some View {
@@ -70,30 +78,14 @@ struct TabStickyNote: View {
                     
                     HStack {
                         Text("settings.tab.stickynote.window.size.width")
-                        TextField("\(INIT_WIDTH)", value: $width, formatter: NumberFormatter())
+                        TextField("\(INIT_WIDTH)", value: $width, formatter: noteWidthFormatter)
                             .frame(width: 80)
                             .padding(EdgeInsets(top: 2, leading: 0, bottom: 2, trailing: 10))
-                            .onChange(of: width) { val in
-                                if val < SettingKeys.StickyNote().minWidth {
-                                    width = SettingKeys.StickyNote().minWidth
-                                }
-                                if val > SettingKeys.StickyNote().maxWidth {
-                                    width = SettingKeys.StickyNote().maxWidth
-                                }
-                            }
                         
                         Text("settings.tab.stickynote.window.size.height")
-                        TextField("\(INIT_HEIGHT)", value: $height, formatter: NumberFormatter())
+                        TextField("\(INIT_HEIGHT)", value: $height, formatter: noteHeightFormatter)
                             .frame(width: 80)
                             .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 0))
-                            .onChange(of: height) { val in
-                                if val < SettingKeys.StickyNote().minHeight {
-                                    height = SettingKeys.StickyNote().minHeight
-                                }
-                                if val > SettingKeys.StickyNote().maxHeight {
-                                    height = SettingKeys.StickyNote().maxHeight
-                                }
-                            }
                     }
                     
                     Text("settings.tab.stickynote.theme")

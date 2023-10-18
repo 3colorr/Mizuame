@@ -153,6 +153,7 @@ struct ContentView: View {
                                     .foregroundColor(Color(bodyForegroundTheme))
                             }
                             .buttonStyle(SettingsLinkStyle())
+                            .keyboardShortcut(",", modifiers: [.command])
                             .onHover { _ in
                                 isShowMessagebar = false
                                 userAction = .NONE
@@ -161,14 +162,16 @@ struct ContentView: View {
                             // .onTapGesture {}
 
                         } else {
-                            Image(systemName: "gearshape.fill")
-                                .foregroundColor(Color(bodyForegroundTheme))
-                                .onTapGesture {
-                                    isShowMessagebar = false
-                                    userAction = .NONE
-                                    
-                                    delegate.showSettings()
-                                }
+                            Button(action: {
+                                isShowMessagebar = false
+                                userAction = .NONE
+                                delegate.showSettings()
+                            }, label: {
+                                Image(systemName: "gearshape.fill")
+                                    .foregroundColor(Color(bodyForegroundTheme))
+                            })
+                            .buttonStyle(SettingsLinkStyle())
+                            .keyboardShortcut(",", modifiers: [.command])
                         }
                     }
                     .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
