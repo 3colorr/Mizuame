@@ -6,15 +6,25 @@
 The app Mizuame is a note on menu bar of Mac.  
 However, this app is NOT a high performance note app so that you should use other better apps to save your important data.  
 
+What is a Good point about the Mizuame?
+- It is simple with a few features.
+- Quick access from the menu bar.
+- Keep your desktop and dock clean.
+
+What is NOT SO GOOD point about the Mizuame?
+- You cannot sync data with other devices. (e.g. iPad, Windows)
+- This app cannot backup your data, so that your data may be lost unintentionally due to device failure.
+- You cannot paste images.
+
 # Website
 - Website
   - https://3colorr.github.io/Mizuame-pages/
 - Repository
   - https://github.com/3colorr/Mizuame-pages
 
-# Current state
-- main branch
-  - Releases
+# Branch
+- main
+  - Releases.
 - Others
   - Development.
   - It likely contain errors.

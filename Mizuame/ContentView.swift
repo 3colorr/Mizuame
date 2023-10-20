@@ -43,6 +43,8 @@ struct ContentView: View {
     private let io: DataIO
     private var data: StickyNote
     
+    private let redoUndoManager: RedoUndo
+    
     init(delegate: AppDelegate) {
         self.delegate = delegate
         self.io = DataIO()
@@ -54,6 +56,8 @@ struct ContentView: View {
         }
         
         _stickyText = State(initialValue: self.data.contents[0].body)
+        
+        redoUndoManager = RedoUndo(initialNote: self.data.contents[0].body)
     }
     
     var body: some View {
@@ -84,12 +88,28 @@ struct ContentView: View {
                         if isShowSavingMessage && !isExecutableSave {
                             Text("sitickynote.menu.message.saving")
                                 .padding(.horizontal, 5)
-                                .layoutPriority(1)
+                                .layoutPriority(2)
                         }
                         
                         Spacer()
                             .layoutPriority(1)
                         
+                        Button(action: {
+                            stickyText = redoUndoManager.undo()
+                        }, label: {
+                            Image(systemName: "return.left")
+                        })
+                        .hidden()
+                        .keyboardShortcut("z", modifiers: [.command])
+                        
+                        Button(action: {
+                            stickyText = redoUndoManager.redo()
+                        }, label: {
+                            Image(systemName: "return.right")
+                        })
+                        .hidden()
+                        .keyboardShortcut("y", modifiers: [.command])
+
                         if isPinNote {
                             Image(systemName: "pin")
                                 .foregroundColor(Color.red)
@@ -133,6 +153,7 @@ struct ContentView: View {
                                     .foregroundColor(Color(bodyForegroundTheme))
                             }
                             .buttonStyle(SettingsLinkStyle())
+                            .keyboardShortcut(",", modifiers: [.command])
                             .onHover { _ in
                                 isShowMessagebar = false
                                 userAction = .NONE
@@ -141,14 +162,16 @@ struct ContentView: View {
                             // .onTapGesture {}
 
                         } else {
-                            Image(systemName: "gearshape.fill")
-                                .foregroundColor(Color(bodyForegroundTheme))
-                                .onTapGesture {
-                                    isShowMessagebar = false
-                                    userAction = .NONE
-                                    
-                                    delegate.showSettings()
-                                }
+                            Button(action: {
+                                isShowMessagebar = false
+                                userAction = .NONE
+                                delegate.showSettings()
+                            }, label: {
+                                Image(systemName: "gearshape.fill")
+                                    .foregroundColor(Color(bodyForegroundTheme))
+                            })
+                            .buttonStyle(SettingsLinkStyle())
+                            .keyboardShortcut(",", modifiers: [.command])
                         }
                     }
                     .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
@@ -169,6 +192,9 @@ struct ContentView: View {
                         .scrollContentBackground(.hidden)
                         .background(Color(bodyBackgroundTheme))
                         .onChange(of: stickyText) { val in
+                            
+                            _ = redoUndoManager.snapshot(of: val)
+                            
                             if isExecutableSave {
                                 Task {
                                     do {

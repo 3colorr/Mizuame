@@ -64,4 +64,74 @@ final class MizuameTests: XCTestCase {
         XCTAssertEqual(data?.contents[1].markercolor, "000000")
         XCTAssertEqual(data?.contents[1].body, "test2")
     }
+    
+    // Test RedoUndo class.
+    //
+    // String data for testing
+    //   testText = "abc"
+    // Prepare
+    //   RedoUndo instance is initialized with testText.
+    //
+    // test 1: Add "efg" to testText then store testText.
+    // expected 1: snapshot(of note: String) returns true.
+    //
+    // test 2: Run "Undo".
+    // expected 2: undo() returns "abc".
+    //
+    // test 3: Run "Redo".
+    // expected 3: redo() returns "abcefg".
+    //
+    // test 4: Run "Redo" again.(A upper limit of redo history test)
+    // expected 4: redo() returns "abcefg".
+    //
+    // test 5: Run "Undo" then store testText.
+    // expected 5-1: undo() returns "abc".
+    // expected 5-2: snapshot(of note: String) returns false.
+    //               Because can not store same strings.
+    //
+    // test 6: Run "Undo" again.(A lower limit of undo history test)
+    // expected 6: undo() returns "abc".
+    //
+    // test 7: Store testText while add "x(=1...30)" to one then Run "Undo" 30 times.
+    //         (A upper limit of history test)
+    // expected 7: 30th undo() returns "abc1".
+    //
+    func testRedoUndo() throws {
+        var testText = "abc"
+        let manager = RedoUndo(initialNote: testText)
+        
+        // test 1
+        testText += "efg"
+        XCTAssertTrue(manager.snapshot(of: testText))
+        
+        // test 2
+        XCTAssertEqual(manager.undo(), "abc")
+        
+        // test 3
+        XCTAssertEqual(manager.redo(), "abcefg")
+
+        // test 4
+        XCTAssertEqual(manager.redo(), "abcefg")
+
+        // test 5
+        testText = manager.undo()
+        XCTAssertEqual(testText, "abc") //5-1
+        XCTAssertFalse(manager.snapshot(of: testText)) //5-2
+        
+        // test 6
+        testText = manager.undo()
+        XCTAssertEqual(testText, "abc")
+
+        // test 7
+        for x in 1...30 {
+            testText += String(x)
+            _ = manager.snapshot(of: testText)
+        }
+
+        for _ in 1...30 {
+            _ = manager.undo()
+        }
+        
+        XCTAssertEqual(manager.undo(), "abc1")
+    }
 }
