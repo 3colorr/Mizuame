@@ -134,4 +134,71 @@ final class MizuameTests: XCTestCase {
         
         XCTAssertEqual(manager.undo(), "abc1")
     }
+
+    // Test CalculateModel class.
+    //
+    // Prepare
+    //   CalculateModel instance is initialized.
+    //
+    // test 1:
+    //     Run result(formula: String) with "1+2+3+4+5".
+    // expected 1:
+    //     Returns 15.
+    //
+    // test 2:
+    //     Run result(formula: String) with "(1+2)*3-9/(4.1+4.9)-8-0.1".
+    // expected 2:
+    //     Returns -0.1.
+    //
+    // test 3:
+    //     3-1: Run result(formula: String) with "(1+2)*3-3^2".
+    //     3-2: Run result(formula: String) with "1/3^3-3^-3".
+    //     3-3: Run result(formula: String) with "1/3^3-3^(-3)".
+    // expected 3:
+    //     3-1: Returns 0.
+    //     3-2: Returns 0.
+    //     3-3: Returns 0.
+    //
+    // test 4:
+    //     Run result(formula: String) with "-1+1-0.01^3*1000*1000".
+    // expected 4:
+    //     Returns -1.
+    //
+    // test 5:
+    //     Run result(formula: String) with "0.01^(-3/2)".
+    // expected 5:
+    //     Returns 1000.
+    //
+    // test 7:
+    //     Run result(formula: String) with "1+2+3+".
+    //     Wrong formula.
+    // expected 3:
+    //     Returns nil.
+    //
+    func testCalculateModel() throws {
+        let model = CalculateModel()
+
+        // test 1
+        XCTAssertEqual(model.result(formula: "1+2+3+4+5"), 15)
+
+        // test 2
+        XCTAssertEqual(model.result(formula: "(1+2)*3-9/(4.1+4.9)-8-0.1"), -0.1)
+
+        // test 3
+        // 3-1
+        XCTAssertEqual(model.result(formula: "(1+2)*3-3^2"), 0)
+        // 3-2
+        XCTAssertEqual(model.result(formula: "1/3^3-3^-3"), 0)
+        // 3-3
+        XCTAssertEqual(model.result(formula: "1/3^3-3^(-3)"), 0)
+
+        // test 4
+        XCTAssertEqual(model.result(formula: "-1+1-0.01^3*1000*1000"), -1)
+
+        // test 5
+        XCTAssertNil(model.result(formula: "0.01^(3/2)"))
+
+        // test 7
+        XCTAssertNil(model.result(formula: "1+2+3+"))
+    }
 }
