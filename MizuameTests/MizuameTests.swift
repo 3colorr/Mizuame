@@ -169,10 +169,16 @@ final class MizuameTests: XCTestCase {
     // expected 5:
     //     Returns 1000.
     //
+    // test 6:
+    //     Run result(formula: String) with "1+a+2".
+    //     The formula contains a characters. Calculation fails.
+    // expected 6:
+    //     Returns nil.
+    //
     // test 7:
     //     Run result(formula: String) with "1+2+3+".
-    //     Wrong formula.
-    // expected 3:
+    //     Wrong formula.  Calculation fails.
+    // expected 7:
     //     Returns nil.
     //
     func testCalculateModel() throws {
@@ -197,6 +203,9 @@ final class MizuameTests: XCTestCase {
 
         // test 5
         XCTAssertNil(model.result(formula: "0.01^(3/2)"))
+        
+        // test 6
+        XCTAssertNil(model.result(formula: "1+a+2"))
 
         // test 7
         XCTAssertNil(model.result(formula: "1+2+3+"))
