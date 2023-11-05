@@ -9,7 +9,7 @@ import Foundation
 
 class CalculateModel {
     
-    struct token {
+    private struct token {
         let value: String
         let priority: Int
         let isOperator: Bool
@@ -32,8 +32,16 @@ class CalculateModel {
         
         let tokens = tokenize(formula: formula)
         
-        let postfixNotionTokens = postfixNotaion(of: tokens)
+        if tokens.isEmpty {
+            return nil
+        }
         
+        let postfixNotionTokens = postfixNotaion(of: tokens)
+
+        if postfixNotionTokens.isEmpty {
+            return nil
+        }
+
         return calculates(it: postfixNotionTokens)
     }
     
@@ -46,6 +54,16 @@ class CalculateModel {
         var num: String = ""
         var tokens: [token] = []
         
+        //
+        // ## How to tokenize
+        //
+        // A formula is examined character by character.
+        // For example, In the followings loop,
+        // examined a character in order of 1, +, 2, -, 1, *, 3 when the formula is "1+2-1*3".
+        //
+        // If a character other than number or operators is found,
+        // it cannot calcurate and return "nil".
+        //
         for n in splited {
             switch n {
             case "+":
@@ -162,6 +180,7 @@ class CalculateModel {
     }
     
     // The postfixNotation function return formula in postfix notation.
+    //   -> "Shunting yard algorithm"
     // If failure, return array size zero.
     private func postfixNotaion(of tokens: [token]) -> [token] {
         
@@ -219,7 +238,7 @@ class CalculateModel {
     
     // The calculates function return calculate result.
     // If calculation failed, return nil.
-    public func calculates(it postNotationTokens: [token]) -> Decimal? {
+    private func calculates(it postNotationTokens: [token]) -> Decimal? {
         
         var operatorStack: [Decimal] = []
         
@@ -246,6 +265,7 @@ class CalculateModel {
             }
         }
         
+        // The calculation is correct when the stack has only one element.
         if operatorStack.count == 1 {
             return operatorStack.last
         }
