@@ -11,8 +11,7 @@ class NoteParser {
     
     // ## Which strings does a 'parse(note:)' consider to be a formula?
     // The 'parse(note:)' consider the sting between '(' and '=)' as a formula.
-    // The found formulas are append to array as 'formulaApplicant'.
-    // The formulaApplicant' is struct.
+    // The found formulas are append to array as 'Range<String.Index>'.
     // If the fomula is not found, return empty array([]).
     public func parse(note: String) -> [Range<String.Index>] {
         var results: [Range<String.Index>] = []
