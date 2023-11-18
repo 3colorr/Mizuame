@@ -15,17 +15,17 @@ class NoteParser {
     // If the fomula is not found, return empty array([]).
     public func parse(note: String) -> [Range<String.Index>] {
         var results: [Range<String.Index>] = []
-        var searchRange = note.startIndex..<note.endIndex
+        var searchRange: Range<String.Index> = note.startIndex..<note.endIndex
         
-        while let formulaHead = note.range(of: "(", range: searchRange) {
+        while let formulaHead: Range<String.Index> = note.range(of: "(", range: searchRange) {
             
-            let subRange = formulaHead.upperBound..<note.endIndex
+            let subRange: Range<String.Index> = formulaHead.upperBound..<note.endIndex
             
-            if let formulaTail = note.range(of: "=)", range: subRange) {
+            if let formulaTail: Range<String.Index> = note.range(of: "=)", range: subRange) {
                 results.append(formulaHead.upperBound..<formulaTail.lowerBound)
                 searchRange = formulaTail.upperBound..<note.endIndex
             } else {
-                // Not found a ")" in the sunRbage.
+                // Not found a '=)' in the sunRbage.
                 break
             }
         }
