@@ -33,4 +33,23 @@ class NoteParser {
         return results
     }
 
+    // ## Which strings does a 'parseResultRange(note:, formulaRange:)' consider to be a calculation results?
+    // The 'parse(note:, formulaRange:)' consider the string between '(' and '=)' as a formula.
+    // The found formulas are append to array as 'Range<String.Index>'.
+    // If the fomula is not found, return empty array([]).
+    public func parseResultRange(note: String, formulaRange: Range<String.Index>) -> Range<String.Index>? {
+        let searchRange: Range<String.Index> = formulaRange.upperBound..<note.endIndex
+        
+        if let resultHead: Range<String.Index> = note.range(of: " ", range: searchRange) {
+            
+            let subRange: Range<String.Index> = resultHead.upperBound..<note.endIndex
+            
+            if let resultTail: Range<String.Index> = note.range(of: " ", range: subRange) {
+                return resultHead.upperBound..<resultTail.upperBound
+            }
+        }
+        
+        return nil
+    }
+
 }
