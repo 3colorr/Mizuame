@@ -41,9 +41,10 @@ struct ContentView: View {
     @State private var isExecutableSave: Bool = true
 
     private let io: DataIO
+    private let redoUndoManager: RedoUndo
+
     private var data: StickyNote
     
-    private let redoUndoManager: RedoUndo
     
     init(delegate: AppDelegate) {
         self.delegate = delegate
