@@ -22,15 +22,30 @@ class NoteParser {
             
             let subRange: Range<String.Index> = formulaHead.upperBound..<note.endIndex
             
-            if let formulaTail: Range<String.Index> = note.range(of: "=", range: subRange) {
+            // Are there '=' and ')'?
+            // If not, end the search.
+            if let rightParenthesisIndex: Range<String.Index> = note.range(of: ")", range: subRange),
+               let equalIndex: Range<String.Index> = note.range(of: "=", range: subRange) {
                 
-                // If the next character is ")", it adds the range from "(" to "=" into the results array.
-                if formulaTail.upperBound != note.endIndex && note[formulaTail.upperBound] == ")" {
-                    results.append(formulaHead.upperBound..<formulaTail.lowerBound)
+                let beforeRightParenthesisIndex: String.Index = note.index(before: rightParenthesisIndex.lowerBound)
+                
+                // If next index of ')' is index of '=', these indexes are considered '=)'.
+                // So the string between 'formulaHead' and 'equalIndex' is the formula.
+                if beforeRightParenthesisIndex == equalIndex.lowerBound {
+                    results.append(formulaHead.upperBound..<equalIndex.lowerBound)
                 }
                 
-                // If not, it searches for the next formula from the next character of "=".
-                searchRange = formulaTail.upperBound..<note.endIndex
+                // Decide a next search range.
+                // Compares 'equalIndex' and 'rightParenthesis', use the next search range from the lower index to the end index.
+                if equalIndex.upperBound < rightParenthesisIndex.upperBound {
+                    searchRange = equalIndex.upperBound..<note.endIndex
+                } else {
+                    searchRange = rightParenthesisIndex.upperBound..<note.endIndex
+                }
+
+            } else {
+                // Not found end of formula.
+                break
             }
         }
         

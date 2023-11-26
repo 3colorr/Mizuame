@@ -265,6 +265,12 @@ final class MizuameTests: XCTestCase {
     //     The size of 'results7' array is 1.
     //     The range indicated by results7[0] in the 'testNote7' is "4*a".
     //
+    // test 8:
+    //     Assign "abc(" to 'testNote8'.
+    //     Run parser(note: String) with 'testNote8' and receive the result in 'results8' array.
+    // expected 8:
+    //     The size of 'results8' array is 0.
+    //
     func testNoteParser() throws {
         let parser = NoteParser()
         
@@ -310,5 +316,10 @@ final class MizuameTests: XCTestCase {
         let results7 = parser.parse(note: testNote7)
         XCTAssertEqual(results7.count, 1)
         XCTAssertEqual(testNote7[results7[0]], "4*a")
+
+        // test 8
+        let testNote8 = "abc("
+        let results8 = parser.parse(note: testNote8)
+        XCTAssertEqual(results8.count, 0)
     }
 }
