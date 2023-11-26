@@ -235,7 +235,7 @@ final class MizuameTests: XCTestCase {
     //     Run parser(note: String) with 'testNote3' and receive the result in 'results3' array.
     // expected 3:
     //     The size of 'results3' array is 1.
-    //     The range indicated by results3[0] in the 'testNote3' is "1+2+3=(".
+    //     The range indicated by results3[0] in the 'testNote3' is "".
     //
     // test 4:
     //     Assign "abc(1+2+3=" to 'testNote4'.
@@ -250,6 +250,20 @@ final class MizuameTests: XCTestCase {
     //     The size of 'results5' array is 2.
     //     The range indicated by results5[0] in the 'testNote5' is "1+2+3".
     //     The range indicated by results5[1] in the 'testNote5' is "4*a".
+    //
+    // test 6:
+    //     Assign "(1+2+3= 5 )abc(4*a=)efg" to 'testNote6'.
+    //     Run parser(note: String) with 'testNote6' and receive the result in 'results6' array.
+    // expected 6:
+    //     The size of 'results6' array is 1.
+    //     The range indicated by results6[0] in the 'testNote6' is "4*a".
+    //
+    // test 7:
+    //     Assign "(1+2+3 5 )(4*a=)" to 'testNote7'.
+    //     Run parser(note: String) with 'testNote7' and receive the result in 'results7' array.
+    // expected 7:
+    //     The size of 'results7' array is 1.
+    //     The range indicated by results7[0] in the 'testNote7' is "4*a".
     //
     func testNoteParser() throws {
         let parser = NoteParser()
@@ -271,7 +285,7 @@ final class MizuameTests: XCTestCase {
         let testNote3 = "abc(1+2+3=(=)efg"
         let results3 = parser.parse(note: testNote3)
         XCTAssertEqual(results3.count, 1)
-        XCTAssertEqual(testNote3[results3[0]], "1+2+3=(")
+        XCTAssertEqual(testNote3[results3[0]], "")
 
         // test 4
         let testNote4 = "abc(1+2+3="
@@ -284,5 +298,17 @@ final class MizuameTests: XCTestCase {
         XCTAssertEqual(results5.count, 2)
         XCTAssertEqual(testNote5[results5[0]], "1+2+3")
         XCTAssertEqual(testNote5[results5[1]], "4*a")
+
+        // test 6
+        let testNote6 = "(1+2+3= 5 )abc(4*a=)efg"
+        let results6 = parser.parse(note: testNote6)
+        XCTAssertEqual(results6.count, 1)
+        XCTAssertEqual(testNote6[results6[0]], "4*a")
+
+        // test 7
+        let testNote7 = "(1+2+3 5 )(4*a=)"
+        let results7 = parser.parse(note: testNote7)
+        XCTAssertEqual(results7.count, 1)
+        XCTAssertEqual(testNote7[results7[0]], "4*a")
     }
 }

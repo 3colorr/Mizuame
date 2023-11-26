@@ -11,6 +11,7 @@ class NoteParser {
     
     // ## Which strings does a 'parse(note:)' consider to be a formula?
     // The 'parse(note:)' consider the string between '(' and '=)' as a formula.
+    // A ')' is must be placed after the '=', and nothing can be placed between '=' and ')'.
     // The found formulas are append to array as 'Range<String.Index>'.
     // If the fomula is not found, return empty array([]).
     public func parse(note: String) -> [Range<String.Index>] {
@@ -21,35 +22,18 @@ class NoteParser {
             
             let subRange: Range<String.Index> = formulaHead.upperBound..<note.endIndex
             
-            if let formulaTail: Range<String.Index> = note.range(of: "=)", range: subRange) {
-                results.append(formulaHead.upperBound..<formulaTail.lowerBound)
+            if let formulaTail: Range<String.Index> = note.range(of: "=", range: subRange) {
+                
+                // If the next character is ")", it adds the range from "(" to "=" into the results array.
+                if formulaTail.upperBound != note.endIndex && note[formulaTail.upperBound] == ")" {
+                    results.append(formulaHead.upperBound..<formulaTail.lowerBound)
+                }
+                
+                // If not, it searches for the next formula from the next character of "=".
                 searchRange = formulaTail.upperBound..<note.endIndex
-            } else {
-                // Not found a '=)' in the sunRbage.
-                break
             }
         }
         
         return results
     }
-
-    // ## Which strings does a 'parseResultRange(note:, formulaRange:)' consider to be a calculation results?
-    // The 'parse(note:, formulaRange:)' consider the string between '(' and '=)' as a formula.
-    // The found formulas are append to array as 'Range<String.Index>'.
-    // If the fomula is not found, return empty array([]).
-    public func parseResultRange(note: String, formulaRange: Range<String.Index>) -> Range<String.Index>? {
-        let searchRange: Range<String.Index> = formulaRange.upperBound..<note.endIndex
-        
-        if let resultHead: Range<String.Index> = note.range(of: " ", range: searchRange) {
-            
-            let subRange: Range<String.Index> = resultHead.upperBound..<note.endIndex
-            
-            if let resultTail: Range<String.Index> = note.range(of: " ", range: subRange) {
-                return resultHead.upperBound..<resultTail.upperBound
-            }
-        }
-        
-        return nil
-    }
-
 }
