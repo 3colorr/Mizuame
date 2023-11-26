@@ -41,9 +41,10 @@ struct ContentView: View {
     @State private var isExecutableSave: Bool = true
 
     private let io: DataIO
+    private let redoUndoManager: RedoUndo
+
     private var data: StickyNote
     
-    private let redoUndoManager: RedoUndo
     
     init(delegate: AppDelegate) {
         self.delegate = delegate
@@ -195,6 +196,8 @@ struct ContentView: View {
                             
                             _ = redoUndoManager.snapshot(of: val)
                             
+                            stickyText = calculateFormulaIn(val)
+                            
                             if isExecutableSave {
                                 Task {
                                     do {
@@ -254,6 +257,38 @@ struct ContentView: View {
         } else {
             delegate.disablePinning()
         }
+    }
+    
+    private func calculateFormulaIn(_ val: String) -> String {
+        
+        let calculater = CalculateModel()
+        let parser = NoteParser()
+        
+        var calculated: String = val
+        
+        for formulaRange in parser.parse(note: calculated) {
+
+            if let result = calculater.result(formula: String(calculated[formulaRange])) {
+                
+                // A splitedIndex is index of formula end.
+                // If the note is "abc(1+2=)", the splitedIndex is between "=" and ")".
+                let splitIndex = calculated.index(formulaRange.upperBound, offsetBy: 1)
+
+                calculated = "\(String(calculated[calculated.startIndex..<splitIndex])) \(result) \(String(calculated[splitIndex..<calculated.endIndex]))"
+                
+                // *Information
+                //
+                // SwiftUI TextEditor doesn't support AttributedStrings.
+                // So, Cannot change background color of formula part in the note.
+                //
+                // var attributedVal = AttributedString(val)
+                // if let applyRange = attributedVal.range(of: String(val[formulaRange])) {
+                //     attributedVal[applyRange].backgroundColor = .gray
+                // }
+            }
+        }
+        
+        return calculated
     }
 }
 
