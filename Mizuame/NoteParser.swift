@@ -29,7 +29,7 @@ class NoteParser {
                 
                 let beforeRightParenthesisIndex: String.Index = note.index(before: rightParenthesisIndex.lowerBound)
                 
-                // If next index of ')' is index of '=', these indexes are considered '=)'.
+                // If before index of ')' is index of '=', these indexes are considered '=)'.
                 // So the string between 'formulaHead' and 'equalIndex' is the formula.
                 if beforeRightParenthesisIndex == equalIndex.lowerBound {
                     results.append(formulaHead.upperBound..<equalIndex.lowerBound)
