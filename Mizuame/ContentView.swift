@@ -196,40 +196,7 @@ struct ContentView: View {
                             
                             _ = redoUndoManager.snapshot(of: val)
                             
-                            let calculater = CalculateModel()
-                            let parser = NoteParser()
-                            for formulaRange in parser.parse(note: val) {
-                                if let result = calculater.result(formula: String(val[formulaRange])) {
-                                    
-                                    // A splitedIndex is index of formula end.
-                                    // If the note is "abc(1+2=)efg", the splitedIndex is between ")" and "e".
-                                    let splitIndex = val.index(formulaRange.upperBound, offsetBy: 2)
-
-                                    // If there is a calculation result, replace a old calculation result with a new one.
-                                    // If there is no a calculation result, insert a calculation result into the note.
-                                    if let resultRangeInNote = parser.parseResultRange(note: val, formulaRange: formulaRange) {
-
-                                        if "\(result)" != val[resultRangeInNote] {
-                                            // Insert the new result into the note.
-                                            stickyText = "\(String(val[val.startIndex..<splitIndex])) \(result) \(String(val[resultRangeInNote.upperBound..<val.endIndex]))"
-                                        }
-                                        
-                                    } else {
-                                        // Insert the result into the note.
-                                        stickyText = "\(String(val[val.startIndex..<splitIndex])) \(result) \(String(val[splitIndex..<val.endIndex]))"
-                                    }
-                                    
-                                    // *Information
-                                    //
-                                    // SwiftUI TextEditor doesn't support AttributedStrings.
-                                    // So, Cannot change background color of formula part in the note.
-                                    //
-                                    // var attributedVal = AttributedString(val)
-                                    // if let applyRange = attributedVal.range(of: String(val[formulaRange])) {
-                                    //     attributedVal[applyRange].backgroundColor = .gray
-                                    // }
-                                }
-                            }
+                            stickyText = calculateFormulaIn(val)
                             
                             if isExecutableSave {
                                 Task {
@@ -290,6 +257,38 @@ struct ContentView: View {
         } else {
             delegate.disablePinning()
         }
+    }
+    
+    private func calculateFormulaIn(_ val: String) -> String {
+        
+        let calculater = CalculateModel()
+        let parser = NoteParser()
+        
+        var calculated: String = val
+        
+        for formulaRange in parser.parse(note: calculated) {
+
+            if let result = calculater.result(formula: String(calculated[formulaRange])) {
+                
+                // A splitedIndex is index of formula end.
+                // If the note is "abc(1+2=)", the splitedIndex is between "=" and ")".
+                let splitIndex = calculated.index(formulaRange.upperBound, offsetBy: 1)
+
+                calculated = "\(String(calculated[calculated.startIndex..<splitIndex])) \(result) \(String(calculated[splitIndex..<calculated.endIndex]))"
+                
+                // *Information
+                //
+                // SwiftUI TextEditor doesn't support AttributedStrings.
+                // So, Cannot change background color of formula part in the note.
+                //
+                // var attributedVal = AttributedString(val)
+                // if let applyRange = attributedVal.range(of: String(val[formulaRange])) {
+                //     attributedVal[applyRange].backgroundColor = .gray
+                // }
+            }
+        }
+        
+        return calculated
     }
 }
 
