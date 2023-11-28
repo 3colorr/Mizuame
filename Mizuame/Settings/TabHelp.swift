@@ -23,7 +23,7 @@ struct TabHelp: View {
                     Text("settings.tab.help.attention.body")
                 }
 
-                VStack(alignment: .leading, spacing: 5) {
+                VStack(alignment: .leading, spacing: 10) {
                     Text("settings.tab.help.menu.title")
                         .bold()
                     
