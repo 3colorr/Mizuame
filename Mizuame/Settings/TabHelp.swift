@@ -58,6 +58,21 @@ struct TabHelp: View {
                     }
                 }
 
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("settings.tab.help.note.title")
+                        .bold()
+
+                    Text("settings.tab.help.note.greeting")
+
+                    HStack {
+                        Image(systemName: "function")
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
+                            .bold()
+                        
+                        Text("settings.tab.help.note.action.calculate.description")
+                    }
+                }
+
                 Spacer()
             }
             .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
