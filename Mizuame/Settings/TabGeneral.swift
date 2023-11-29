@@ -17,24 +17,31 @@ struct TabGeneral: View {
     @AppStorage(SettingKeys.StickyNote().keyPinNote) private var isPinNote: Bool = SettingKeys.StickyNote().initialPinNote
 
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text("settings.tab.general.menubar")
-                Toggle(isOn: $isShowSavingMessage) {
-                    Text("settings.tab.general.menubar.saving")
-                }
-            }
+        VStack(alignment: .center) {
+            VStack(alignment: .leading) {
+                Text("settings.tab.general.note.title")
+                    .bold()
 
-            HStack {
-                Text("settings.tab.general.note")
-                Toggle(isOn: $isPinNote) {
-                    Text("settings.tab.general.note.pin")
+                HStack {
+                    Text("settings.tab.general.note.menubar")
+                        .frame(width: 100, alignment: .leading)
+                    Toggle(isOn: $isShowSavingMessage) {
+                        Text("settings.tab.general.note.menubar.saving")
+                    }
                 }
-                .onChange(of: isPinNote) { isPinning in
-                    if isPinning {
-                        delegate.enablePinning()
-                    } else {
-                        delegate.disablePinning()
+
+                HStack {
+                    Text("settings.tab.general.note.note")
+                        .frame(width: 100, alignment: .leading)
+                    Toggle(isOn: $isPinNote) {
+                        Text("settings.tab.general.note.note.pin")
+                    }
+                    .onChange(of: isPinNote) { isPinning in
+                        if isPinning {
+                            delegate.enablePinning()
+                        } else {
+                            delegate.disablePinning()
+                        }
                     }
                 }
             }
@@ -43,6 +50,8 @@ struct TabGeneral: View {
             
             HStack {
                 Text("settings.tab.general.reset.title")
+                    .frame(width: 100, alignment: .leading)
+
                 Button(action: {
                     self.isShowSavingMessage = SettingKeys.Menubar().initialSavingMessage
                     self.isPinNote = SettingKeys.StickyNote().initialPinNote

@@ -79,10 +79,11 @@
 "settings.tab.info.termsofservice.button.caption" = "Terms Of Service";
 "settings.tab.info.privacypolicy.button.caption" = "Privacy Policy";
 
-"settings.tab.general.menubar" = "Menu bar:";
-"settings.tab.general.menubar.saving" = "Display a saving message";
-"settings.tab.general.note" = "Note";
-"settings.tab.general.note.pin" = "Pinning the note to the front";
+"settings.tab.general.note.title" = "Note";
+"settings.tab.general.note.menubar" = "Menu bar:";
+"settings.tab.general.note.menubar.saving" = "Display a saving message";
+"settings.tab.general.note.note" = "Pin:";
+"settings.tab.general.note.note.pin" = "Pinning the note to the front";
 "settings.tab.general.reset.title" = "Reset:";
 "settings.tab.general.reset.button.caption" = "Reset general settings to initial value";
 

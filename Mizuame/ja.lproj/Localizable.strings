@@ -79,10 +79,11 @@
 "settings.tab.info.termsofservice.button.caption" = "利用規約";
 "settings.tab.info.privacypolicy.button.caption" = "プライバシーポリシー";
 
-"settings.tab.general.menubar" = "メニューバー:";
-"settings.tab.general.menubar.saving" = "保存中のメッセージを表示する";
-"settings.tab.general.note" = "ノート";
-"settings.tab.general.note.pin" = "ノートを最前面に固定する";
+"settings.tab.general.note.title" = "ノート";
+"settings.tab.general.note.menubar" = "メニューバー:";
+"settings.tab.general.note.menubar.saving" = "保存中のメッセージを表示する";
+"settings.tab.general.note.note" = "ピン:";
+"settings.tab.general.note.note.pin" = "ノートを最前面に固定する";
 "settings.tab.general.reset.title" = "リセット:";
 "settings.tab.general.reset.button.caption" = "一般設定をリセットします";
 
