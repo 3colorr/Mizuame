@@ -50,6 +50,9 @@
 "settings.tab.help.introduce" = "I'm Mizuame, a note app that sits in your Mac's menu bar. My favorite place is application folder. Someday I would like to go to Antarctica and have hot tomato soup.";
 "settings.tab.help.attention.title" = "Attention";
 "settings.tab.help.attention.body" = "I'm NOT a high performance note app so that you should use other better apps to save your important data.";
+"settings.tab.help.note.title" = "Note Action";
+"settings.tab.help.note.greeting" = "By Default, all 'Note Action' is disabled. If you want to use it, you need to enable it in the 'General tab'.";
+"settings.tab.help.note.action.calculate.description" = "Calculate a formula between '(' and '=)'. For example, If you type '(1+2\\*3=)', '7' will be inserted into the formula and '(1+2\\*3= 7 )' will be displayed.";
 "settings.tab.help.menu.title" = "Menu";
 "settings.tab.help.menu.power.description" = "Quit the app.";
 "settings.tab.help.menu.preference.description" = "Open preference window.";

@@ -21,39 +21,56 @@ struct TabHelp: View {
                         .bold()
                     
                     Text("settings.tab.help.attention.body")
-                    
+                }
+
+                VStack(alignment: .leading, spacing: 10) {
                     Text("settings.tab.help.menu.title")
                         .bold()
-                }
-                
-                HStack {
-                    Image(systemName: "power")
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
-                    Text("settings.tab.help.menu.power.description")
+                    
+                    HStack {
+                        Image(systemName: "power")
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
+                        Text("settings.tab.help.menu.power.description")
+                    }
+                    
+                    HStack {
+                        Image(systemName: "gearshape.fill")
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
+                        Text("settings.tab.help.menu.preference.description")
+                    }
+                    
+                    HStack {
+                        Image(systemName: "pin")
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
+                        Text("settings.tab.help.menu.pin.description")
+                    }
+                    
+                    HStack {
+                        Image(systemName: "eraser")
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
+                        Text("settings.tab.help.menu.eraser.description")
+                    }
+                    
+                    HStack {
+                        Image(systemName: "printer")
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
+                        Text("settings.tab.help.menu.printer.description")
+                    }
                 }
 
-                HStack {
-                    Image(systemName: "gearshape.fill")
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
-                    Text("settings.tab.help.menu.preference.description")
-                }
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("settings.tab.help.note.title")
+                        .bold()
 
-                HStack {
-                    Image(systemName: "pin")
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
-                    Text("settings.tab.help.menu.pin.description")
-                }
+                    Text("settings.tab.help.note.greeting")
 
-                HStack {
-                    Image(systemName: "eraser")
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
-                    Text("settings.tab.help.menu.eraser.description")
-                }
-
-                HStack {
-                    Image(systemName: "printer")
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
-                    Text("settings.tab.help.menu.printer.description")
+                    HStack {
+                        Image(systemName: "function")
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
+                            .bold()
+                        
+                        Text("settings.tab.help.note.action.calculate.description")
+                    }
                 }
 
                 Spacer()
