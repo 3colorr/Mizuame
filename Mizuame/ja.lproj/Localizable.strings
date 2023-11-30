@@ -52,7 +52,7 @@
 "settings.tab.help.attention.body" = "私は高機能なノートアプリではありません。なので、あなたの大切なデータは、他のもっと良いアプリに保存すべきです。";
 "settings.tab.help.note.title" = "ノートアクション";
 "settings.tab.help.note.greeting" = "既定では、すべての'ノートアクション'は無効になっています。もし必要な場合は、'一般タブ'から有効にできます。";
-"settings.tab.help.note.action.calculate.description" = "'('と'=)'で囲まれた数式を自動で計算します。例えば、もし'(1+2\\*3=)'と入力した場合、'7'が数式に挿入されて'(1+2\\*3= 7 )'と表示されます。";
+"settings.tab.help.note.action.calculate.description" = "'('と'=)'で囲まれた数式を自動で計算します。\n例えば、もし'(1+2\\*3=)'と入力した場合、'7'が数式に挿入されて'(1+2\\*3= 7 )'と表示されます。";
 "settings.tab.help.menu.title" = "メニュー";
 "settings.tab.help.menu.power.description" = "アプリを終了します。";
 "settings.tab.help.menu.preference.description" = "設定画面を開きます。";
@@ -79,10 +79,11 @@
 "settings.tab.info.termsofservice.button.caption" = "利用規約";
 "settings.tab.info.privacypolicy.button.caption" = "プライバシーポリシー";
 
-"settings.tab.general.menubar" = "メニューバー:";
-"settings.tab.general.menubar.saving" = "保存中のメッセージを表示する";
-"settings.tab.general.note" = "ノート";
-"settings.tab.general.note.pin" = "ノートを最前面に固定する";
+"settings.tab.general.note.title" = "ノート:";
+"settings.tab.general.note.menubar.saving" = "保存中のメッセージを表示する";
+"settings.tab.general.note.note.pin" = "ノートを最前面に固定する";
+"settings.tab.general.action.title" = "ノートアクション:";
+"settings.tab.general.action.calculate" = "数式を自動で計算する";
 "settings.tab.general.reset.title" = "リセット:";
 "settings.tab.general.reset.button.caption" = "一般設定をリセットします";
 

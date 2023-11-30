@@ -52,7 +52,7 @@
 "settings.tab.help.attention.body" = "I'm NOT a high performance note app so that you should use other better apps to save your important data.";
 "settings.tab.help.note.title" = "Note Action";
 "settings.tab.help.note.greeting" = "By Default, all 'Note Action' is disabled. If you want to use it, you need to enable it in the 'General tab'.";
-"settings.tab.help.note.action.calculate.description" = "Calculate a formula between '(' and '=)'. For example, If you type '(1+2\\*3=)', '7' will be inserted into the formula and '(1+2\\*3= 7 )' will be displayed.";
+"settings.tab.help.note.action.calculate.description" = "Automatically alculate a formula between '(' and '=)'. \nFor example, If you type '(1+2\\*3=)', '7' will be inserted into the formula and '(1+2\\*3= 7 )' will be displayed.";
 "settings.tab.help.menu.title" = "Menu";
 "settings.tab.help.menu.power.description" = "Quit the app.";
 "settings.tab.help.menu.preference.description" = "Open preference window.";
@@ -79,10 +79,11 @@
 "settings.tab.info.termsofservice.button.caption" = "Terms Of Service";
 "settings.tab.info.privacypolicy.button.caption" = "Privacy Policy";
 
-"settings.tab.general.menubar" = "Menu bar:";
-"settings.tab.general.menubar.saving" = "Display a saving message";
-"settings.tab.general.note" = "Note";
-"settings.tab.general.note.pin" = "Pinning the note to the front";
+"settings.tab.general.note.title" = "Note:";
+"settings.tab.general.note.menubar.saving" = "Display a saving message";
+"settings.tab.general.note.note.pin" = "Pinning the note to the front";
+"settings.tab.general.action.title" = "Note Action";
+"settings.tab.general.action.calculate" = "Automatically calculate a formula";
 "settings.tab.general.reset.title" = "Reset:";
 "settings.tab.general.reset.button.caption" = "Reset general settings to initial value";
 

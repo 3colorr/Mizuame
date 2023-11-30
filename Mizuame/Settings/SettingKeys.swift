@@ -80,6 +80,9 @@ struct SettingKeys {
         
         let keyPinNote: String = "stickyNotePin"
         let initialPinNote: Bool = false
+        
+        let keyCalculateAction: String = "stickyNoteCalculateAction"
+        let initialCalculateAction: Bool = false
     }
     
     struct ThemePalette {

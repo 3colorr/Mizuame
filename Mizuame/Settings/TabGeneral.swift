@@ -15,26 +15,55 @@ struct TabGeneral: View {
     @AppStorage(SettingKeys.Menubar().keySavingMessage) private var isShowSavingMessage: Bool = SettingKeys.Menubar().initialSavingMessage
 
     @AppStorage(SettingKeys.StickyNote().keyPinNote) private var isPinNote: Bool = SettingKeys.StickyNote().initialPinNote
+    
+    @AppStorage(SettingKeys.StickyNote().keyCalculateAction) private var isEnableCalculation: Bool = SettingKeys.StickyNote().initialCalculateAction
 
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text("settings.tab.general.menubar")
-                Toggle(isOn: $isShowSavingMessage) {
-                    Text("settings.tab.general.menubar.saving")
-                }
-            }
+        VStack(alignment: .center, spacing: 5) {
+            VStack(alignment: .leading) {
+                HStack {
+                    VStack {
+                        Text("settings.tab.general.note.title")
+                        Spacer()
+                    }
+                    .frame(width: 100, alignment: .leading)
 
-            HStack {
-                Text("settings.tab.general.note")
-                Toggle(isOn: $isPinNote) {
-                    Text("settings.tab.general.note.pin")
+                    VStack(alignment: .leading) {
+                        Toggle(isOn: $isShowSavingMessage) {
+                            Text("settings.tab.general.note.menubar.saving")
+                        }
+                        
+                        Toggle(isOn: $isPinNote) {
+                            Text("settings.tab.general.note.note.pin")
+                        }
+                        .onChange(of: isPinNote) { isPinning in
+                            if isPinning {
+                                delegate.enablePinning()
+                            } else {
+                                delegate.disablePinning()
+                            }
+                        }
+                        
+                        Spacer()
+                    }
                 }
-                .onChange(of: isPinNote) { isPinning in
-                    if isPinning {
-                        delegate.enablePinning()
-                    } else {
-                        delegate.disablePinning()
+                
+                HStack {
+                    VStack {
+                        Text("settings.tab.general.action.title")
+                        Spacer()
+                    }
+                    .frame(width: 100, alignment: .leading)
+
+                    VStack(alignment: .leading) {
+                        Toggle(isOn: $isEnableCalculation) {
+                            Text("settings.tab.general.action.calculate")
+                        }
+                        
+                        Text("settings.tab.help.note.action.calculate.description")
+                            .font(.caption)
+                        
+                        Spacer()
                     }
                 }
             }
@@ -43,6 +72,8 @@ struct TabGeneral: View {
             
             HStack {
                 Text("settings.tab.general.reset.title")
+                    .frame(width: 100, alignment: .leading)
+
                 Button(action: {
                     self.isShowSavingMessage = SettingKeys.Menubar().initialSavingMessage
                     self.isPinNote = SettingKeys.StickyNote().initialPinNote
@@ -52,7 +83,7 @@ struct TabGeneral: View {
                 }
             }
         }
-        .frame(width: 400, height: 200)
+        .frame(width: 450, height: 200)
         .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
     }
 }
