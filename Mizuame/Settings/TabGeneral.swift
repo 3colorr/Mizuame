@@ -15,6 +15,8 @@ struct TabGeneral: View {
     @AppStorage(SettingKeys.Menubar().keySavingMessage) private var isShowSavingMessage: Bool = SettingKeys.Menubar().initialSavingMessage
 
     @AppStorage(SettingKeys.StickyNote().keyPinNote) private var isPinNote: Bool = SettingKeys.StickyNote().initialPinNote
+    
+    @AppStorage(SettingKeys.StickyNote().keyCalculateAction) private var isEnableCalculation: Bool = SettingKeys.StickyNote().initialCalculateAction
 
     var body: some View {
         VStack(alignment: .center, spacing: 5) {
@@ -47,17 +49,21 @@ struct TabGeneral: View {
                 }
                 
                 HStack {
-                    Text("settings.tab.general.note.note")
-                        .frame(width: 100, alignment: .leading)
-                    Toggle(isOn: $isPinNote) {
-                        Text("settings.tab.general.note.note.pin")
+                    VStack {
+                        Text("settings.tab.general.action.title")
+                        Spacer()
                     }
-                    .onChange(of: isPinNote) { isPinning in
-                        if isPinning {
-                            delegate.enablePinning()
-                        } else {
-                            delegate.disablePinning()
+                    .frame(width: 100, alignment: .leading)
+
+                    VStack(alignment: .leading) {
+                        Toggle(isOn: $isEnableCalculation) {
+                            Text("settings.tab.general.action.calculate")
                         }
+                        
+                        Text("settings.tab.help.note.action.calculate.description")
+                            .font(.caption)
+                        
+                        Spacer()
                     }
                 }
             }
