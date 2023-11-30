@@ -17,19 +17,35 @@ struct TabGeneral: View {
     @AppStorage(SettingKeys.StickyNote().keyPinNote) private var isPinNote: Bool = SettingKeys.StickyNote().initialPinNote
 
     var body: some View {
-        VStack(alignment: .center) {
+        VStack(alignment: .center, spacing: 5) {
             VStack(alignment: .leading) {
-                Text("settings.tab.general.note.title")
-                    .bold()
-
                 HStack {
-                    Text("settings.tab.general.note.menubar")
-                        .frame(width: 100, alignment: .leading)
-                    Toggle(isOn: $isShowSavingMessage) {
-                        Text("settings.tab.general.note.menubar.saving")
+                    VStack {
+                        Text("settings.tab.general.note.title")
+                        Spacer()
+                    }
+                    .frame(width: 100, alignment: .leading)
+
+                    VStack(alignment: .leading) {
+                        Toggle(isOn: $isShowSavingMessage) {
+                            Text("settings.tab.general.note.menubar.saving")
+                        }
+                        
+                        Toggle(isOn: $isPinNote) {
+                            Text("settings.tab.general.note.note.pin")
+                        }
+                        .onChange(of: isPinNote) { isPinning in
+                            if isPinning {
+                                delegate.enablePinning()
+                            } else {
+                                delegate.disablePinning()
+                            }
+                        }
+                        
+                        Spacer()
                     }
                 }
-
+                
                 HStack {
                     Text("settings.tab.general.note.note")
                         .frame(width: 100, alignment: .leading)
@@ -61,7 +77,7 @@ struct TabGeneral: View {
                 }
             }
         }
-        .frame(width: 400, height: 200)
+        .frame(width: 450, height: 200)
         .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
     }
 }
