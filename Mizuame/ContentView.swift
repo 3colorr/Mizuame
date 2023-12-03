@@ -19,6 +19,8 @@ struct ContentView: View {
     @AppStorage(SettingKeys.StickyNote().keyPinNote) private var isPinNote: Bool = SettingKeys.StickyNote().initialPinNote
 
     @AppStorage(SettingKeys.Menubar().keySavingMessage) private var isShowSavingMessage: Bool = SettingKeys.Menubar().initialSavingMessage
+    
+    @AppStorage(SettingKeys.StickyNote().keyCalculateAction) private var isEnableCalculation: Bool = SettingKeys.StickyNote().initialCalculateAction
 
     @AppStorage(SettingKeys.StickyNote().keyWidth) private var width: Int = SettingKeys.StickyNote().initialWidth
     @AppStorage(SettingKeys.StickyNote().keyHeight) private var height: Int = SettingKeys.StickyNote().initialHeight
@@ -196,7 +198,9 @@ struct ContentView: View {
                             
                             _ = redoUndoManager.snapshot(of: val)
                             
-                            stickyText = calculateFormulaIn(val)
+                            if isEnableCalculation {
+                                stickyText = calculateFormulaIn(val)
+                            }
                             
                             if isExecutableSave {
                                 Task {
