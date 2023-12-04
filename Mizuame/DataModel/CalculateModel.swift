@@ -97,7 +97,21 @@ class CalculateModel {
                 if num != "" {
                     tokens.append(token(value: num, priority: 0, isOperator: false, isLeftAssociativity: false))
                 }
-                tokens.append(token(value: "*", priority: 2, isOperator: true, isLeftAssociativity: true, operation: {(x: Decimal, y: Decimal) -> Decimal in return x * y}))
+                tokens.append(token(value: "*", priority: 2, isOperator: true, isLeftAssociativity: true, operation: {
+                    (x: Decimal, y: Decimal) -> Decimal in
+                    let result = x * y
+                    
+                    let absX = (x < 0) ? -x : x
+                    let absY = (y < 0) ? -y : y
+                    let absResult = (result < 0) ? -result : result
+
+                    // Underflow
+                    if absX < 1 && absY < 1 && absResult >= 1 {
+                        return Decimal.nan
+                    }
+                    
+                    return result
+                }))
                 num = ""
             case "/":
                 if num != "" {
@@ -137,7 +151,16 @@ class CalculateModel {
                                   // (e.g.) 2^2(x=2, y=2), 2^(-3)(x=2, y=-3)
                                   if y > 0 {
                                       // (e.g.) y=2
-                                      return pow(x, NSDecimalNumber(decimal: y).intValue)
+                                      let result = pow(x, NSDecimalNumber(decimal: y).intValue)
+                                      let absX = (x < 0) ? -x : x
+                                      let absResult = (result < 0) ? -result : result
+
+                                      // Underflow
+                                      if absX < 1 && y > 1 && absResult >= 1 {
+                                          return Decimal.nan
+                                      } else {
+                                          return result
+                                      }
                                   } else {
                                       // (e.g.) y=-3
                                       return 1 / pow(x, NSDecimalNumber(decimal: -y).intValue)
