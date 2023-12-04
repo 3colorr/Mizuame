@@ -181,6 +181,12 @@ final class MizuameTests: XCTestCase {
     // expected 7:
     //     Returns nil.
     //
+    // test 8:
+    //     Run result(formula: String) with "0.2*0.02^100".
+    //     Underflow occurs.  Calculation fails.
+    // expected 8:
+    //     Returns nil.
+    //
     func testCalculateModel() throws {
         let model = CalculateModel()
 
@@ -209,6 +215,9 @@ final class MizuameTests: XCTestCase {
 
         // test 7
         XCTAssertNil(model.result(formula: "1+2+3+"))
+
+        // test 8
+        XCTAssertNil(model.result(formula: "0.2*0.02^100"))
     }
     
     // Test NoteParser class.
