@@ -401,22 +401,27 @@ struct ColorBlocks: View {
         HStack {
             Rectangle()
                 .fill(Color(bodyFrame))
+                .border(Color.black, width: 1)
                 .frame(width: w, height: h)
             
             Rectangle()
                 .fill(Color(messagebar))
+                .border(Color.black, width: 1)
                 .frame(width: w, height: h)
             
             Rectangle()
                 .fill(Color(message))
+                .border(Color.black, width: 1)
                 .frame(width: w, height: h)
             
             Rectangle()
                 .fill(Color(bodyBackground))
+                .border(Color.black, width: 1)
                 .frame(width: w, height: h)
             
             Rectangle()
                 .fill(Color(bodyForeground))
+                .border(Color.black, width: 1)
                 .frame(width: w, height: h)
         }
     }
