@@ -60,32 +60,51 @@ struct TabStickyNote: View {
             
             ScrollView {
                 VStack(alignment: .leading) {
-                    Picker("settings.tab.stickynote.font.size", selection: $fontSize) {
-                        ForEach(1..<41, id: \.self) { num in
-                            Text("\(num)")
-                        }
-                    }
-                    .frame(width: 150)
-
-                    Picker("settings.tab.stickynote.linespacing", selection: $lineSpacing) {
-                        ForEach(0..<21, id: \.self) { num in
-                            Text("\(num)")
-                        }
-                    }
-                    .frame(width: 150)
-
-                    Text("settings.tab.stickynote.window.size")
-                    
                     HStack {
-                        Text("settings.tab.stickynote.window.size.width")
-                        TextField("\(INIT_WIDTH)", value: $width, formatter: noteWidthFormatter)
-                            .frame(width: 80)
-                            .padding(EdgeInsets(top: 2, leading: 0, bottom: 2, trailing: 10))
+                        Text("settings.tab.stickynote.font.size")
+                            .frame(width: 100, alignment: .leading)
+
+                        Picker("", selection: $fontSize) {
+                            ForEach(1..<41, id: \.self) { num in
+                                Text("\(num)")
+                            }
+                        }
+                        .frame(width: 60)
+                    }
+
+                    HStack {
+                        Text("settings.tab.stickynote.linespacing")
+                            .frame(width: 100, alignment: .leading)
                         
-                        Text("settings.tab.stickynote.window.size.height")
-                        TextField("\(INIT_HEIGHT)", value: $height, formatter: noteHeightFormatter)
-                            .frame(width: 80)
-                            .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 0))
+                        Picker("", selection: $lineSpacing) {
+                            ForEach(0..<21, id: \.self) { num in
+                                Text("\(num)")
+                            }
+                        }
+                        .frame(width: 60)
+                    }
+
+                    HStack {
+                        Text("settings.tab.stickynote.window.size")
+                            .frame(width: 100, alignment: .leading)
+                        
+                        HStack {
+                            Text("settings.tab.stickynote.window.size.width")
+                                .frame(width: 60)
+
+                            TextField("\(INIT_WIDTH)", value: $width, formatter: noteWidthFormatter)
+                                .frame(width: 60)
+                                .padding(EdgeInsets(top: 0, leading: -10, bottom: 0, trailing: 0))
+                        }
+                        
+                        HStack {
+                            Text("settings.tab.stickynote.window.size.height")
+                                .frame(width: 50)
+
+                            TextField("\(INIT_HEIGHT)", value: $height, formatter: noteHeightFormatter)
+                                .frame(width: 60)
+                                .padding(EdgeInsets(top: 0, leading: -5, bottom: 0, trailing: 0))
+                        }
                     }
                     
                     Text("settings.tab.stickynote.theme")
@@ -113,7 +132,7 @@ struct TabStickyNote: View {
                     }
                 }
             }
-            .padding(EdgeInsets(top: 10, leading: 30, bottom: 0, trailing: 30))
+            .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 20))
         }
         .frame(width: 400, height: 500)
     }
