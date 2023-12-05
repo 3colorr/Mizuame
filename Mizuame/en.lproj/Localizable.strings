@@ -98,10 +98,11 @@
 "settings.tab.print.margin.image.left" = "Left";
 "settings.tab.print.margin.image.right" = "Right";
 
-"settings.tab.print.scaling" = "Scaling:";
+"settings.tab.print.scaling" = "Scaling(%):";
 
-"settings.tab.print.centered.vertical" = "Vertically centered";
-"settings.tab.print.centered.horizontal" = "Horizontally centered";
+"settings.tab.print.centered.title" = "Centered:";
+"settings.tab.print.centered.vertical" = "Vertically";
+"settings.tab.print.centered.horizontal" = "Horizontally";
 
 "settings.tab.print.reset.title" = "Reset:";
 "settings.tab.print.reset.button.caption" = "Reset print settings to initial value";
