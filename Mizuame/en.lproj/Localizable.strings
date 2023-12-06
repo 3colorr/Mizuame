@@ -87,7 +87,7 @@
 "settings.tab.general.reset.title" = "Reset:";
 "settings.tab.general.reset.button.caption" = "Reset general settings to initial value";
 
-"settings.tab.print.greeting" = "Print Settings";
+"settings.tab.print.greeting" = "Print Settings:\nThe following items should be set before printing.";
 "settings.tab.print.margin" = "Margin:";
 "settings.tab.print.margin.top" = "Top:";
 "settings.tab.print.margin.bottom" = "Bottom:";
