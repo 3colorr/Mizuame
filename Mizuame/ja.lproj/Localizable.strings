@@ -87,7 +87,7 @@
 "settings.tab.general.reset.title" = "リセット:";
 "settings.tab.general.reset.button.caption" = "一般設定をリセットします";
 
-"settings.tab.print.greeting" = "印刷設定";
+"settings.tab.print.greeting" = "印刷設定:\n以下の項目は、印刷前に設定する必要があります。";
 "settings.tab.print.margin" = "余白:";
 "settings.tab.print.margin.top" = "上:";
 "settings.tab.print.margin.bottom" = "下:";
@@ -98,10 +98,11 @@
 "settings.tab.print.margin.image.left" = "左";
 "settings.tab.print.margin.image.right" = "右";
 
-"settings.tab.print.scaling" = "拡大縮小:";
+"settings.tab.print.scaling" = "拡大縮小(%):";
 
-"settings.tab.print.centered.vertical" = "垂直方向の中央揃え";
-"settings.tab.print.centered.horizontal" = "水平方向の中央揃え";
+"settings.tab.print.centered.title" = "中央揃え:";
+"settings.tab.print.centered.vertical" = "垂直方向";
+"settings.tab.print.centered.horizontal" = "水平方向";
 
 "settings.tab.print.reset.title" = "リセット:";
 "settings.tab.print.reset.button.caption" = "印刷設定をリセットします";
