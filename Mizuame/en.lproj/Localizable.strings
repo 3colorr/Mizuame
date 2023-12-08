@@ -82,6 +82,11 @@
 "settings.tab.general.note.title" = "Note:";
 "settings.tab.general.note.menubar.saving" = "Display a saving message";
 "settings.tab.general.note.note.pin" = "Pinning the note to the front";
+"settings.tab.general.font.color.title" = "Font Color:";
+"settings.tab.general.font.color.choice.theme" = "Theme";
+"settings.tab.general.font.color.choice.black" = "Black";
+"settings.tab.general.font.color.choice.darkgray" = "Dark Gray";
+"settings.tab.general.font.color.choice.gray" = "Gray";
 "settings.tab.general.action.title" = "Note Action";
 "settings.tab.general.action.calculate" = "Automatically calculate a formula";
 "settings.tab.general.reset.title" = "Reset:";
