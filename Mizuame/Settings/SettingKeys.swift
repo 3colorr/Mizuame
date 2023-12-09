@@ -84,7 +84,7 @@ struct SettingKeys {
         struct NoteFontColor {
             struct Theme {
                 let key: String = "stickyNoteFontColorTheme"
-                let initialVale: Bool = false
+                let initialVale: Bool = true
             }
             struct Black {
                 let key: String = "stickyNoteFontColorBlack"
