@@ -30,6 +30,14 @@ struct ContentView: View {
 
     @AppStorage(SettingKeys.StickyNoteColor().keyForeground) private var bodyForegroundTheme: String = SettingKeys.StickyNoteColor().initialForegroundTheme
     @AppStorage(SettingKeys.StickyNoteColor().keyBackground) private var bodyBackgroundTheme: String = SettingKeys.StickyNoteColor().initialBackgroundTheme
+    
+    @AppStorage(SettingKeys.StickyNote.NoteFontColor.Theme().key) private var isApplyThemeColorToFont: Bool = SettingKeys.StickyNote.NoteFontColor.Theme().initialVale
+
+    @AppStorage(SettingKeys.StickyNote.NoteFontColor.Black().key) private var isApplyBlackColorToFont: Bool = SettingKeys.StickyNote.NoteFontColor.Black().initialVale
+
+    @AppStorage(SettingKeys.StickyNote.NoteFontColor.DarkGray().key) private var isApplyDarkGrayColorToFont: Bool = SettingKeys.StickyNote.NoteFontColor.DarkGray().initialVale
+
+    @AppStorage(SettingKeys.StickyNote.NoteFontColor.Gray().key) private var isApplyGrayColorToFont: Bool = SettingKeys.StickyNote.NoteFontColor.Gray().initialVale
 
     @AppStorage(SettingKeys.FrameColor().keyTheme) private var frameTheme: String = SettingKeys.FrameColor().initialTheme
 
@@ -191,7 +199,7 @@ struct ContentView: View {
                         .layoutPriority(1)
                         .font(.system(size: CGFloat(self.fontSize)))
                         .lineSpacing(CGFloat(self.lineSpacing))
-                        .foregroundColor(Color(bodyForegroundTheme))
+                        .foregroundColor(Color(foregroundColorName()))
                         .scrollContentBackground(.hidden)
                         .background(Color(bodyBackgroundTheme))
                         .onChange(of: stickyText) { val in
@@ -260,6 +268,24 @@ struct ContentView: View {
             delegate.enablePinning()
         } else {
             delegate.disablePinning()
+        }
+    }
+    
+    private func foregroundColorName() -> String {
+        if isApplyThemeColorToFont {
+            return bodyForegroundTheme
+            
+        } else if isApplyBlackColorToFont {
+            return SettingKeys.StickyNote.NoteFontColor.Black().key
+
+        } else if isApplyDarkGrayColorToFont {
+            return SettingKeys.StickyNote.NoteFontColor.DarkGray().key
+
+        } else if isApplyGrayColorToFont {
+            return SettingKeys.StickyNote.NoteFontColor.Gray().key
+            
+        } else {
+            return bodyForegroundTheme
         }
     }
     

@@ -48,17 +48,99 @@ struct TabGeneral: View {
                                 delegate.disablePinning()
                             }
                         }
-                        
-                        Spacer()
                     }
                 }
-                
-                HStack {
-                    VStack {
-                        Text("settings.tab.general.action.title")
-                        Spacer()
+
+                HStack(alignment: .top) {
+                    Text("settings.tab.general.font.color.title")
+                        .frame(width: 100, alignment: .leading)
+
+                    VStack(alignment: .leading, spacing: 5) {
+                        HStack {
+                            Button(action: {
+                                isApplyThemeColorToFont = true
+                                isApplyBlackColorToFont = false
+                                isApplyDarkGrayColorToFont = false
+                                isApplyGrayColorToFont = false
+                            }, label: {
+                                if isApplyThemeColorToFont {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .foregroundColor(.blue)
+                                        .bold()
+                                } else {
+                                    Image(systemName: "circle")
+                                }
+                                
+                                Text("settings.tab.general.font.color.choice.theme")
+                            })
+                            .buttonStyle(.plain)
+                        }
+
+                        HStack {
+                            Button(action: {
+                                isApplyThemeColorToFont = false
+                                isApplyBlackColorToFont = true
+                                isApplyDarkGrayColorToFont = false
+                                isApplyGrayColorToFont = false
+                            }, label: {
+                                if isApplyBlackColorToFont {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .foregroundColor(.blue)
+                                        .bold()
+                                } else {
+                                    Image(systemName: "circle")
+                                }
+                                
+                                Text("settings.tab.general.font.color.choice.black")
+                            })
+                            .buttonStyle(.plain)
+                        }
+
+                        HStack {
+                            Button(action: {
+                                isApplyThemeColorToFont = false
+                                isApplyBlackColorToFont = false
+                                isApplyDarkGrayColorToFont = true
+                                isApplyGrayColorToFont = false
+                            }, label: {
+                                if isApplyDarkGrayColorToFont {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .foregroundColor(.blue)
+                                        .bold()
+                                } else {
+                                    Image(systemName: "circle")
+                                }
+                                
+                                Text("settings.tab.general.font.color.choice.darkgray")
+                            })
+                            .buttonStyle(.plain)
+                        }
+
+                        HStack {
+                            Button(action: {
+                                isApplyThemeColorToFont = false
+                                isApplyBlackColorToFont = false
+                                isApplyDarkGrayColorToFont = false
+                                isApplyGrayColorToFont = true
+                            }, label: {
+                                if isApplyGrayColorToFont {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .foregroundColor(.blue)
+                                        .bold()
+                                } else {
+                                    Image(systemName: "circle")
+                                }
+                                
+                                Text("settings.tab.general.font.color.choice.gray")
+                            })
+                            .buttonStyle(.plain)
+                        }
                     }
-                    .frame(width: 100, alignment: .leading)
+                }
+
+                HStack(alignment: .top) {
+                    Text("settings.tab.general.action.title")
+                        .frame(width: 100, alignment: .leading)
 
                     VStack(alignment: .leading) {
                         Toggle(isOn: $isEnableCalculation) {
@@ -80,6 +162,10 @@ struct TabGeneral: View {
                 Button(action: {
                     self.isShowSavingMessage = SettingKeys.Menubar().initialSavingMessage
                     self.isPinNote = SettingKeys.StickyNote().initialPinNote
+                    self.isApplyThemeColorToFont = SettingKeys.StickyNote.NoteFontColor.Theme().initialVale
+                    self.isApplyBlackColorToFont = SettingKeys.StickyNote.NoteFontColor.Black().initialVale
+                    self.isApplyDarkGrayColorToFont = SettingKeys.StickyNote.NoteFontColor.DarkGray().initialVale
+                    self.isApplyGrayColorToFont = SettingKeys.StickyNote.NoteFontColor.Gray().initialVale
                 }) {
                     Text("settings.tab.general.reset.button.caption")
                         .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))
