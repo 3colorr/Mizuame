@@ -82,6 +82,11 @@
 "settings.tab.general.note.title" = "ノート:";
 "settings.tab.general.note.menubar.saving" = "保存中のメッセージを表示する";
 "settings.tab.general.note.note.pin" = "ノートを最前面に固定する";
+"settings.tab.general.font.color.title" = "文字の色:";
+"settings.tab.general.font.color.choice.theme" = "テーマ";
+"settings.tab.general.font.color.choice.black" = "ブラック";
+"settings.tab.general.font.color.choice.darkgray" = "暗いグレー";
+"settings.tab.general.font.color.choice.gray" = "ふつうのグレー";
 "settings.tab.general.action.title" = "ノートアクション:";
 "settings.tab.general.action.calculate" = "数式を自動で計算する";
 "settings.tab.general.reset.title" = "リセット:";
