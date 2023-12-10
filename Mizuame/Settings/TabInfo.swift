@@ -46,7 +46,7 @@ struct TabInfo: View {
                     Text("settings.tab.info.autor").font(.body)
                     Text("Email: 3colorr@gmail.com").font(.body)
                     HStack {
-                        Text("Twitter:")
+                        Text("X(Twitter):")
                         if let url = URL(string: twUrl) {
                             Link(twUrl, destination: url)
                         } else {
