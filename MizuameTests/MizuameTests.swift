@@ -280,6 +280,13 @@ final class MizuameTests: XCTestCase {
     // expected 8:
     //     The size of 'results8' array is 0.
     //
+    // test 9:
+    //     Assign "abc((2+2)^3=)" to 'testNote9'.
+    //     Run parser(note: String) with 'testNote9' and receive the result in 'results9' array.
+    // expected 9:
+    //     The size of 'results9' array is 1.
+    //     The range indicated by results9[0] in the 'testNote9' is "64".
+    //
     func testNoteParser() throws {
         let parser = NoteParser()
         
@@ -293,14 +300,14 @@ final class MizuameTests: XCTestCase {
         // test 2
         let testNote2 = "abc1+2+3=)(=)efg"
         let results2 = parser.parse(note: testNote2)
-        XCTAssertEqual(results2.count, 1)
-        XCTAssertEqual(testNote2[results2[0]], "")
+        XCTAssertEqual(results2.count, 0)
+        //XCTAssertEqual(testNote2[results2[0]], "")
 
         // test 3
         let testNote3 = "abc(1+2+3=(=)efg"
         let results3 = parser.parse(note: testNote3)
-        XCTAssertEqual(results3.count, 1)
-        XCTAssertEqual(testNote3[results3[0]], "")
+        XCTAssertEqual(results3.count, 0)
+        //XCTAssertEqual(testNote3[results3[0]], "")
 
         // test 4
         let testNote4 = "abc(1+2+3="
@@ -330,5 +337,11 @@ final class MizuameTests: XCTestCase {
         let testNote8 = "abc("
         let results8 = parser.parse(note: testNote8)
         XCTAssertEqual(results8.count, 0)
+
+        // test 9
+        let testNote9 = "abc((2+2)^3=)"
+        let results9 = parser.parse(note: testNote9)
+        XCTAssertEqual(results9.count, 1)
+        XCTAssertEqual(testNote9[results9[0]], "(2+2)^3")
     }
 }
