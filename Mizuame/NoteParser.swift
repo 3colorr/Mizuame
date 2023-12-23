@@ -54,12 +54,13 @@ class NoteParser {
                         
                         if matchedSubstring[equalIndex] == "=" {
                             // This is the formula.
-                            // Remove the index of '(' and ')'.
+                            // Therefore, we remove the index of '(' and ')' from it and add them to the reslut array.
                             let formulaHead = matchedSubstring.index(after: headIndex)
                             results.append(formulaHead..<equalIndex)
                             
                         } else {
-                            // Not the formula
+                            // This is probably not the formula.
+                            // Therefore, we remove it from search range.
                             headIndex = matchedSubstring.index(after: searchIndex)
                             while headIndex != matchedSubstring.endIndex && matchedSubstring[headIndex] != "(" {
                                 headIndex = matchedSubstring.index(after: headIndex)
