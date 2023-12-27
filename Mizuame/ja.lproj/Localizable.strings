@@ -52,7 +52,7 @@
 "settings.tab.help.attention.body" = "私は高機能なノートアプリではありません。なので、あなたの大切なデータは、他のもっと良いアプリに保存すべきです。";
 "settings.tab.help.note.title" = "ノートアクション";
 "settings.tab.help.note.greeting" = "既定では、すべての'ノートアクション'は無効になっています。もし必要な場合は、'一般タブ'から有効にできます。";
-"settings.tab.help.note.action.calculate.description" = "'('と'=)'で囲まれた数式を自動で計算します。\n例えば、もし'(1+2\\*3=)'と入力した場合、'7'が数式に挿入されて'(1+2\\*3= 7 )'と表示されます。";
+"settings.tab.help.note.action.calculate.description" = "'('と'=)'で囲まれた数式を自動で計算します。\n例えば'(1+2\\*3=)'と入力すると、'7'が自動計算されて'(1+2\\*3= 7 )'と表示されます。もし数式を'(1+2\\*10= 7 )'と変更したときは、'7'と前後の空白を削除して'(1+2\\*10=)'とすると、再び自動計算されます。";
 "settings.tab.help.menu.title" = "メニュー";
 "settings.tab.help.menu.power.description" = "アプリを終了します。";
 "settings.tab.help.menu.preference.description" = "設定画面を開きます。";
