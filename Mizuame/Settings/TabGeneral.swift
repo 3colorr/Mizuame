@@ -148,7 +148,7 @@ struct TabGeneral: View {
                         }
                         
                         Text("settings.tab.help.note.action.calculate.description")
-                            .font(.caption)
+                            .font(.subheadline)
                     }
                 }
             }
@@ -172,8 +172,8 @@ struct TabGeneral: View {
                 }
             }
         }
-        .frame(width: 450, height: 300)
-        .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
+        .frame(width: 400, height: 350)
+        .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
     }
 }
 
