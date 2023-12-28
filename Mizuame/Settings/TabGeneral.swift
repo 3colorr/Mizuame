@@ -166,6 +166,7 @@ struct TabGeneral: View {
                     self.isApplyBlackColorToFont = SettingKeys.StickyNote.NoteFontColor.Black().initialVale
                     self.isApplyDarkGrayColorToFont = SettingKeys.StickyNote.NoteFontColor.DarkGray().initialVale
                     self.isApplyGrayColorToFont = SettingKeys.StickyNote.NoteFontColor.Gray().initialVale
+                    self.isEnableCalculation = SettingKeys.StickyNote().initialCalculateAction
                 }) {
                     Text("settings.tab.general.reset.button.caption")
                         .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))
