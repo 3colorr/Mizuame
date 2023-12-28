@@ -10,7 +10,7 @@ import SwiftUI
 struct TabHelp: View {
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading, spacing: 20) {
                 VStack(alignment: .leading, spacing: 10) {
                     Text("settings.tab.help.greeting")
                         .bold()
@@ -77,7 +77,7 @@ struct TabHelp: View {
             }
             .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
         }
-        .frame(width: 400, height: 300)
+        .frame(width: 400, height: 500)
     }
 }
 
