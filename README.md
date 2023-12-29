@@ -55,7 +55,8 @@ What is NOT SO GOOD point about the Mizuame?
 - [x] You can change theme.
 - [x] Printing.
 - [x] Pin a note.
-- [ ] Calculation.(e.g. If you type "1+2=", "3" will be displayed.)
+- [x] Calculation.(e.g. If you type "(1+2=)", "(1+2= 3 )" will be displayed.)
+   - When automatically calculation is performed, the cursor position move to the end of the note. This is one of the issues with this app.
 
 something something.
 
