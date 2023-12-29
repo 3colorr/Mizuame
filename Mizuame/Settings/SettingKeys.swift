@@ -80,6 +80,31 @@ struct SettingKeys {
         
         let keyPinNote: String = "stickyNotePin"
         let initialPinNote: Bool = false
+
+        struct NoteFontColor {
+            struct Theme {
+                let key: String = "stickyNoteFontColorTheme"
+                let initialVale: Bool = true
+            }
+            struct Black {
+                let key: String = "stickyNoteFontColorBlack"
+                let initialVale: Bool = false
+                let ColorDefinition: String = "Note-Font-Color-Black"
+            }
+            struct DarkGray {
+                let key: String = "stickyNoteFontColorDarkGray"
+                let initialVale: Bool = false
+                let ColorDefinition: String = "Note-Font-Color-Dark-Gray"
+            }
+            struct Gray {
+                let key: String = "stickyNoteFontColorGray"
+                let initialVale: Bool = false
+                let ColorDefinition: String = "Note-Font-Color-Gray"
+            }
+        }
+
+        let keyCalculateAction: String = "stickyNoteCalculateAction"
+        let initialCalculateAction: Bool = false
     }
     
     struct ThemePalette {

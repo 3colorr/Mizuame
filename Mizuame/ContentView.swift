@@ -19,6 +19,8 @@ struct ContentView: View {
     @AppStorage(SettingKeys.StickyNote().keyPinNote) private var isPinNote: Bool = SettingKeys.StickyNote().initialPinNote
 
     @AppStorage(SettingKeys.Menubar().keySavingMessage) private var isShowSavingMessage: Bool = SettingKeys.Menubar().initialSavingMessage
+    
+    @AppStorage(SettingKeys.StickyNote().keyCalculateAction) private var isEnableCalculation: Bool = SettingKeys.StickyNote().initialCalculateAction
 
     @AppStorage(SettingKeys.StickyNote().keyWidth) private var width: Int = SettingKeys.StickyNote().initialWidth
     @AppStorage(SettingKeys.StickyNote().keyHeight) private var height: Int = SettingKeys.StickyNote().initialHeight
@@ -28,6 +30,14 @@ struct ContentView: View {
 
     @AppStorage(SettingKeys.StickyNoteColor().keyForeground) private var bodyForegroundTheme: String = SettingKeys.StickyNoteColor().initialForegroundTheme
     @AppStorage(SettingKeys.StickyNoteColor().keyBackground) private var bodyBackgroundTheme: String = SettingKeys.StickyNoteColor().initialBackgroundTheme
+    
+    @AppStorage(SettingKeys.StickyNote.NoteFontColor.Theme().key) private var isApplyThemeColorToFont: Bool = SettingKeys.StickyNote.NoteFontColor.Theme().initialVale
+
+    @AppStorage(SettingKeys.StickyNote.NoteFontColor.Black().key) private var isApplyBlackColorToFont: Bool = SettingKeys.StickyNote.NoteFontColor.Black().initialVale
+
+    @AppStorage(SettingKeys.StickyNote.NoteFontColor.DarkGray().key) private var isApplyDarkGrayColorToFont: Bool = SettingKeys.StickyNote.NoteFontColor.DarkGray().initialVale
+
+    @AppStorage(SettingKeys.StickyNote.NoteFontColor.Gray().key) private var isApplyGrayColorToFont: Bool = SettingKeys.StickyNote.NoteFontColor.Gray().initialVale
 
     @AppStorage(SettingKeys.FrameColor().keyTheme) private var frameTheme: String = SettingKeys.FrameColor().initialTheme
 
@@ -41,9 +51,10 @@ struct ContentView: View {
     @State private var isExecutableSave: Bool = true
 
     private let io: DataIO
+    private let redoUndoManager: RedoUndo
+
     private var data: StickyNote
     
-    private let redoUndoManager: RedoUndo
     
     init(delegate: AppDelegate) {
         self.delegate = delegate
@@ -188,12 +199,16 @@ struct ContentView: View {
                         .layoutPriority(1)
                         .font(.system(size: CGFloat(self.fontSize)))
                         .lineSpacing(CGFloat(self.lineSpacing))
-                        .foregroundColor(Color(bodyForegroundTheme))
+                        .foregroundColor(Color(foregroundColorName()))
                         .scrollContentBackground(.hidden)
                         .background(Color(bodyBackgroundTheme))
                         .onChange(of: stickyText) { val in
                             
                             _ = redoUndoManager.snapshot(of: val)
+                            
+                            if isEnableCalculation {
+                                stickyText = calculateFormulaIn(val)
+                            }
                             
                             if isExecutableSave {
                                 Task {
@@ -254,6 +269,56 @@ struct ContentView: View {
         } else {
             delegate.disablePinning()
         }
+    }
+    
+    private func foregroundColorName() -> String {
+        if isApplyThemeColorToFont {
+            return bodyForegroundTheme
+            
+        } else if isApplyBlackColorToFont {
+            return SettingKeys.StickyNote.NoteFontColor.Black().key
+
+        } else if isApplyDarkGrayColorToFont {
+            return SettingKeys.StickyNote.NoteFontColor.DarkGray().key
+
+        } else if isApplyGrayColorToFont {
+            return SettingKeys.StickyNote.NoteFontColor.Gray().key
+            
+        } else {
+            return bodyForegroundTheme
+        }
+    }
+    
+    private func calculateFormulaIn(_ val: String) -> String {
+        
+        let calculater = CalculateModel()
+        let parser = NoteParser()
+        
+        var calculated: String = val
+        
+        for formulaRange in parser.parse(note: calculated) {
+
+            if let result = calculater.result(formula: String(calculated[formulaRange])) {
+                
+                // A splitedIndex is index of formula end.
+                // If the note is "abc(1+2=)", the splitedIndex is between "=" and ")".
+                let splitIndex = calculated.index(formulaRange.upperBound, offsetBy: 1)
+
+                calculated = "\(String(calculated[calculated.startIndex..<splitIndex])) \(result) \(String(calculated[splitIndex..<calculated.endIndex]))"
+                
+                // *Information
+                //
+                // SwiftUI TextEditor doesn't support AttributedStrings.
+                // So, Cannot change background color of formula part in the note.
+                //
+                // var attributedVal = AttributedString(val)
+                // if let applyRange = attributedVal.range(of: String(val[formulaRange])) {
+                //     attributedVal[applyRange].backgroundColor = .gray
+                // }
+            }
+        }
+        
+        return calculated
     }
 }
 

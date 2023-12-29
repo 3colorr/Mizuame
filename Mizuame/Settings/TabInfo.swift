@@ -30,7 +30,7 @@ struct TabInfo: View {
                 }
                 
                 VStack(alignment: .leading, spacing: 5) {
-                    Text("Version: 1.1.3").font(.body)
+                    Text("Version: 1.2.0").font(.body)
                     Text("License: MIT license").font(.body)
                     HStack {
                         Text("settings.tab.info.src").font(.body)
@@ -46,7 +46,7 @@ struct TabInfo: View {
                     Text("settings.tab.info.autor").font(.body)
                     Text("Email: 3colorr@gmail.com").font(.body)
                     HStack {
-                        Text("Twitter:")
+                        Text("X(Twitter):")
                         if let url = URL(string: twUrl) {
                             Link(twUrl, destination: url)
                         } else {

@@ -10,7 +10,7 @@ import SwiftUI
 struct TabHelp: View {
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading, spacing: 20) {
                 VStack(alignment: .leading, spacing: 10) {
                     Text("settings.tab.help.greeting")
                         .bold()
@@ -21,46 +21,63 @@ struct TabHelp: View {
                         .bold()
                     
                     Text("settings.tab.help.attention.body")
-                    
+                }
+
+                VStack(alignment: .leading, spacing: 10) {
                     Text("settings.tab.help.menu.title")
                         .bold()
-                }
-                
-                HStack {
-                    Image(systemName: "power")
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
-                    Text("settings.tab.help.menu.power.description")
+                    
+                    HStack {
+                        Image(systemName: "power")
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
+                        Text("settings.tab.help.menu.power.description")
+                    }
+                    
+                    HStack {
+                        Image(systemName: "gearshape.fill")
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
+                        Text("settings.tab.help.menu.preference.description")
+                    }
+                    
+                    HStack {
+                        Image(systemName: "pin")
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
+                        Text("settings.tab.help.menu.pin.description")
+                    }
+                    
+                    HStack {
+                        Image(systemName: "eraser")
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
+                        Text("settings.tab.help.menu.eraser.description")
+                    }
+                    
+                    HStack {
+                        Image(systemName: "printer")
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
+                        Text("settings.tab.help.menu.printer.description")
+                    }
                 }
 
-                HStack {
-                    Image(systemName: "gearshape.fill")
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
-                    Text("settings.tab.help.menu.preference.description")
-                }
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("settings.tab.help.note.title")
+                        .bold()
 
-                HStack {
-                    Image(systemName: "pin")
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
-                    Text("settings.tab.help.menu.pin.description")
-                }
+                    Text("settings.tab.help.note.greeting")
 
-                HStack {
-                    Image(systemName: "eraser")
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
-                    Text("settings.tab.help.menu.eraser.description")
-                }
-
-                HStack {
-                    Image(systemName: "printer")
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
-                    Text("settings.tab.help.menu.printer.description")
+                    HStack {
+                        Image(systemName: "function")
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
+                            .bold()
+                        
+                        Text("settings.tab.help.note.action.calculate.description")
+                    }
                 }
 
                 Spacer()
             }
             .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
         }
-        .frame(width: 400, height: 300)
+        .frame(width: 400, height: 500)
     }
 }
 

@@ -50,6 +50,9 @@
 "settings.tab.help.introduce" = "I'm Mizuame, a note app that sits in your Mac's menu bar. My favorite place is application folder. Someday I would like to go to Antarctica and have hot tomato soup.";
 "settings.tab.help.attention.title" = "Attention";
 "settings.tab.help.attention.body" = "I'm NOT a high performance note app so that you should use other better apps to save your important data.";
+"settings.tab.help.note.title" = "Note Action";
+"settings.tab.help.note.greeting" = "By Default, all 'Note Action' is disabled. If you want to use it, you need to enable it in the 'General tab'.";
+"settings.tab.help.note.action.calculate.description" = "Automatically calculate a formula between '(' and '=)'. \nFor example, If you type '(1+2\\*3=)', it will automatically calculated `7` and displayed as '(1+2\\*3= 7 )'. If you change the formula to `(1+2\\*10= 7 )`, it will be recalculated automatically when you delete `7` and the spaces before and after, making it `(1+2\\*10=)`'";
 "settings.tab.help.menu.title" = "Menu";
 "settings.tab.help.menu.power.description" = "Quit the app.";
 "settings.tab.help.menu.preference.description" = "Open preference window.";
@@ -76,14 +79,20 @@
 "settings.tab.info.termsofservice.button.caption" = "Terms Of Service";
 "settings.tab.info.privacypolicy.button.caption" = "Privacy Policy";
 
-"settings.tab.general.menubar" = "Menu bar:";
-"settings.tab.general.menubar.saving" = "Display a saving message";
-"settings.tab.general.note" = "Note";
-"settings.tab.general.note.pin" = "Pinning the note to the front";
+"settings.tab.general.note.title" = "Note:";
+"settings.tab.general.note.menubar.saving" = "Display a saving message";
+"settings.tab.general.note.note.pin" = "Pinning the note to the front";
+"settings.tab.general.font.color.title" = "Font Color:";
+"settings.tab.general.font.color.choice.theme" = "Theme";
+"settings.tab.general.font.color.choice.black" = "Black";
+"settings.tab.general.font.color.choice.darkgray" = "Dark Gray";
+"settings.tab.general.font.color.choice.gray" = "Gray";
+"settings.tab.general.action.title" = "Note Action";
+"settings.tab.general.action.calculate" = "Automatically calculate a formula";
 "settings.tab.general.reset.title" = "Reset:";
 "settings.tab.general.reset.button.caption" = "Reset general settings to initial value";
 
-"settings.tab.print.greeting" = "Print Settings";
+"settings.tab.print.greeting" = "Print Settings:\nThe following items should be set before printing.";
 "settings.tab.print.margin" = "Margin:";
 "settings.tab.print.margin.top" = "Top:";
 "settings.tab.print.margin.bottom" = "Bottom:";
@@ -94,10 +103,11 @@
 "settings.tab.print.margin.image.left" = "Left";
 "settings.tab.print.margin.image.right" = "Right";
 
-"settings.tab.print.scaling" = "Scaling:";
+"settings.tab.print.scaling" = "Scaling(%):";
 
-"settings.tab.print.centered.vertical" = "Vertically centered";
-"settings.tab.print.centered.horizontal" = "Horizontally centered";
+"settings.tab.print.centered.title" = "Centered:";
+"settings.tab.print.centered.vertical" = "Vertically";
+"settings.tab.print.centered.horizontal" = "Horizontally";
 
 "settings.tab.print.reset.title" = "Reset:";
 "settings.tab.print.reset.button.caption" = "Reset print settings to initial value";
