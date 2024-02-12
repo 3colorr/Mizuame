@@ -89,6 +89,8 @@
 "settings.tab.general.font.color.choice.gray" = "ふつうのグレー";
 "settings.tab.general.action.title" = "ノートアクション:";
 "settings.tab.general.action.calculate" = "数式を自動で計算する";
+"settings.tab.general.action.calculate.rounding" = "小数点以下の桁数:";
+"settings.tab.general.action.calculate.rounding.digit.all" = "すべて";
 "settings.tab.general.reset.title" = "リセット:";
 "settings.tab.general.reset.button.caption" = "一般設定をリセットします";
 
