@@ -191,6 +191,7 @@ struct TabGeneral: View {
                         .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))
                 }
             }
+            .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
         }
         .frame(width: 400, height: 350)
         .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
