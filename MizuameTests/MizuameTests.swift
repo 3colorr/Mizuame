@@ -187,8 +187,20 @@ final class MizuameTests: XCTestCase {
     // expected 8:
     //     Returns nil.
     //
+    // test 9:
+    //     Rounding test.
+    //     9-1: Run result(formula: String) with "1/3" and rounds to 4 decimal placed.
+    //     9-2: Run result(formula: String) with "1/3" and rounds to 2 decimal placed.
+    //     9-3: Run result(formula: String) with "1/3" and rounds to 1 decimal placed.
+    //     9-4: Run result(formula: String) with "0.1234567+0.1" and no rounds.
+    // expected 9:
+    //     9-1: Returns 0.333.
+    //     9-2: Returns 0.3.
+    //     9-3: Returns 0.
+    //     9-4: Returns 0.2234567.
+    //
     func testCalculateModel() throws {
-        let model = CalculateModel()
+        let model = CalculateModel(digitAfterDecimalPoint: 3)
 
         // test 1
         XCTAssertEqual(model.result(formula: "1+2+3+4+5"), 15)
@@ -218,6 +230,23 @@ final class MizuameTests: XCTestCase {
 
         // test 8
         XCTAssertNil(model.result(formula: "0.2*0.02^100"))
+
+        // test 9
+        // 9-1
+        let model9_1 = CalculateModel(digitAfterDecimalPoint: 3)
+        XCTAssertEqual(model9_1.result(formula: "1/3"), 0.333)
+        
+        // 9-2
+        let model9_2 = CalculateModel(digitAfterDecimalPoint: 1)
+        XCTAssertEqual(model9_2.result(formula: "1/3"), 0.3)
+
+        // 9-3
+        let model9_3 = CalculateModel(digitAfterDecimalPoint: 0)
+        XCTAssertEqual(model9_3.result(formula: "1/3"), 0)
+
+        // 9-4
+        let model9_4 = CalculateModel(digitAfterDecimalPoint: -1)
+        XCTAssertEqual(model9_4.result(formula: "0.1234567+0.1"), 0.2234567)
     }
     
     // Test NoteParser class.

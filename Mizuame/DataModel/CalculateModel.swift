@@ -9,6 +9,8 @@ import Foundation
 
 class CalculateModel {
     
+    private let digitAfterDecimalPoint: Int
+    
     private struct token {
         let value: String
         let priority: Int
@@ -24,6 +26,10 @@ class CalculateModel {
             
             return nil
         }
+    }
+    
+    init(digitAfterDecimalPoint: Int) {
+        self.digitAfterDecimalPoint = digitAfterDecimalPoint
     }
     
     // The result function return result of calculate function.
@@ -290,9 +296,30 @@ class CalculateModel {
         
         // The calculation is correct when the stack has only one element.
         if operatorStack.count == 1 {
-            return operatorStack.last
+            return roundsDecimalPoint(of: operatorStack.last)
         }
         
         return nil
+    }
+    
+    // Rounds the decimal point to the number of digits specified by the user.
+    // (e.g.)
+    // If "results" is 1.2345 and "digitAfterDecimalPoint" is 3, it will return "1.235".
+    // If "digitAfterDecimalPoint" is negative value, no rounding.
+    private func roundsDecimalPoint(of results: Decimal?) -> Decimal? {
+        
+        if let num = results {
+            if digitAfterDecimalPoint < 0 {
+                return num
+            } else {
+                let n: NSDecimalNumber = NSDecimalNumber(decimal: num)
+                let handler = NSDecimalNumberHandler(roundingMode: .plain, scale: Int16(digitAfterDecimalPoint), raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
+                
+                return n.rounding(accordingToBehavior: handler) as Decimal
+            }
+            
+        } else {
+            return nil
+        }
     }
 }

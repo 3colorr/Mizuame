@@ -25,6 +25,8 @@ struct TabGeneral: View {
     @AppStorage(SettingKeys.StickyNote.NoteFontColor.Gray().key) private var isApplyGrayColorToFont: Bool = SettingKeys.StickyNote.NoteFontColor.Gray().initialVale
 
     @AppStorage(SettingKeys.StickyNote().keyCalculateAction) private var isEnableCalculation: Bool = SettingKeys.StickyNote().initialCalculateAction
+    
+    @AppStorage(SettingKeys.StickyNote().keyPositionOfRoundsDecimalPoint) private var positionOfRoundsDecimalPoint: Int = SettingKeys.StickyNote().initialPositionOfRoundsDecimalPoint
 
     var body: some View {
         VStack(alignment: .center) {
@@ -149,6 +151,22 @@ struct TabGeneral: View {
                         
                         Text("settings.tab.help.note.action.calculate.description")
                             .font(.subheadline)
+                        
+                        VStack(alignment: .leading) {
+                            Text("settings.tab.general.action.calculate.rounding")
+                            
+                            Picker("", selection: $positionOfRoundsDecimalPoint) {
+                                ForEach(-1..<10, id: \.self) { p in
+                                    if p < 0 {
+                                        Text("settings.tab.general.action.calculate.rounding.digit.all")
+                                    } else {
+                                        Text("\(p)")
+                                    }
+                                }
+                            }
+                            .frame(width: 80)
+                        }
+                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                     }
                 }
             }
@@ -167,11 +185,13 @@ struct TabGeneral: View {
                     self.isApplyDarkGrayColorToFont = SettingKeys.StickyNote.NoteFontColor.DarkGray().initialVale
                     self.isApplyGrayColorToFont = SettingKeys.StickyNote.NoteFontColor.Gray().initialVale
                     self.isEnableCalculation = SettingKeys.StickyNote().initialCalculateAction
+                    self.positionOfRoundsDecimalPoint = SettingKeys.StickyNote().initialPositionOfRoundsDecimalPoint
                 }) {
                     Text("settings.tab.general.reset.button.caption")
                         .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))
                 }
             }
+            .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
         }
         .frame(width: 400, height: 350)
         .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))

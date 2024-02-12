@@ -89,6 +89,8 @@
 "settings.tab.general.font.color.choice.gray" = "Gray";
 "settings.tab.general.action.title" = "Note Action";
 "settings.tab.general.action.calculate" = "Automatically calculate a formula";
+"settings.tab.general.action.calculate.rounding" = "Number of digits after decimal point:";
+"settings.tab.general.action.calculate.rounding.digit.all" = "All";
 "settings.tab.general.reset.title" = "Reset:";
 "settings.tab.general.reset.button.caption" = "Reset general settings to initial value";
 
