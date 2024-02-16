@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ServiceManagement
 import StoreKit
 
 struct TabGeneral: View {
@@ -15,6 +16,8 @@ struct TabGeneral: View {
     @AppStorage(SettingKeys.Menubar().keySavingMessage) private var isShowSavingMessage: Bool = SettingKeys.Menubar().initialSavingMessage
 
     @AppStorage(SettingKeys.StickyNote().keyPinNote) private var isPinNote: Bool = SettingKeys.StickyNote().initialPinNote
+
+    @AppStorage(SettingKeys.StickyNote().keyLoginItems) private var isEnableLoginItems: Bool = SettingKeys.StickyNote().initialLoginItems
 
     @AppStorage(SettingKeys.StickyNote.NoteFontColor.Theme().key) private var isApplyThemeColorToFont: Bool = SettingKeys.StickyNote.NoteFontColor.Theme().initialVale
 
@@ -48,6 +51,28 @@ struct TabGeneral: View {
                                 delegate.enablePinning()
                             } else {
                                 delegate.disablePinning()
+                            }
+                        }
+
+                        Toggle(isOn: $isEnableLoginItems) {
+                            Text("settings.tab.general.note.note.loginitems")
+                            Text("settings.tab.general.note.note.loginitems.description")
+                                .font(.subheadline)
+                        }
+                        .onChange(of: isEnableLoginItems) { isEnable in
+                            if isEnable {
+                                do {
+                                    try SMAppService.mainApp.register()
+                                } catch {
+                                    print(error.localizedDescription)
+                                }
+                            } else {
+                                SMAppService.mainApp.unregister(completionHandler: { error in
+                                    // if "err" is nil, the app is successfully unregistered from login items.
+                                    if let err = error {
+                                        print(err.localizedDescription)
+                                    }
+                                })
                             }
                         }
                     }
