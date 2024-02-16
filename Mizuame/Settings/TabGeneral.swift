@@ -7,7 +7,6 @@
 
 import SwiftUI
 import ServiceManagement
-import StoreKit
 
 struct TabGeneral: View {
     
