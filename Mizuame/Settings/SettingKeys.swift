@@ -81,6 +81,9 @@ struct SettingKeys {
         let keyPinNote: String = "stickyNotePin"
         let initialPinNote: Bool = false
 
+        let keyLoginItems: String = "stickyNoteLoginItems"
+        let initialLoginItems: Bool = false
+
         struct NoteFontColor {
             struct Theme {
                 let key: String = "stickyNoteFontColorTheme"
@@ -105,6 +108,9 @@ struct SettingKeys {
 
         let keyCalculateAction: String = "stickyNoteCalculateAction"
         let initialCalculateAction: Bool = false
+        
+        let keyPositionOfRoundsDecimalPoint: String = "stickyNotePositionOfRoundsDecimalPoint"
+        let initialPositionOfRoundsDecimalPoint: Int = 3
     }
     
     struct ThemePalette {

@@ -21,6 +21,8 @@ struct ContentView: View {
     @AppStorage(SettingKeys.Menubar().keySavingMessage) private var isShowSavingMessage: Bool = SettingKeys.Menubar().initialSavingMessage
     
     @AppStorage(SettingKeys.StickyNote().keyCalculateAction) private var isEnableCalculation: Bool = SettingKeys.StickyNote().initialCalculateAction
+    
+    @AppStorage(SettingKeys.StickyNote().keyPositionOfRoundsDecimalPoint) private var positionOfRoundsDecimalPoint: Int = SettingKeys.StickyNote().initialPositionOfRoundsDecimalPoint
 
     @AppStorage(SettingKeys.StickyNote().keyWidth) private var width: Int = SettingKeys.StickyNote().initialWidth
     @AppStorage(SettingKeys.StickyNote().keyHeight) private var height: Int = SettingKeys.StickyNote().initialHeight
@@ -193,38 +195,72 @@ struct ContentView: View {
                                 userActionDispatcher()
                             }
                     }
-                    
-                    TextEditor(text: $stickyText)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .layoutPriority(1)
-                        .font(.system(size: CGFloat(self.fontSize)))
-                        .lineSpacing(CGFloat(self.lineSpacing))
-                        .foregroundColor(Color(foregroundColorName()))
-                        .scrollContentBackground(.hidden)
-                        .background(Color(bodyBackgroundTheme))
-                        .onChange(of: stickyText) { val in
-                            
-                            _ = redoUndoManager.snapshot(of: val)
-                            
-                            if isEnableCalculation {
-                                stickyText = calculateFormulaIn(val)
-                            }
-                            
-                            if isExecutableSave {
-                                Task {
-                                    do {
-                                        isExecutableSave = false
-                                        try await Task.sleep(nanoseconds: 15 * 100000000)
-                                        saveData()
-                                        
-                                    } catch {
-                                        print("Fatal error: Failed to save JSON data.")
-                                        userAction = .DO_NOT_SAVE_JSON
-                                        isShowMessagebar = true
+
+                    if #available(macOS 14, *) {
+                        TextEditor(text: $stickyText)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .layoutPriority(1)
+                            .font(.system(size: CGFloat(self.fontSize)))
+                            .lineSpacing(CGFloat(self.lineSpacing))
+                            .foregroundColor(Color(foregroundColorName()))
+                            .scrollContentBackground(.hidden)
+                            .background(Color(bodyBackgroundTheme))
+                            .onChange(of: stickyText) { oldVal, newVal in
+                                
+                                _ = redoUndoManager.snapshot(of: newVal)
+                                
+                                if isEnableCalculation {
+                                    stickyText = calculateFormulaIn(newVal)
+                                }
+                                
+                                if isExecutableSave {
+                                    Task {
+                                        do {
+                                            isExecutableSave = false
+                                            try await Task.sleep(nanoseconds: 15 * 100000000)
+                                            saveData()
+                                            
+                                        } catch {
+                                            print("Fatal error: Failed to save JSON data.")
+                                            userAction = .DO_NOT_SAVE_JSON
+                                            isShowMessagebar = true
+                                        }
                                     }
                                 }
                             }
-                        }
+                    } else {
+                        TextEditor(text: $stickyText)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .layoutPriority(1)
+                            .font(.system(size: CGFloat(self.fontSize)))
+                            .lineSpacing(CGFloat(self.lineSpacing))
+                            .foregroundColor(Color(foregroundColorName()))
+                            .scrollContentBackground(.hidden)
+                            .background(Color(bodyBackgroundTheme))
+                            .onChange(of: stickyText) { val in
+                                
+                                _ = redoUndoManager.snapshot(of: val)
+                                
+                                if isEnableCalculation {
+                                    stickyText = calculateFormulaIn(val)
+                                }
+                                
+                                if isExecutableSave {
+                                    Task {
+                                        do {
+                                            isExecutableSave = false
+                                            try await Task.sleep(nanoseconds: 15 * 100000000)
+                                            saveData()
+                                            
+                                        } catch {
+                                            print("Fatal error: Failed to save JSON data.")
+                                            userAction = .DO_NOT_SAVE_JSON
+                                            isShowMessagebar = true
+                                        }
+                                    }
+                                }
+                            }
+                    }
                 }
             }
             .frame(width: CGFloat(self.width), height: CGFloat(self.height))
@@ -291,7 +327,7 @@ struct ContentView: View {
     
     private func calculateFormulaIn(_ val: String) -> String {
         
-        let calculater = CalculateModel()
+        let calculater = CalculateModel(digitAfterDecimalPoint: positionOfRoundsDecimalPoint)
         let parser = NoteParser()
         
         var calculated: String = val

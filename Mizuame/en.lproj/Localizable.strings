@@ -82,6 +82,8 @@
 "settings.tab.general.note.title" = "Note:";
 "settings.tab.general.note.menubar.saving" = "Display a saving message";
 "settings.tab.general.note.note.pin" = "Pinning the note to the front";
+"settings.tab.general.note.note.loginitems" = "Add to \"Login Items\"";
+"settings.tab.general.note.note.loginitems.description" = "Mizuame will start when you login.";
 "settings.tab.general.font.color.title" = "Font Color:";
 "settings.tab.general.font.color.choice.theme" = "Theme";
 "settings.tab.general.font.color.choice.black" = "Black";
@@ -89,6 +91,8 @@
 "settings.tab.general.font.color.choice.gray" = "Gray";
 "settings.tab.general.action.title" = "Note Action";
 "settings.tab.general.action.calculate" = "Automatically calculate a formula";
+"settings.tab.general.action.calculate.rounding" = "Number of digits after decimal point:";
+"settings.tab.general.action.calculate.rounding.digit.all" = "All";
 "settings.tab.general.reset.title" = "Reset:";
 "settings.tab.general.reset.button.caption" = "Reset general settings to initial value";
 
