@@ -170,9 +170,8 @@ struct ContentView: View {
                             .onHover { _ in
                                 isShowMessagebar = false
                                 userAction = .NONE
+                                NSApp.activate(ignoringOtherApps: true)
                             }
-                            // Not work.
-                            // .onTapGesture {}
 
                         } else {
                             Button(action: {
