@@ -98,6 +98,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
             }
 
             popover.contentViewController?.view.window?.makeKey()
+            
+            if #available(macOS 14, *) {
+                NSApp.activate(ignoringOtherApps: true)
+            }
         }
     }
     
