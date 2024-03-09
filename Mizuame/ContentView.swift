@@ -171,8 +171,6 @@ struct ContentView: View {
                                 isShowMessagebar = false
                                 userAction = .NONE
                             }
-                            // Not work.
-                            // .onTapGesture {}
 
                         } else {
                             Button(action: {
