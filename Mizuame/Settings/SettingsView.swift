@@ -19,41 +19,82 @@ struct SettingsView: View {
             Color("SettingsBackground")
             
             if #available(macOS 14, *) {
-                TabView(selection: $selectedTab) {
-                    TabGeneral()
-                        .tag(TabType.general)
-                        .tabItem {
-                            Label(LocalizedStringKey("settings.tab.system.name.1"), systemImage: "gearshape")
-                        }
-                    TabStickyNote()
-                        .tag(TabType.note)
-                        .tabItem {
-                            Label(LocalizedStringKey("settings.tab.system.name.2"), systemImage: "macwindow")
-                        }
-                    TabPrint()
-                        .tag(TabType.print)
-                        .tabItem{
-                            Label(LocalizedStringKey("settings.tab.system.name.5"), systemImage: "printer")
-                        }
-                    TabHelp()
-                        .tag(TabType.help)
-                        .tabItem {
-                            Label(LocalizedStringKey("settings.tab.system.name.3"), systemImage: "questionmark.circle")
-                        }
-                    TabInfo()
-                        .tag(TabType.info)
-                        .tabItem {
-                            Label(LocalizedStringKey("settings.tab.system.name.4"), systemImage: "info.square")
-                        }
-                }
-                .onChange(of: selectedTab) {
-                    w = selectedTab.frameSize.width
-                    h = selectedTab.frameSize.height
-                }
+                MainTabViewMacOS14orNewer()
+            } else {
+                MainTabView()
             }
         }
         .frame(width: w, height: h)
         .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+    }
+    
+    @available(macOS 14, *)
+    private func MainTabViewMacOS14orNewer() -> some View {
+        TabView(selection: $selectedTab) {
+            TabGeneral()
+                .tag(TabType.general)
+                .tabItem {
+                    Label(LocalizedStringKey("settings.tab.system.name.1"), systemImage: "gearshape")
+                }
+            TabStickyNote()
+                .tag(TabType.note)
+                .tabItem {
+                    Label(LocalizedStringKey("settings.tab.system.name.2"), systemImage: "macwindow")
+                }
+            TabPrint()
+                .tag(TabType.print)
+                .tabItem{
+                    Label(LocalizedStringKey("settings.tab.system.name.5"), systemImage: "printer")
+                }
+            TabHelp()
+                .tag(TabType.help)
+                .tabItem {
+                    Label(LocalizedStringKey("settings.tab.system.name.3"), systemImage: "questionmark.circle")
+                }
+            TabInfo()
+                .tag(TabType.info)
+                .tabItem {
+                    Label(LocalizedStringKey("settings.tab.system.name.4"), systemImage: "info.square")
+                }
+        }
+        .onChange(of: selectedTab) {
+            w = selectedTab.frameSize.width
+            h = selectedTab.frameSize.height
+        }
+    }
+    
+    private func MainTabView() -> some View {
+        TabView(selection: $selectedTab) {
+            TabGeneral()
+                .tag(TabType.general)
+                .tabItem {
+                    Label(LocalizedStringKey("settings.tab.system.name.1"), systemImage: "gearshape")
+                }
+            TabStickyNote()
+                .tag(TabType.note)
+                .tabItem {
+                    Label(LocalizedStringKey("settings.tab.system.name.2"), systemImage: "macwindow")
+                }
+            TabPrint()
+                .tag(TabType.print)
+                .tabItem{
+                    Label(LocalizedStringKey("settings.tab.system.name.5"), systemImage: "printer")
+                }
+            TabHelp()
+                .tag(TabType.help)
+                .tabItem {
+                    Label(LocalizedStringKey("settings.tab.system.name.3"), systemImage: "questionmark.circle")
+                }
+            TabInfo()
+                .tag(TabType.info)
+                .tabItem {
+                    Label(LocalizedStringKey("settings.tab.system.name.4"), systemImage: "info.square")
+                }
+        }
+        .onChange(of: selectedTab) { selected in
+            w = selected.frameSize.width
+            h = selected.frameSize.height
+        }
     }
 }
 
