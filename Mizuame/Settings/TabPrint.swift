@@ -181,8 +181,6 @@ struct TabPrint: View {
                 }
             }
         }
-        .frame(width: 400, height: 500)
-        .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
     }
 }
 

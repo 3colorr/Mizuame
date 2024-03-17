@@ -134,7 +134,6 @@ struct TabStickyNote: View {
             }
             .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 20))
         }
-        .frame(width: 400, height: 500)
     }
 }
 
