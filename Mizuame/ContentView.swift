@@ -51,6 +51,8 @@ struct ContentView: View {
     @State private var userAction: MessagebarEnum = .NONE
     
     @State private var isExecutableSave: Bool = true
+    
+    @GestureState private var dragState: CGSize = .zero
 
     private let io: DataIO
     private let redoUndoManager: RedoUndo
@@ -82,7 +84,7 @@ struct ContentView: View {
             PrivacyPolicyView(state: $viewState)
             
         default:
-            ZStack {
+            ZStack(alignment: .bottomTrailing) {
                 Color(frameTheme)
                 
                 VStack(spacing: 0) {
@@ -259,9 +261,59 @@ struct ContentView: View {
                                 }
                             }
                     }
+                    
+                    HStack {
+                        Spacer()
+                            .layoutPriority(1)
+
+                        Image(systemName: "arrow.up.left.arrow.down.right")
+                            .foregroundColor(Color(bodyForegroundTheme))
+                            .bold()
+                            .onHover { isHover in
+                                if isHover {
+                                    NSCursor.closedHand.push()
+                                } else {
+                                    NSCursor.pop()
+                                }
+                            }
+                            .gesture(
+                                DragGesture(minimumDistance: 1)
+                                    .updating($dragState) { gestureValue, gestureState, gestureTransaction in
+                                        
+                                        var updateWidth: CGFloat = gestureValue.translation.width
+                                        var updateHeight: CGFloat = gestureValue.translation.height
+                                        
+                                        let dragWidth: Int = self.width + Int(updateWidth)
+                                        let dragHeight: Int = self.height + Int(updateHeight)
+                                        
+                                        if dragWidth > SettingKeys.StickyNote().maxWidth.intValue {
+                                            updateWidth = CGFloat(SettingKeys.StickyNote().maxWidth.intValue)
+                                        }
+                                        
+                                        if dragWidth < SettingKeys.StickyNote().minWidth.intValue {
+                                            updateWidth = CGFloat(SettingKeys.StickyNote().minWidth.intValue)
+                                        }
+                                        
+                                        if dragHeight > SettingKeys.StickyNote().maxHeight.intValue {
+                                            updateHeight = CGFloat(SettingKeys.StickyNote().maxHeight.intValue)
+                                        }
+                                        
+                                        if dragHeight < SettingKeys.StickyNote().minHeight.intValue {
+                                            updateHeight = CGFloat(SettingKeys.StickyNote().minHeight.intValue)
+                                        }
+                                        
+                                        gestureState = CGSize(width: updateWidth, height: updateHeight)
+                                    }
+                                    .onEnded { endedState in
+                                        self.width += Int(endedState.translation.width)
+                                        self.height += Int(endedState.translation.height)
+                                    }
+                            )
+                    }
+                    .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 5))
                 }
             }
-            .frame(width: CGFloat(self.width), height: CGFloat(self.height))
+            .frame(width: CGFloat(self.width) + dragState.width, height: CGFloat(self.height) + dragState.height)
         }
     }
     
