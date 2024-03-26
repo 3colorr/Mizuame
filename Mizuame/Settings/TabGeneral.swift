@@ -59,8 +59,8 @@ struct TabGeneral: View {
                             Toggle(isOn: $isDragToResize) {
                                 Text("settings.tab.general.note.footer.resize.note")
                             }
-                            .disabled(!isShowFooter)
                         }
+                        .disabled(!isShowFooter)
                         .padding(EdgeInsets(top: 5, leading: 20, bottom: 10, trailing: 0))
 
                         Toggle(isOn: $isShowSavingMessage) {
