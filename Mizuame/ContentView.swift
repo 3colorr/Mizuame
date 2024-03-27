@@ -74,7 +74,7 @@ struct ContentView: View {
             self.data = StickyNote(tab: 1, contents: [Content(markercolor: "000000", body: "")])
         }
         
-        //_stickyText = State(initialValue: self.data.contents[0].body)
+        _stickyText = State(initialValue: self.data.contents[0].body)
         
         redoUndoManager = RedoUndo(initialNote: self.data.contents[0].body)
     }

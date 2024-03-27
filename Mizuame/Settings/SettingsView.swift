@@ -9,8 +9,8 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @State private var w: CGFloat = 400
-    @State private var h: CGFloat = 350
+    @State private var w: CGFloat = TabType.general.frameSize.width
+    @State private var h: CGFloat = TabType.general.frameSize.height
 
     @State private var selectedTab: TabType = .general
     
@@ -109,7 +109,7 @@ extension SettingsView {
         var frameSize: (width: CGFloat, height: CGFloat) {
             switch self {
             case .general:
-                return (400, 350)
+                return (400, 520)
             case .note:
                 return (400, 500)
             case .print:
