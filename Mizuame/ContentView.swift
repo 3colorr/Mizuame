@@ -24,6 +24,10 @@ struct ContentView: View {
     
     @AppStorage(SettingKeys.StickyNote().keyPositionOfRoundsDecimalPoint) private var positionOfRoundsDecimalPoint: Int = SettingKeys.StickyNote().initialPositionOfRoundsDecimalPoint
 
+    @AppStorage(SettingKeys.StickyNote().keyShowFooter) private var isShowFooter: Bool = SettingKeys.StickyNote().initialShowFooter
+
+    @AppStorage(SettingKeys.StickyNote().keyDragToResize) private var isDragToResize: Bool = SettingKeys.StickyNote().initialDragToResize
+
     @AppStorage(SettingKeys.StickyNote().keyWidth) private var width: Int = SettingKeys.StickyNote().initialWidth
     @AppStorage(SettingKeys.StickyNote().keyHeight) private var height: Int = SettingKeys.StickyNote().initialHeight
     
@@ -88,233 +92,253 @@ struct ContentView: View {
                 Color(frameTheme)
                 
                 VStack(spacing: 0) {
-                    HStack {
-                        Image(systemName: "power")
-                            .foregroundColor(Color.red)
-                            .onTapGesture {
-                                userAction = .QUIT
-                                isShowMessagebar.toggle()
-                                
-                                if !isShowMessagebar {
-                                    userAction = .NONE
-                                }
-                            }
-                        
-                        if isShowSavingMessage && !isExecutableSave {
-                            Text("sitickynote.menu.message.saving")
-                                .padding(.horizontal, 5)
-                                .layoutPriority(2)
-                        }
-                        
-                        Spacer()
-                            .layoutPriority(1)
-                        
-                        Button(action: {
-                            stickyText = redoUndoManager.undo()
-                        }, label: {
-                            Image(systemName: "return.left")
-                        })
-                        .hidden()
-                        .keyboardShortcut("z", modifiers: [.command])
-                        
-                        Button(action: {
-                            stickyText = redoUndoManager.redo()
-                        }, label: {
-                            Image(systemName: "return.right")
-                        })
-                        .hidden()
-                        .keyboardShortcut("y", modifiers: [.command])
-
-                        if isPinNote {
-                            Image(systemName: "pin")
-                                .foregroundColor(Color.red)
-                                .onTapGesture {
-                                    togglePinningNote()
-                                }
-                        } else {
-                            Image(systemName: "pin.slash")
-                                .foregroundColor(Color(bodyForegroundTheme))
-                                .onTapGesture {
-                                    togglePinningNote()
-                                }
-                        }
-
-                        Image(systemName: "eraser")
-                            .foregroundColor(Color(bodyForegroundTheme))
-                            .onTapGesture {
-                                userAction = .ALL_DELETE
-                                isShowMessagebar.toggle()
-                                
-                                if !isShowMessagebar {
-                                    userAction = .NONE
-                                }
-                            }
-
-                        Image(systemName: "printer")
-                            .foregroundColor(Color(bodyForegroundTheme))
-                            .onTapGesture {
-                                isShowMessagebar = false
-                                userAction = .NONE
-                                
-                                printer.textFontSize = self.fontSize
-                                printer.textColor = self.bodyForegroundTheme
-                                printer.printSize = NSRect(x: 0, y: 0, width: self.width, height: self.height)
-                                printer.doPrinting(content: stickyText)
-                            }
-
-                        if #available(macOS 14, *) {
-                            SettingsLink {
-                                Image(systemName: "gearshape.fill")
-                                    .foregroundColor(Color(bodyForegroundTheme))
-                            }
-                            .buttonStyle(SettingsLinkStyle())
-                            .keyboardShortcut(",", modifiers: [.command])
-                            .onHover { _ in
-                                isShowMessagebar = false
-                                userAction = .NONE
-                            }
-
-                        } else {
-                            Button(action: {
-                                isShowMessagebar = false
-                                userAction = .NONE
-                                delegate.showSettings()
-                            }, label: {
-                                Image(systemName: "gearshape.fill")
-                                    .foregroundColor(Color(bodyForegroundTheme))
-                            })
-                            .buttonStyle(SettingsLinkStyle())
-                            .keyboardShortcut(",", modifiers: [.command])
-                        }
-                    }
-                    .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+                    HeaderView()
+                    NoteView()
                     
-                    if isShowMessagebar {
-                        MessagebarView(flag: $isShowMessagebar, selected: $userAction)
-                            .onDisappear {
-                                userActionDispatcher()
-                            }
+                    if isShowFooter {
+                        FooterView()
                     }
-
-                    if #available(macOS 14, *) {
-                        TextEditor(text: $stickyText)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .layoutPriority(1)
-                            .font(.system(size: CGFloat(self.fontSize)))
-                            .lineSpacing(CGFloat(self.lineSpacing))
-                            .foregroundColor(Color(foregroundColorName()))
-                            .scrollContentBackground(.hidden)
-                            .background(Color(bodyBackgroundTheme))
-                            .onChange(of: stickyText) { oldVal, newVal in
-                                
-                                _ = redoUndoManager.snapshot(of: newVal)
-                                
-                                if isEnableCalculation {
-                                    stickyText = calculateFormulaIn(newVal)
-                                }
-                                
-                                if isExecutableSave {
-                                    Task {
-                                        do {
-                                            isExecutableSave = false
-                                            try await Task.sleep(nanoseconds: 15 * 100000000)
-                                            saveData()
-                                            
-                                        } catch {
-                                            print("Fatal error: Failed to save JSON data.")
-                                            userAction = .DO_NOT_SAVE_JSON
-                                            isShowMessagebar = true
-                                        }
-                                    }
-                                }
-                            }
-                    } else {
-                        TextEditor(text: $stickyText)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .layoutPriority(1)
-                            .font(.system(size: CGFloat(self.fontSize)))
-                            .lineSpacing(CGFloat(self.lineSpacing))
-                            .foregroundColor(Color(foregroundColorName()))
-                            .scrollContentBackground(.hidden)
-                            .background(Color(bodyBackgroundTheme))
-                            .onChange(of: stickyText) { val in
-                                
-                                _ = redoUndoManager.snapshot(of: val)
-                                
-                                if isEnableCalculation {
-                                    stickyText = calculateFormulaIn(val)
-                                }
-                                
-                                if isExecutableSave {
-                                    Task {
-                                        do {
-                                            isExecutableSave = false
-                                            try await Task.sleep(nanoseconds: 15 * 100000000)
-                                            saveData()
-                                            
-                                        } catch {
-                                            print("Fatal error: Failed to save JSON data.")
-                                            userAction = .DO_NOT_SAVE_JSON
-                                            isShowMessagebar = true
-                                        }
-                                    }
-                                }
-                            }
-                    }
-                    
-                    HStack {
-                        Spacer()
-                            .layoutPriority(1)
-
-                        Image(systemName: "arrow.up.left.arrow.down.right")
-                            .foregroundColor(Color(bodyForegroundTheme))
-                            .bold()
-                            .onHover { isHover in
-                                if isHover {
-                                    NSCursor.closedHand.push()
-                                } else {
-                                    NSCursor.pop()
-                                }
-                            }
-                            .gesture(
-                                DragGesture(minimumDistance: 1)
-                                    .updating($dragState) { gestureValue, gestureState, gestureTransaction in
-                                        
-                                        var updateWidth: CGFloat = gestureValue.translation.width
-                                        var updateHeight: CGFloat = gestureValue.translation.height
-                                        
-                                        let dragWidth: Int = self.width + Int(updateWidth)
-                                        let dragHeight: Int = self.height + Int(updateHeight)
-                                        
-                                        if dragWidth > SettingKeys.StickyNote().maxWidth.intValue {
-                                            updateWidth = CGFloat(SettingKeys.StickyNote().maxWidth.intValue)
-                                        }
-                                        
-                                        if dragWidth < SettingKeys.StickyNote().minWidth.intValue {
-                                            updateWidth = CGFloat(SettingKeys.StickyNote().minWidth.intValue)
-                                        }
-                                        
-                                        if dragHeight > SettingKeys.StickyNote().maxHeight.intValue {
-                                            updateHeight = CGFloat(SettingKeys.StickyNote().maxHeight.intValue)
-                                        }
-                                        
-                                        if dragHeight < SettingKeys.StickyNote().minHeight.intValue {
-                                            updateHeight = CGFloat(SettingKeys.StickyNote().minHeight.intValue)
-                                        }
-                                        
-                                        gestureState = CGSize(width: updateWidth, height: updateHeight)
-                                    }
-                                    .onEnded { endedState in
-                                        self.width += Int(endedState.translation.width)
-                                        self.height += Int(endedState.translation.height)
-                                    }
-                            )
-                    }
-                    .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 5))
                 }
             }
             .frame(width: CGFloat(self.width) + dragState.width, height: CGFloat(self.height) + dragState.height)
         }
+    }
+    
+    private func HeaderView() -> some View {
+        VStack {
+            HStack {
+                Image(systemName: "power")
+                    .foregroundColor(Color.red)
+                    .onTapGesture {
+                        userAction = .QUIT
+                        isShowMessagebar.toggle()
+                        
+                        if !isShowMessagebar {
+                            userAction = .NONE
+                        }
+                    }
+                
+                if isShowSavingMessage && !isExecutableSave {
+                    Text("sitickynote.menu.message.saving")
+                        .padding(.horizontal, 5)
+                        .layoutPriority(2)
+                }
+                
+                Spacer()
+                    .layoutPriority(1)
+                
+                Button(action: {
+                    stickyText = redoUndoManager.undo()
+                }, label: {
+                    Image(systemName: "return.left")
+                })
+                .hidden()
+                .keyboardShortcut("z", modifiers: [.command])
+                
+                Button(action: {
+                    stickyText = redoUndoManager.redo()
+                }, label: {
+                    Image(systemName: "return.right")
+                })
+                .hidden()
+                .keyboardShortcut("y", modifiers: [.command])
+                
+                if isPinNote {
+                    Image(systemName: "pin")
+                        .foregroundColor(Color.red)
+                        .onTapGesture {
+                            togglePinningNote()
+                        }
+                } else {
+                    Image(systemName: "pin.slash")
+                        .foregroundColor(Color(bodyForegroundTheme))
+                        .onTapGesture {
+                            togglePinningNote()
+                        }
+                }
+                
+                Image(systemName: "eraser")
+                    .foregroundColor(Color(bodyForegroundTheme))
+                    .onTapGesture {
+                        userAction = .ALL_DELETE
+                        isShowMessagebar.toggle()
+                        
+                        if !isShowMessagebar {
+                            userAction = .NONE
+                        }
+                    }
+                
+                Image(systemName: "printer")
+                    .foregroundColor(Color(bodyForegroundTheme))
+                    .onTapGesture {
+                        isShowMessagebar = false
+                        userAction = .NONE
+                        
+                        printer.textFontSize = self.fontSize
+                        printer.textColor = self.bodyForegroundTheme
+                        printer.printSize = NSRect(x: 0, y: 0, width: self.width, height: self.height)
+                        printer.doPrinting(content: stickyText)
+                    }
+                
+                if #available(macOS 14, *) {
+                    SettingsLink {
+                        Image(systemName: "gearshape.fill")
+                            .foregroundColor(Color(bodyForegroundTheme))
+                    }
+                    .buttonStyle(SettingsLinkStyle())
+                    .keyboardShortcut(",", modifiers: [.command])
+                    .onHover { _ in
+                        isShowMessagebar = false
+                        userAction = .NONE
+                    }
+                    
+                } else {
+                    Button(action: {
+                        isShowMessagebar = false
+                        userAction = .NONE
+                        delegate.showSettings()
+                    }, label: {
+                        Image(systemName: "gearshape.fill")
+                            .foregroundColor(Color(bodyForegroundTheme))
+                    })
+                    .buttonStyle(SettingsLinkStyle())
+                    .keyboardShortcut(",", modifiers: [.command])
+                }
+            }
+            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+            
+            if isShowMessagebar {
+                MessagebarView(flag: $isShowMessagebar, selected: $userAction)
+                    .onDisappear {
+                        userActionDispatcher()
+                    }
+            }
+        }
+    }
+    
+    private func NoteView() -> some View {
+        VStack {
+            if #available(macOS 14, *) {
+                TextEditor(text: $stickyText)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .layoutPriority(1)
+                    .font(.system(size: CGFloat(self.fontSize)))
+                    .lineSpacing(CGFloat(self.lineSpacing))
+                    .foregroundColor(Color(foregroundColorName()))
+                    .scrollContentBackground(.hidden)
+                    .background(Color(bodyBackgroundTheme))
+                    .onChange(of: stickyText) { oldVal, newVal in
+                        
+                        _ = redoUndoManager.snapshot(of: newVal)
+                        
+                        if isEnableCalculation {
+                            stickyText = calculateFormulaIn(newVal)
+                        }
+                        
+                        if isExecutableSave {
+                            Task {
+                                do {
+                                    isExecutableSave = false
+                                    try await Task.sleep(nanoseconds: 15 * 100000000)
+                                    saveData()
+                                    
+                                } catch {
+                                    print("Fatal error: Failed to save JSON data.")
+                                    userAction = .DO_NOT_SAVE_JSON
+                                    isShowMessagebar = true
+                                }
+                            }
+                        }
+                    }
+            } else {
+                TextEditor(text: $stickyText)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .layoutPriority(1)
+                    .font(.system(size: CGFloat(self.fontSize)))
+                    .lineSpacing(CGFloat(self.lineSpacing))
+                    .foregroundColor(Color(foregroundColorName()))
+                    .scrollContentBackground(.hidden)
+                    .background(Color(bodyBackgroundTheme))
+                    .onChange(of: stickyText) { val in
+                        
+                        _ = redoUndoManager.snapshot(of: val)
+                        
+                        if isEnableCalculation {
+                            stickyText = calculateFormulaIn(val)
+                        }
+                        
+                        if isExecutableSave {
+                            Task {
+                                do {
+                                    isExecutableSave = false
+                                    try await Task.sleep(nanoseconds: 15 * 100000000)
+                                    saveData()
+                                    
+                                } catch {
+                                    print("Fatal error: Failed to save JSON data.")
+                                    userAction = .DO_NOT_SAVE_JSON
+                                    isShowMessagebar = true
+                                }
+                            }
+                        }
+                    }
+            }
+        }
+    }
+    
+    private func FooterView() -> some View {
+        HStack {
+            Spacer()
+                .frame(height: 15)
+                .layoutPriority(1)
+
+            if isDragToResize {
+                Image(systemName: "arrow.up.left.arrow.down.right")
+                    .foregroundColor(Color(bodyForegroundTheme))
+                    .bold()
+                    .onHover { isHover in
+                        if isHover {
+                            NSCursor.closedHand.push()
+                        } else {
+                            NSCursor.pop()
+                        }
+                    }
+                    .gesture(
+                        DragGesture(minimumDistance: 1)
+                            .updating($dragState) { gestureValue, gestureState, gestureTransaction in
+                                
+                                var updateWidth: CGFloat = gestureValue.translation.width
+                                var updateHeight: CGFloat = gestureValue.translation.height
+                                
+                                let dragWidth: Int = self.width + Int(updateWidth)
+                                let dragHeight: Int = self.height + Int(updateHeight)
+                                
+                                if dragWidth > SettingKeys.StickyNote().maxWidth.intValue {
+                                    updateWidth = CGFloat(SettingKeys.StickyNote().maxWidth.intValue)
+                                }
+                                
+                                if dragWidth < SettingKeys.StickyNote().minWidth.intValue {
+                                    updateWidth = CGFloat(SettingKeys.StickyNote().minWidth.intValue)
+                                }
+                                
+                                if dragHeight > SettingKeys.StickyNote().maxHeight.intValue {
+                                    updateHeight = CGFloat(SettingKeys.StickyNote().maxHeight.intValue)
+                                }
+                                
+                                if dragHeight < SettingKeys.StickyNote().minHeight.intValue {
+                                    updateHeight = CGFloat(SettingKeys.StickyNote().minHeight.intValue)
+                                }
+                                
+                                gestureState = CGSize(width: updateWidth, height: updateHeight)
+                            }
+                            .onEnded { endedState in
+                                self.width += Int(endedState.translation.width)
+                                self.height += Int(endedState.translation.height)
+                            }
+                    )
+            }
+        }
+        .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 5))
     }
     
     private func userActionDispatcher() {
