@@ -93,7 +93,16 @@ struct ContentView: View {
                 
                 VStack(spacing: 0) {
                     HeaderView()
+                    
                     NoteView()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .layoutPriority(1)
+                        .font(.system(size: CGFloat(self.fontSize)))
+                        .lineSpacing(CGFloat(self.lineSpacing))
+                        .foregroundColor(Color(foregroundColorName()))
+                        .scrollContentBackground(.hidden)
+                        .background(Color(bodyBackgroundTheme), in: RoundedRectangle(cornerRadius: 10))
+                        .padding(EdgeInsets(top: 0, leading: 7, bottom: 7, trailing: 7))
                     
                     if isShowFooter {
                         FooterView()
@@ -220,13 +229,6 @@ struct ContentView: View {
         VStack {
             if #available(macOS 14, *) {
                 TextEditor(text: $stickyText)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .layoutPriority(1)
-                    .font(.system(size: CGFloat(self.fontSize)))
-                    .lineSpacing(CGFloat(self.lineSpacing))
-                    .foregroundColor(Color(foregroundColorName()))
-                    .scrollContentBackground(.hidden)
-                    .background(Color(bodyBackgroundTheme))
                     .onChange(of: stickyText) { oldVal, newVal in
                         
                         _ = redoUndoManager.snapshot(of: newVal)
@@ -252,13 +254,6 @@ struct ContentView: View {
                     }
             } else {
                 TextEditor(text: $stickyText)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .layoutPriority(1)
-                    .font(.system(size: CGFloat(self.fontSize)))
-                    .lineSpacing(CGFloat(self.lineSpacing))
-                    .foregroundColor(Color(foregroundColorName()))
-                    .scrollContentBackground(.hidden)
-                    .background(Color(bodyBackgroundTheme))
                     .onChange(of: stickyText) { val in
                         
                         _ = redoUndoManager.snapshot(of: val)
