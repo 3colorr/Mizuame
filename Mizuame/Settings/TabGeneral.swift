@@ -18,10 +18,6 @@ struct TabGeneral: View {
 
     @AppStorage(SettingKeys.StickyNote().keyLoginItems) private var isEnableLoginItems: Bool = SettingKeys.StickyNote().initialLoginItems
 
-    @AppStorage(SettingKeys.StickyNote().keyShowFooter) private var isShowFooter: Bool = SettingKeys.StickyNote().initialShowFooter
-
-    @AppStorage(SettingKeys.StickyNote().keyDragToResize) private var isDragToResize: Bool = SettingKeys.StickyNote().initialDragToResize
-
     @AppStorage(SettingKeys.StickyNote.NoteFontColor.Theme().key) private var isApplyThemeColorToFont: Bool = SettingKeys.StickyNote.NoteFontColor.Theme().initialVale
 
     @AppStorage(SettingKeys.StickyNote.NoteFontColor.Black().key) private var isApplyBlackColorToFont: Bool = SettingKeys.StickyNote.NoteFontColor.Black().initialVale
@@ -42,27 +38,6 @@ struct TabGeneral: View {
                         .frame(width: 100, alignment: .leading)
 
                     VStack(alignment: .leading) {
-                        Toggle(isOn: $isShowFooter) {
-                            Text("settings.tab.general.note.footer.visible")
-                            Text("settings.tab.general.note.footer.visible.description")
-                                .font(.subheadline)
-                        }
-                        .onChange(of: isShowFooter) { val in
-                            //When the footer is hidden, footer items are disabled.
-                            if val == false {
-                                self.isDragToResize = false
-                            }
-                        }
-                        
-                        //These items are enabled only when the footer is visible.
-                        VStack(alignment: .leading) {
-                            Toggle(isOn: $isDragToResize) {
-                                Text("settings.tab.general.note.footer.resize.note")
-                            }
-                        }
-                        .disabled(!isShowFooter)
-                        .padding(EdgeInsets(top: 5, leading: 20, bottom: 10, trailing: 0))
-
                         Toggle(isOn: $isShowSavingMessage) {
                             Text("settings.tab.general.note.menubar.saving")
                         }
@@ -200,8 +175,7 @@ struct TabGeneral: View {
                         
                         Text("settings.tab.help.note.action.calculate.description")
                             .font(.subheadline)
-                            .fixedSize(horizontal: false, vertical: true)
-
+                        
                         VStack(alignment: .leading) {
                             Text("settings.tab.general.action.calculate.rounding")
                             
