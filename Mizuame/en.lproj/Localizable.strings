@@ -87,8 +87,6 @@
 "settings.tab.general.note.note.pin" = "Pinning the note to the front";
 "settings.tab.general.note.note.loginitems" = "Add to \"Login Items\"";
 "settings.tab.general.note.note.loginitems.description" = "Mizuame will start when you login.";
-"settings.tab.general.note.footer.visible" = "Show footer";
-"settings.tab.general.note.footer.visible.description" = "Please show footer if you want to enable the following features.";
 "settings.tab.general.note.footer.resize.note" = "Drag to resize the note.";
 "settings.tab.general.font.color.title" = "Font Color:";
 "settings.tab.general.font.color.choice.theme" = "Theme";
