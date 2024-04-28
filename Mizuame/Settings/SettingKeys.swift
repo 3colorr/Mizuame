@@ -84,12 +84,6 @@ struct SettingKeys {
         let keyLoginItems: String = "stickyNoteLoginItems"
         let initialLoginItems: Bool = false
 
-        let keyShowFooter: String = "stickyShowFooter"
-        let initialShowFooter: Bool = false
-
-        let keyDragToResize: String = "stickyDragToResize"
-        let initialDragToResize: Bool = false
-
         struct NoteFontColor {
             struct Theme {
                 let key: String = "stickyNoteFontColorTheme"
