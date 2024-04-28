@@ -175,6 +175,7 @@ struct TabGeneral: View {
                         
                         Text("settings.tab.help.note.action.calculate.description")
                             .font(.subheadline)
+                            .fixedSize(horizontal: false, vertical: true)
                         
                         VStack(alignment: .leading) {
                             Text("settings.tab.general.action.calculate.rounding")
