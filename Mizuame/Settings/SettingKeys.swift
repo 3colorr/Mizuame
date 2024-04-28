@@ -73,7 +73,7 @@ struct SettingKeys {
         let keyHeight: String = "stickyNoteHeight"
         let initialWidth: Int = 300
         let initialHeight: Int = 150
-        let minWidth: NSNumber = 200
+        let minWidth: NSNumber = 250
         let maxWidth: NSNumber = 1000
         let minHeight: NSNumber = 100
         let maxHeight: NSNumber = 1000
@@ -83,12 +83,6 @@ struct SettingKeys {
 
         let keyLoginItems: String = "stickyNoteLoginItems"
         let initialLoginItems: Bool = false
-
-        let keyShowFooter: String = "stickyShowFooter"
-        let initialShowFooter: Bool = false
-
-        let keyDragToResize: String = "stickyDragToResize"
-        let initialDragToResize: Bool = false
 
         struct NoteFontColor {
             struct Theme {
