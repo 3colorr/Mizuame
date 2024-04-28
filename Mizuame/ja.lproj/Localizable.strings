@@ -59,9 +59,6 @@
 "settings.tab.help.menu.eraser.description" = "文章を全て消します。";
 "settings.tab.help.menu.printer.description" = "ノートの内容を全て印刷します。";
 "settings.tab.help.menu.pin.description" = "ノートを開いたままにします。";
-"settings.tab.help.menu.footer.title" = "フッター";
-"settings.tab.help.menu.footer.greeting" = "既定では、'フッター'は無効になっています。もし必要な場合は、'一般タブ'から有効にできます。";
-"settings.tab.help.menu.footer.resizing.description" = "ノートのサイズをドラッグで変更します。";
 
 "settings.tab.stickynote.greeting" = "プレビュー:\nサイズは不正確です。実際にノートを確認してください。ごめんね！";
 "settings.tab.stickynote.font.size" = "文字の大きさ: ";

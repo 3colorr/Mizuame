@@ -59,20 +59,6 @@ struct TabHelp: View {
                 }
 
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("settings.tab.help.menu.footer.title")
-                        .bold()
-
-                    Text("settings.tab.help.menu.footer.greeting")
-
-                    HStack {
-                        Image(systemName: "arrow.up.left.arrow.down.right")
-                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
-                        Text("settings.tab.help.menu.footer.resizing.description")
-                    }
-                }
-
-
-                VStack(alignment: .leading, spacing: 10) {
                     Text("settings.tab.help.note.title")
                         .bold()
 

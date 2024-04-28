@@ -59,9 +59,6 @@
 "settings.tab.help.menu.eraser.description" = "Deletes all note contents.";
 "settings.tab.help.menu.printer.description" = "Print all note contents.";
 "settings.tab.help.menu.pin.description" = "Keep the note open.";
-"settings.tab.help.menu.footer.title" = "Footer";
-"settings.tab.help.menu.footer.greeting" = "By Default, 'Footer' is disabled. If you want to use it, you need to enable it in the 'General tab'.";
-"settings.tab.help.menu.footer.resizing.description" = "Drag to resize the note.";
 
 "settings.tab.stickynote.greeting" = "Previews:\nSize is NOT correct. Check the real size. Sorry!";
 "settings.tab.stickynote.font.size" = "Font Size: ";
