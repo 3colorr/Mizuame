@@ -56,6 +56,8 @@ struct ContentView: View {
     
     @State private var isExecutableSave: Bool = true
     
+    @State private var isDraggableVertical: Bool = false
+    @State private var isDraggableHorizontal: Bool = false
     @GestureState private var dragState: CGSize = .zero
 
     private let io: DataIO
@@ -88,9 +90,11 @@ struct ContentView: View {
             PrivacyPolicyView(state: $viewState)
             
         default:
-            ZStack(alignment: .bottomTrailing) {
+            ZStack {
                 Color(frameTheme)
                 
+                DraggableAreaView()
+
                 VStack(spacing: 0) {
                     HeaderView()
                     
@@ -275,6 +279,86 @@ struct ContentView: View {
                                     isShowMessagebar = true
                                 }
                             }
+                        }
+                    }
+            }
+        }
+    }
+    
+    // This view defines an area where the user can resize the note by dragging.
+    //
+    // The "#", "@" and "+" symbol in the diagram below indicates the area of window
+    // that the user can resize the note by dragging.
+    //
+    //    # -> Horizontal resizing only.
+    //    + -> Vertical resizing only.
+    //    @ -> Resize both horizontal and vertical.
+    //
+    //    *----------------*
+    //    |                #
+    //    |                #
+    //    |    The Note    #
+    //    |                #
+    //    |                #
+    //    *++++++++++++++++@
+    //
+    private func DraggableAreaView() -> some View {
+        ZStack {
+            HStack(alignment: .center) {
+                Spacer()
+                    .layoutPriority(1)
+                
+                VStack(alignment: .trailing, spacing: 0) {
+                    
+                    // Horizontal
+                    Rectangle()
+                        .fill(Color(frameTheme))
+                        .frame(width: 10, height: CGFloat(self.height) + self.dragState.height - 20)
+                        .onHover { isHover in
+                            if isHover {
+                                // Prepare to resize the note.
+                                // Perform the reset proccess after the user resize the note.
+                                self.isDraggableHorizontal = true
+                                NSCursor.resizeLeftRight.push()
+                            } else {
+                                NSCursor.pop()
+                            }
+                        }
+                    
+                    // Horizontal and vertical
+                    Rectangle()
+                        .fill(Color(frameTheme))
+                        .frame(width: 20, height: 20)
+                        .onHover { isHover in
+                            if isHover {
+                                // Prepare to resize the note.
+                                // Perform the reset proccess after the user resize the note.
+                                self.isDraggableVertical = true
+                                self.isDraggableHorizontal = true
+                                NSCursor.closedHand.push()
+                            } else {
+                                NSCursor.pop()
+                            }
+                        }
+                }
+            }
+
+            VStack(alignment: .center) {
+                Spacer()
+                    .layoutPriority(1)
+                
+                // Vertical
+                Rectangle()
+                    .fill(Color(frameTheme))
+                    .frame(width: CGFloat(self.width) + self.dragState.width - 40, height: 10)
+                    .onHover { isHover in
+                        if isHover {
+                            // Prepare to resize the note.
+                            // Perform the reset proccess after the user resize the note.
+                            self.isDraggableVertical = true
+                            NSCursor.resizeUpDown.push()
+                        } else {
+                            NSCursor.pop()
                         }
                     }
             }
