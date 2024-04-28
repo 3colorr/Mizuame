@@ -113,7 +113,72 @@ struct ContentView: View {
                     }
                 }
             }
-            .frame(width: CGFloat(self.width) + dragState.width, height: CGFloat(self.height) + dragState.height)
+            .frame(width: CGFloat(self.width) + self.dragState.width, height: CGFloat(self.height) + self.dragState.height)
+            .gesture(
+                DragGesture(minimumDistance: 1)
+                    .updating($dragState) { gestureValue, gestureState, gestureTransaction in
+
+                        // Update the size only in the directions the user can drag.
+                        var draggedWidth: CGFloat = isDraggableHorizontal ? gestureValue.translation.width : 0
+                        var draggedHeight: CGFloat = isDraggableVertical ? gestureValue.translation.height : 0
+
+                        let willUpdateWithWidth: Int = self.width + Int(draggedWidth)
+                        let willUpdateWithHeight: Int = self.height + Int(draggedHeight)
+
+                        // The user is not allowed to resize beyond the upper or lower limit.
+                        if willUpdateWithWidth > SettingKeys.StickyNote().maxWidth.intValue {
+                            draggedWidth = CGFloat(SettingKeys.StickyNote().maxWidth.intValue - self.width)
+                        }
+                        
+                        if willUpdateWithWidth < SettingKeys.StickyNote().minWidth.intValue {
+                            draggedWidth = CGFloat(SettingKeys.StickyNote().minWidth.intValue - self.width)
+                        }
+                        
+                        if willUpdateWithHeight > SettingKeys.StickyNote().maxHeight.intValue {
+                            draggedHeight = CGFloat(SettingKeys.StickyNote().maxHeight.intValue - self.height)
+                        }
+                        
+                        if willUpdateWithHeight < SettingKeys.StickyNote().minHeight.intValue {
+                            draggedHeight = CGFloat(SettingKeys.StickyNote().minHeight.intValue - self.height)
+                        }
+
+                        gestureState = CGSize(width: draggedWidth, height: draggedHeight)
+                    }
+                    .onEnded { endedState in
+                        // Update the size only in the directions the user can drag.
+                        var draggedWidth = isDraggableHorizontal ? endedState.translation.width : 0
+                        var draggedHeight = isDraggableVertical ? endedState.translation.height : 0
+
+                        let willUpdateWithWidth: Int = self.width + Int(draggedWidth)
+                        let willUpdateWithHeight: Int = self.height + Int(draggedHeight)
+                        
+                        // The user is not allowed to resize beyond the upper or lower limit.
+                        if willUpdateWithWidth > SettingKeys.StickyNote().maxWidth.intValue {
+                            draggedWidth = CGFloat(SettingKeys.StickyNote().maxWidth.intValue - self.width)
+                        }
+                        
+                        if willUpdateWithWidth < SettingKeys.StickyNote().minWidth.intValue {
+                            draggedWidth = CGFloat(SettingKeys.StickyNote().minWidth.intValue - self.width)
+                        }
+
+                        if willUpdateWithHeight > SettingKeys.StickyNote().maxHeight.intValue {
+                            draggedHeight = CGFloat(SettingKeys.StickyNote().maxHeight.intValue - self.height)
+                        }
+                        
+                        if willUpdateWithHeight < SettingKeys.StickyNote().minHeight.intValue {
+                            draggedHeight = CGFloat(SettingKeys.StickyNote().minHeight.intValue - self.height)
+                        }
+
+                        // Updated to the new size.
+                        self.width += Int(draggedWidth)
+                        self.height += Int(draggedHeight)
+
+                        // Reset the draggable area and cursor image becouse the user resized the note.
+                        self.isDraggableHorizontal = false
+                        self.isDraggableVertical = false
+                        NSCursor.pop()
+                    }
+            )
         }
     }
     
