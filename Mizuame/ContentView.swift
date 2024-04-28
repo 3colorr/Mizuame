@@ -24,10 +24,6 @@ struct ContentView: View {
     
     @AppStorage(SettingKeys.StickyNote().keyPositionOfRoundsDecimalPoint) private var positionOfRoundsDecimalPoint: Int = SettingKeys.StickyNote().initialPositionOfRoundsDecimalPoint
 
-    @AppStorage(SettingKeys.StickyNote().keyShowFooter) private var isShowFooter: Bool = SettingKeys.StickyNote().initialShowFooter
-
-    @AppStorage(SettingKeys.StickyNote().keyDragToResize) private var isDragToResize: Bool = SettingKeys.StickyNote().initialDragToResize
-
     @AppStorage(SettingKeys.StickyNote().keyWidth) private var width: Int = SettingKeys.StickyNote().initialWidth
     @AppStorage(SettingKeys.StickyNote().keyHeight) private var height: Int = SettingKeys.StickyNote().initialHeight
     
@@ -107,10 +103,6 @@ struct ContentView: View {
                         .scrollContentBackground(.hidden)
                         .background(Color(bodyBackgroundTheme), in: RoundedRectangle(cornerRadius: 10))
                         .padding(EdgeInsets(top: 0, leading: 7, bottom: 7, trailing: 7))
-                    
-                    if isShowFooter {
-                        FooterView()
-                    }
                 }
             }
             .frame(width: CGFloat(self.width) + self.dragState.width, height: CGFloat(self.height) + self.dragState.height)
@@ -433,54 +425,51 @@ struct ContentView: View {
     private func FooterView() -> some View {
         HStack {
             Spacer()
-                .frame(height: 15)
                 .layoutPriority(1)
 
-            if isDragToResize {
-                Image(systemName: "arrow.up.left.arrow.down.right")
-                    .foregroundColor(Color(bodyForegroundTheme))
-                    .bold()
-                    .onHover { isHover in
-                        if isHover {
-                            NSCursor.closedHand.push()
-                        } else {
-                            NSCursor.pop()
-                        }
+            Image(systemName: "arrow.up.left.arrow.down.right")
+                .foregroundColor(Color(bodyForegroundTheme))
+                .bold()
+                .onHover { isHover in
+                    if isHover {
+                        NSCursor.closedHand.push()
+                    } else {
+                        NSCursor.pop()
                     }
-                    .gesture(
-                        DragGesture(minimumDistance: 1)
-                            .updating($dragState) { gestureValue, gestureState, gestureTransaction in
-                                
-                                var updateWidth: CGFloat = gestureValue.translation.width
-                                var updateHeight: CGFloat = gestureValue.translation.height
-                                
-                                let dragWidth: Int = self.width + Int(updateWidth)
-                                let dragHeight: Int = self.height + Int(updateHeight)
-                                
-                                if dragWidth > SettingKeys.StickyNote().maxWidth.intValue {
-                                    updateWidth = CGFloat(SettingKeys.StickyNote().maxWidth.intValue)
-                                }
-                                
-                                if dragWidth < SettingKeys.StickyNote().minWidth.intValue {
-                                    updateWidth = CGFloat(SettingKeys.StickyNote().minWidth.intValue)
-                                }
-                                
-                                if dragHeight > SettingKeys.StickyNote().maxHeight.intValue {
-                                    updateHeight = CGFloat(SettingKeys.StickyNote().maxHeight.intValue)
-                                }
-                                
-                                if dragHeight < SettingKeys.StickyNote().minHeight.intValue {
-                                    updateHeight = CGFloat(SettingKeys.StickyNote().minHeight.intValue)
-                                }
-                                
-                                gestureState = CGSize(width: updateWidth, height: updateHeight)
+                }
+                .gesture(
+                    DragGesture(minimumDistance: 1)
+                        .updating($dragState) { gestureValue, gestureState, gestureTransaction in
+                            
+                            var updateWidth: CGFloat = gestureValue.translation.width
+                            var updateHeight: CGFloat = gestureValue.translation.height
+                            
+                            let dragWidth: Int = self.width + Int(updateWidth)
+                            let dragHeight: Int = self.height + Int(updateHeight)
+                            
+                            if dragWidth > SettingKeys.StickyNote().maxWidth.intValue {
+                                updateWidth = CGFloat(SettingKeys.StickyNote().maxWidth.intValue)
                             }
-                            .onEnded { endedState in
-                                self.width += Int(endedState.translation.width)
-                                self.height += Int(endedState.translation.height)
+                            
+                            if dragWidth < SettingKeys.StickyNote().minWidth.intValue {
+                                updateWidth = CGFloat(SettingKeys.StickyNote().minWidth.intValue)
                             }
-                    )
-            }
+                            
+                            if dragHeight > SettingKeys.StickyNote().maxHeight.intValue {
+                                updateHeight = CGFloat(SettingKeys.StickyNote().maxHeight.intValue)
+                            }
+                            
+                            if dragHeight < SettingKeys.StickyNote().minHeight.intValue {
+                                updateHeight = CGFloat(SettingKeys.StickyNote().minHeight.intValue)
+                            }
+                            
+                            gestureState = CGSize(width: updateWidth, height: updateHeight)
+                        }
+                        .onEnded { endedState in
+                            self.width += Int(endedState.translation.width)
+                            self.height += Int(endedState.translation.height)
+                        }
+                )
         }
         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 5))
     }
