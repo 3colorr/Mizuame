@@ -34,7 +34,9 @@ struct MessagebarView: View {
                 if messageType != .DO_NOT_SAVE_JSON {
                     Button(action: {
                         messageType = .NONE
-                        isShowFlag = false
+                        withAnimation {
+                            isShowFlag = false
+                        }
                     }, label: {
                         Text("sitickynote.messagebar.action.button.cancel")
                             .font(.system(size: CGFloat(fontSize)))
@@ -44,7 +46,9 @@ struct MessagebarView: View {
                 }
 
                 Button(action: {
-                    isShowFlag = false
+                    withAnimation {
+                        isShowFlag = false
+                    }
                 }, label: {
                     Text("sitickynote.messagebar.action.button.ok")
                         .bold()
