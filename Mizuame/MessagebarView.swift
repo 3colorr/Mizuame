@@ -22,42 +22,40 @@ struct MessagebarView: View {
     }
     
     var body: some View {
-        ZStack {
-            Color(messagebarTheme)
-            
-            VStack(alignment: .leading) {
-                Text(LocalizedStringKey(messageType.rawValue))
-                    .font(.system(size: CGFloat(fontSize)))
-                    .foregroundColor(Color(messageTheme))
-                
-                HStack {
-                    Spacer()
-                    
-                    if messageType != .DO_NOT_SAVE_JSON {
-                        Button(action: {
-                            messageType = .NONE
-                            isShowFlag = false
-                        }, label: {
-                            Text("sitickynote.messagebar.action.button.cancel")
-                                .font(.system(size: CGFloat(fontSize)))
-                                .foregroundColor(Color(messageTheme))
-                        })
-                        .buttonStyle(.borderless)
-                    }
 
+        VStack(alignment: .leading) {
+            Text(LocalizedStringKey(messageType.rawValue))
+                .font(.system(size: CGFloat(fontSize)))
+                .foregroundColor(Color(messageTheme))
+            
+            HStack {
+                Spacer()
+                
+                if messageType != .DO_NOT_SAVE_JSON {
                     Button(action: {
+                        messageType = .NONE
                         isShowFlag = false
                     }, label: {
-                        Text("sitickynote.messagebar.action.button.ok")
-                            .bold()
+                        Text("sitickynote.messagebar.action.button.cancel")
                             .font(.system(size: CGFloat(fontSize)))
                             .foregroundColor(Color(messageTheme))
                     })
                     .buttonStyle(.borderless)
                 }
+
+                Button(action: {
+                    isShowFlag = false
+                }, label: {
+                    Text("sitickynote.messagebar.action.button.ok")
+                        .bold()
+                        .font(.system(size: CGFloat(fontSize)))
+                        .foregroundColor(Color(messageTheme))
+                })
+                .buttonStyle(.borderless)
             }
-            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
         }
+        .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+        .background(Color(messagebarTheme), in: RoundedRectangle(cornerRadius: 10))
     }
 }
 
