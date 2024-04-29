@@ -231,7 +231,10 @@ struct ContentView: View {
                     .foregroundColor(Color(bodyForegroundTheme))
                     .onTapGesture {
                         userAction = .ALL_DELETE
-                        isShowMessagebar.toggle()
+                        
+                        withAnimation {
+                            isShowMessagebar.toggle()
+                        }
                         
                         if !isShowMessagebar {
                             userAction = .NONE
@@ -241,7 +244,10 @@ struct ContentView: View {
                 Image(systemName: "printer")
                     .foregroundColor(Color(bodyForegroundTheme))
                     .onTapGesture {
-                        isShowMessagebar = false
+                        withAnimation {
+                            isShowMessagebar = false
+                        }
+                        
                         userAction = .NONE
                         
                         printer.textFontSize = self.fontSize
@@ -258,13 +264,17 @@ struct ContentView: View {
                     .buttonStyle(SettingsLinkStyle())
                     .keyboardShortcut(",", modifiers: [.command])
                     .onHover { _ in
-                        isShowMessagebar = false
+                        withAnimation {
+                            isShowMessagebar = false
+                        }
                         userAction = .NONE
                     }
                     
                 } else {
                     Button(action: {
-                        isShowMessagebar = false
+                        withAnimation {
+                            isShowMessagebar = false
+                        }
                         userAction = .NONE
                         delegate.showSettings()
                     }, label: {
@@ -279,6 +289,7 @@ struct ContentView: View {
             
             if isShowMessagebar {
                 MessagebarView(flag: $isShowMessagebar, selected: $userAction)
+                    .padding(EdgeInsets(top: 0, leading: 7, bottom: 5, trailing: 7))
                     .onDisappear {
                         userActionDispatcher()
                     }
