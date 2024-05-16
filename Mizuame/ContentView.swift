@@ -51,6 +51,10 @@ struct ContentView: View {
     @State private var userAction: MessagebarEnum = .NONE
     
     @State private var isExecutableSave: Bool = true
+    
+    @State private var isDraggableVertical: Bool = false
+    @State private var isDraggableHorizontal: Bool = false
+    @GestureState private var dragState: CGSize = .zero
 
     private let io: DataIO
     private let redoUndoManager: RedoUndo
@@ -85,188 +89,350 @@ struct ContentView: View {
             ZStack {
                 Color(frameTheme)
                 
+                DraggableAreaView()
+
                 VStack(spacing: 0) {
-                    HStack {
-                        Image(systemName: "power")
-                            .foregroundColor(Color.red)
-                            .onTapGesture {
-                                userAction = .QUIT
-                                isShowMessagebar.toggle()
-                                
-                                if !isShowMessagebar {
-                                    userAction = .NONE
-                                }
-                            }
-                        
-                        if isShowSavingMessage && !isExecutableSave {
-                            Text("sitickynote.menu.message.saving")
-                                .padding(.horizontal, 5)
-                                .layoutPriority(2)
-                        }
-                        
-                        Spacer()
-                            .layoutPriority(1)
-                        
-                        Button(action: {
-                            stickyText = redoUndoManager.undo()
-                        }, label: {
-                            Image(systemName: "return.left")
-                        })
-                        .hidden()
-                        .keyboardShortcut("z", modifiers: [.command])
-                        
-                        Button(action: {
-                            stickyText = redoUndoManager.redo()
-                        }, label: {
-                            Image(systemName: "return.right")
-                        })
-                        .hidden()
-                        .keyboardShortcut("y", modifiers: [.command])
-
-                        if isPinNote {
-                            Image(systemName: "pin")
-                                .foregroundColor(Color.red)
-                                .onTapGesture {
-                                    togglePinningNote()
-                                }
-                        } else {
-                            Image(systemName: "pin.slash")
-                                .foregroundColor(Color(bodyForegroundTheme))
-                                .onTapGesture {
-                                    togglePinningNote()
-                                }
-                        }
-
-                        Image(systemName: "eraser")
-                            .foregroundColor(Color(bodyForegroundTheme))
-                            .onTapGesture {
-                                userAction = .ALL_DELETE
-                                isShowMessagebar.toggle()
-                                
-                                if !isShowMessagebar {
-                                    userAction = .NONE
-                                }
-                            }
-
-                        Image(systemName: "printer")
-                            .foregroundColor(Color(bodyForegroundTheme))
-                            .onTapGesture {
-                                isShowMessagebar = false
-                                userAction = .NONE
-                                
-                                printer.textFontSize = self.fontSize
-                                printer.textColor = self.bodyForegroundTheme
-                                printer.printSize = NSRect(x: 0, y: 0, width: self.width, height: self.height)
-                                printer.doPrinting(content: stickyText)
-                            }
-
-                        if #available(macOS 14, *) {
-                            SettingsLink {
-                                Image(systemName: "gearshape.fill")
-                                    .foregroundColor(Color(bodyForegroundTheme))
-                            }
-                            .buttonStyle(SettingsLinkStyle())
-                            .keyboardShortcut(",", modifiers: [.command])
-                            .onHover { _ in
-                                isShowMessagebar = false
-                                userAction = .NONE
-                            }
-                            // Not work.
-                            // .onTapGesture {}
-
-                        } else {
-                            Button(action: {
-                                isShowMessagebar = false
-                                userAction = .NONE
-                                delegate.showSettings()
-                            }, label: {
-                                Image(systemName: "gearshape.fill")
-                                    .foregroundColor(Color(bodyForegroundTheme))
-                            })
-                            .buttonStyle(SettingsLinkStyle())
-                            .keyboardShortcut(",", modifiers: [.command])
-                        }
-                    }
-                    .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+                    HeaderView()
                     
-                    if isShowMessagebar {
-                        MessagebarView(flag: $isShowMessagebar, selected: $userAction)
-                            .onDisappear {
-                                userActionDispatcher()
-                            }
-                    }
-
-                    if #available(macOS 14, *) {
-                        TextEditor(text: $stickyText)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .layoutPriority(1)
-                            .font(.system(size: CGFloat(self.fontSize)))
-                            .lineSpacing(CGFloat(self.lineSpacing))
-                            .foregroundColor(Color(foregroundColorName()))
-                            .scrollContentBackground(.hidden)
-                            .background(Color(bodyBackgroundTheme))
-                            .onChange(of: stickyText) { oldVal, newVal in
-                                
-                                _ = redoUndoManager.snapshot(of: newVal)
-                                
-                                if isEnableCalculation {
-                                    stickyText = calculateFormulaIn(newVal)
-                                }
-                                
-                                if isExecutableSave {
-                                    Task {
-                                        do {
-                                            isExecutableSave = false
-                                            try await Task.sleep(nanoseconds: 15 * 100000000)
-                                            saveData()
-                                            
-                                        } catch {
-                                            print("Fatal error: Failed to save JSON data.")
-                                            userAction = .DO_NOT_SAVE_JSON
-                                            isShowMessagebar = true
-                                        }
-                                    }
-                                }
-                            }
-                    } else {
-                        TextEditor(text: $stickyText)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .layoutPriority(1)
-                            .font(.system(size: CGFloat(self.fontSize)))
-                            .lineSpacing(CGFloat(self.lineSpacing))
-                            .foregroundColor(Color(foregroundColorName()))
-                            .scrollContentBackground(.hidden)
-                            .background(Color(bodyBackgroundTheme))
-                            .onChange(of: stickyText) { val in
-                                
-                                _ = redoUndoManager.snapshot(of: val)
-                                
-                                if isEnableCalculation {
-                                    stickyText = calculateFormulaIn(val)
-                                }
-                                
-                                if isExecutableSave {
-                                    Task {
-                                        do {
-                                            isExecutableSave = false
-                                            try await Task.sleep(nanoseconds: 15 * 100000000)
-                                            saveData()
-                                            
-                                        } catch {
-                                            print("Fatal error: Failed to save JSON data.")
-                                            userAction = .DO_NOT_SAVE_JSON
-                                            isShowMessagebar = true
-                                        }
-                                    }
-                                }
-                            }
-                    }
+                    NoteView()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .layoutPriority(1)
+                        .font(.system(size: CGFloat(self.fontSize)))
+                        .lineSpacing(CGFloat(self.lineSpacing))
+                        .foregroundColor(Color(foregroundColorName()))
+                        .scrollContentBackground(.hidden)
+                        .background(Color(bodyBackgroundTheme), in: RoundedRectangle(cornerRadius: 10))
+                        .padding(EdgeInsets(top: 0, leading: 7, bottom: 7, trailing: 7))
                 }
             }
-            .frame(width: CGFloat(self.width), height: CGFloat(self.height))
+            .frame(width: CGFloat(self.width) + self.dragState.width, height: CGFloat(self.height) + self.dragState.height)
+            .gesture(
+                DragGesture(minimumDistance: 1)
+                    .updating($dragState) { gestureValue, gestureState, gestureTransaction in
+
+                        // Update the size only in the directions the user can drag.
+                        var draggedWidth: CGFloat = isDraggableHorizontal ? gestureValue.translation.width : 0
+                        var draggedHeight: CGFloat = isDraggableVertical ? gestureValue.translation.height : 0
+
+                        let willUpdateWithWidth: Int = self.width + Int(draggedWidth)
+                        let willUpdateWithHeight: Int = self.height + Int(draggedHeight)
+
+                        // The user is not allowed to resize beyond the upper or lower limit.
+                        if willUpdateWithWidth > SettingKeys.StickyNote().maxWidth.intValue {
+                            draggedWidth = CGFloat(SettingKeys.StickyNote().maxWidth.intValue - self.width)
+                        }
+                        
+                        if willUpdateWithWidth < SettingKeys.StickyNote().minWidth.intValue {
+                            draggedWidth = CGFloat(SettingKeys.StickyNote().minWidth.intValue - self.width)
+                        }
+                        
+                        if willUpdateWithHeight > SettingKeys.StickyNote().maxHeight.intValue {
+                            draggedHeight = CGFloat(SettingKeys.StickyNote().maxHeight.intValue - self.height)
+                        }
+                        
+                        if willUpdateWithHeight < SettingKeys.StickyNote().minHeight.intValue {
+                            draggedHeight = CGFloat(SettingKeys.StickyNote().minHeight.intValue - self.height)
+                        }
+
+                        gestureState = CGSize(width: draggedWidth, height: draggedHeight)
+                    }
+                    .onEnded { endedState in
+                        // Update the size only in the directions the user can drag.
+                        var draggedWidth = isDraggableHorizontal ? endedState.translation.width : 0
+                        var draggedHeight = isDraggableVertical ? endedState.translation.height : 0
+
+                        let willUpdateWithWidth: Int = self.width + Int(draggedWidth)
+                        let willUpdateWithHeight: Int = self.height + Int(draggedHeight)
+                        
+                        // The user is not allowed to resize beyond the upper or lower limit.
+                        if willUpdateWithWidth > SettingKeys.StickyNote().maxWidth.intValue {
+                            draggedWidth = CGFloat(SettingKeys.StickyNote().maxWidth.intValue - self.width)
+                        }
+                        
+                        if willUpdateWithWidth < SettingKeys.StickyNote().minWidth.intValue {
+                            draggedWidth = CGFloat(SettingKeys.StickyNote().minWidth.intValue - self.width)
+                        }
+
+                        if willUpdateWithHeight > SettingKeys.StickyNote().maxHeight.intValue {
+                            draggedHeight = CGFloat(SettingKeys.StickyNote().maxHeight.intValue - self.height)
+                        }
+                        
+                        if willUpdateWithHeight < SettingKeys.StickyNote().minHeight.intValue {
+                            draggedHeight = CGFloat(SettingKeys.StickyNote().minHeight.intValue - self.height)
+                        }
+
+                        // Updated to the new size.
+                        self.width += Int(draggedWidth)
+                        self.height += Int(draggedHeight)
+
+                        // Reset the draggable area and cursor image becouse the user resized the note.
+                        self.isDraggableHorizontal = false
+                        self.isDraggableVertical = false
+                        NSCursor.pop()
+                    }
+            )
         }
     }
     
+    private func HeaderView() -> some View {
+        VStack {
+            HStack {
+                Image(systemName: "power")
+                    .foregroundColor(Color.red)
+                    .onTapGesture {
+                        userAction = .QUIT
+                        isShowMessagebar.toggle()
+                        
+                        if !isShowMessagebar {
+                            userAction = .NONE
+                        }
+                    }
+                
+                if isShowSavingMessage && !isExecutableSave {
+                    Text("sitickynote.menu.message.saving")
+                        .padding(.horizontal, 5)
+                        .layoutPriority(2)
+                }
+                
+                Spacer()
+                    .layoutPriority(1)
+                
+                Button(action: {
+                    stickyText = redoUndoManager.undo()
+                }, label: {
+                    Image(systemName: "return.left")
+                })
+                .hidden()
+                .keyboardShortcut("z", modifiers: [.command])
+                
+                Button(action: {
+                    stickyText = redoUndoManager.redo()
+                }, label: {
+                    Image(systemName: "return.right")
+                })
+                .hidden()
+                .keyboardShortcut("y", modifiers: [.command])
+                
+                if isPinNote {
+                    Image(systemName: "pin")
+                        .foregroundColor(Color.red)
+                        .onTapGesture {
+                            togglePinningNote()
+                        }
+                } else {
+                    Image(systemName: "pin.slash")
+                        .foregroundColor(Color(bodyForegroundTheme))
+                        .onTapGesture {
+                            togglePinningNote()
+                        }
+                }
+                
+                Image(systemName: "eraser")
+                    .foregroundColor(Color(bodyForegroundTheme))
+                    .onTapGesture {
+                        userAction = .ALL_DELETE
+                        
+                        withAnimation {
+                            isShowMessagebar.toggle()
+                        }
+                        
+                        if !isShowMessagebar {
+                            userAction = .NONE
+                        }
+                    }
+                
+                Image(systemName: "printer")
+                    .foregroundColor(Color(bodyForegroundTheme))
+                    .onTapGesture {
+                        withAnimation {
+                            isShowMessagebar = false
+                        }
+                        
+                        userAction = .NONE
+                        
+                        printer.textFontSize = self.fontSize
+                        printer.textColor = self.bodyForegroundTheme
+                        printer.printSize = NSRect(x: 0, y: 0, width: self.width, height: self.height)
+                        printer.doPrinting(content: stickyText)
+                    }
+                
+                if #available(macOS 14, *) {
+                    SettingsLink {
+                        Image(systemName: "gearshape.fill")
+                            .foregroundColor(Color(bodyForegroundTheme))
+                    }
+                    .buttonStyle(SettingsLinkStyle())
+                    .keyboardShortcut(",", modifiers: [.command])
+                    .onHover { _ in
+                        withAnimation {
+                            isShowMessagebar = false
+                        }
+                        userAction = .NONE
+                    }
+                    
+                } else {
+                    Button(action: {
+                        withAnimation {
+                            isShowMessagebar = false
+                        }
+                        userAction = .NONE
+                        delegate.showSettings()
+                    }, label: {
+                        Image(systemName: "gearshape.fill")
+                            .foregroundColor(Color(bodyForegroundTheme))
+                    })
+                    .buttonStyle(SettingsLinkStyle())
+                    .keyboardShortcut(",", modifiers: [.command])
+                }
+            }
+            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+            
+            if isShowMessagebar {
+                MessagebarView(flag: $isShowMessagebar, selected: $userAction)
+                    .padding(EdgeInsets(top: 0, leading: 7, bottom: 5, trailing: 7))
+                    .onDisappear {
+                        userActionDispatcher()
+                    }
+            }
+        }
+    }
+    
+    private func NoteView() -> some View {
+        VStack {
+            if #available(macOS 14, *) {
+                TextEditor(text: $stickyText)
+                    .onChange(of: stickyText) { oldVal, newVal in
+                        
+                        _ = redoUndoManager.snapshot(of: newVal)
+                        
+                        if isEnableCalculation {
+                            stickyText = calculateFormulaIn(newVal)
+                        }
+                        
+                        if isExecutableSave {
+                            Task {
+                                do {
+                                    isExecutableSave = false
+                                    try await Task.sleep(nanoseconds: 15 * 100000000)
+                                    saveData()
+                                    
+                                } catch {
+                                    print("Fatal error: Failed to save JSON data.")
+                                    userAction = .DO_NOT_SAVE_JSON
+                                    isShowMessagebar = true
+                                }
+                            }
+                        }
+                    }
+            } else {
+                TextEditor(text: $stickyText)
+                    .onChange(of: stickyText) { val in
+                        
+                        _ = redoUndoManager.snapshot(of: val)
+                        
+                        if isEnableCalculation {
+                            stickyText = calculateFormulaIn(val)
+                        }
+                        
+                        if isExecutableSave {
+                            Task {
+                                do {
+                                    isExecutableSave = false
+                                    try await Task.sleep(nanoseconds: 15 * 100000000)
+                                    saveData()
+                                    
+                                } catch {
+                                    print("Fatal error: Failed to save JSON data.")
+                                    userAction = .DO_NOT_SAVE_JSON
+                                    isShowMessagebar = true
+                                }
+                            }
+                        }
+                    }
+            }
+        }
+    }
+    
+    // This view defines an area where the user can resize the note by dragging.
+    //
+    // The "#", "@" and "+" symbol in the diagram below indicates the area of window
+    // that the user can resize the note by dragging.
+    //
+    //    # -> Horizontal resizing only.
+    //    + -> Vertical resizing only.
+    //    @ -> Resize both horizontal and vertical.
+    //
+    //    *----------------*
+    //    |                #
+    //    |                #
+    //    |    The Note    #
+    //    |                #
+    //    |                #
+    //    *++++++++++++++++@
+    //
+    private func DraggableAreaView() -> some View {
+        ZStack {
+            HStack(alignment: .center) {
+                Spacer()
+                    .layoutPriority(1)
+                
+                VStack(alignment: .trailing, spacing: 0) {
+                    
+                    // Horizontal
+                    Rectangle()
+                        .fill(Color(frameTheme))
+                        .frame(width: 10, height: CGFloat(self.height) + self.dragState.height - 20)
+                        .onHover { isHover in
+                            if isHover {
+                                // Prepare to resize the note.
+                                // Perform the reset proccess after the user resize the note.
+                                self.isDraggableHorizontal = true
+                                NSCursor.resizeLeftRight.push()
+                            } else {
+                                NSCursor.pop()
+                            }
+                        }
+                    
+                    // Horizontal and vertical
+                    Rectangle()
+                        .fill(Color(frameTheme))
+                        .frame(width: 20, height: 20)
+                        .onHover { isHover in
+                            if isHover {
+                                // Prepare to resize the note.
+                                // Perform the reset proccess after the user resize the note.
+                                self.isDraggableVertical = true
+                                self.isDraggableHorizontal = true
+                                NSCursor.closedHand.push()
+                            } else {
+                                NSCursor.pop()
+                            }
+                        }
+                }
+            }
+
+            VStack(alignment: .center) {
+                Spacer()
+                    .layoutPriority(1)
+                
+                // Vertical
+                Rectangle()
+                    .fill(Color(frameTheme))
+                    .frame(width: CGFloat(self.width) + self.dragState.width - 40, height: 10)
+                    .onHover { isHover in
+                        if isHover {
+                            // Prepare to resize the note.
+                            // Perform the reset proccess after the user resize the note.
+                            self.isDraggableVertical = true
+                            NSCursor.resizeUpDown.push()
+                        } else {
+                            NSCursor.pop()
+                        }
+                    }
+            }
+        }
+    }
+
     private func userActionDispatcher() {
         switch userAction {
         case .QUIT:

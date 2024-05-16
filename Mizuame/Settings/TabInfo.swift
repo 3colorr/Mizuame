@@ -13,7 +13,7 @@ struct TabInfo: View {
     
     @State private var heightSize: CGFloat = 300
     private let initHeightSize: CGFloat = 300
-    private let expandHeightSize: CGFloat = 600
+    private let expandHeightSize: CGFloat = 500
 
     private let projectUrl: String = "https://github.com/3colorr/Mizuame"
     private let twUrl: String = "https://twitter.com/3colorr"
@@ -30,7 +30,7 @@ struct TabInfo: View {
                 }
                 
                 VStack(alignment: .leading, spacing: 5) {
-                    Text("Version: 1.2.1").font(.body)
+                    Text("Version: 1.2.2").font(.body)
                     Text("License: MIT license").font(.body)
                     HStack {
                         Text("settings.tab.info.src").font(.body)
