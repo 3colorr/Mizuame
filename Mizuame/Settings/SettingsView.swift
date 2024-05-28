@@ -16,8 +16,6 @@ struct SettingsView: View {
     
     var body: some View {
         ZStack {
-            Color("SettingsBackground")
-            
             if #available(macOS 14, *) {
                 MainTabViewMacOS14orNewer()
             } else {
