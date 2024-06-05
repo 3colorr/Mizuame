@@ -31,9 +31,10 @@ What is NOT SO GOOD point about the Mizuame?
 
 # Install
 - [x] AppStore
-  - Search for "Mizuame"
+  - See https://3colorr.github.io/Mizuame-pages/#install
 - [x] Build it yourself
   - `git clone` -> Build by Xcode
+  - See also https://3colorr.github.io/Mizuame-pages/#install
 
 # Sample
 <div align="center" style="display: flex;">
