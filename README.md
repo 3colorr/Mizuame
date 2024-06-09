@@ -23,17 +23,23 @@ What is NOT SO GOOD point about the Mizuame?
   - https://github.com/3colorr/Mizuame-pages
 
 # Branch
-- main
-  - Releases.
-- Others
-  - Development.
+- `main` branch
+  - Represents the stable and productioin-ready code.
+- `v*.*.*` branch
+  - Represents the development code.
   - It likely contain errors.
+  - The branch will be delete when it is merged to `main` branch.
+- Others branch
+  - Represents the development and bugfix code.
+  - It likely contain many errors.
+  - The branch will be delete when it is merged to `v*.*.*` branch.
 
 # Install
 - [x] AppStore
-  - Search for "Mizuame"
+  - See https://3colorr.github.io/Mizuame-pages/#install
 - [x] Build it yourself
   - `git clone` -> Build by Xcode
+  - See also https://3colorr.github.io/Mizuame-pages/#install
 
 # Sample
 <div align="center" style="display: flex;">
