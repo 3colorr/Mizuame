@@ -78,20 +78,17 @@ struct StickyNotePreview: View {
                     .frame(width: width, height: height / 6)
                 
                 Text("settings.tab.stickynote.window.preview.messagebar")
-                    .frame(width: width, height: height / 6)
+                    .frame(width: width * 0.95, height: height / 6)
                     .font(.system(size: CGFloat(fontSize)))
                     .foregroundColor(Color(message))
                     .background(Color(messagebar))
-                
+                    .padding(5)
+
                 Text("settings.tab.stickynote.window.preview.stickynote")
-                    .frame(width: width, height: height * 3 / 6)
+                    .frame(width: width * 0.95, height: height * 3.35 / 6)
                     .font(.system(size: CGFloat(fontSize)))
                     .foregroundColor(Color(bodyForeground))
                     .background(Color(bodyBackground))
-
-                Rectangle()
-                    .fill(Color(bodyFrame))
-                    .frame(width: width, height: height / 6)
             }
         }
         .overlay {
