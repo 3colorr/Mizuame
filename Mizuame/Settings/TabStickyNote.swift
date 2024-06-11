@@ -111,7 +111,7 @@ struct TabStickyNote: View {
                     ThemePalette(message: $messageTheme, messagebar: $messagebarTheme, bodyForeground: $bodyForegroundTheme, bodyBackground: $bodyBackgroundTheme, bodyFrame: $frameTheme)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 20))
                      
-                    Spacer()
+                    Spacer(minLength: 20)
                     
                     HStack {
                         Text("settings.tab.stickynote.reset.title")
