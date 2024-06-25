@@ -301,6 +301,7 @@ struct ContentView: View {
         VStack {
             if #available(macOS 14, *) {
                 TextEditor(text: $stickyText)
+                    .padding(EdgeInsets(top: 5, leading: 1, bottom: 0, trailing: 1))
                     .onChange(of: stickyText) { oldVal, newVal in
                         
                         _ = redoUndoManager.snapshot(of: newVal)
@@ -326,6 +327,7 @@ struct ContentView: View {
                     }
             } else {
                 TextEditor(text: $stickyText)
+                    .padding(EdgeInsets(top: 5, leading: 1, bottom: 0, trailing: 1))
                     .onChange(of: stickyText) { val in
                         
                         _ = redoUndoManager.snapshot(of: val)

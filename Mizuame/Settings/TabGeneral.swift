@@ -16,8 +16,6 @@ struct TabGeneral: View {
 
     @AppStorage(SettingKeys.StickyNote().keyPinNote) private var isPinNote: Bool = SettingKeys.StickyNote().initialPinNote
 
-    @AppStorage(SettingKeys.StickyNote().keyLoginItems) private var isEnableLoginItems: Bool = SettingKeys.StickyNote().initialLoginItems
-
     @AppStorage(SettingKeys.StickyNote.NoteFontColor.Theme().key) private var isApplyThemeColorToFont: Bool = SettingKeys.StickyNote.NoteFontColor.Theme().initialVale
 
     @AppStorage(SettingKeys.StickyNote.NoteFontColor.Black().key) private var isApplyBlackColorToFont: Bool = SettingKeys.StickyNote.NoteFontColor.Black().initialVale
@@ -30,6 +28,9 @@ struct TabGeneral: View {
     
     @AppStorage(SettingKeys.StickyNote().keyPositionOfRoundsDecimalPoint) private var positionOfRoundsDecimalPoint: Int = SettingKeys.StickyNote().initialPositionOfRoundsDecimalPoint
 
+    @State private var isEnableLoginItems: Bool = false
+    
+    
     var body: some View {
         VStack(alignment: .center) {
             VStack(alignment: .leading, spacing: 30) {
@@ -73,6 +74,9 @@ struct TabGeneral: View {
                                     }
                                 })
                             }
+                        }
+                        .onAppear {
+                            isEnableLoginItems = (SMAppService.mainApp.status == .enabled)
                         }
                     }
                 }
