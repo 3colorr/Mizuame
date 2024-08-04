@@ -1,0 +1,754 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		41038CBC2AEFE2D400A79A57 /* CalculateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41038CBB2AEFE2D400A79A57 /* CalculateModel.swift */; };
+		41038CBD2AEFE2D400A79A57 /* CalculateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41038CBB2AEFE2D400A79A57 /* CalculateModel.swift */; };
+		4105AA4A2A514FB5001B00D2 /* PrinterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4105AA492A514FB5001B00D2 /* PrinterModel.swift */; };
+		410DBF1D2A198F570024A843 /* StickyNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410DBF1C2A198F570024A843 /* StickyNote.swift */; };
+		410DBF1E2A198F570024A843 /* StickyNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410DBF1C2A198F570024A843 /* StickyNote.swift */; };
+		410DBF1F2A198F570024A843 /* StickyNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410DBF1C2A198F570024A843 /* StickyNote.swift */; };
+		410DBF212A1993EE0024A843 /* DataIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410DBF202A1993EE0024A843 /* DataIO.swift */; };
+		410DBF222A1993EE0024A843 /* DataIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410DBF202A1993EE0024A843 /* DataIO.swift */; };
+		410DBF232A1993EE0024A843 /* DataIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410DBF202A1993EE0024A843 /* DataIO.swift */; };
+		41371D832ADB87E7003E0419 /* RedoUndo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41371D822ADB87E7003E0419 /* RedoUndo.swift */; };
+		41371D842ADB87E7003E0419 /* RedoUndo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41371D822ADB87E7003E0419 /* RedoUndo.swift */; };
+		413A95DD2A5A499800E735BF /* TabPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413A95DC2A5A499800E735BF /* TabPrint.swift */; };
+		414053532B064B1C00A46C0B /* NoteParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414053522B064B1C00A46C0B /* NoteParser.swift */; };
+		414053542B064B1C00A46C0B /* NoteParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414053522B064B1C00A46C0B /* NoteParser.swift */; };
+		4140A8772A28CF0D00AA8D31 /* TermsOfServiceBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4140A8762A28CF0D00AA8D31 /* TermsOfServiceBodyView.swift */; };
+		4140A87B2A28CFF000AA8D31 /* PrivacyPolicyBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4140A87A2A28CFF000AA8D31 /* PrivacyPolicyBodyView.swift */; };
+		4158785D2A15070F003A545C /* MessagebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4158785C2A15070F003A545C /* MessagebarView.swift */; };
+		415878612A1509DF003A545C /* MessagebarEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415878602A1509DF003A545C /* MessagebarEnum.swift */; };
+		415B97A82A2C1FE3003B144E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 415B97AA2A2C1FE3003B144E /* Localizable.strings */; };
+		416A20A02A2638F200D35889 /* ColorSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416A209F2A2638F200D35889 /* ColorSliderView.swift */; };
+		41790C792A1F8C13002D746A /* TabStickyNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41790C782A1F8C13002D746A /* TabStickyNote.swift */; };
+		41790C7D2A1F8D48002D746A /* TabGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41790C7C2A1F8D48002D746A /* TabGeneral.swift */; };
+		41790C812A1F92CA002D746A /* TabHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41790C802A1F92CA002D746A /* TabHelp.swift */; };
+		41790C852A1F92F4002D746A /* TabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41790C842A1F92F4002D746A /* TabInfo.swift */; };
+		418A6C632A07E105009C46CD /* MizuameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418A6C622A07E105009C46CD /* MizuameApp.swift */; };
+		418A6C652A07E105009C46CD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418A6C642A07E105009C46CD /* ContentView.swift */; };
+		418A6C672A07E105009C46CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418A6C662A07E105009C46CD /* Assets.xcassets */; };
+		418A6C6A2A07E105009C46CD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418A6C692A07E105009C46CD /* Preview Assets.xcassets */; };
+		418A6C7A2A07E105009C46CD /* MizuameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418A6C792A07E105009C46CD /* MizuameTests.swift */; };
+		418A6C842A07E105009C46CD /* MizuameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418A6C832A07E105009C46CD /* MizuameUITests.swift */; };
+		418A6C862A07E105009C46CD /* MizuameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418A6C852A07E105009C46CD /* MizuameUITestsLaunchTests.swift */; };
+		41ACD1202A231819001F111B /* SettingsViewStateEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ACD11F2A231819001F111B /* SettingsViewStateEnum.swift */; };
+		41ACD1242A23892B001F111B /* TermsOfServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ACD1232A23892B001F111B /* TermsOfServiceView.swift */; };
+		41ACD1282A238A02001F111B /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ACD1272A238A02001F111B /* PrivacyPolicyView.swift */; };
+		41AE86732A21B1E8000068CA /* SettingKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AE86722A21B1E8000068CA /* SettingKeys.swift */; };
+		41AFAD822A30B05400D01A37 /* ThemePalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AFAD812A30B05400D01A37 /* ThemePalette.swift */; };
+		41BD1EB92A277A1200C97A2E /* StickyNotePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD1EB82A277A1200C97A2E /* StickyNotePreview.swift */; };
+		41C01B702A0D25B500B55670 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C01B6F2A0D25B500B55670 /* SettingsView.swift */; };
+		41EEA87F2AC804CE0017E3FC /* SettingsLinkStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EEA87E2AC804CE0017E3FC /* SettingsLinkStyle.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		418A6C762A07E105009C46CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 418A6C572A07E104009C46CD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 418A6C5E2A07E105009C46CD;
+			remoteInfo = Mizuame;
+		};
+		418A6C802A07E105009C46CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 418A6C572A07E104009C46CD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 418A6C5E2A07E105009C46CD;
+			remoteInfo = Mizuame;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		41038CBB2AEFE2D400A79A57 /* CalculateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateModel.swift; sourceTree = "<group>"; };
+		4105AA492A514FB5001B00D2 /* PrinterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrinterModel.swift; path = Mizuame/DataModel/PrinterModel.swift; sourceTree = SOURCE_ROOT; };
+		410DBF1C2A198F570024A843 /* StickyNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyNote.swift; sourceTree = "<group>"; };
+		410DBF202A1993EE0024A843 /* DataIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataIO.swift; sourceTree = "<group>"; };
+		41371D822ADB87E7003E0419 /* RedoUndo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedoUndo.swift; sourceTree = "<group>"; };
+		413A95DC2A5A499800E735BF /* TabPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPrint.swift; sourceTree = "<group>"; };
+		414053522B064B1C00A46C0B /* NoteParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteParser.swift; sourceTree = "<group>"; };
+		4140A8762A28CF0D00AA8D31 /* TermsOfServiceBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceBodyView.swift; sourceTree = "<group>"; };
+		4140A87A2A28CFF000AA8D31 /* PrivacyPolicyBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyBodyView.swift; sourceTree = "<group>"; };
+		4158785C2A15070F003A545C /* MessagebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagebarView.swift; sourceTree = "<group>"; };
+		415878602A1509DF003A545C /* MessagebarEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagebarEnum.swift; sourceTree = "<group>"; };
+		415B97A92A2C1FE3003B144E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		415B97AB2A2C2001003B144E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		416A209F2A2638F200D35889 /* ColorSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSliderView.swift; sourceTree = "<group>"; };
+		41790C782A1F8C13002D746A /* TabStickyNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabStickyNote.swift; sourceTree = "<group>"; };
+		41790C7C2A1F8D48002D746A /* TabGeneral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabGeneral.swift; sourceTree = "<group>"; };
+		41790C802A1F92CA002D746A /* TabHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabHelp.swift; sourceTree = "<group>"; };
+		41790C842A1F92F4002D746A /* TabInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabInfo.swift; sourceTree = "<group>"; };
+		418A6C5F2A07E105009C46CD /* Mizuame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mizuame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		418A6C622A07E105009C46CD /* MizuameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MizuameApp.swift; sourceTree = "<group>"; };
+		418A6C642A07E105009C46CD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		418A6C662A07E105009C46CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		418A6C692A07E105009C46CD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		418A6C702A07E105009C46CD /* Mizuame.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mizuame.entitlements; sourceTree = "<group>"; };
+		418A6C752A07E105009C46CD /* MizuameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MizuameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		418A6C792A07E105009C46CD /* MizuameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MizuameTests.swift; sourceTree = "<group>"; };
+		418A6C7F2A07E105009C46CD /* MizuameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MizuameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		418A6C832A07E105009C46CD /* MizuameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MizuameUITests.swift; sourceTree = "<group>"; };
+		418A6C852A07E105009C46CD /* MizuameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MizuameUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		41ACD11F2A231819001F111B /* SettingsViewStateEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewStateEnum.swift; sourceTree = "<group>"; };
+		41ACD1232A23892B001F111B /* TermsOfServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceView.swift; sourceTree = "<group>"; };
+		41ACD1272A238A02001F111B /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
+		41AE86722A21B1E8000068CA /* SettingKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingKeys.swift; sourceTree = "<group>"; };
+		41AFAD812A30B05400D01A37 /* ThemePalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePalette.swift; sourceTree = "<group>"; };
+		41BD1EB82A277A1200C97A2E /* StickyNotePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyNotePreview.swift; sourceTree = "<group>"; };
+		41C01B6F2A0D25B500B55670 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		41EEA87E2AC804CE0017E3FC /* SettingsLinkStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLinkStyle.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		418A6C5C2A07E105009C46CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		418A6C722A07E105009C46CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		418A6C7C2A07E105009C46CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		410DBF1B2A198EAD0024A843 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				41038CBB2AEFE2D400A79A57 /* CalculateModel.swift */,
+				4105AA492A514FB5001B00D2 /* PrinterModel.swift */,
+				410DBF1C2A198F570024A843 /* StickyNote.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		41790C772A1F8BA0002D746A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				41C01B6F2A0D25B500B55670 /* SettingsView.swift */,
+				41790C802A1F92CA002D746A /* TabHelp.swift */,
+				41790C7C2A1F8D48002D746A /* TabGeneral.swift */,
+				41790C782A1F8C13002D746A /* TabStickyNote.swift */,
+				413A95DC2A5A499800E735BF /* TabPrint.swift */,
+				41790C842A1F92F4002D746A /* TabInfo.swift */,
+				41AE86722A21B1E8000068CA /* SettingKeys.swift */,
+				41ACD11F2A231819001F111B /* SettingsViewStateEnum.swift */,
+				41ACD1232A23892B001F111B /* TermsOfServiceView.swift */,
+				4140A8762A28CF0D00AA8D31 /* TermsOfServiceBodyView.swift */,
+				41ACD1272A238A02001F111B /* PrivacyPolicyView.swift */,
+				4140A87A2A28CFF000AA8D31 /* PrivacyPolicyBodyView.swift */,
+				416A209F2A2638F200D35889 /* ColorSliderView.swift */,
+				41BD1EB82A277A1200C97A2E /* StickyNotePreview.swift */,
+				41AFAD812A30B05400D01A37 /* ThemePalette.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		418A6C562A07E104009C46CD = {
+			isa = PBXGroup;
+			children = (
+				418A6C612A07E105009C46CD /* Mizuame */,
+				418A6C782A07E105009C46CD /* MizuameTests */,
+				418A6C822A07E105009C46CD /* MizuameUITests */,
+				418A6C602A07E105009C46CD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		418A6C602A07E105009C46CD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				418A6C5F2A07E105009C46CD /* Mizuame.app */,
+				418A6C752A07E105009C46CD /* MizuameTests.xctest */,
+				418A6C7F2A07E105009C46CD /* MizuameUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		418A6C612A07E105009C46CD /* Mizuame */ = {
+			isa = PBXGroup;
+			children = (
+				41790C772A1F8BA0002D746A /* Settings */,
+				410DBF1B2A198EAD0024A843 /* DataModel */,
+				418A6C622A07E105009C46CD /* MizuameApp.swift */,
+				418A6C642A07E105009C46CD /* ContentView.swift */,
+				4158785C2A15070F003A545C /* MessagebarView.swift */,
+				415878602A1509DF003A545C /* MessagebarEnum.swift */,
+				410DBF202A1993EE0024A843 /* DataIO.swift */,
+				414053522B064B1C00A46C0B /* NoteParser.swift */,
+				41371D822ADB87E7003E0419 /* RedoUndo.swift */,
+				41EEA87E2AC804CE0017E3FC /* SettingsLinkStyle.swift */,
+				418A6C662A07E105009C46CD /* Assets.xcassets */,
+				415B97AA2A2C1FE3003B144E /* Localizable.strings */,
+				418A6C702A07E105009C46CD /* Mizuame.entitlements */,
+				418A6C682A07E105009C46CD /* Preview Content */,
+			);
+			path = Mizuame;
+			sourceTree = "<group>";
+		};
+		418A6C682A07E105009C46CD /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				418A6C692A07E105009C46CD /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		418A6C782A07E105009C46CD /* MizuameTests */ = {
+			isa = PBXGroup;
+			children = (
+				418A6C792A07E105009C46CD /* MizuameTests.swift */,
+			);
+			path = MizuameTests;
+			sourceTree = "<group>";
+		};
+		418A6C822A07E105009C46CD /* MizuameUITests */ = {
+			isa = PBXGroup;
+			children = (
+				418A6C832A07E105009C46CD /* MizuameUITests.swift */,
+				418A6C852A07E105009C46CD /* MizuameUITestsLaunchTests.swift */,
+			);
+			path = MizuameUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		418A6C5E2A07E105009C46CD /* Mizuame */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 418A6C892A07E105009C46CD /* Build configuration list for PBXNativeTarget "Mizuame" */;
+			buildPhases = (
+				418A6C5B2A07E105009C46CD /* Sources */,
+				418A6C5C2A07E105009C46CD /* Frameworks */,
+				418A6C5D2A07E105009C46CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Mizuame;
+			productName = Mizuame;
+			productReference = 418A6C5F2A07E105009C46CD /* Mizuame.app */;
+			productType = "com.apple.product-type.application";
+		};
+		418A6C742A07E105009C46CD /* MizuameTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 418A6C8C2A07E105009C46CD /* Build configuration list for PBXNativeTarget "MizuameTests" */;
+			buildPhases = (
+				418A6C712A07E105009C46CD /* Sources */,
+				418A6C722A07E105009C46CD /* Frameworks */,
+				418A6C732A07E105009C46CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				418A6C772A07E105009C46CD /* PBXTargetDependency */,
+			);
+			name = MizuameTests;
+			productName = MizuameTests;
+			productReference = 418A6C752A07E105009C46CD /* MizuameTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		418A6C7E2A07E105009C46CD /* MizuameUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 418A6C8F2A07E105009C46CD /* Build configuration list for PBXNativeTarget "MizuameUITests" */;
+			buildPhases = (
+				418A6C7B2A07E105009C46CD /* Sources */,
+				418A6C7C2A07E105009C46CD /* Frameworks */,
+				418A6C7D2A07E105009C46CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				418A6C812A07E105009C46CD /* PBXTargetDependency */,
+			);
+			name = MizuameUITests;
+			productName = MizuameUITests;
+			productReference = 418A6C7F2A07E105009C46CD /* MizuameUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		418A6C572A07E104009C46CD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					418A6C5E2A07E105009C46CD = {
+						CreatedOnToolsVersion = 14.3;
+					};
+					418A6C742A07E105009C46CD = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 418A6C5E2A07E105009C46CD;
+					};
+					418A6C7E2A07E105009C46CD = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 418A6C5E2A07E105009C46CD;
+					};
+				};
+			};
+			buildConfigurationList = 418A6C5A2A07E104009C46CD /* Build configuration list for PBXProject "Mizuame" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				ja,
+			);
+			mainGroup = 418A6C562A07E104009C46CD;
+			productRefGroup = 418A6C602A07E105009C46CD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				418A6C5E2A07E105009C46CD /* Mizuame */,
+				418A6C742A07E105009C46CD /* MizuameTests */,
+				418A6C7E2A07E105009C46CD /* MizuameUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		418A6C5D2A07E105009C46CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				418A6C6A2A07E105009C46CD /* Preview Assets.xcassets in Resources */,
+				415B97A82A2C1FE3003B144E /* Localizable.strings in Resources */,
+				418A6C672A07E105009C46CD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		418A6C732A07E105009C46CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		418A6C7D2A07E105009C46CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		418A6C5B2A07E105009C46CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4105AA4A2A514FB5001B00D2 /* PrinterModel.swift in Sources */,
+				415878612A1509DF003A545C /* MessagebarEnum.swift in Sources */,
+				41790C792A1F8C13002D746A /* TabStickyNote.swift in Sources */,
+				410DBF212A1993EE0024A843 /* DataIO.swift in Sources */,
+				41790C852A1F92F4002D746A /* TabInfo.swift in Sources */,
+				41C01B702A0D25B500B55670 /* SettingsView.swift in Sources */,
+				41ACD1242A23892B001F111B /* TermsOfServiceView.swift in Sources */,
+				413A95DD2A5A499800E735BF /* TabPrint.swift in Sources */,
+				41AE86732A21B1E8000068CA /* SettingKeys.swift in Sources */,
+				41790C812A1F92CA002D746A /* TabHelp.swift in Sources */,
+				41790C7D2A1F8D48002D746A /* TabGeneral.swift in Sources */,
+				41EEA87F2AC804CE0017E3FC /* SettingsLinkStyle.swift in Sources */,
+				410DBF1D2A198F570024A843 /* StickyNote.swift in Sources */,
+				41371D832ADB87E7003E0419 /* RedoUndo.swift in Sources */,
+				4140A8772A28CF0D00AA8D31 /* TermsOfServiceBodyView.swift in Sources */,
+				416A20A02A2638F200D35889 /* ColorSliderView.swift in Sources */,
+				41AFAD822A30B05400D01A37 /* ThemePalette.swift in Sources */,
+				4140A87B2A28CFF000AA8D31 /* PrivacyPolicyBodyView.swift in Sources */,
+				41ACD1282A238A02001F111B /* PrivacyPolicyView.swift in Sources */,
+				41038CBC2AEFE2D400A79A57 /* CalculateModel.swift in Sources */,
+				418A6C652A07E105009C46CD /* ContentView.swift in Sources */,
+				418A6C632A07E105009C46CD /* MizuameApp.swift in Sources */,
+				414053532B064B1C00A46C0B /* NoteParser.swift in Sources */,
+				41BD1EB92A277A1200C97A2E /* StickyNotePreview.swift in Sources */,
+				4158785D2A15070F003A545C /* MessagebarView.swift in Sources */,
+				41ACD1202A231819001F111B /* SettingsViewStateEnum.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		418A6C712A07E105009C46CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				418A6C7A2A07E105009C46CD /* MizuameTests.swift in Sources */,
+				410DBF222A1993EE0024A843 /* DataIO.swift in Sources */,
+				41371D842ADB87E7003E0419 /* RedoUndo.swift in Sources */,
+				410DBF1E2A198F570024A843 /* StickyNote.swift in Sources */,
+				414053542B064B1C00A46C0B /* NoteParser.swift in Sources */,
+				41038CBD2AEFE2D400A79A57 /* CalculateModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		418A6C7B2A07E105009C46CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				410DBF232A1993EE0024A843 /* DataIO.swift in Sources */,
+				418A6C842A07E105009C46CD /* MizuameUITests.swift in Sources */,
+				410DBF1F2A198F570024A843 /* StickyNote.swift in Sources */,
+				418A6C862A07E105009C46CD /* MizuameUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		418A6C772A07E105009C46CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 418A6C5E2A07E105009C46CD /* Mizuame */;
+			targetProxy = 418A6C762A07E105009C46CD /* PBXContainerItemProxy */;
+		};
+		418A6C812A07E105009C46CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 418A6C5E2A07E105009C46CD /* Mizuame */;
+			targetProxy = 418A6C802A07E105009C46CD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		415B97AA2A2C1FE3003B144E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				415B97A92A2C1FE3003B144E /* en */,
+				415B97AB2A2C2001003B144E /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		418A6C872A07E105009C46CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = 1.2.3;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		418A6C882A07E105009C46CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = 1.2.3;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		418A6C8A2A07E105009C46CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = Mizuame/Mizuame.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.2.3;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"Mizuame/Preview Content\"";
+				DEVELOPMENT_TEAM = 4897P87J67;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Mizuame;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright 2024 3colorr";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.2.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.3colorr.Mizuame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		418A6C8B2A07E105009C46CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = Mizuame/Mizuame.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.2.3;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"Mizuame/Preview Content\"";
+				DEVELOPMENT_TEAM = 4897P87J67;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Mizuame;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright 2024 3colorr";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.2.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.3colorr.mizuame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		418A6C8D2A07E105009C46CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 4897P87J67;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.3colorr.MizuameTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mizuame.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mizuame";
+			};
+			name = Debug;
+		};
+		418A6C8E2A07E105009C46CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 4897P87J67;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.3colorr.MizuameTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mizuame.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mizuame";
+			};
+			name = Release;
+		};
+		418A6C902A07E105009C46CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 4897P87J67;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.3colorr.MizuameUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Mizuame;
+			};
+			name = Debug;
+		};
+		418A6C912A07E105009C46CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 4897P87J67;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.3colorr.MizuameUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Mizuame;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		418A6C5A2A07E104009C46CD /* Build configuration list for PBXProject "Mizuame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				418A6C872A07E105009C46CD /* Debug */,
+				418A6C882A07E105009C46CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		418A6C892A07E105009C46CD /* Build configuration list for PBXNativeTarget "Mizuame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				418A6C8A2A07E105009C46CD /* Debug */,
+				418A6C8B2A07E105009C46CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		418A6C8C2A07E105009C46CD /* Build configuration list for PBXNativeTarget "MizuameTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				418A6C8D2A07E105009C46CD /* Debug */,
+				418A6C8E2A07E105009C46CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		418A6C8F2A07E105009C46CD /* Build configuration list for PBXNativeTarget "MizuameUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				418A6C902A07E105009C46CD /* Debug */,
+				418A6C912A07E105009C46CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 418A6C572A07E104009C46CD /* Project object */;
+}
