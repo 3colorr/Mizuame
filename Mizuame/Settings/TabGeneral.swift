@@ -16,6 +16,8 @@ struct TabGeneral: View {
 
     @AppStorage(SettingKeys.StickyNote().keyPinNote) private var isPinNote: Bool = SettingKeys.StickyNote().initialPinNote
 
+    @AppStorage(SettingKeys.StickyNote().keyAutomaticallyHideHeader) private var isAutomaticallyHideHeader: Bool = SettingKeys.StickyNote().initialAutomaticallyHideHeader
+
     @AppStorage(SettingKeys.StickyNote.NoteFontColor.Theme().key) private var isApplyThemeColorToFont: Bool = SettingKeys.StickyNote.NoteFontColor.Theme().initialVale
 
     @AppStorage(SettingKeys.StickyNote.NoteFontColor.Black().key) private var isApplyBlackColorToFont: Bool = SettingKeys.StickyNote.NoteFontColor.Black().initialVale
@@ -77,6 +79,10 @@ struct TabGeneral: View {
                         }
                         .onAppear {
                             isEnableLoginItems = (SMAppService.mainApp.status == .enabled)
+                        }
+
+                        Toggle(isOn: $isAutomaticallyHideHeader) {
+                            Text("settings.tab.general.note.menubar.automatically.hide")
                         }
                     }
                 }

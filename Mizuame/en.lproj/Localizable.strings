@@ -81,6 +81,7 @@
 
 "settings.tab.general.note.title" = "Note:";
 "settings.tab.general.note.menubar.saving" = "Display a saving message";
+"settings.tab.general.note.menubar.automatically.hide" = "Automatically hide the menu bar";
 "settings.tab.general.note.note.pin" = "Pinning the note to the front";
 "settings.tab.general.note.note.loginitems" = "Add to \"Login Items\"";
 "settings.tab.general.note.note.loginitems.description" = "Mizuame will start when you login.";
