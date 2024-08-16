@@ -18,6 +18,8 @@ struct ContentView: View {
 
     @AppStorage(SettingKeys.StickyNote().keyPinNote) private var isPinNote: Bool = SettingKeys.StickyNote().initialPinNote
 
+    @AppStorage(SettingKeys.StickyNote().keyAutomaticallyHideHeader) private var isAutomaticallyHideHeader: Bool = SettingKeys.StickyNote().initialAutomaticallyHideHeader
+
     @AppStorage(SettingKeys.Menubar().keySavingMessage) private var isShowSavingMessage: Bool = SettingKeys.Menubar().initialSavingMessage
     
     @AppStorage(SettingKeys.StickyNote().keyCalculateAction) private var isEnableCalculation: Bool = SettingKeys.StickyNote().initialCalculateAction
@@ -56,6 +58,28 @@ struct ContentView: View {
     @State private var isDraggableHorizontal: Bool = false
     @GestureState private var dragState: CGSize = .zero
 
+    // Automatically hide menu bar(header)
+    //  -> Why do we need two state variables for this?
+    //  => The HeaderView(), which controls the menu, is stacked on top of the DetectArea(),
+    //     which controls the note's resizing. The HeaderView() is hidden when two state variables are 'False'.
+    //     When the user's cursor is over the DetectArea(), one of the state variables becomes 'True',
+    //     and the HeaderView() becomes visible. Then, to keep the HeaderView() visible,
+    //     the remaining state variable becomes 'True'.
+    //     When all state variables become 'False', the HeaderView() is automatically hidden.
+    //
+    //       ------------------------------
+    //      /  DetectArea()               /
+    //     /     ------------------------------
+    //    /     /                             /
+    //   /     /     HeaderView()            /
+    //  /     /                             /
+    // ------/                             /
+    //      /                             /
+    //      ------------------------------
+    //
+    @State private var isShowHeader: Bool = false
+    @State private var isKeepVisibleHeader: Bool = false
+
     private let io: DataIO
     private let redoUndoManager: RedoUndo
 
@@ -92,7 +116,30 @@ struct ContentView: View {
                 DraggableAreaView()
 
                 VStack(spacing: 0) {
-                    HeaderView()
+
+                    if isAutomaticallyHideHeader {
+                        if isShowHeader || isKeepVisibleHeader {
+                            HeaderView()
+                                .onHover { isHover in
+                                    withAnimation {
+                                        self.isKeepVisibleHeader = isHover
+                                        self.isShowHeader = isHover
+                                    }
+                                }
+                        } else {
+                            // DetectArea
+                            Rectangle()
+                                .fill(Color(frameTheme))
+                                .frame(width: CGFloat(self.width) + self.dragState.width - 40, height: 7)
+                                .onHover { isHover in
+                                    withAnimation {
+                                        self.isShowHeader = isHover
+                                    }
+                                }
+                        }
+                    } else {
+                        HeaderView()
+                    }
                     
                     NoteView()
                         .frame(maxWidth: .infinity, maxHeight: .infinity)

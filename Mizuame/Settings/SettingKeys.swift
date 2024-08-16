@@ -84,6 +84,9 @@ struct SettingKeys {
         let keyLoginItems: String = "stickyNoteLoginItems"
         let initialLoginItems: Bool = false
 
+        let keyAutomaticallyHideHeader = "automaticallyHideTheHeader"
+        let initialAutomaticallyHideHeader: Bool = false
+
         struct NoteFontColor {
             struct Theme {
                 let key: String = "stickyNoteFontColorTheme"
