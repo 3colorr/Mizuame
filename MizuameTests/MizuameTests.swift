@@ -322,54 +322,54 @@ final class MizuameTests: XCTestCase {
         
         // test 1
         let testNote1 = "abc(1+2+3=)"
-        let results1 = parser.parse(note: testNote1)
+        let results1 = parser.parseFormulasIn(note: testNote1)
         XCTAssertEqual(results1.count, 1)
         XCTAssertEqual(testNote1[results1[0]], "1+2+3")
         
         // test 2
         let testNote2 = "abc1+2+3=)(=)efg"
-        let results2 = parser.parse(note: testNote2)
+        let results2 = parser.parseFormulasIn(note: testNote2)
         XCTAssertEqual(results2.count, 0)
         //XCTAssertEqual(testNote2[results2[0]], "")
 
         // test 3
         let testNote3 = "abc(1+2+3=(=)efg"
-        let results3 = parser.parse(note: testNote3)
+        let results3 = parser.parseFormulasIn(note: testNote3)
         XCTAssertEqual(results3.count, 0)
         //XCTAssertEqual(testNote3[results3[0]], "")
 
         // test 4
         let testNote4 = "abc(1+2+3="
-        let results4 = parser.parse(note: testNote4)
+        let results4 = parser.parseFormulasIn(note: testNote4)
         XCTAssertEqual(results4.count, 0)
 
         // test 5
         let testNote5 = "(1+2+3=)abc(4*a=)efg"
-        let results5 = parser.parse(note: testNote5)
+        let results5 = parser.parseFormulasIn(note: testNote5)
         XCTAssertEqual(results5.count, 2)
         XCTAssertEqual(testNote5[results5[0]], "1+2+3")
         XCTAssertEqual(testNote5[results5[1]], "4*a")
 
         // test 6
         let testNote6 = "(1+2+3= 5 )abc(4*a=)efg"
-        let results6 = parser.parse(note: testNote6)
+        let results6 = parser.parseFormulasIn(note: testNote6)
         XCTAssertEqual(results6.count, 1)
         XCTAssertEqual(testNote6[results6[0]], "4*a")
 
         // test 7
         let testNote7 = "(1+2+3 5 )(4*a=)"
-        let results7 = parser.parse(note: testNote7)
+        let results7 = parser.parseFormulasIn(note: testNote7)
         XCTAssertEqual(results7.count, 1)
         XCTAssertEqual(testNote7[results7[0]], "4*a")
 
         // test 8
         let testNote8 = "abc("
-        let results8 = parser.parse(note: testNote8)
+        let results8 = parser.parseFormulasIn(note: testNote8)
         XCTAssertEqual(results8.count, 0)
 
         // test 9
         let testNote9 = "abc((2+2)^3=)"
-        let results9 = parser.parse(note: testNote9)
+        let results9 = parser.parseFormulasIn(note: testNote9)
         XCTAssertEqual(results9.count, 1)
         XCTAssertEqual(testNote9[results9[0]], "(2+2)^3")
     }

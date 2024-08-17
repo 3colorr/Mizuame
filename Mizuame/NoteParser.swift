@@ -9,12 +9,12 @@ import Foundation
 
 class NoteParser {
     
-    // ## Which strings does a 'parse(note:)' consider to be a formula?
-    // The 'parse(note:)' consider the string between '(' and '=)' as a formula.
+    // ## Which strings does a 'parseFormulasIn(note:)' consider to be a formula?
+    // The 'parseFormulasIn(note:)' consider the string between '(' and '=)' as a formula.
     // A ')' is must be placed after the '=', and nothing can be placed between '=' and ')'.
     // The found formulas are append to array as 'Range<String.Index>'.
     // If the fomula is not found, return empty array([]).
-    public func parse(note: String) -> [Range<String.Index>] {
+    public func parseFormulasIn(note: String) -> [Range<String.Index>] {
         var results: [Range<String.Index>] = []
 
         // At first, extract a string that enclosed '(' and '=)' by regular expression.

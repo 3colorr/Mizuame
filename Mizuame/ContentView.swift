@@ -547,7 +547,7 @@ struct ContentView: View {
         
         var calculated: String = val
         
-        for formulaRange in parser.parse(note: calculated) {
+        for formulaRange in parser.parseFormulasIn(note: calculated) {
 
             if let result = calculater.result(formula: String(calculated[formulaRange])) {
                 
