@@ -371,4 +371,204 @@ final class MizuameTests: XCTestCase {
         XCTAssertEqual(results9.count, 1)
         XCTAssertEqual(testNote9[results9[0]], "(2+2)^3")
     }
+
+    func testNoteParser_getMarkdown() throws {
+
+        let testNote = """
+abc
+# header 1
+## header 2
+### header 3
+#### header 4
+##### header 5
+###### header 6\n
+efg
+- list 1
+  - list 2
+    - list 3
+hij
+"""
+
+        let markdown = testNote.toMarkdown(size: 12)
+
+        for dd in markdown.runs {
+            print(dd)
+        }
+
+        if let header1 = markdown.range(of: "header 1") {
+            XCTAssertEqual(String(markdown[header1].characters), "header 1")
+            XCTAssertEqual(markdown[header1].font, .system(size: 24, weight: .bold))
+        } else {
+            XCTFail("Attributed 'header 1' is missing.")
+        }
+
+        if let header2 = markdown.range(of: "header 2") {
+            XCTAssertEqual(String(markdown[header2].characters), "header 2")
+            XCTAssertEqual(markdown[header2].font, .system(size: 18, weight: .bold))
+        } else {
+            XCTFail("Attributed 'header 2' is missing.")
+        }
+
+        if let header3 = markdown.range(of: "header 3") {
+            XCTAssertEqual(String(markdown[header3].characters), "header 3")
+            XCTAssertEqual(markdown[header3].font, .system(size: 14, weight: .bold))
+        } else {
+            XCTFail("Attributed 'header 3' is missing.")
+        }
+
+        if let header4 = markdown.range(of: "header 4") {
+            XCTAssertEqual(String(markdown[header4].characters), "header 4")
+            XCTAssertEqual(markdown[header4].font, .system(size: 12, weight: .bold))
+        } else {
+            XCTFail("Attributed 'header 4' is missing.")
+        }
+
+        if let header5 = markdown.range(of: "header 5") {
+            XCTAssertEqual(String(markdown[header5].characters), "header 5")
+            XCTAssertEqual(markdown[header5].font, .system(size: 10, weight: .bold))
+        } else {
+            XCTFail("Attributed 'header 5' is missing.")
+        }
+
+        if let header6 = markdown.range(of: "header 6") {
+            XCTAssertEqual(String(markdown[header6].characters), "header 6")
+            XCTAssertEqual(markdown[header6].font, .system(size: 8, weight: .bold))
+        } else {
+            XCTFail("Attributed 'header 6' is missing.")
+        }
+
+        if let middleDot1 = markdown.range(of: " \u{00B7} ") {
+            XCTAssertEqual(markdown[middleDot1].font, .system(size: 12, weight: .heavy))
+        } else {
+            XCTFail("Attributed middle dot v1 is missing.")
+        }
+
+        if let list1 = markdown.range(of: "list 1") {
+            XCTAssertEqual(String(markdown[list1].characters), "list 1")
+        } else {
+            XCTFail("Attributed 'list 1' is missing.")
+        }
+
+        if let middleDot2 = markdown.range(of: "     \u{00B7} ") {
+            XCTAssertEqual(markdown[middleDot2].font, .system(size: 12, weight: .heavy))
+        } else {
+            XCTFail("Attributed middle dot v2 is missing.")
+        }
+
+        if let list2 = markdown.range(of: "list 2") {
+            XCTAssertEqual(String(markdown[list2].characters), "list 2")
+        } else {
+            XCTFail("Attributed 'list 2' is missing.")
+        }
+
+        if let middleDot3 = markdown.range(of: "         \u{00B7} ") {
+            XCTAssertEqual(markdown[middleDot3].font, .system(size: 12, weight: .heavy))
+        } else {
+            XCTFail("Attributed middle dot v3 is missing.")
+        }
+
+        if let list3 = markdown.range(of: "list 3") {
+            XCTAssertEqual(String(markdown[list3].characters), "list 3")
+        } else {
+            XCTFail("Attributed 'list 3' is missing.")
+        }
+    }
+
+    func testNoteParser_findRangeOfCode() throws {
+
+        let test1 = "abc`efg`hij"
+        let testRange1 = test1.findRangeOfCode()
+        XCTAssertEqual(testRange1.count, 1)
+        XCTAssertEqual(test1[testRange1[0]], "efg")
+
+        let test2 = "abc`efg`hij`klm`nop"
+        let testRange2 = test2.findRangeOfCode()
+        XCTAssertEqual(testRange2.count, 2)
+        XCTAssertEqual(test2[testRange2[0]], "efg")
+        XCTAssertEqual(test2[testRange2[1]], "klm")
+
+        let test3 = "abc`efg``hij`klm"
+        let testRange3 = test3.findRangeOfCode()
+        XCTAssertEqual(testRange3.count, 2)
+        XCTAssertEqual(test3[testRange3[0]], "efg")
+        XCTAssertEqual(test3[testRange3[1]], "hij")
+
+        let test4 = "`abc``efg`"
+        let testRange4 = test4.findRangeOfCode()
+        XCTAssertEqual(testRange4.count, 2)
+        XCTAssertEqual(test4[testRange4[0]], "abc")
+        XCTAssertEqual(test4[testRange4[1]], "efg")
+
+        let test5 = "`abc`efg`"
+        let testRange5 = test5.findRangeOfCode()
+        XCTAssertEqual(testRange5.count, 1)
+        XCTAssertEqual(test5[testRange5[0]], "abc")
+
+        let test6 = "abc"
+        let testRange6 = test6.findRangeOfCode()
+        XCTAssertEqual(testRange6.count, 0)
+
+        let test7 = "abc`"
+        let testRange7 = test7.findRangeOfCode()
+        XCTAssertEqual(testRange7.count, 0)
+
+        let test8 = "`abc"
+        let testRange8 = test8.findRangeOfCode()
+        XCTAssertEqual(testRange8.count, 0)
+    }
+
+    func testNoteParser_findRangeOfFormula() throws {
+
+        let test1 = "abc(1+2= 3 )efg"
+        let testRange1 = test1.findRangeOfFormula()
+        XCTAssertEqual(testRange1.count, 1)
+        XCTAssertEqual(test1[testRange1[0].formula], "1+2=")
+        XCTAssertEqual(test1[testRange1[0].calculateResult], " 3 ")
+
+        let test2 = "abc((1+2)*2= 6 )efg"
+        let testRange2 = test2.findRangeOfFormula()
+        XCTAssertEqual(testRange2.count, 1)
+        XCTAssertEqual(test2[testRange2[0].formula], "(1+2)*2=")
+        XCTAssertEqual(test2[testRange2[0].calculateResult], " 6 ")
+
+        let test3 = "(1+2= 3 )abc(3*(1+2)= 9 )"
+        let testRange3 = test3.findRangeOfFormula()
+        XCTAssertEqual(testRange3.count, 2)
+        XCTAssertEqual(test3[testRange3[0].formula], "1+2=")
+        XCTAssertEqual(test3[testRange3[0].calculateResult], " 3 ")
+        XCTAssertEqual(test3[testRange3[1].formula], "3*(1+2)=")
+        XCTAssertEqual(test3[testRange3[1].calculateResult], " 9 ")
+
+        let test4 = "(1+2)abc(1/2= 0.5 )"
+        let testRange4 = test4.findRangeOfFormula()
+        XCTAssertEqual(testRange4.count, 1)
+        XCTAssertEqual(test4[testRange4[0].formula], "1/2=")
+        XCTAssertEqual(test4[testRange4[0].calculateResult], " 0.5 ")
+
+        // The Test5 is fail because the Mizuame cannot calculate "test5"
+        // https://github.com/3colorr/Mizuame/issues/143
+        /*
+        let test5 = "(1+2= 3 )abc(3*(1+2= 9 )(5/(5)= 1)(1/2= 0.5 )"
+        let testRange5 = test5.findRangeOfFormula()
+        XCTAssertEqual(testRange5.count, 3)
+        XCTAssertEqual(test5[testRange5[0].formula], "1+2=")
+        XCTAssertEqual(test5[testRange5[0].calculateResult], " 3 ")
+        XCTAssertEqual(test5[testRange5[1].formula], "5/(5)=")
+        XCTAssertEqual(test5[testRange5[1].calculateResult], " 1 ")
+        XCTAssertEqual(test5[testRange5[2].formula], "1/2=")
+        XCTAssertEqual(test5[testRange5[2].calculateResult], " 0.5 ")
+        */
+
+        let test6 = "abc"
+        let testRange6 = test6.findRangeOfFormula()
+        XCTAssertEqual(testRange6.count, 0)
+
+        let test7 = "abc("
+        let testRange7 = test7.findRangeOfFormula()
+        XCTAssertEqual(testRange7.count, 0)
+
+        let test8 = "abc(1+2= 3 "
+        let testRange8 = test8.findRangeOfFormula()
+        XCTAssertEqual(testRange8.count, 0)
+    }
 }
