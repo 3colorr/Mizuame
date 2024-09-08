@@ -7,19 +7,19 @@
 
 import Foundation
 
-class NoteParser {
+extension String {
     
-    // ## Which strings does a 'parseFormulasIn(note:)' consider to be a formula?
-    // The 'parseFormulasIn(note:)' consider the string between '(' and '=)' as a formula.
+    // ## Which strings does a 'getFormulas' consider to be a formula?
+    // The 'getFormulas' consider the string between '(' and '=)' as a formula.
     // A ')' is must be placed after the '=', and nothing can be placed between '=' and ')'.
     // The found formulas are append to array as 'Range<String.Index>'.
     // If the fomula is not found, return empty array([]).
-    public func parseFormulasIn(note: String) -> [Range<String.Index>] {
+    func getFormulas() -> [Range<String.Index>] {
         var results: [Range<String.Index>] = []
 
         // At first, extract a string that enclosed '(' and '=)' by regular expression.
         // And then, check if each the extracted string is a formula.
-        note.matches(of: /(\(.+?\=\))/).forEach { matched in
+        self.matches(of: /(\(.+?\=\))/).forEach { matched in
             
             let matchedSubstring: Substring = matched.output.1
 

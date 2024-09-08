@@ -543,11 +543,10 @@ struct ContentView: View {
     private func calculateFormulaIn(_ val: String) -> String {
         
         let calculater = CalculateModel(digitAfterDecimalPoint: positionOfRoundsDecimalPoint)
-        let parser = NoteParser()
         
         var calculated: String = val
         
-        for formulaRange in parser.parseFormulasIn(note: calculated) {
+        for formulaRange in calculated.getFormulas() {
 
             if let result = calculater.result(formula: String(calculated[formulaRange])) {
                 
