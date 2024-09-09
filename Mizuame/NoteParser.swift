@@ -181,7 +181,6 @@ extension String {
                     let others = try AttributedString(markdown: String(line))
                     attributedMarkdown.append(others)
                     attributedMarkdown.append(AttributedString("\n"))
-                    print("No matched space.")
                 }
             }
 
