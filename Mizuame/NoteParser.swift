@@ -126,32 +126,32 @@ extension String {
                     case "# ":
                         attributedMarkdown.append(attributed(
                             headline: line[prefixEndIndex..<line.endIndex],
-                            size: 24))
+                            size: CGFloat(fontSize) * 2.0))
 
                     case "## ":
                         attributedMarkdown.append(attributed(
                             headline: line[prefixEndIndex..<line.endIndex],
-                            size: 18))
+                            size: CGFloat(fontSize) * 1.5))
 
                     case "### ":
                         attributedMarkdown.append(attributed(
                             headline: line[prefixEndIndex..<line.endIndex],
-                            size: 14))
+                            size: CGFloat(fontSize) + 2.0))
 
                     case "#### ":
                         attributedMarkdown.append(attributed(
                             headline: line[prefixEndIndex..<line.endIndex],
-                            size: 12))
+                            size: CGFloat(fontSize)))
 
                     case "##### ":
                         attributedMarkdown.append(attributed(
                             headline: line[prefixEndIndex..<line.endIndex],
-                            size: 10))
+                            size: CGFloat(fontSize) - 2.0))
 
                     case "###### ":
                         attributedMarkdown.append(attributed(
                             headline: line[prefixEndIndex..<line.endIndex],
-                            size: 8))
+                            size: CGFloat(fontSize) * 0.5))
 
                     case "- ":
                         attributedMarkdown.append(attributed(
