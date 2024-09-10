@@ -402,6 +402,16 @@ struct ContentView: View {
         }
     }
     
+    private func MarkdownView() -> some View {
+        ScrollView {
+            Text(stickyText.toMarkdown(size: self.fontSize))
+                .multilineTextAlignment(.leading)
+                .textSelection(.enabled)
+                .padding(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        }
+    }
+
     // This view defines an area where the user can resize the note by dragging.
     //
     // The "#", "@" and "+" symbol in the diagram below indicates the area of window
