@@ -114,6 +114,9 @@ struct SettingKeys {
         
         let keyPositionOfRoundsDecimalPoint: String = "stickyNotePositionOfRoundsDecimalPoint"
         let initialPositionOfRoundsDecimalPoint: Int = 3
+
+        let keyMarkdownAction: String = "stickyNoteMarkdownAction"
+        let initialMarkdownAction: Bool = false
     }
     
     struct ThemePalette {

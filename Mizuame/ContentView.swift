@@ -23,7 +23,9 @@ struct ContentView: View {
     @AppStorage(SettingKeys.Menubar().keySavingMessage) private var isShowSavingMessage: Bool = SettingKeys.Menubar().initialSavingMessage
     
     @AppStorage(SettingKeys.StickyNote().keyCalculateAction) private var isEnableCalculation: Bool = SettingKeys.StickyNote().initialCalculateAction
-    
+
+    @AppStorage(SettingKeys.StickyNote().keyMarkdownAction) private var isEnableMarkdown: Bool = SettingKeys.StickyNote().initialMarkdownAction
+
     @AppStorage(SettingKeys.StickyNote().keyPositionOfRoundsDecimalPoint) private var positionOfRoundsDecimalPoint: Int = SettingKeys.StickyNote().initialPositionOfRoundsDecimalPoint
 
     @AppStorage(SettingKeys.StickyNote().keyWidth) private var width: Int = SettingKeys.StickyNote().initialWidth
@@ -57,6 +59,8 @@ struct ContentView: View {
     @State private var isDraggableVertical: Bool = false
     @State private var isDraggableHorizontal: Bool = false
     @GestureState private var dragState: CGSize = .zero
+
+    @State private var showMarkdownPreview: Bool = true
 
     // Automatically hide menu bar(header)
     //  -> Why do we need two state variables for this?
