@@ -144,16 +144,25 @@ struct ContentView: View {
                     } else {
                         HeaderView()
                     }
-                    
-                    NoteView()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .layoutPriority(1)
-                        .font(.system(size: CGFloat(self.fontSize)))
-                        .lineSpacing(CGFloat(self.lineSpacing))
-                        .foregroundColor(Color(foregroundColorName()))
-                        .scrollContentBackground(.hidden)
-                        .background(Color(bodyBackgroundTheme), in: RoundedRectangle(cornerRadius: 10))
-                        .padding(EdgeInsets(top: 0, leading: 7, bottom: 7, trailing: 7))
+
+                    if isEnableMarkdown && showMarkdownPreview {
+                        MarkdownView()
+                            .layoutPriority(1)
+                            .foregroundColor(Color(foregroundColorName()))
+                            .background(Color(bodyBackgroundTheme), in: RoundedRectangle(cornerRadius: 10))
+                            .padding(EdgeInsets(top: 0, leading: 7, bottom: 7, trailing: 7))
+
+                    } else {
+                        NoteView()
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .layoutPriority(1)
+                            .font(.system(size: CGFloat(self.fontSize)))
+                            .lineSpacing(CGFloat(self.lineSpacing))
+                            .foregroundColor(Color(foregroundColorName()))
+                            .scrollContentBackground(.hidden)
+                            .background(Color(bodyBackgroundTheme), in: RoundedRectangle(cornerRadius: 10))
+                            .padding(EdgeInsets(top: 0, leading: 7, bottom: 7, trailing: 7))
+                    }
                 }
             }
             .frame(width: CGFloat(self.width) + self.dragState.width, height: CGFloat(self.height) + self.dragState.height)
