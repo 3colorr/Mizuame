@@ -448,6 +448,9 @@ struct ContentView: View {
                 .padding(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         }
+        .onTapGesture(count: 2) {
+            showMarkdownPreview = false
+        }
     }
 
     // This view defines an area where the user can resize the note by dragging.
