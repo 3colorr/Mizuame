@@ -257,22 +257,45 @@ struct ContentView: View {
                 Spacer()
                     .layoutPriority(1)
                 
-                Button(action: {
-                    stickyText = redoUndoManager.undo()
-                }, label: {
-                    Image(systemName: "return.left")
-                })
-                .hidden()
-                .keyboardShortcut("z", modifiers: [.command])
-                
-                Button(action: {
-                    stickyText = redoUndoManager.redo()
-                }, label: {
-                    Image(systemName: "return.right")
-                })
-                .hidden()
-                .keyboardShortcut("y", modifiers: [.command])
-                
+                if !showMarkdownPreview {
+                    Button(action: {
+                        stickyText = redoUndoManager.undo()
+                    }, label: {
+                        Image(systemName: "return.left")
+                    })
+                    .hidden()
+                    .keyboardShortcut("z", modifiers: [.command])
+
+                    Button(action: {
+                        stickyText = redoUndoManager.redo()
+                    }, label: {
+                        Image(systemName: "return.right")
+                    })
+                    .hidden()
+                    .keyboardShortcut("y", modifiers: [.command])
+                }
+
+                if isEnableMarkdown {
+                    if showMarkdownPreview {
+                        Image(systemName: "square.and.pencil")
+                            .foregroundColor(Color(bodyForegroundTheme))
+                            .onTapGesture {
+                                withAnimation {
+                                    showMarkdownPreview.toggle()
+                                }
+                            }
+                    } else {
+                        Image(systemName: "m.square")
+                            .imageScale(.large)
+                            .foregroundColor(Color(bodyForegroundTheme))
+                            .onTapGesture {
+                                withAnimation {
+                                    showMarkdownPreview.toggle()
+                                }
+                            }
+                    }
+                }
+
                 if isPinNote {
                     Image(systemName: "pin")
                         .foregroundColor(Color.red)
@@ -287,19 +310,21 @@ struct ContentView: View {
                         }
                 }
                 
-                Image(systemName: "eraser")
-                    .foregroundColor(Color(bodyForegroundTheme))
-                    .onTapGesture {
-                        userAction = .ALL_DELETE
-                        
-                        withAnimation {
-                            isShowMessagebar.toggle()
+                if !showMarkdownPreview {
+                    Image(systemName: "eraser")
+                        .foregroundColor(Color(bodyForegroundTheme))
+                        .onTapGesture {
+                            userAction = .ALL_DELETE
+
+                            withAnimation {
+                                isShowMessagebar.toggle()
+                            }
+
+                            if !isShowMessagebar {
+                                userAction = .NONE
+                            }
                         }
-                        
-                        if !isShowMessagebar {
-                            userAction = .NONE
-                        }
-                    }
+                }
                 
                 Image(systemName: "printer")
                     .foregroundColor(Color(bodyForegroundTheme))
