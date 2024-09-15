@@ -30,6 +30,8 @@ struct TabGeneral: View {
     
     @AppStorage(SettingKeys.StickyNote().keyPositionOfRoundsDecimalPoint) private var positionOfRoundsDecimalPoint: Int = SettingKeys.StickyNote().initialPositionOfRoundsDecimalPoint
 
+    @AppStorage(SettingKeys.StickyNote().keyMarkdownAction) private var isEnableMarkdown: Bool = SettingKeys.StickyNote().initialMarkdownAction
+
     @State private var isEnableLoginItems: Bool = false
     
     
@@ -201,7 +203,16 @@ struct TabGeneral: View {
                             }
                             .frame(width: 80)
                         }
+                        .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 0))
+
+                        Toggle(isOn: $isEnableMarkdown) {
+                            Text("settings.tab.general.action.markdown")
+                        }
                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+
+                        Text("settings.tab.help.note.action.markdown.description")
+                            .font(.subheadline)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
                 }
             }

@@ -53,6 +53,7 @@
 "settings.tab.help.note.title" = "Note Action";
 "settings.tab.help.note.greeting" = "By Default, all 'Note Action' is disabled. If you want to use it, you need to enable it in the 'General tab'.";
 "settings.tab.help.note.action.calculate.description" = "Automatically calculate a formula between '(' and '=)'. \nFor example, If you type '(1+2\\*3=)', it will automatically calculated `7` and displayed as '(1+2\\*3= 7 )'. If you change the formula to `(1+2\\*10= 7 )`, it will be recalculated automatically when you delete `7` and the spaces before and after, making it `(1+2\\*10=)`'";
+"settings.tab.help.note.action.markdown.description" = "You can switch between the note view and the Markdown view. By using the Markdown view, you can display notes written in Markdown format in a more readable way.";
 "settings.tab.help.menu.title" = "Menu";
 "settings.tab.help.menu.power.description" = "Quit the app.";
 "settings.tab.help.menu.preference.description" = "Open preference window.";
@@ -94,6 +95,7 @@
 "settings.tab.general.action.calculate" = "Automatically calculate a formula";
 "settings.tab.general.action.calculate.rounding" = "Number of digits after decimal point:";
 "settings.tab.general.action.calculate.rounding.digit.all" = "All";
+"settings.tab.general.action.markdown" = "Use the Markdown view";
 "settings.tab.general.reset.title" = "Reset:";
 "settings.tab.general.reset.button.caption" = "Reset general settings to initial value";
 
