@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import SwiftUI
 @testable import Mizuame
 
 final class MizuameTests: XCTestCase {
@@ -387,12 +388,31 @@ efg
   - list 2
     - list 3
 hij
+k `code block` L (1+2= 3 )
 """
 
-        let markdown = testNote.toMarkdown(size: 12)
+        let markdownModels: [MarkdownModel] = testNote.toMarkdown(size: 12)
+        
+        var markdown: AttributedString = AttributedString()
 
-        for dd in markdown.runs {
-            print(dd)
+        for md in markdownModels {
+
+            var attributedLine = md.attributedLine
+
+            for codeBlockRange in md.codeBlockRanges {
+                if let attributedCodeBlockRange = attributedLine.range(of: md.line[codeBlockRange]) {
+                    attributedLine[attributedCodeBlockRange].backgroundColor = Color(red: 0.9, green: 0.9, blue: 0.9)
+                }
+            }
+
+            for formulaRange in md.formulaRanges {
+                if let attributedFormulaRange = attributedLine.range(of: md.line[formulaRange.formula.lowerBound..<formulaRange.calculateResult.upperBound]) {
+
+                    attributedLine[attributedFormulaRange].backgroundColor = Color(red: 0.9, green: 0.9, blue: 0.8)
+                }
+            }
+
+            markdown.append(attributedLine)
         }
 
         if let header1 = markdown.range(of: "header 1") {
@@ -432,7 +452,7 @@ hij
 
         if let header6 = markdown.range(of: "header 6") {
             XCTAssertEqual(String(markdown[header6].characters), "header 6")
-            XCTAssertEqual(markdown[header6].font, .system(size: 8, weight: .bold))
+            XCTAssertEqual(markdown[header6].font, .system(size: 6, weight: .bold))
         } else {
             XCTFail("Attributed 'header 6' is missing.")
         }
@@ -471,6 +491,27 @@ hij
             XCTAssertEqual(String(markdown[list3].characters), "list 3")
         } else {
             XCTFail("Attributed 'list 3' is missing.")
+        }
+
+        if let codeBlock = markdown.range(of: "code block") {
+            XCTAssertEqual(String(markdown[codeBlock].characters), "code block")
+            XCTAssertEqual(markdown[codeBlock].backgroundColor, Color(red: 0.9, green: 0.9, blue: 0.9))
+        } else {
+            XCTFail("Attributed 'code block' is missing.")
+        }
+
+        if let formula = markdown.range(of: "1+2=") {
+            XCTAssertEqual(String(markdown[formula].characters), "1+2=")
+            XCTAssertEqual(markdown[formula].backgroundColor, Color(red: 0.9, green: 0.9, blue: 0.8))
+        } else {
+            XCTFail("Attributed 'formula' is missing.")
+        }
+
+        if let calculateResult = markdown.range(of: " 3 ") {
+            XCTAssertEqual(String(markdown[calculateResult].characters), " 3 ")
+            XCTAssertEqual(markdown[calculateResult].backgroundColor, Color(red: 0.9, green: 0.9, blue: 0.8))
+        } else {
+            XCTFail("Attributed 'calculateResult' is missing.")
         }
     }
 
