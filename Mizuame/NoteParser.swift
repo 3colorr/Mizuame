@@ -82,32 +82,33 @@ extension String {
         return results
     }
 
-    // Parse the Markdown and format the string.
-    //
-    // We can parse the following Markdown syntax.
-    //
-    // # Title 1
-    // ## Title 2
-    // ### Title 3
-    // #### Title 4
-    // ##### Title 5
-    // ###### Title 6
-    // - List 1
-    //   - List 2
-    //     - List 3
-    // `Code block` -> Please check this function: findRangeOfCode()
-    //
-    // The following Markdown syntax is parsed by Text(:AttributedString).
-    //
-    // **Bold**
-    // *Italic*, _Italic_
-    // [Link](URL)
-    //
-    func toMarkdown(size fontSize: Int) -> AttributedString {
+    /// Parse the Markdown and format the string.
+    ///
+    /// We can parse the following Markdown syntax.
+    ///
+    /// # Title 1
+    /// ## Title 2
+    /// ### Title 3
+    /// #### Title 4
+    /// ##### Title 5
+    /// ###### Title 6
+    /// - List 1
+    ///   - List 2
+    ///     - List 3
+    /// `Code block` -> Please check this function: findRangeOfCode( )
+    /// (1+2= 3 ) -> Please check this function: findRangeOfFormula( )
+    ///
+    /// The following Markdown syntax is parsed by Text( AttributedString: ).
+    ///
+    /// **Bold**
+    /// *Italic*, _Italic_
+    /// [Link](URL)
+    ///
+    func toMarkdown(size fontSize: Int) -> [MarkdownModel] {
         do {
             let splitedLines: [SubSequence] = self.split(separator: "\n")
 
-            var attributedMarkdown = AttributedString()
+            var markdown: [MarkdownModel] = []
 
             for line in splitedLines {
                 if let prefixIndex = line.firstIndex(of: " ") {
@@ -124,88 +125,194 @@ extension String {
 
                     switch line[line.startIndex...prefixEndIndex] {
                     case "# ":
-                        attributedMarkdown.append(attributed(
-                            headline: line[prefixEndIndex..<line.endIndex],
-                            size: CGFloat(fontSize) * 2.0))
+                        let stringLine = String(line[prefixEndIndex..<line.endIndex])
+                        let headerLine = MarkdownModel(
+                            line: stringLine,
+                            attributedLine: attributed(headline: line[prefixEndIndex..<line.endIndex], size: CGFloat(fontSize) * 2.0),
+                            codeBlockRanges: stringLine.findRangeOfCode(),
+                            formulaRanges: stringLine.findRangeOfFormula())
+                        markdown.append(headerLine)
 
                     case "## ":
-                        attributedMarkdown.append(attributed(
-                            headline: line[prefixEndIndex..<line.endIndex],
-                            size: CGFloat(fontSize) * 1.5))
+                        let stringLine = String(line[prefixEndIndex..<line.endIndex])
+                        let headerLine = MarkdownModel(
+                            line: stringLine,
+                            attributedLine: attributed(headline: line[prefixEndIndex..<line.endIndex], size: CGFloat(fontSize) * 1.5),
+                            codeBlockRanges: stringLine.findRangeOfCode(),
+                            formulaRanges: stringLine.findRangeOfFormula())
+                        markdown.append(headerLine)
 
                     case "### ":
-                        attributedMarkdown.append(attributed(
-                            headline: line[prefixEndIndex..<line.endIndex],
-                            size: CGFloat(fontSize) + 2.0))
+                        let stringLine = String(line[prefixEndIndex..<line.endIndex])
+                        let headerLine = MarkdownModel(
+                            line: stringLine,
+                            attributedLine: attributed(headline: line[prefixEndIndex..<line.endIndex], size: CGFloat(fontSize) + 2.0),
+                            codeBlockRanges: stringLine.findRangeOfCode(),
+                            formulaRanges: stringLine.findRangeOfFormula())
+                        markdown.append(headerLine)
 
                     case "#### ":
-                        attributedMarkdown.append(attributed(
-                            headline: line[prefixEndIndex..<line.endIndex],
-                            size: CGFloat(fontSize)))
+                        let stringLine = String(line[prefixEndIndex..<line.endIndex])
+                        let headerLine = MarkdownModel(
+                            line: stringLine,
+                            attributedLine: attributed(headline: line[prefixEndIndex..<line.endIndex], size: CGFloat(fontSize)),
+                            codeBlockRanges: stringLine.findRangeOfCode(),
+                            formulaRanges: stringLine.findRangeOfFormula())
+                        markdown.append(headerLine)
 
                     case "##### ":
-                        attributedMarkdown.append(attributed(
-                            headline: line[prefixEndIndex..<line.endIndex],
-                            size: CGFloat(fontSize) - 2.0))
+                        let stringLine = String(line[prefixEndIndex..<line.endIndex])
+                        let headerLine = MarkdownModel(
+                            line: stringLine,
+                            attributedLine: attributed(headline: line[prefixEndIndex..<line.endIndex], size: CGFloat(fontSize) - 2.0),
+                            codeBlockRanges: stringLine.findRangeOfCode(),
+                            formulaRanges: stringLine.findRangeOfFormula())
+                        markdown.append(headerLine)
 
                     case "###### ":
-                        attributedMarkdown.append(attributed(
-                            headline: line[prefixEndIndex..<line.endIndex],
-                            size: CGFloat(fontSize) * 0.5))
+                        let stringLine = String(line[prefixEndIndex..<line.endIndex])
+                        let headerLine = MarkdownModel(
+                            line: stringLine,
+                            attributedLine: attributed(headline: line[prefixEndIndex..<line.endIndex], size: CGFloat(fontSize) * 0.5),
+                            codeBlockRanges: stringLine.findRangeOfCode(),
+                            formulaRanges: stringLine.findRangeOfFormula())
+                        markdown.append(headerLine)
 
                     case "- ":
-                        attributedMarkdown.append(attributed(
-                                listItem: line[prefixEndIndex..<line.endIndex],
-                                size: CGFloat(fontSize),
-                                dot: " \u{00B7} "))
+                        let stringLine = String(line[prefixEndIndex..<line.endIndex])
+                        let listItemLine = MarkdownModel(
+                            line: stringLine,
+                            attributedLine: attributed(listItem: line[prefixEndIndex..<line.endIndex], size: CGFloat(fontSize), dot: " \u{00B7} "),
+                            codeBlockRanges: stringLine.findRangeOfCode(),
+                            formulaRanges: stringLine.findRangeOfFormula())
+                        markdown.append(listItemLine)
 
                     case "  - ":
-                        attributedMarkdown.append(attributed(
-                                listItem: line[prefixEndIndex..<line.endIndex],
-                                size: CGFloat(fontSize),
-                                dot: "     \u{00B7} "))
+                        let stringLine = String(line[prefixEndIndex..<line.endIndex])
+                        let listItemLine = MarkdownModel(
+                            line: stringLine,
+                            attributedLine: attributed(listItem: line[prefixEndIndex..<line.endIndex], size: CGFloat(fontSize), dot: "     \u{00B7} "),
+                            codeBlockRanges: stringLine.findRangeOfCode(),
+                            formulaRanges: stringLine.findRangeOfFormula())
+                        markdown.append(listItemLine)
 
                     case "    - ":
-                        attributedMarkdown.append(attributed(
-                                listItem: line[prefixEndIndex..<line.endIndex],
-                                size: CGFloat(fontSize),
-                                dot: "         \u{00B7} "))
+                        let stringLine = String(line[prefixEndIndex..<line.endIndex])
+                        let listItemLine = MarkdownModel(
+                            line: stringLine,
+                            attributedLine: attributed(listItem: line[prefixEndIndex..<line.endIndex], size: CGFloat(fontSize), dot: "         \u{00B7} "),
+                            codeBlockRanges: stringLine.findRangeOfCode(),
+                            formulaRanges: stringLine.findRangeOfFormula())
+                        markdown.append(listItemLine)
 
                     default:
-                        let others = try AttributedString(markdown: String(line))
-                        attributedMarkdown.append(others)
-                        attributedMarkdown.append(AttributedString("\n"))
+                        let stringLine = removeBlockSynatx(from: String(line))
+
+                        // ** Why do we need a space at the end of the Markdown? **
+                        // When passing a Markdown-formatted string to Text(markdown:),
+                        // if the last character is a space, that space is removed.
+                        // If a formula (e.g., (1+2 = 3)) exists at the end of the Markdown-formatted string,
+                        // the space is removed, and the formula may not be recognized when rendering the Markdown.
+                        //
+                        // We do not think this is the best solution.
+                        // However, since we can't think of another method, we have adopted this approach.
+                        //
+                        var others = try AttributedString(markdown: stringLine)
+                        others.append(AttributedString(" "))
+
+                        let othersLine = MarkdownModel(
+                            line: stringLine,
+                            attributedLine: others,
+                            codeBlockRanges: String(line).findRangeOfCode(),
+                            formulaRanges: String(line).findRangeOfFormula())
+                        markdown.append(othersLine)
                     }
 
                 } else {
-                    let others = try AttributedString(markdown: String(line))
-                    attributedMarkdown.append(others)
-                    attributedMarkdown.append(AttributedString("\n"))
+                    let stringLine = removeBlockSynatx(from: String(line))
+
+                    // ** Why do we need a space at the end of the Markdown? **
+                    // When passing a Markdown-formatted string to Text(markdown:),
+                    // if the last character is a space, that space is removed.
+                    // If a formula (e.g., (1+2 = 3)) exists at the end of the Markdown-formatted string,
+                    // the space is removed, and the formula may not be recognized when rendering the Markdown.
+                    //
+                    // We do not think this is the best solution.
+                    // However, since we can't think of another method, we have adopted this approach.
+                    //
+                    var others = try AttributedString(markdown: stringLine)
+                    others.append(AttributedString(" "))
+
+                    let othersLine = MarkdownModel(
+                        line: stringLine,
+                        attributedLine: others,
+                        codeBlockRanges: String(line).findRangeOfCode(),
+                        formulaRanges: String(line).findRangeOfFormula())
+                    markdown.append(othersLine)
                 }
             }
 
-            return attributedMarkdown
+            return markdown
 
         } catch {
-            return "Could not parse the string."
+            print("Could not parse the string.")
+            return []
         }
     }
 
     private func attributed(headline: Substring, size fontSize: CGFloat) -> AttributedString {
-        var attr = AttributedString("\(headline)\n")
+        var attr = AttributedString(removeBlockSynatx(from: String(headline)))//AttributedString(headline)
         attr.font = .system(size: fontSize, weight: .bold)
 
         return attr
     }
 
     private func attributed(listItem: Substring, size fontSize: CGFloat, dot: String) -> AttributedString {
-        let attributedListItem = AttributedString("\(listItem)\n")
-
+        let attributedListItem = AttributedString(removeBlockSynatx(from: String(listItem)))//AttributedString(listItem)
         var attributedDot = AttributedString(dot)
         attributedDot.font = .system(size: fontSize, weight: .heavy)
         attributedDot.append(attributedListItem)
 
         return attributedDot
+    }
+    
+    /// Remove the code block ( \`abc\` ) and the formula ((x+y = z)) from the string.
+    private func removeBlockSynatx(from line: String) -> String {
+        
+        let codeBlockRanges = line.findRangeOfCode()
+        let formulaRanges = line.findRangeOfFormula()
+        
+        var trimString: String = ""
+        var startIndex = line.startIndex
+        
+        for codeBlockRange in codeBlockRanges {
+            let beforeIndex = line.index(before: codeBlockRange.lowerBound)
+            trimString = String(line[startIndex..<beforeIndex])
+            
+            trimString += " \(line[codeBlockRange]) "
+
+            let afterIndex = line.index(after: codeBlockRange.upperBound)
+            trimString += line[afterIndex...]
+            
+            startIndex = afterIndex
+        }
+
+        startIndex = line.startIndex
+
+        for formulaRange in formulaRanges {
+            let beforeIndex = line.index(before: formulaRange.formula.lowerBound)
+            trimString = String(line[startIndex..<beforeIndex])
+
+            trimString += " \(line[formulaRange.formula])"
+            trimString += "\(line[formulaRange.calculateResult]) "
+
+            let afterIndex = line.index(after: formulaRange.calculateResult.upperBound)
+            trimString += line[afterIndex...]
+            
+            startIndex = afterIndex
+        }
+
+        return trimString.isEmpty ? line : trimString
     }
 
     // This function pase `code block`.

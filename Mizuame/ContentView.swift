@@ -441,8 +441,33 @@ struct ContentView: View {
     }
     
     private func MarkdownView() -> some View {
-        ScrollView {
-            Text(stickyText.toMarkdown(size: self.fontSize))
+        
+        let markdowns: [MarkdownModel] = stickyText.toMarkdown(size: self.fontSize)
+
+        var markdownText: AttributedString = AttributedString()
+
+        for md in markdowns {
+
+            var attributedLine = md.attributedLine
+
+            for codeBlockRange in md.codeBlockRanges {
+                if let attributedCodeBlockRange = attributedLine.range(of: md.line[codeBlockRange]) {
+                    attributedLine[attributedCodeBlockRange].backgroundColor = Color(red: 0.9, green: 0.9, blue: 0.9)
+                }
+            }
+
+            for formulaRange in md.formulaRanges {
+                if let attributedFormulaRange = attributedLine.range(of: md.line[formulaRange.formula.lowerBound..<formulaRange.calculateResult.upperBound]) {
+
+                    attributedLine[attributedFormulaRange].backgroundColor = Color(red: 0.9, green: 0.9, blue: 0.8)
+                }
+            }
+
+            markdownText.append(attributedLine)
+        }
+
+        return ScrollView {
+            Text(markdownText)
                 .multilineTextAlignment(.leading)
                 .textSelection(.enabled)
                 .padding(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
