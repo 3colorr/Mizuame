@@ -35,7 +35,7 @@ struct SupportMarkdownSyntax: View {
                 eg: Text(verbatim: listSyntax),
                 markdown: Text(markdown(of: listSyntax)))
 
-            VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading, spacing: 10) {
                 SyntaxBlock(
                     eg: Text(verbatim: boldSyntax),
                     markdown: Text(markdown(of: boldSyntax)))
@@ -64,7 +64,8 @@ struct SupportMarkdownSyntax: View {
             eg
             markdown
         }
-        .padding(.leading, 20)
+        .padding(15)
+        .background(.white, in: RoundedRectangle(cornerRadius: 10))
     }
 
     private func markdown(of syntax: String) -> AttributedString {
