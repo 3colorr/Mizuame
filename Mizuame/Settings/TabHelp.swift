@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct TabHelp: View {
+
+    @State private var showMarkdownSyntax: Bool = false
+
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
@@ -70,6 +74,27 @@ struct TabHelp: View {
                             .bold()
                         
                         Text("settings.tab.help.note.action.calculate.description")
+                    }
+
+                    HStack {
+                        Image(systemName: "m.square")
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
+                            .imageScale(.large)
+                            .bold()
+
+                        
+                        VStack(alignment: .leading)  {
+                            Text("settings.tab.help.note.action.markdown.description")
+                            
+                            Button(showMarkdownSyntax ? "settings.tab.help.note.action.markdown.syntax.close" : "settings.tab.help.note.action.markdown.syntax.open") {
+                                showMarkdownSyntax.toggle()
+                            }
+                        }
+                    }
+                    
+                    if showMarkdownSyntax {
+                        SupportMarkdownSyntax()
+                            .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
                     }
                 }
 
