@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SupportMarkdownSyntax: View {
 
+    @AppStorage(SettingKeys.StickyNoteColor().keyBackground) private var bodyBackgroundTheme: String = SettingKeys.StickyNoteColor().initialBackgroundTheme
     @AppStorage(SettingKeys.FontSize().key) private var fontSize: Int = SettingKeys.FontSize().initialValue
 
     let headerSyntax = "# header 1\n## header 2\n### header 3\n#### header 4\n##### header 5\n###### header 6"
@@ -65,7 +66,7 @@ struct SupportMarkdownSyntax: View {
             markdown
         }
         .padding(15)
-        .background(.white, in: RoundedRectangle(cornerRadius: 10))
+        .background(Color(bodyBackgroundTheme), in: RoundedRectangle(cornerRadius: 10))
     }
 
     private func markdown(of syntax: String) -> AttributedString {
