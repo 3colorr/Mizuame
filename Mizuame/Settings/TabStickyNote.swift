@@ -23,6 +23,9 @@ struct TabStickyNote: View {
 
     @AppStorage(SettingKeys.FrameColor().keyTheme) private var frameTheme: String = SettingKeys.FrameColor().initialTheme
 
+    @AppStorage(SettingKeys.MarkdownViewColor().keyCodeBlock) private var markdownCodeBlockTheme: String = SettingKeys.MarkdownViewColor().initialCodeBlockTheme
+    @AppStorage(SettingKeys.MarkdownViewColor().keyFormulaBlock) private var markdownFormulaBlockTheme: String = SettingKeys.MarkdownViewColor().initialFormulaBlockTheme
+
     private let INIT_FONT_SIZE: Int = SettingKeys.FontSize().initialValue
     private let INIT_LINE_SPACING: Int = SettingKeys.StickyNote().initialLineSpacing
     private let INIT_WIDTH: Int = SettingKeys.StickyNote().initialWidth
@@ -32,6 +35,9 @@ struct TabStickyNote: View {
     private let INIT_BODY_FOREGROUND_THEME: String = SettingKeys.StickyNoteColor().initialForegroundTheme
     private let INIT_BODY_BACKGROUND_THEME: String = SettingKeys.StickyNoteColor().initialBackgroundTheme
     private let INIT_FRAME_THEME: String = SettingKeys.FrameColor().initialTheme
+
+    private let INIT_MARKDOWN_CODEBLOCK_THEME: String = SettingKeys.MarkdownViewColor().initialCodeBlockTheme
+    private let INIT_MARKDOWN_FORMULABLOCK_THEME: String = SettingKeys.MarkdownViewColor().initialFormulaBlockTheme
 
     private var noteWidthFormatter = NumberFormatter()
     private var noteHeightFormatter = NumberFormatter()
@@ -55,7 +61,14 @@ struct TabStickyNote: View {
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 5, trailing: 0))
             }
             
-            StickyNotePreview(fontSize: fontSize, width: width, height: height, message: messageTheme, messagebar: messagebarTheme, bodyForeground: bodyForegroundTheme, bodyBackground: bodyBackgroundTheme, bodyFrame: frameTheme)
+            StickyNotePreview(fontSize: fontSize,
+                              width: width,
+                              height: height,
+                              message: messageTheme,
+                              messagebar: messagebarTheme,
+                              bodyForeground: bodyForegroundTheme,
+                              bodyBackground: bodyBackgroundTheme,
+                              bodyFrame: frameTheme)
                 .padding(EdgeInsets(top: 5, leading: 0, bottom: 10, trailing: 0))
             
             ScrollView {
@@ -108,7 +121,13 @@ struct TabStickyNote: View {
                     }
                     
                     Text("settings.tab.stickynote.theme")
-                    ThemePalette(message: $messageTheme, messagebar: $messagebarTheme, bodyForeground: $bodyForegroundTheme, bodyBackground: $bodyBackgroundTheme, bodyFrame: $frameTheme)
+                    ThemePalette(message: $messageTheme,
+                                 messagebar: $messagebarTheme,
+                                 bodyForeground: $bodyForegroundTheme,
+                                 bodyBackground: $bodyBackgroundTheme,
+                                 bodyFrame: $frameTheme,
+                                 markdownCodeBlock: $markdownCodeBlockTheme,
+                                 markdownFormulaBlock: $markdownFormulaBlockTheme)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 20))
                      
                     Spacer(minLength: 20)
@@ -125,6 +144,8 @@ struct TabStickyNote: View {
                             self.bodyForegroundTheme = INIT_BODY_FOREGROUND_THEME
                             self.bodyBackgroundTheme = INIT_BODY_BACKGROUND_THEME
                             self.frameTheme = INIT_FRAME_THEME
+                            self.markdownCodeBlockTheme = INIT_MARKDOWN_CODEBLOCK_THEME
+                            self.markdownFormulaBlockTheme = INIT_MARKDOWN_FORMULABLOCK_THEME
                         }) {
                             Text("settings.tab.stickynote.reset.button.caption")
                                 .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))

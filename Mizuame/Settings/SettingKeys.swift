@@ -135,10 +135,8 @@ struct SettingKeys {
             let background: String = "Light-Mint-Background"
             let frame: String = "Light-Mint-Frame"
 
-            struct MarkdownColorSet {
-                let codeblock: String = "Markdown-Codeblock-Gray"
-                let formula: String = "Markdown-Formula-Mint"
-            }
+            let markdownCodeBlock: String = "Markdown-Gray"
+            let markdownFormulaBlock: String = "Markdown-Gray"
         }
         struct LightOrange {
             let name: String = "Light and Orange"
@@ -148,10 +146,8 @@ struct SettingKeys {
             let background: String = "Light-Orange-Background"
             let frame: String = "Light-Orange-Frame"
 
-            struct MarkdownColorSet {
-                let codeblock: String = "Markdown-Codeblock-Gray"
-                let formula: String = "Markdown-Formula-Mint"
-            }
+            let markdownCodeBlock: String = "Markdown-Gray"
+            let markdownFormulaBlock: String = "Markdown-Gray"
         }
         struct LightBlue {
             let name: String = "Light and Blue"
@@ -161,10 +157,8 @@ struct SettingKeys {
             let background: String = "Light-Blue-Background"
             let frame: String = "Light-Blue-Frame"
 
-            struct MarkdownColorSet {
-                let codeblock: String = "Markdown-Codeblock-Gray"
-                let formula: String = "Markdown-Formula-Mint"
-            }
+            let markdownCodeBlock: String = "Markdown-Gray"
+            let markdownFormulaBlock: String = "Markdown-Gray"
         }
         struct LightYellow {
             let name: String = "Light and Yellow"
@@ -174,10 +168,8 @@ struct SettingKeys {
             let background: String = "Light-Yellow-Background"
             let frame: String = "Light-Yellow-Frame"
 
-            struct MarkdownColorSet {
-                let codeblock: String = "Markdown-Codeblock-Gray"
-                let formula: String = "Markdown-Formula-Mint"
-            }
+            let markdownCodeBlock: String = "Markdown-Gray"
+            let markdownFormulaBlock: String = "Markdown-Gray"
         }
         struct MintMint {
             let name: String = "Mint and Mint"
@@ -187,10 +179,8 @@ struct SettingKeys {
             let background: String = "Mint-Mint-Background"
             let frame: String = "Mint-Mint-Frame"
 
-            struct MarkdownColorSet {
-                let codeblock: String = "Markdown-Codeblock-Gray"
-                let formula: String = "Markdown-Formula-Mint"
-            }
+            let markdownCodeBlock: String = "Markdown-Gray"
+            let markdownFormulaBlock: String = "Markdown-Mint"
         }
         struct OrangeOrange {
             let name: String = "Orange and Orange"
@@ -200,10 +190,8 @@ struct SettingKeys {
             let background: String = "Orange-Orange-Background"
             let frame: String = "Orange-Orange-Frame"
 
-            struct MarkdownColorSet {
-                let codeblock: String = "Markdown-Codeblock-Gray"
-                let formula: String = "Markdown-Formula-Mint"
-            }
+            let markdownCodeBlock: String = "Markdown-Gray"
+            let markdownFormulaBlock: String = "Markdown-Orange"
         }
         struct BlueBlue {
             let name: String = "Blue and Blue"
@@ -213,10 +201,8 @@ struct SettingKeys {
             let background: String = "Blue-Blue-Background"
             let frame: String = "Blue-Blue-Frame"
 
-            struct MarkdownColorSet {
-                let codeblock: String = "Markdown-Codeblock-Gray"
-                let formula: String = "Markdown-Formula-Mint"
-            }
+            let markdownCodeBlock: String = "Markdown-Gray"
+            let markdownFormulaBlock: String = "Markdown-Blue"
         }
         struct YellowYellow {
             let name: String = "Yellow and Yellow"
@@ -226,10 +212,8 @@ struct SettingKeys {
             let background: String = "Yellow-Yellow-Background"
             let frame: String = "Yellow-Yellow-Frame"
 
-            struct MarkdownColorSet {
-                let codeblock: String = "Markdown-Codeblock-Gray"
-                let formula: String = "Markdown-Formula-Mint"
-            }
+            let markdownCodeBlock: String = "Markdown-Gray"
+            let markdownFormulaBlock: String = "Markdown-Yellow"
         }
         struct WhitePink {
             let name: String = "White and Pink"
@@ -239,10 +223,8 @@ struct SettingKeys {
             let background: String = "White-Pink-Background"
             let frame: String = "White-Pink-Frame"
 
-            struct MarkdownColorSet {
-                let codeblock: String = "Markdown-Codeblock-Gray"
-                let formula: String = "Markdown-Formula-Mint"
-            }
+            let markdownCodeBlock: String = "Markdown-Gray"
+            let markdownFormulaBlock: String = "Markdown-Pink"
         }
         struct WhiteBlue {
             let name: String = "White and Blue"
@@ -252,10 +234,8 @@ struct SettingKeys {
             let background: String = "White-Blue-Background"
             let frame: String = "White-Blue-Frame"
 
-            struct MarkdownColorSet {
-                let codeblock: String = "Markdown-Codeblock-Gray"
-                let formula: String = "Markdown-Formula-Mint"
-            }
+            let markdownCodeBlock: String = "Markdown-Gray"
+            let markdownFormulaBlock: String = "Markdown-Blue"
         }
         struct WhiteMint {
             let name: String = "White and Mint"
@@ -265,10 +245,8 @@ struct SettingKeys {
             let background: String = "White-Mint-Background"
             let frame: String = "White-Mint-Frame"
 
-            struct MarkdownColorSet {
-                let codeblock: String = "Markdown-Codeblock-Gray"
-                let formula: String = "Markdown-Formula-Mint"
-            }
+            let markdownCodeBlock: String = "Markdown-Gray"
+            let markdownFormulaBlock: String = "Markdown-Mint"
         }
         struct WhiteYellow {
             let name: String = "White and Yellow"
@@ -278,10 +256,8 @@ struct SettingKeys {
             let background: String = "White-Yellow-Background"
             let frame: String = "White-Yellow-Frame"
 
-            struct MarkdownColorSet {
-                let codeblock: String = "Markdown-Codeblock-Gray"
-                let formula: String = "Markdown-Formula-Mint"
-            }
+            let markdownCodeBlock: String = "Markdown-Gray"
+            let markdownFormulaBlock: String = "Markdown-Yellow"
         }
     }
     struct UserConfirm {
