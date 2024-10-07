@@ -124,6 +124,8 @@ struct SettingKeys {
 
         let keyMarkdownAction: String = "stickyNoteMarkdownAction"
         let initialMarkdownAction: Bool = false
+        let keyShowMarkdownPreview: String = "stickyNoteShowMarkdownPreview"
+        let initialShowMarkdownPreview: Bool = true
     }
     
     struct ThemePalette {

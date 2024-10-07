@@ -26,6 +26,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     
     @AppStorage(SettingKeys.StickyNote().keyPinNote) private var isPinNote: Bool = SettingKeys.StickyNote().initialPinNote
 
+    @AppStorage(SettingKeys.StickyNote().keyMarkdownAction) private var isEnableMarkdown: Bool = SettingKeys.StickyNote().initialMarkdownAction
+    @AppStorage(SettingKeys.StickyNote().keyShowMarkdownPreview) private var showMarkdownPreview: Bool = SettingKeys.StickyNote().initialShowMarkdownPreview
+
     private var statusItem: NSStatusItem?
     private var popover: NSPopover = NSPopover()
     
@@ -87,6 +90,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
                 
                 if isOpenNote {
                     popover.show(relativeTo: sender.bounds, of: sender, preferredEdge: NSRectEdge.maxY)
+
+                    if isEnableMarkdown {
+                        showMarkdownPreview = true
+                    }
+
                 } else {
                     popover.close()
                 }
@@ -95,6 +103,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
                 
                 // Initialize "isOpenNote" when "pin a note" is enable next time.
                 isOpenNote = false
+
+                if isEnableMarkdown {
+                    showMarkdownPreview = true
+                }
             }
 
             popover.contentViewController?.view.window?.makeKey()
