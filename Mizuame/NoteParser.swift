@@ -261,14 +261,14 @@ extension String {
     }
 
     private func attributed(headline: Substring, size fontSize: CGFloat) -> AttributedString {
-        var attr = AttributedString(removeBlockSynatx(from: String(headline)))//AttributedString(headline)
+        var attr = AttributedString(removeBlockSynatx(from: String(headline)))
         attr.font = .system(size: fontSize, weight: .bold)
 
         return attr
     }
 
     private func attributed(listItem: Substring, size fontSize: CGFloat, dot: String) -> AttributedString {
-        let attributedListItem = AttributedString(removeBlockSynatx(from: String(listItem)))//AttributedString(listItem)
+        let attributedListItem = AttributedString(removeBlockSynatx(from: String(listItem)))
         var attributedDot = AttributedString(dot)
         attributedDot.font = .system(size: fontSize, weight: .heavy)
         attributedDot.append(attributedListItem)
