@@ -91,6 +91,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
                 if isOpenNote {
                     popover.show(relativeTo: sender.bounds, of: sender, preferredEdge: NSRectEdge.maxY)
 
+                    // When the user enables "Markdown preview (turn on 'isEnableMarkdown')",
+                    // "showMarkdownPreview" will be TRUE every time the user opens a note to the Markdown preview.
                     if isEnableMarkdown {
                         showMarkdownPreview = true
                     }
@@ -104,6 +106,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
                 // Initialize "isOpenNote" when "pin a note" is enable next time.
                 isOpenNote = false
 
+                // When the user enables "Markdown preview (turn on 'isEnableMarkdown')",
+                // "showMarkdownPreview" will be TRUE every time the user opens a note to the Markdown preview.
                 if isEnableMarkdown {
                     showMarkdownPreview = true
                 }
