@@ -457,7 +457,7 @@ k `code block` L (1+2= 3 )
             XCTFail("Attributed 'header 6' is missing.")
         }
 
-        if let middleDot1 = markdown.range(of: " \u{00B7} ") {
+        if let middleDot1 = markdown.range(of: " \u{2219} ") {
             XCTAssertEqual(markdown[middleDot1].font, .system(size: 12, weight: .heavy))
         } else {
             XCTFail("Attributed middle dot v1 is missing.")
@@ -469,7 +469,7 @@ k `code block` L (1+2= 3 )
             XCTFail("Attributed 'list 1' is missing.")
         }
 
-        if let middleDot2 = markdown.range(of: "     \u{00B7} ") {
+        if let middleDot2 = markdown.range(of: "     \u{25E6} ") {
             XCTAssertEqual(markdown[middleDot2].font, .system(size: 12, weight: .heavy))
         } else {
             XCTFail("Attributed middle dot v2 is missing.")
@@ -481,7 +481,7 @@ k `code block` L (1+2= 3 )
             XCTFail("Attributed 'list 2' is missing.")
         }
 
-        if let middleDot3 = markdown.range(of: "         \u{00B7} ") {
+        if let middleDot3 = markdown.range(of: "         - ") {
             XCTAssertEqual(markdown[middleDot3].font, .system(size: 12, weight: .heavy))
         } else {
             XCTFail("Attributed middle dot v3 is missing.")

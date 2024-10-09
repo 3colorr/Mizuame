@@ -182,7 +182,7 @@ extension String {
                         let stringLine = String(line[prefixEndIndex..<line.endIndex])
                         let listItemLine = MarkdownModel(
                             line: stringLine,
-                            attributedLine: attributed(listItem: line[prefixEndIndex..<line.endIndex], size: CGFloat(fontSize), dot: " \u{00B7} "),
+                            attributedLine: attributed(listItem: line[prefixEndIndex..<line.endIndex], size: CGFloat(fontSize), dot: " \u{2219} "),
                             codeBlockRanges: stringLine.findRangeOfCode(),
                             formulaRanges: stringLine.findRangeOfFormula())
                         markdown.append(listItemLine)
@@ -191,7 +191,7 @@ extension String {
                         let stringLine = String(line[prefixEndIndex..<line.endIndex])
                         let listItemLine = MarkdownModel(
                             line: stringLine,
-                            attributedLine: attributed(listItem: line[prefixEndIndex..<line.endIndex], size: CGFloat(fontSize), dot: "     \u{00B7} "),
+                            attributedLine: attributed(listItem: line[prefixEndIndex..<line.endIndex], size: CGFloat(fontSize), dot: "     \u{25E6} "),
                             codeBlockRanges: stringLine.findRangeOfCode(),
                             formulaRanges: stringLine.findRangeOfFormula())
                         markdown.append(listItemLine)
@@ -200,7 +200,7 @@ extension String {
                         let stringLine = String(line[prefixEndIndex..<line.endIndex])
                         let listItemLine = MarkdownModel(
                             line: stringLine,
-                            attributedLine: attributed(listItem: line[prefixEndIndex..<line.endIndex], size: CGFloat(fontSize), dot: "         \u{00B7} "),
+                            attributedLine: attributed(listItem: line[prefixEndIndex..<line.endIndex], size: CGFloat(fontSize), dot: "         - "),
                             codeBlockRanges: stringLine.findRangeOfCode(),
                             formulaRanges: stringLine.findRangeOfFormula())
                         markdown.append(listItemLine)
