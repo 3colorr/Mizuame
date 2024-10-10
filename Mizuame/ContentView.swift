@@ -446,7 +446,10 @@ struct ContentView: View {
     
     private func MarkdownView() -> some View {
         ScrollView {
-            Text(makeMarkdown(text: stickyText, codeBlockTheme: markdownCodeBlockTheme, formulaBlockTheme: markdownFormulaBlockTheme))
+            Text(convertMarkdownTextToAttributedString(
+                text: stickyText,
+                codeBlockTheme: markdownCodeBlockTheme,
+                formulaBlockTheme: markdownFormulaBlockTheme))
                 .multilineTextAlignment(.leading)
                 .textSelection(.enabled)
                 .padding(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))

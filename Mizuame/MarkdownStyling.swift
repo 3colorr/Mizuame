@@ -11,7 +11,13 @@ import SwiftUI
 extension View {
 
     /// Create an AttributedString from a Markdown model.
-    func makeMarkdown(text: String, codeBlockTheme: String, formulaBlockTheme: String) -> AttributedString {
+    /// - Parameters:
+    ///   - text: The Markdown string to be converted.
+    ///   - codeBlockTheme: The background color to apply to code blocks.
+    ///   - formulaBlockTheme: The background color to apply to formula blocks.
+    /// - Returns: An AttributedString with applied styles.
+    ///
+    func convertMarkdownTextToAttributedString(text: String, codeBlockTheme: String, formulaBlockTheme: String) -> AttributedString {
 
         let markdownModels: [MarkdownModel] = text.toMarkdown(size: 12)
 
