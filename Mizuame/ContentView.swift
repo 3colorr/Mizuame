@@ -448,6 +448,7 @@ struct ContentView: View {
         ScrollView {
             Text(convertMarkdownTextToAttributedString(
                 text: stickyText,
+                fontSize: fontSize,
                 codeBlockTheme: markdownCodeBlockTheme,
                 formulaBlockTheme: markdownFormulaBlockTheme))
                 .multilineTextAlignment(.leading)

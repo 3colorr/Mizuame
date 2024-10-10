@@ -13,13 +13,14 @@ extension View {
     /// Create an AttributedString from a Markdown model.
     /// - Parameters:
     ///   - text: The Markdown string to be converted.
+    ///   - fontSize: The font size of the Markdown text.
     ///   - codeBlockTheme: The background color to apply to code blocks.
     ///   - formulaBlockTheme: The background color to apply to formula blocks.
     /// - Returns: An AttributedString with applied styles.
     ///
-    func convertMarkdownTextToAttributedString(text: String, codeBlockTheme: String, formulaBlockTheme: String) -> AttributedString {
+    func convertMarkdownTextToAttributedString(text: String, fontSize: Int, codeBlockTheme: String, formulaBlockTheme: String) -> AttributedString {
 
-        let markdownModels: [MarkdownModel] = text.toMarkdown(size: 12)
+        let markdownModels: [MarkdownModel] = text.toMarkdown(size: fontSize)
 
         var markdownText: AttributedString = AttributedString()
 
