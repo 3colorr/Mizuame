@@ -10,6 +10,7 @@ import SwiftUI
 
 extension View {
 
+    /// Create an AttributedString from a Markdown model.
     func makeMarkdown(text: String, codeBlockTheme: String, formulaBlockTheme: String) -> AttributedString {
 
         let markdownModels: [MarkdownModel] = text.toMarkdown(size: 12)
