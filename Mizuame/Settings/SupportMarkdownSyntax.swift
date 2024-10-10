@@ -46,7 +46,13 @@ struct SupportMarkdownSyntax: View {
     private func SyntaxBlock(markdown: String) -> some View {
         VStack {
             Text(verbatim: markdown)
-            Text(makeMarkdown(text: markdown, codeBlockTheme: markdownCodeBlockTheme, formulaBlockTheme: markdownFormulaBlockTheme))
+                .font(.system(size: CGFloat(fontSize)))
+
+            Text(convertMarkdownTextToAttributedString(
+                text: markdown,
+                fontSize: fontSize,
+                codeBlockTheme: markdownCodeBlockTheme,
+                formulaBlockTheme: markdownFormulaBlockTheme))
         }
         .padding(15)
         .background(Color(bodyBackgroundTheme), in: RoundedRectangle(cornerRadius: 10))
