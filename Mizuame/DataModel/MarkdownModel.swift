@@ -7,38 +7,62 @@
 
 import Foundation
 
-struct MarkdownModel {
-    var line: String
-    var attributedLine: AttributedString
-    var codeBlockRanges: [Range<String.Index>]
-    var formulaRanges: [(formula: Range<String.Index>, calculateResult: Range<String.Index>)]
-    
-    init(line: String,
-         attributedLine: AttributedString,
-         codeBlockRanges: [Range<String.Index>],
-         formulaRanges: [(formula: Range<String.Index>, calculateResult: Range<String.Index>)]) {
-        
-        self.line = "\(line)\n"
-        self.codeBlockRanges = codeBlockRanges
-        self.formulaRanges = formulaRanges
+enum MarkdownTextViewType {
+    case plain
+    case codeblock
+    case formula
+    case header1
+    case header2
+    case header3
+    case header4
+    case header5
+    case header6
+    case list1
+    case list2
+    case list3
+    case list4
+}
 
-        self.attributedLine = attributedLine
-        self.attributedLine.append(AttributedString("\n"))
+struct MarkdownTextView: Identifiable {
+    let id = UUID()
+    var text: Substring
+    var attributedText: AttributedString
+    var viewType: MarkdownTextViewType
+    var fontSize: CGFloat
+
+    init(viewType: MarkdownTextViewType, text: Substring) {
+        self.viewType = viewType
+        self.text = text
+        self.fontSize = 0
+
+        do {
+            attributedText = try AttributedString(markdown: String(text))
+        } catch {
+            attributedText = AttributedString(text)
+        }
+    }
+}
+
+struct MarkdownModel: Identifiable {
+    let id = UUID()
+    var markdownTextViews: [MarkdownTextView]
+
+    init(content: [MarkdownTextView]) {
+        self.markdownTextViews = content
     }
 
-    func hasCodeBlock() -> Bool {
-        return (codeBlockRanges.count > 0)
+    mutating func setFontSizeOfWholeLine(is fontSize: CGFloat) {
+        for i in 0..<markdownTextViews.count {
+            markdownTextViews[i].fontSize = fontSize
+        }
     }
 
-    func hasFormulaBlock() -> Bool {
-        return (formulaRanges.count > 0)
-    }
+    mutating func setFirstMarkdownViewType(to newViewType: MarkdownTextViewType) -> Bool {
+        guard markdownTextViews.count != 0 else {
+            return false
+        }
 
-    func isApplyCodeBlock() -> Bool {
-        return (codeBlockRanges.count > 0) && (formulaRanges.count == 0)
-    }
-
-    func isApplyFormulaRange() -> Bool {
-        return (codeBlockRanges.count == 0) && (formulaRanges.count > 0)
+        markdownTextViews[0].viewType = newViewType
+        return true
     }
 }

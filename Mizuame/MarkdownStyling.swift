@@ -10,40 +10,101 @@ import SwiftUI
 
 extension View {
 
-    /// Create an AttributedString from a Markdown model.
+    /// Create a Markdown view.
     /// - Parameters:
     ///   - text: The Markdown string to be converted.
     ///   - fontSize: The font size of the Markdown text.
     ///   - codeBlockTheme: The background color to apply to code blocks.
     ///   - formulaBlockTheme: The background color to apply to formula blocks.
-    /// - Returns: An AttributedString with applied styles.
+    /// - Returns: A View with applied styles.
     ///
-    func convertMarkdownTextToAttributedString(text: String, fontSize: Int, codeBlockTheme: String, formulaBlockTheme: String) -> AttributedString {
+    func convertMarkdownTextToView(text: String, fontSize: Int, codeBlockTheme: String, formulaBlockTheme: String) -> some View {
 
+        let initialFontSize = CGFloat(SettingKeys.FontSize().initialValue)
         let markdownModels: [MarkdownModel] = text.toMarkdown(size: fontSize)
 
-        var markdownText: AttributedString = AttributedString()
+        return VStack(alignment: .leading) {
+            ForEach(markdownModels) { md in
+                HStack {
+                    ForEach(md.markdownTextViews) { elem in
+                        switch elem.viewType {
+                        case MarkdownTextViewType.plain:
+                            Text(elem.attributedText)
+                                .font(.system(size: elem.fontSize))
 
-        for md in markdownModels {
-
-            var attributedLine = md.attributedLine
-
-            for codeBlockRange in md.codeBlockRanges {
-                if let attributedCodeBlockRange = attributedLine.range(of: md.line[codeBlockRange]) {
-                    attributedLine[attributedCodeBlockRange].backgroundColor = Color(codeBlockTheme)
+                        case MarkdownTextViewType.codeblock:
+                            Text(elem.text)
+                                .font(.system(size: elem.fontSize))
+                                .background(Color(codeBlockTheme))
+                            
+                        case MarkdownTextViewType.formula:
+                            Text(elem.text)
+                                .font(.system(size: elem.fontSize))
+                                .background(Color(formulaBlockTheme))
+                            
+                        case MarkdownTextViewType.header1:
+                            Text(elem.attributedText)
+                                .font(.system(size: elem.fontSize))
+                            
+                        case MarkdownTextViewType.header2:
+                            Text(elem.attributedText)
+                                .font(.system(size: elem.fontSize))
+                            
+                        case MarkdownTextViewType.header3:
+                            Text(elem.attributedText)
+                                .font(.system(size: elem.fontSize))
+                            
+                        case MarkdownTextViewType.header4:
+                            Text(elem.attributedText)
+                                .font(.system(size: elem.fontSize))
+                            
+                        case MarkdownTextViewType.header5:
+                            Text(elem.attributedText)
+                                .font(.system(size: elem.fontSize))
+                            
+                        case MarkdownTextViewType.header6:
+                            Text(elem.attributedText)
+                                .font(.system(size: elem.fontSize))
+                            
+                        case MarkdownTextViewType.list1:
+                            Image(systemName: "circle.fill")
+                                .resizable()
+                                .frame(width: 5 * (elem.fontSize / initialFontSize),
+                                       height: 5 * (elem.fontSize / initialFontSize))
+                                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
+                            Text(elem.attributedText)
+                                .font(.system(size: elem.fontSize))
+                            
+                        case MarkdownTextViewType.list2:
+                            Image(systemName: "circle")
+                                .resizable()
+                                .frame(width: 5 * (elem.fontSize / initialFontSize),
+                                       height: 5 * (elem.fontSize / initialFontSize))
+                                .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 0))
+                            Text(elem.attributedText)
+                                .font(.system(size: elem.fontSize))
+                            
+                        case MarkdownTextViewType.list3:
+                            Image(systemName: "square.fill")
+                                .resizable()
+                                .frame(width: 5 * (elem.fontSize / initialFontSize),
+                                       height: 5 * (elem.fontSize / initialFontSize))
+                                .padding(EdgeInsets(top: 0, leading: 50, bottom: 0, trailing: 0))
+                            Text(elem.attributedText)
+                                .font(.system(size: elem.fontSize))
+                            
+                        case MarkdownTextViewType.list4:
+                            Image(systemName: "square")
+                                .resizable()
+                                .frame(width: 5 * (elem.fontSize / initialFontSize),
+                                       height: 5 * (elem.fontSize / initialFontSize))
+                                .padding(EdgeInsets(top: 0, leading: 70, bottom: 0, trailing: 0))
+                            Text(elem.attributedText)
+                                .font(.system(size: elem.fontSize))
+                        }
+                    }
                 }
             }
-
-            for formulaRange in md.formulaRanges {
-                if let attributedFormulaRange = attributedLine.range(of: md.line[formulaRange.formula.lowerBound..<formulaRange.calculateResult.upperBound]) {
-
-                    attributedLine[attributedFormulaRange].backgroundColor = Color(formulaBlockTheme)
-                }
-            }
-
-            markdownText.append(attributedLine)
         }
-        
-        return markdownText
     }
 }
