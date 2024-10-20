@@ -446,15 +446,15 @@ struct ContentView: View {
     
     private func MarkdownView() -> some View {
         ScrollView {
-            Text(convertMarkdownTextToAttributedString(
+            convertMarkdownTextToView(
                 text: stickyText,
                 fontSize: fontSize,
                 codeBlockTheme: markdownCodeBlockTheme,
-                formulaBlockTheme: markdownFormulaBlockTheme))
-                .multilineTextAlignment(.leading)
-                .textSelection(.enabled)
-                .padding(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                formulaBlockTheme: markdownFormulaBlockTheme)
+            .multilineTextAlignment(.leading)
+            .textSelection(.enabled)
+            .padding(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         }
         .onTapGesture(count: 2) {
             showMarkdownPreview = false

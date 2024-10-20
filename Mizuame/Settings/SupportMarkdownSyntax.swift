@@ -48,11 +48,11 @@ struct SupportMarkdownSyntax: View {
             Text(verbatim: markdown)
                 .font(.system(size: CGFloat(fontSize)))
 
-            Text(convertMarkdownTextToAttributedString(
+            convertMarkdownTextToView(
                 text: markdown,
                 fontSize: fontSize,
                 codeBlockTheme: markdownCodeBlockTheme,
-                formulaBlockTheme: markdownFormulaBlockTheme))
+                formulaBlockTheme: markdownFormulaBlockTheme)
         }
         .padding(15)
         .background(Color(bodyBackgroundTheme), in: RoundedRectangle(cornerRadius: 10))
