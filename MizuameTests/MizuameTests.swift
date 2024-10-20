@@ -373,7 +373,7 @@ final class MizuameTests: XCTestCase {
         XCTAssertEqual(testNote9[results9[0]], "(2+2)^3")
     }
 
-    func testNoteParser_getMarkdown() throws {
+    func testNoteParser_toMarkdown() throws {
 
         let testNote = """
 abc
@@ -387,132 +387,79 @@ efg
 - list 1
   - list 2
     - list 3
+      - list 4
 hij
 k `code block` L (1+2= 3 )
 """
 
         let markdownModels: [MarkdownModel] = testNote.toMarkdown(size: 12)
-        
-        var markdown: AttributedString = AttributedString()
 
-        for md in markdownModels {
+        XCTAssertEqual(markdownModels.count, 14)
 
-            var attributedLine = md.attributedLine
+        XCTAssertEqual(markdownModels[0].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[0].markdownTextViews[0].text, "abc")
+        XCTAssertEqual(markdownModels[0].markdownTextViews[0].viewType, MarkdownTextViewType.plain)
 
-            for codeBlockRange in md.codeBlockRanges {
-                if let attributedCodeBlockRange = attributedLine.range(of: md.line[codeBlockRange]) {
-                    attributedLine[attributedCodeBlockRange].backgroundColor = Color(red: 0.9, green: 0.9, blue: 0.9)
-                }
-            }
+        XCTAssertEqual(markdownModels[1].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[1].markdownTextViews[0].text, "header 1")
+        XCTAssertEqual(markdownModels[1].markdownTextViews[0].viewType, MarkdownTextViewType.header1)
 
-            for formulaRange in md.formulaRanges {
-                if let attributedFormulaRange = attributedLine.range(of: md.line[formulaRange.formula.lowerBound..<formulaRange.calculateResult.upperBound]) {
+        XCTAssertEqual(markdownModels[2].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[2].markdownTextViews[0].text, "header 2")
+        XCTAssertEqual(markdownModels[2].markdownTextViews[0].viewType, MarkdownTextViewType.header2)
 
-                    attributedLine[attributedFormulaRange].backgroundColor = Color(red: 0.9, green: 0.9, blue: 0.8)
-                }
-            }
+        XCTAssertEqual(markdownModels[3].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[3].markdownTextViews[0].text, "header 3")
+        XCTAssertEqual(markdownModels[3].markdownTextViews[0].viewType, MarkdownTextViewType.header3)
 
-            markdown.append(attributedLine)
-        }
+        XCTAssertEqual(markdownModels[4].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[4].markdownTextViews[0].text, "header 4")
+        XCTAssertEqual(markdownModels[4].markdownTextViews[0].viewType, MarkdownTextViewType.header4)
 
-        if let header1 = markdown.range(of: "header 1") {
-            XCTAssertEqual(String(markdown[header1].characters), "header 1")
-            XCTAssertEqual(markdown[header1].font, .system(size: 24, weight: .bold))
-        } else {
-            XCTFail("Attributed 'header 1' is missing.")
-        }
+        XCTAssertEqual(markdownModels[5].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[5].markdownTextViews[0].text, "header 5")
+        XCTAssertEqual(markdownModels[5].markdownTextViews[0].viewType, MarkdownTextViewType.header5)
 
-        if let header2 = markdown.range(of: "header 2") {
-            XCTAssertEqual(String(markdown[header2].characters), "header 2")
-            XCTAssertEqual(markdown[header2].font, .system(size: 18, weight: .bold))
-        } else {
-            XCTFail("Attributed 'header 2' is missing.")
-        }
+        XCTAssertEqual(markdownModels[6].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[6].markdownTextViews[0].text, "header 6")
+        XCTAssertEqual(markdownModels[6].markdownTextViews[0].viewType, MarkdownTextViewType.header6)
 
-        if let header3 = markdown.range(of: "header 3") {
-            XCTAssertEqual(String(markdown[header3].characters), "header 3")
-            XCTAssertEqual(markdown[header3].font, .system(size: 14, weight: .bold))
-        } else {
-            XCTFail("Attributed 'header 3' is missing.")
-        }
+        XCTAssertEqual(markdownModels[7].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[7].markdownTextViews[0].text, "efg")
+        XCTAssertEqual(markdownModels[7].markdownTextViews[0].viewType, .plain)
 
-        if let header4 = markdown.range(of: "header 4") {
-            XCTAssertEqual(String(markdown[header4].characters), "header 4")
-            XCTAssertEqual(markdown[header4].font, .system(size: 12, weight: .bold))
-        } else {
-            XCTFail("Attributed 'header 4' is missing.")
-        }
+        XCTAssertEqual(markdownModels[8].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[8].markdownTextViews[0].text, "list 1")
+        XCTAssertEqual(markdownModels[8].markdownTextViews[0].viewType, MarkdownTextViewType.list1)
 
-        if let header5 = markdown.range(of: "header 5") {
-            XCTAssertEqual(String(markdown[header5].characters), "header 5")
-            XCTAssertEqual(markdown[header5].font, .system(size: 10, weight: .bold))
-        } else {
-            XCTFail("Attributed 'header 5' is missing.")
-        }
+        XCTAssertEqual(markdownModels[9].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[9].markdownTextViews[0].text, "list 2")
+        XCTAssertEqual(markdownModels[9].markdownTextViews[0].viewType, MarkdownTextViewType.list2)
 
-        if let header6 = markdown.range(of: "header 6") {
-            XCTAssertEqual(String(markdown[header6].characters), "header 6")
-            XCTAssertEqual(markdown[header6].font, .system(size: 6, weight: .bold))
-        } else {
-            XCTFail("Attributed 'header 6' is missing.")
-        }
+        XCTAssertEqual(markdownModels[10].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[10].markdownTextViews[0].text, "list 3")
+        XCTAssertEqual(markdownModels[10].markdownTextViews[0].viewType, MarkdownTextViewType.list3)
 
-        if let middleDot1 = markdown.range(of: " \u{2219} ") {
-            XCTAssertEqual(markdown[middleDot1].font, .system(size: 12, weight: .heavy))
-        } else {
-            XCTFail("Attributed middle dot v1 is missing.")
-        }
+        XCTAssertEqual(markdownModels[10].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[10].markdownTextViews[0].text, "list 3")
+        XCTAssertEqual(markdownModels[10].markdownTextViews[0].viewType, MarkdownTextViewType.list3)
 
-        if let list1 = markdown.range(of: "list 1") {
-            XCTAssertEqual(String(markdown[list1].characters), "list 1")
-        } else {
-            XCTFail("Attributed 'list 1' is missing.")
-        }
+        XCTAssertEqual(markdownModels[11].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[11].markdownTextViews[0].text, "list 4")
+        XCTAssertEqual(markdownModels[11].markdownTextViews[0].viewType, MarkdownTextViewType.list4)
 
-        if let middleDot2 = markdown.range(of: "     \u{25E6} ") {
-            XCTAssertEqual(markdown[middleDot2].font, .system(size: 12, weight: .heavy))
-        } else {
-            XCTFail("Attributed middle dot v2 is missing.")
-        }
+        XCTAssertEqual(markdownModels[12].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[12].markdownTextViews[0].text, "hij")
 
-        if let list2 = markdown.range(of: "list 2") {
-            XCTAssertEqual(String(markdown[list2].characters), "list 2")
-        } else {
-            XCTFail("Attributed 'list 2' is missing.")
-        }
-
-        if let middleDot3 = markdown.range(of: "         - ") {
-            XCTAssertEqual(markdown[middleDot3].font, .system(size: 12, weight: .heavy))
-        } else {
-            XCTFail("Attributed middle dot v3 is missing.")
-        }
-
-        if let list3 = markdown.range(of: "list 3") {
-            XCTAssertEqual(String(markdown[list3].characters), "list 3")
-        } else {
-            XCTFail("Attributed 'list 3' is missing.")
-        }
-
-        if let codeBlock = markdown.range(of: "code block") {
-            XCTAssertEqual(String(markdown[codeBlock].characters), "code block")
-            XCTAssertEqual(markdown[codeBlock].backgroundColor, Color(red: 0.9, green: 0.9, blue: 0.9))
-        } else {
-            XCTFail("Attributed 'code block' is missing.")
-        }
-
-        if let formula = markdown.range(of: "1+2=") {
-            XCTAssertEqual(String(markdown[formula].characters), "1+2=")
-            XCTAssertEqual(markdown[formula].backgroundColor, Color(red: 0.9, green: 0.9, blue: 0.8))
-        } else {
-            XCTFail("Attributed 'formula' is missing.")
-        }
-
-        if let calculateResult = markdown.range(of: " 3 ") {
-            XCTAssertEqual(String(markdown[calculateResult].characters), " 3 ")
-            XCTAssertEqual(markdown[calculateResult].backgroundColor, Color(red: 0.9, green: 0.9, blue: 0.8))
-        } else {
-            XCTFail("Attributed 'calculateResult' is missing.")
-        }
+        XCTAssertEqual(markdownModels[13].markdownTextViews.count, 4)
+        XCTAssertEqual(markdownModels[13].markdownTextViews[0].text, "k ")
+        XCTAssertEqual(markdownModels[13].markdownTextViews[0].viewType, MarkdownTextViewType.plain)
+        XCTAssertEqual(markdownModels[13].markdownTextViews[1].text, "code block")
+        XCTAssertEqual(markdownModels[13].markdownTextViews[1].viewType, MarkdownTextViewType.codeblock)
+        XCTAssertEqual(markdownModels[13].markdownTextViews[2].text, " L ")
+        XCTAssertEqual(markdownModels[13].markdownTextViews[2].viewType, MarkdownTextViewType.plain)
+        XCTAssertEqual(markdownModels[13].markdownTextViews[3].text, "1+2= 3 ")
+        XCTAssertEqual(markdownModels[13].markdownTextViews[3].viewType, MarkdownTextViewType.formula)
     }
 
     func testNoteParser_findRangeOfCode() throws {

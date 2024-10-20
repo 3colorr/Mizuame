@@ -41,6 +41,8 @@
 		418A6C7A2A07E105009C46CD /* MizuameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418A6C792A07E105009C46CD /* MizuameTests.swift */; };
 		418A6C842A07E105009C46CD /* MizuameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418A6C832A07E105009C46CD /* MizuameUITests.swift */; };
 		418A6C862A07E105009C46CD /* MizuameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418A6C852A07E105009C46CD /* MizuameUITestsLaunchTests.swift */; };
+		419F08762CC5350000F85DEA /* SettingKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AE86722A21B1E8000068CA /* SettingKeys.swift */; };
+		419F08782CC5359C00F85DEA /* SettingsViewStateEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ACD11F2A231819001F111B /* SettingsViewStateEnum.swift */; };
 		41ACD1202A231819001F111B /* SettingsViewStateEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ACD11F2A231819001F111B /* SettingsViewStateEnum.swift */; };
 		41ACD1242A23892B001F111B /* TermsOfServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ACD1232A23892B001F111B /* TermsOfServiceView.swift */; };
 		41ACD1282A238A02001F111B /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ACD1272A238A02001F111B /* PrivacyPolicyView.swift */; };
@@ -410,6 +412,8 @@
 				418A6C7A2A07E105009C46CD /* MizuameTests.swift in Sources */,
 				410DBF222A1993EE0024A843 /* DataIO.swift in Sources */,
 				416FE25C2CA7D1A60074E6EA /* MarkdownModel.swift in Sources */,
+				419F08762CC5350000F85DEA /* SettingKeys.swift in Sources */,
+				419F08782CC5359C00F85DEA /* SettingsViewStateEnum.swift in Sources */,
 				41371D842ADB87E7003E0419 /* RedoUndo.swift in Sources */,
 				410DBF1E2A198F570024A843 /* StickyNote.swift in Sources */,
 				4131FD0C2CA92C1900F9EC50 /* MarkdownStyling.swift in Sources */,
