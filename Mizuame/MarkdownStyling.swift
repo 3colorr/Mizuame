@@ -33,14 +33,14 @@ extension View {
                                 .font(.system(size: elem.fontSize))
 
                         case MarkdownTextViewType.codeblock:
-                            Text(elem.text)
+                            Text(" \(elem.text) ")
                                 .font(.system(size: elem.fontSize))
-                                .background(Color(codeBlockTheme))
+                                .background(Color(codeBlockTheme), in: RoundedRectangle(cornerRadius: 3))
                             
                         case MarkdownTextViewType.formula:
-                            Text(elem.text)
+                            Text("  \(elem.text) ")
                                 .font(.system(size: elem.fontSize))
-                                .background(Color(formulaBlockTheme))
+                                .background(Color(formulaBlockTheme), in: RoundedRectangle(cornerRadius: 3))
                             
                         case MarkdownTextViewType.header1:
                             Text(elem.attributedText)
