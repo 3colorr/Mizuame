@@ -451,15 +451,17 @@ k `code block` L (1+2= 3 )
         XCTAssertEqual(markdownModels[12].markdownTextViews.count, 1)
         XCTAssertEqual(markdownModels[12].markdownTextViews[0].text, "hij")
 
-        XCTAssertEqual(markdownModels[13].markdownTextViews.count, 4)
+        XCTAssertEqual(markdownModels[13].markdownTextViews.count, 5)
         XCTAssertEqual(markdownModels[13].markdownTextViews[0].text, "k ")
         XCTAssertEqual(markdownModels[13].markdownTextViews[0].viewType, MarkdownTextViewType.plain)
         XCTAssertEqual(markdownModels[13].markdownTextViews[1].text, "code block")
         XCTAssertEqual(markdownModels[13].markdownTextViews[1].viewType, MarkdownTextViewType.codeblock)
         XCTAssertEqual(markdownModels[13].markdownTextViews[2].text, " L ")
         XCTAssertEqual(markdownModels[13].markdownTextViews[2].viewType, MarkdownTextViewType.plain)
-        XCTAssertEqual(markdownModels[13].markdownTextViews[3].text, "1+2= 3 ")
+        XCTAssertEqual(markdownModels[13].markdownTextViews[3].text, "1+2=")
         XCTAssertEqual(markdownModels[13].markdownTextViews[3].viewType, MarkdownTextViewType.formula)
+        XCTAssertEqual(markdownModels[13].markdownTextViews[4].text, " 3 ")
+        XCTAssertEqual(markdownModels[13].markdownTextViews[4].viewType, MarkdownTextViewType.calculationResult)
     }
 
     func testNoteParser_findRangeOfCode() throws {
