@@ -524,10 +524,16 @@ extension String {
                                     text: splited.text[startFormulaIndex..<splited.text.index(before: formulaRange.formula.lowerBound)]))
                             }
 
-                            // The following extracts "1+2= 3 ".
+                            // The following extracts "1+2=".
                             resultSplitedTextList.append(MarkdownTextView(
                                 viewType: .formula,
-                                text: splited.text[formulaRange.formula.lowerBound..<formulaRange.calculateResult.upperBound]))
+                                text: splited.text[formulaRange.formula]))
+
+                            // The following extracts " 3 ".
+                            resultSplitedTextList.append(MarkdownTextView(
+                                viewType: .calculationResult,
+                                text: splited.text[formulaRange.calculateResult]))
+
                             startFormulaIndex = splited.text.index(after: formulaRange.calculateResult.upperBound)
                         }
                     }
@@ -551,7 +557,8 @@ extension String {
             //      MarkdownTextView("This is", MarkdownTextViewType.palin)
             //      MarkdownTextView("code block", MarkdownTextViewType.codeblock)
             //      MarkdownTextView(" and ", MarkdownTextViewType.palin)
-            //      MarkdownTextView("1+2= 3 ", MarkdownTextViewType.formula)
+            //      MarkdownTextView("1+2=", MarkdownTextViewType.formula)
+            //      MarkdownTextView(" 3 ", MarkdownTextViewType.calculationResult)
             //      MarkdownTextView("!!", MarkdownTextViewType.palin)
             // }
 

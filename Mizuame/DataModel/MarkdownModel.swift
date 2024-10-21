@@ -11,6 +11,7 @@ enum MarkdownTextViewType {
     case plain
     case codeblock
     case formula
+    case calculationResult
     case header1
     case header2
     case header3

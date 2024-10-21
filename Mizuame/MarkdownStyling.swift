@@ -38,9 +38,15 @@ extension View {
                                 .background(Color(codeBlockTheme), in: RoundedRectangle(cornerRadius: 3))
                             
                         case MarkdownTextViewType.formula:
-                            Text("  \(elem.text) ")
+                            Text("  \(elem.text)  ")
                                 .font(.system(size: elem.fontSize))
                                 .background(Color(formulaBlockTheme), in: RoundedRectangle(cornerRadius: 3))
+                            
+                        case MarkdownTextViewType.calculationResult:
+                            Text("\(elem.text)")
+                                .font(.system(size: elem.fontSize))
+                                .background(Color(codeBlockTheme), in: RoundedRectangle(cornerRadius: 3))
+                                .padding(EdgeInsets(top: 0, leading: -13, bottom: 0, trailing: 0))
                             
                         case MarkdownTextViewType.header1:
                             Text(elem.attributedText)
