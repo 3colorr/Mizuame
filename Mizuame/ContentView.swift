@@ -23,7 +23,10 @@ struct ContentView: View {
     @AppStorage(SettingKeys.Menubar().keySavingMessage) private var isShowSavingMessage: Bool = SettingKeys.Menubar().initialSavingMessage
     
     @AppStorage(SettingKeys.StickyNote().keyCalculateAction) private var isEnableCalculation: Bool = SettingKeys.StickyNote().initialCalculateAction
-    
+
+    @AppStorage(SettingKeys.StickyNote().keyMarkdownAction) private var isEnableMarkdown: Bool = SettingKeys.StickyNote().initialMarkdownAction
+    @AppStorage(SettingKeys.StickyNote().keyShowMarkdownPreview) private var showMarkdownPreview: Bool = SettingKeys.StickyNote().initialShowMarkdownPreview
+
     @AppStorage(SettingKeys.StickyNote().keyPositionOfRoundsDecimalPoint) private var positionOfRoundsDecimalPoint: Int = SettingKeys.StickyNote().initialPositionOfRoundsDecimalPoint
 
     @AppStorage(SettingKeys.StickyNote().keyWidth) private var width: Int = SettingKeys.StickyNote().initialWidth
@@ -34,7 +37,10 @@ struct ContentView: View {
 
     @AppStorage(SettingKeys.StickyNoteColor().keyForeground) private var bodyForegroundTheme: String = SettingKeys.StickyNoteColor().initialForegroundTheme
     @AppStorage(SettingKeys.StickyNoteColor().keyBackground) private var bodyBackgroundTheme: String = SettingKeys.StickyNoteColor().initialBackgroundTheme
-    
+
+    @AppStorage(SettingKeys.MarkdownViewColor().keyCodeBlock) private var markdownCodeBlockTheme: String = SettingKeys.MarkdownViewColor().initialCodeBlockTheme
+    @AppStorage(SettingKeys.MarkdownViewColor().keyFormulaBlock) private var markdownFormulaBlockTheme: String = SettingKeys.MarkdownViewColor().initialFormulaBlockTheme
+
     @AppStorage(SettingKeys.StickyNote.NoteFontColor.Theme().key) private var isApplyThemeColorToFont: Bool = SettingKeys.StickyNote.NoteFontColor.Theme().initialVale
 
     @AppStorage(SettingKeys.StickyNote.NoteFontColor.Black().key) private var isApplyBlackColorToFont: Bool = SettingKeys.StickyNote.NoteFontColor.Black().initialVale
@@ -57,6 +63,8 @@ struct ContentView: View {
     @State private var isDraggableVertical: Bool = false
     @State private var isDraggableHorizontal: Bool = false
     @GestureState private var dragState: CGSize = .zero
+
+    //@State private var showMarkdownPreview: Bool = true
 
     // Automatically hide menu bar(header)
     //  -> Why do we need two state variables for this?
@@ -140,16 +148,25 @@ struct ContentView: View {
                     } else {
                         HeaderView()
                     }
-                    
-                    NoteView()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .layoutPriority(1)
-                        .font(.system(size: CGFloat(self.fontSize)))
-                        .lineSpacing(CGFloat(self.lineSpacing))
-                        .foregroundColor(Color(foregroundColorName()))
-                        .scrollContentBackground(.hidden)
-                        .background(Color(bodyBackgroundTheme), in: RoundedRectangle(cornerRadius: 10))
-                        .padding(EdgeInsets(top: 0, leading: 7, bottom: 7, trailing: 7))
+
+                    if isEnableMarkdown && showMarkdownPreview {
+                        MarkdownView()
+                            .layoutPriority(1)
+                            .foregroundColor(Color(foregroundColorName()))
+                            .background(Color(bodyBackgroundTheme), in: RoundedRectangle(cornerRadius: 10))
+                            .padding(EdgeInsets(top: 0, leading: 7, bottom: 7, trailing: 7))
+
+                    } else {
+                        NoteView()
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .layoutPriority(1)
+                            .font(.system(size: CGFloat(self.fontSize)))
+                            .lineSpacing(CGFloat(self.lineSpacing))
+                            .foregroundColor(Color(foregroundColorName()))
+                            .scrollContentBackground(.hidden)
+                            .background(Color(bodyBackgroundTheme), in: RoundedRectangle(cornerRadius: 10))
+                            .padding(EdgeInsets(top: 0, leading: 7, bottom: 7, trailing: 7))
+                    }
                 }
             }
             .frame(width: CGFloat(self.width) + self.dragState.width, height: CGFloat(self.height) + self.dragState.height)
@@ -244,22 +261,45 @@ struct ContentView: View {
                 Spacer()
                     .layoutPriority(1)
                 
-                Button(action: {
-                    stickyText = redoUndoManager.undo()
-                }, label: {
-                    Image(systemName: "return.left")
-                })
-                .hidden()
-                .keyboardShortcut("z", modifiers: [.command])
-                
-                Button(action: {
-                    stickyText = redoUndoManager.redo()
-                }, label: {
-                    Image(systemName: "return.right")
-                })
-                .hidden()
-                .keyboardShortcut("y", modifiers: [.command])
-                
+                if !showMarkdownPreview {
+                    Button(action: {
+                        stickyText = redoUndoManager.undo()
+                    }, label: {
+                        Image(systemName: "return.left")
+                    })
+                    .hidden()
+                    .keyboardShortcut("z", modifiers: [.command])
+
+                    Button(action: {
+                        stickyText = redoUndoManager.redo()
+                    }, label: {
+                        Image(systemName: "return.right")
+                    })
+                    .hidden()
+                    .keyboardShortcut("y", modifiers: [.command])
+                }
+
+                if isEnableMarkdown {
+                    if showMarkdownPreview {
+                        Image(systemName: "square.and.pencil")
+                            .foregroundColor(Color(bodyForegroundTheme))
+                            .onTapGesture {
+                                withAnimation {
+                                    showMarkdownPreview.toggle()
+                                }
+                            }
+                    } else {
+                        Image(systemName: "m.square")
+                            .imageScale(.large)
+                            .foregroundColor(Color(bodyForegroundTheme))
+                            .onTapGesture {
+                                withAnimation {
+                                    showMarkdownPreview.toggle()
+                                }
+                            }
+                    }
+                }
+
                 if isPinNote {
                     Image(systemName: "pin")
                         .foregroundColor(Color.red)
@@ -274,19 +314,21 @@ struct ContentView: View {
                         }
                 }
                 
-                Image(systemName: "eraser")
-                    .foregroundColor(Color(bodyForegroundTheme))
-                    .onTapGesture {
-                        userAction = .ALL_DELETE
-                        
-                        withAnimation {
-                            isShowMessagebar.toggle()
+                if !showMarkdownPreview {
+                    Image(systemName: "eraser")
+                        .foregroundColor(Color(bodyForegroundTheme))
+                        .onTapGesture {
+                            userAction = .ALL_DELETE
+
+                            withAnimation {
+                                isShowMessagebar.toggle()
+                            }
+
+                            if !isShowMessagebar {
+                                userAction = .NONE
+                            }
                         }
-                        
-                        if !isShowMessagebar {
-                            userAction = .NONE
-                        }
-                    }
+                }
                 
                 Image(systemName: "printer")
                     .foregroundColor(Color(bodyForegroundTheme))
@@ -402,6 +444,23 @@ struct ContentView: View {
         }
     }
     
+    private func MarkdownView() -> some View {
+        ScrollView {
+            convertMarkdownTextToView(
+                text: stickyText,
+                fontSize: fontSize,
+                codeBlockTheme: markdownCodeBlockTheme,
+                formulaBlockTheme: markdownFormulaBlockTheme)
+            .multilineTextAlignment(.leading)
+            .textSelection(.enabled)
+            .padding(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        }
+        .onTapGesture(count: 2) {
+            showMarkdownPreview = false
+        }
+    }
+
     // This view defines an area where the user can resize the note by dragging.
     //
     // The "#", "@" and "+" symbol in the diagram below indicates the area of window
@@ -543,11 +602,10 @@ struct ContentView: View {
     private func calculateFormulaIn(_ val: String) -> String {
         
         let calculater = CalculateModel(digitAfterDecimalPoint: positionOfRoundsDecimalPoint)
-        let parser = NoteParser()
         
         var calculated: String = val
         
-        for formulaRange in parser.parse(note: calculated) {
+        for formulaRange in calculated.getFormulas() {
 
             if let result = calculater.result(formula: String(calculated[formulaRange])) {
                 

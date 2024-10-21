@@ -16,6 +16,8 @@
 		410DBF212A1993EE0024A843 /* DataIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410DBF202A1993EE0024A843 /* DataIO.swift */; };
 		410DBF222A1993EE0024A843 /* DataIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410DBF202A1993EE0024A843 /* DataIO.swift */; };
 		410DBF232A1993EE0024A843 /* DataIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410DBF202A1993EE0024A843 /* DataIO.swift */; };
+		4131FD0B2CA92C1900F9EC50 /* MarkdownStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4131FD0A2CA92C1900F9EC50 /* MarkdownStyling.swift */; };
+		4131FD0C2CA92C1900F9EC50 /* MarkdownStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4131FD0A2CA92C1900F9EC50 /* MarkdownStyling.swift */; };
 		41371D832ADB87E7003E0419 /* RedoUndo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41371D822ADB87E7003E0419 /* RedoUndo.swift */; };
 		41371D842ADB87E7003E0419 /* RedoUndo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41371D822ADB87E7003E0419 /* RedoUndo.swift */; };
 		413A95DD2A5A499800E735BF /* TabPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413A95DC2A5A499800E735BF /* TabPrint.swift */; };
@@ -27,6 +29,7 @@
 		415878612A1509DF003A545C /* MessagebarEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415878602A1509DF003A545C /* MessagebarEnum.swift */; };
 		415B97A82A2C1FE3003B144E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 415B97AA2A2C1FE3003B144E /* Localizable.strings */; };
 		416A20A02A2638F200D35889 /* ColorSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416A209F2A2638F200D35889 /* ColorSliderView.swift */; };
+		416FE25C2CA7D1A60074E6EA /* MarkdownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8B2F22CA04A450019EB09 /* MarkdownModel.swift */; };
 		41790C792A1F8C13002D746A /* TabStickyNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41790C782A1F8C13002D746A /* TabStickyNote.swift */; };
 		41790C7D2A1F8D48002D746A /* TabGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41790C7C2A1F8D48002D746A /* TabGeneral.swift */; };
 		41790C812A1F92CA002D746A /* TabHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41790C802A1F92CA002D746A /* TabHelp.swift */; };
@@ -38,6 +41,8 @@
 		418A6C7A2A07E105009C46CD /* MizuameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418A6C792A07E105009C46CD /* MizuameTests.swift */; };
 		418A6C842A07E105009C46CD /* MizuameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418A6C832A07E105009C46CD /* MizuameUITests.swift */; };
 		418A6C862A07E105009C46CD /* MizuameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418A6C852A07E105009C46CD /* MizuameUITestsLaunchTests.swift */; };
+		419F08762CC5350000F85DEA /* SettingKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AE86722A21B1E8000068CA /* SettingKeys.swift */; };
+		419F08782CC5359C00F85DEA /* SettingsViewStateEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ACD11F2A231819001F111B /* SettingsViewStateEnum.swift */; };
 		41ACD1202A231819001F111B /* SettingsViewStateEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ACD11F2A231819001F111B /* SettingsViewStateEnum.swift */; };
 		41ACD1242A23892B001F111B /* TermsOfServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ACD1232A23892B001F111B /* TermsOfServiceView.swift */; };
 		41ACD1282A238A02001F111B /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ACD1272A238A02001F111B /* PrivacyPolicyView.swift */; };
@@ -45,7 +50,9 @@
 		41AFAD822A30B05400D01A37 /* ThemePalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AFAD812A30B05400D01A37 /* ThemePalette.swift */; };
 		41BD1EB92A277A1200C97A2E /* StickyNotePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD1EB82A277A1200C97A2E /* StickyNotePreview.swift */; };
 		41C01B702A0D25B500B55670 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C01B6F2A0D25B500B55670 /* SettingsView.swift */; };
+		41E8B2F32CA04A450019EB09 /* MarkdownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8B2F22CA04A450019EB09 /* MarkdownModel.swift */; };
 		41EEA87F2AC804CE0017E3FC /* SettingsLinkStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EEA87E2AC804CE0017E3FC /* SettingsLinkStyle.swift */; };
+		41F18E8B2C96BEA300374767 /* SupportMarkdownSyntax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F18E8A2C96BEA300374767 /* SupportMarkdownSyntax.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +77,7 @@
 		4105AA492A514FB5001B00D2 /* PrinterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrinterModel.swift; path = Mizuame/DataModel/PrinterModel.swift; sourceTree = SOURCE_ROOT; };
 		410DBF1C2A198F570024A843 /* StickyNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyNote.swift; sourceTree = "<group>"; };
 		410DBF202A1993EE0024A843 /* DataIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataIO.swift; sourceTree = "<group>"; };
+		4131FD0A2CA92C1900F9EC50 /* MarkdownStyling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownStyling.swift; sourceTree = "<group>"; };
 		41371D822ADB87E7003E0419 /* RedoUndo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedoUndo.swift; sourceTree = "<group>"; };
 		413A95DC2A5A499800E735BF /* TabPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPrint.swift; sourceTree = "<group>"; };
 		414053522B064B1C00A46C0B /* NoteParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteParser.swift; sourceTree = "<group>"; };
@@ -102,7 +110,9 @@
 		41AFAD812A30B05400D01A37 /* ThemePalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePalette.swift; sourceTree = "<group>"; };
 		41BD1EB82A277A1200C97A2E /* StickyNotePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyNotePreview.swift; sourceTree = "<group>"; };
 		41C01B6F2A0D25B500B55670 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		41E8B2F22CA04A450019EB09 /* MarkdownModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownModel.swift; sourceTree = "<group>"; };
 		41EEA87E2AC804CE0017E3FC /* SettingsLinkStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLinkStyle.swift; sourceTree = "<group>"; };
+		41F18E8A2C96BEA300374767 /* SupportMarkdownSyntax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportMarkdownSyntax.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +146,7 @@
 				41038CBB2AEFE2D400A79A57 /* CalculateModel.swift */,
 				4105AA492A514FB5001B00D2 /* PrinterModel.swift */,
 				410DBF1C2A198F570024A843 /* StickyNote.swift */,
+				41E8B2F22CA04A450019EB09 /* MarkdownModel.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -158,6 +169,7 @@
 				416A209F2A2638F200D35889 /* ColorSliderView.swift */,
 				41BD1EB82A277A1200C97A2E /* StickyNotePreview.swift */,
 				41AFAD812A30B05400D01A37 /* ThemePalette.swift */,
+				41F18E8A2C96BEA300374767 /* SupportMarkdownSyntax.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -193,6 +205,7 @@
 				415878602A1509DF003A545C /* MessagebarEnum.swift */,
 				410DBF202A1993EE0024A843 /* DataIO.swift */,
 				414053522B064B1C00A46C0B /* NoteParser.swift */,
+				4131FD0A2CA92C1900F9EC50 /* MarkdownStyling.swift */,
 				41371D822ADB87E7003E0419 /* RedoUndo.swift */,
 				41EEA87E2AC804CE0017E3FC /* SettingsLinkStyle.swift */,
 				418A6C662A07E105009C46CD /* Assets.xcassets */,
@@ -362,6 +375,8 @@
 			files = (
 				4105AA4A2A514FB5001B00D2 /* PrinterModel.swift in Sources */,
 				415878612A1509DF003A545C /* MessagebarEnum.swift in Sources */,
+				41E8B2F32CA04A450019EB09 /* MarkdownModel.swift in Sources */,
+				41F18E8B2C96BEA300374767 /* SupportMarkdownSyntax.swift in Sources */,
 				41790C792A1F8C13002D746A /* TabStickyNote.swift in Sources */,
 				410DBF212A1993EE0024A843 /* DataIO.swift in Sources */,
 				41790C852A1F92F4002D746A /* TabInfo.swift in Sources */,
@@ -384,6 +399,7 @@
 				418A6C632A07E105009C46CD /* MizuameApp.swift in Sources */,
 				414053532B064B1C00A46C0B /* NoteParser.swift in Sources */,
 				41BD1EB92A277A1200C97A2E /* StickyNotePreview.swift in Sources */,
+				4131FD0B2CA92C1900F9EC50 /* MarkdownStyling.swift in Sources */,
 				4158785D2A15070F003A545C /* MessagebarView.swift in Sources */,
 				41ACD1202A231819001F111B /* SettingsViewStateEnum.swift in Sources */,
 			);
@@ -395,8 +411,12 @@
 			files = (
 				418A6C7A2A07E105009C46CD /* MizuameTests.swift in Sources */,
 				410DBF222A1993EE0024A843 /* DataIO.swift in Sources */,
+				416FE25C2CA7D1A60074E6EA /* MarkdownModel.swift in Sources */,
+				419F08762CC5350000F85DEA /* SettingKeys.swift in Sources */,
+				419F08782CC5359C00F85DEA /* SettingsViewStateEnum.swift in Sources */,
 				41371D842ADB87E7003E0419 /* RedoUndo.swift in Sources */,
 				410DBF1E2A198F570024A843 /* StickyNote.swift in Sources */,
+				4131FD0C2CA92C1900F9EC50 /* MarkdownStyling.swift in Sources */,
 				414053542B064B1C00A46C0B /* NoteParser.swift in Sources */,
 				41038CBD2AEFE2D400A79A57 /* CalculateModel.swift in Sources */,
 			);

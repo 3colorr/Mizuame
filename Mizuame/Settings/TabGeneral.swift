@@ -30,6 +30,9 @@ struct TabGeneral: View {
     
     @AppStorage(SettingKeys.StickyNote().keyPositionOfRoundsDecimalPoint) private var positionOfRoundsDecimalPoint: Int = SettingKeys.StickyNote().initialPositionOfRoundsDecimalPoint
 
+    @AppStorage(SettingKeys.StickyNote().keyMarkdownAction) private var isEnableMarkdown: Bool = SettingKeys.StickyNote().initialMarkdownAction
+    @AppStorage(SettingKeys.StickyNote().keyShowMarkdownPreview) private var showMarkdownPreview: Bool = SettingKeys.StickyNote().initialShowMarkdownPreview
+
     @State private var isEnableLoginItems: Bool = false
     
     
@@ -201,7 +204,28 @@ struct TabGeneral: View {
                             }
                             .frame(width: 80)
                         }
+                        .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 0))
+
+                        Toggle(isOn: $isEnableMarkdown) {
+                            Text("settings.tab.general.action.markdown")
+                        }
                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+                        .onChange(of: isEnableMarkdown) { newValue in
+
+                            // ** Why do we change "showMarkdownPreview" to FALSE                         **
+                            // ** when the user disables "Markdown preview (turns off isEnableMarkdown)"? **
+                            // When the user enables "Markdown preview (turn on 'isEnableMarkdown')",
+                            // "showMarkdownPreview" will be TRUE every time the user opens a note to the Markdown preview.
+                            // By setting "showMarkdownPreview" to FALSE, the note's menu will be displayed correctly.
+
+                            if !newValue {
+                                showMarkdownPreview = false
+                            }
+                        }
+
+                        Text("settings.tab.help.note.action.markdown.description")
+                            .font(.subheadline)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
                 }
             }
