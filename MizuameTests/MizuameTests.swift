@@ -382,19 +382,21 @@ abc
 ### header 3
 #### header 4
 ##### header 5
-###### header 6\n
+###### header 6
 efg
 - list 1
   - list 2
     - list 3
       - list 4
 hij
+
 k `code block` L (1+2= 3 )
+
 """
 
         let markdownModels: [MarkdownModel] = testNote.toMarkdown(size: 12)
 
-        XCTAssertEqual(markdownModels.count, 14)
+        XCTAssertEqual(markdownModels.count, 16)
 
         XCTAssertEqual(markdownModels[0].markdownTextViews.count, 1)
         XCTAssertEqual(markdownModels[0].markdownTextViews[0].text, "abc")
@@ -451,17 +453,23 @@ k `code block` L (1+2= 3 )
         XCTAssertEqual(markdownModels[12].markdownTextViews.count, 1)
         XCTAssertEqual(markdownModels[12].markdownTextViews[0].text, "hij")
 
-        XCTAssertEqual(markdownModels[13].markdownTextViews.count, 5)
-        XCTAssertEqual(markdownModels[13].markdownTextViews[0].text, "k ")
-        XCTAssertEqual(markdownModels[13].markdownTextViews[0].viewType, MarkdownTextViewType.plain)
-        XCTAssertEqual(markdownModels[13].markdownTextViews[1].text, "code block")
-        XCTAssertEqual(markdownModels[13].markdownTextViews[1].viewType, MarkdownTextViewType.codeblock)
-        XCTAssertEqual(markdownModels[13].markdownTextViews[2].text, " L ")
-        XCTAssertEqual(markdownModels[13].markdownTextViews[2].viewType, MarkdownTextViewType.plain)
-        XCTAssertEqual(markdownModels[13].markdownTextViews[3].text, "1+2=")
-        XCTAssertEqual(markdownModels[13].markdownTextViews[3].viewType, MarkdownTextViewType.formula)
-        XCTAssertEqual(markdownModels[13].markdownTextViews[4].text, " 3 ")
-        XCTAssertEqual(markdownModels[13].markdownTextViews[4].viewType, MarkdownTextViewType.calculationResult)
+        XCTAssertEqual(markdownModels[13].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[13].markdownTextViews[0].text, "")
+
+        XCTAssertEqual(markdownModels[14].markdownTextViews.count, 5)
+        XCTAssertEqual(markdownModels[14].markdownTextViews[0].text, "k ")
+        XCTAssertEqual(markdownModels[14].markdownTextViews[0].viewType, MarkdownTextViewType.plain)
+        XCTAssertEqual(markdownModels[14].markdownTextViews[1].text, "code block")
+        XCTAssertEqual(markdownModels[14].markdownTextViews[1].viewType, MarkdownTextViewType.codeblock)
+        XCTAssertEqual(markdownModels[14].markdownTextViews[2].text, " L ")
+        XCTAssertEqual(markdownModels[14].markdownTextViews[2].viewType, MarkdownTextViewType.plain)
+        XCTAssertEqual(markdownModels[14].markdownTextViews[3].text, "1+2=")
+        XCTAssertEqual(markdownModels[14].markdownTextViews[3].viewType, MarkdownTextViewType.formula)
+        XCTAssertEqual(markdownModels[14].markdownTextViews[4].text, " 3 ")
+        XCTAssertEqual(markdownModels[14].markdownTextViews[4].viewType, MarkdownTextViewType.calculationResult)
+
+        XCTAssertEqual(markdownModels[15].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[15].markdownTextViews[0].text, "")
     }
 
     func testNoteParser_findRangeOfCode() throws {

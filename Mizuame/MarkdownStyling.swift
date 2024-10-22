@@ -25,7 +25,7 @@ extension View {
 
         return VStack(alignment: .leading) {
             ForEach(markdownModels) { md in
-                HStack {
+                HStack(spacing: 0) {
                     ForEach(md.markdownTextViews) { elem in
                         switch elem.viewType {
                         case MarkdownTextViewType.plain:
@@ -36,17 +36,19 @@ extension View {
                             Text(" \(elem.text) ")
                                 .font(.system(size: elem.fontSize))
                                 .background(Color(codeBlockTheme), in: RoundedRectangle(cornerRadius: 3))
-                            
+                                .padding(EdgeInsets(top: 0, leading: 3, bottom: 0, trailing: 3))
+
                         case MarkdownTextViewType.formula:
                             Text("  \(elem.text)  ")
                                 .font(.system(size: elem.fontSize))
                                 .background(Color(formulaBlockTheme), in: RoundedRectangle(cornerRadius: 3))
+                                .padding(EdgeInsets(top: 0, leading: 3, bottom: 0, trailing: 0))
                             
                         case MarkdownTextViewType.calculationResult:
                             Text("\(elem.text)")
                                 .font(.system(size: elem.fontSize))
                                 .background(Color(codeBlockTheme), in: RoundedRectangle(cornerRadius: 3))
-                                .padding(EdgeInsets(top: 0, leading: -13, bottom: 0, trailing: 0))
+                                .padding(EdgeInsets(top: 0, leading: -5, bottom: 0, trailing: 0))
                             
                         case MarkdownTextViewType.header1:
                             Text(elem.attributedText)
@@ -77,7 +79,7 @@ extension View {
                                 .resizable()
                                 .frame(width: 5 * (elem.fontSize / initialFontSize),
                                        height: 5 * (elem.fontSize / initialFontSize))
-                                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
+                                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 8))
                             Text(elem.attributedText)
                                 .font(.system(size: elem.fontSize))
                             
@@ -86,7 +88,7 @@ extension View {
                                 .resizable()
                                 .frame(width: 5 * (elem.fontSize / initialFontSize),
                                        height: 5 * (elem.fontSize / initialFontSize))
-                                .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 0))
+                                .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 8))
                             Text(elem.attributedText)
                                 .font(.system(size: elem.fontSize))
                             
@@ -95,7 +97,7 @@ extension View {
                                 .resizable()
                                 .frame(width: 5 * (elem.fontSize / initialFontSize),
                                        height: 5 * (elem.fontSize / initialFontSize))
-                                .padding(EdgeInsets(top: 0, leading: 50, bottom: 0, trailing: 0))
+                                .padding(EdgeInsets(top: 0, leading: 50, bottom: 0, trailing: 8))
                             Text(elem.attributedText)
                                 .font(.system(size: elem.fontSize))
                             
@@ -104,7 +106,7 @@ extension View {
                                 .resizable()
                                 .frame(width: 5 * (elem.fontSize / initialFontSize),
                                        height: 5 * (elem.fontSize / initialFontSize))
-                                .padding(EdgeInsets(top: 0, leading: 70, bottom: 0, trailing: 0))
+                                .padding(EdgeInsets(top: 0, leading: 70, bottom: 0, trailing: 8))
                             Text(elem.attributedText)
                                 .font(.system(size: elem.fontSize))
                         }
