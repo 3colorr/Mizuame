@@ -106,7 +106,7 @@ extension String {
     ///
     func toMarkdown(size fontSize: Int) -> [MarkdownModel] {
 
-        let splitedLines: [SubSequence] = self.split(separator: "\n")
+        let splitedLines: [String] = self.components(separatedBy: "\n")
 
         var markdown: [MarkdownModel] = []
 
