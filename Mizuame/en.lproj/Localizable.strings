@@ -53,7 +53,7 @@
 "settings.tab.help.note.title" = "Note Action";
 "settings.tab.help.note.greeting" = "By Default, all 'Note Action' is disabled. If you want to use it, you need to enable it in the 'General tab'.";
 "settings.tab.help.note.action.calculate.description" = "Automatically calculate a formula between '(' and '=)'. \nFor example, If you type '(1+2\\*3=)', it will automatically calculated `7` and displayed as '(1+2\\*3= 7 )'. If you change the formula to `(1+2\\*10= 7 )`, it will be recalculated automatically when you delete `7` and the spaces before and after, making it `(1+2\\*10=)`'";
-"settings.tab.help.note.action.markdown.description" = "You can switch between the note view and the Markdown view. By using the Markdown view, you can display notes written in Markdown format in a more readable way.";
+"settings.tab.help.note.action.markdown.description" = "You can switch between the note view and the Markdown view. By using the Markdown view, you can display notes written in Markdown format in a more readable way. \nHowever, you cannot print the Markdown view itself.";
 "settings.tab.help.note.action.markdown.syntax.open" = "Open the Guide to Supported Markdown Syntax";
 "settings.tab.help.note.action.markdown.syntax.close" = "Close the Guide to Supported Markdown Syntax";
 "settings.tab.help.menu.title" = "Menu";
