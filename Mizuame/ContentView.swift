@@ -328,22 +328,22 @@ struct ContentView: View {
                                 userAction = .NONE
                             }
                         }
-                }
-                
-                Image(systemName: "printer")
-                    .foregroundColor(Color(bodyForegroundTheme))
-                    .onTapGesture {
-                        withAnimation {
-                            isShowMessagebar = false
+                    
+                    Image(systemName: "printer")
+                        .foregroundColor(Color(bodyForegroundTheme))
+                        .onTapGesture {
+                            withAnimation {
+                                isShowMessagebar = false
+                            }
+                            
+                            userAction = .NONE
+                            
+                            printer.textFontSize = self.fontSize
+                            printer.textColor = self.bodyForegroundTheme
+                            printer.printSize = NSRect(x: 0, y: 0, width: self.width, height: self.height)
+                            printer.doPrinting(content: stickyText)
                         }
-                        
-                        userAction = .NONE
-                        
-                        printer.textFontSize = self.fontSize
-                        printer.textColor = self.bodyForegroundTheme
-                        printer.printSize = NSRect(x: 0, y: 0, width: self.width, height: self.height)
-                        printer.doPrinting(content: stickyText)
-                    }
+                }
                 
                 if #available(macOS 14, *) {
                     SettingsLink {
