@@ -245,6 +245,9 @@ struct TabGeneral: View {
                     self.isApplyGrayColorToFont = SettingKeys.StickyNote.NoteFontColor.Gray().initialVale
                     self.isEnableCalculation = SettingKeys.StickyNote().initialCalculateAction
                     self.positionOfRoundsDecimalPoint = SettingKeys.StickyNote().initialPositionOfRoundsDecimalPoint
+                    self.isAutomaticallyHideHeader = SettingKeys.StickyNote().initialAutomaticallyHideHeader
+                    self.isEnableMarkdown = SettingKeys.StickyNote().initialMarkdownAction
+                    self.showMarkdownPreview = SettingKeys.StickyNote().initialShowMarkdownPreview
                 }) {
                     Text("settings.tab.general.reset.button.caption")
                         .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))
