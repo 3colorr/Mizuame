@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import SwiftUI
 @testable import Mizuame
 
 final class MizuameTests: XCTestCase {
@@ -316,61 +317,256 @@ final class MizuameTests: XCTestCase {
     //     The size of 'results9' array is 1.
     //     The range indicated by results9[0] in the 'testNote9' is "64".
     //
-    func testNoteParser() throws {
-        let parser = NoteParser()
-        
+    func testNoteParser_getFormulas() throws {
         
         // test 1
         let testNote1 = "abc(1+2+3=)"
-        let results1 = parser.parse(note: testNote1)
+        let results1 = testNote1.getFormulas()//parser.parseFormulasIn(note: testNote1)
         XCTAssertEqual(results1.count, 1)
         XCTAssertEqual(testNote1[results1[0]], "1+2+3")
         
         // test 2
         let testNote2 = "abc1+2+3=)(=)efg"
-        let results2 = parser.parse(note: testNote2)
+        let results2 = testNote2.getFormulas()//parser.parseFormulasIn(note: testNote2)
         XCTAssertEqual(results2.count, 0)
         //XCTAssertEqual(testNote2[results2[0]], "")
 
         // test 3
         let testNote3 = "abc(1+2+3=(=)efg"
-        let results3 = parser.parse(note: testNote3)
+        let results3 = testNote3.getFormulas()//parser.parseFormulasIn(note: testNote3)
         XCTAssertEqual(results3.count, 0)
         //XCTAssertEqual(testNote3[results3[0]], "")
 
         // test 4
         let testNote4 = "abc(1+2+3="
-        let results4 = parser.parse(note: testNote4)
+        let results4 = testNote4.getFormulas()//parser.parseFormulasIn(note: testNote4)
         XCTAssertEqual(results4.count, 0)
 
         // test 5
         let testNote5 = "(1+2+3=)abc(4*a=)efg"
-        let results5 = parser.parse(note: testNote5)
+        let results5 = testNote5.getFormulas()//parser.parseFormulasIn(note: testNote5)
         XCTAssertEqual(results5.count, 2)
         XCTAssertEqual(testNote5[results5[0]], "1+2+3")
         XCTAssertEqual(testNote5[results5[1]], "4*a")
 
         // test 6
         let testNote6 = "(1+2+3= 5 )abc(4*a=)efg"
-        let results6 = parser.parse(note: testNote6)
+        let results6 = testNote6.getFormulas()//parser.parseFormulasIn(note: testNote6)
         XCTAssertEqual(results6.count, 1)
         XCTAssertEqual(testNote6[results6[0]], "4*a")
 
         // test 7
         let testNote7 = "(1+2+3 5 )(4*a=)"
-        let results7 = parser.parse(note: testNote7)
+        let results7 = testNote7.getFormulas()//parser.parseFormulasIn(note: testNote7)
         XCTAssertEqual(results7.count, 1)
         XCTAssertEqual(testNote7[results7[0]], "4*a")
 
         // test 8
         let testNote8 = "abc("
-        let results8 = parser.parse(note: testNote8)
+        let results8 = testNote8.getFormulas()//parser.parseFormulasIn(note: testNote8)
         XCTAssertEqual(results8.count, 0)
 
         // test 9
         let testNote9 = "abc((2+2)^3=)"
-        let results9 = parser.parse(note: testNote9)
+        let results9 = testNote9.getFormulas()//parser.parseFormulasIn(note: testNote9)
         XCTAssertEqual(results9.count, 1)
         XCTAssertEqual(testNote9[results9[0]], "(2+2)^3")
+    }
+
+    func testNoteParser_toMarkdown() throws {
+
+        let testNote = """
+abc
+# header 1
+## header 2
+### header 3
+#### header 4
+##### header 5
+###### header 6
+efg
+- list 1
+  - list 2
+    - list 3
+      - list 4
+hij
+
+k `code block` L (1+2= 3 )
+
+"""
+
+        let markdownModels: [MarkdownModel] = testNote.toMarkdown(size: 12)
+
+        XCTAssertEqual(markdownModels.count, 16)
+
+        XCTAssertEqual(markdownModels[0].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[0].markdownTextViews[0].text, "abc")
+        XCTAssertEqual(markdownModels[0].markdownTextViews[0].viewType, MarkdownTextViewType.plain)
+
+        XCTAssertEqual(markdownModels[1].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[1].markdownTextViews[0].text, "header 1")
+        XCTAssertEqual(markdownModels[1].markdownTextViews[0].viewType, MarkdownTextViewType.header1)
+
+        XCTAssertEqual(markdownModels[2].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[2].markdownTextViews[0].text, "header 2")
+        XCTAssertEqual(markdownModels[2].markdownTextViews[0].viewType, MarkdownTextViewType.header2)
+
+        XCTAssertEqual(markdownModels[3].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[3].markdownTextViews[0].text, "header 3")
+        XCTAssertEqual(markdownModels[3].markdownTextViews[0].viewType, MarkdownTextViewType.header3)
+
+        XCTAssertEqual(markdownModels[4].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[4].markdownTextViews[0].text, "header 4")
+        XCTAssertEqual(markdownModels[4].markdownTextViews[0].viewType, MarkdownTextViewType.header4)
+
+        XCTAssertEqual(markdownModels[5].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[5].markdownTextViews[0].text, "header 5")
+        XCTAssertEqual(markdownModels[5].markdownTextViews[0].viewType, MarkdownTextViewType.header5)
+
+        XCTAssertEqual(markdownModels[6].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[6].markdownTextViews[0].text, "header 6")
+        XCTAssertEqual(markdownModels[6].markdownTextViews[0].viewType, MarkdownTextViewType.header6)
+
+        XCTAssertEqual(markdownModels[7].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[7].markdownTextViews[0].text, "efg")
+        XCTAssertEqual(markdownModels[7].markdownTextViews[0].viewType, .plain)
+
+        XCTAssertEqual(markdownModels[8].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[8].markdownTextViews[0].text, "list 1")
+        XCTAssertEqual(markdownModels[8].markdownTextViews[0].viewType, MarkdownTextViewType.list1)
+
+        XCTAssertEqual(markdownModels[9].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[9].markdownTextViews[0].text, "list 2")
+        XCTAssertEqual(markdownModels[9].markdownTextViews[0].viewType, MarkdownTextViewType.list2)
+
+        XCTAssertEqual(markdownModels[10].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[10].markdownTextViews[0].text, "list 3")
+        XCTAssertEqual(markdownModels[10].markdownTextViews[0].viewType, MarkdownTextViewType.list3)
+
+        XCTAssertEqual(markdownModels[10].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[10].markdownTextViews[0].text, "list 3")
+        XCTAssertEqual(markdownModels[10].markdownTextViews[0].viewType, MarkdownTextViewType.list3)
+
+        XCTAssertEqual(markdownModels[11].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[11].markdownTextViews[0].text, "list 4")
+        XCTAssertEqual(markdownModels[11].markdownTextViews[0].viewType, MarkdownTextViewType.list4)
+
+        XCTAssertEqual(markdownModels[12].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[12].markdownTextViews[0].text, "hij")
+
+        XCTAssertEqual(markdownModels[13].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[13].markdownTextViews[0].text, "")
+
+        XCTAssertEqual(markdownModels[14].markdownTextViews.count, 5)
+        XCTAssertEqual(markdownModels[14].markdownTextViews[0].text, "k ")
+        XCTAssertEqual(markdownModels[14].markdownTextViews[0].viewType, MarkdownTextViewType.plain)
+        XCTAssertEqual(markdownModels[14].markdownTextViews[1].text, "code block")
+        XCTAssertEqual(markdownModels[14].markdownTextViews[1].viewType, MarkdownTextViewType.codeblock)
+        XCTAssertEqual(markdownModels[14].markdownTextViews[2].text, " L ")
+        XCTAssertEqual(markdownModels[14].markdownTextViews[2].viewType, MarkdownTextViewType.plain)
+        XCTAssertEqual(markdownModels[14].markdownTextViews[3].text, "1+2=")
+        XCTAssertEqual(markdownModels[14].markdownTextViews[3].viewType, MarkdownTextViewType.formula)
+        XCTAssertEqual(markdownModels[14].markdownTextViews[4].text, " 3 ")
+        XCTAssertEqual(markdownModels[14].markdownTextViews[4].viewType, MarkdownTextViewType.calculationResult)
+
+        XCTAssertEqual(markdownModels[15].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[15].markdownTextViews[0].text, "")
+    }
+
+    func testNoteParser_findRangeOfCode() throws {
+
+        let test1 = "abc`efg`hij"
+        let testRange1 = test1.findRangeOfCode()
+        XCTAssertEqual(testRange1.count, 1)
+        XCTAssertEqual(test1[testRange1[0]], "efg")
+
+        let test2 = "abc`efg`hij`klm`nop"
+        let testRange2 = test2.findRangeOfCode()
+        XCTAssertEqual(testRange2.count, 2)
+        XCTAssertEqual(test2[testRange2[0]], "efg")
+        XCTAssertEqual(test2[testRange2[1]], "klm")
+
+        let test3 = "abc`efg``hij`klm"
+        let testRange3 = test3.findRangeOfCode()
+        XCTAssertEqual(testRange3.count, 2)
+        XCTAssertEqual(test3[testRange3[0]], "efg")
+        XCTAssertEqual(test3[testRange3[1]], "hij")
+
+        let test4 = "`abc``efg`"
+        let testRange4 = test4.findRangeOfCode()
+        XCTAssertEqual(testRange4.count, 2)
+        XCTAssertEqual(test4[testRange4[0]], "abc")
+        XCTAssertEqual(test4[testRange4[1]], "efg")
+
+        let test5 = "`abc`efg`"
+        let testRange5 = test5.findRangeOfCode()
+        XCTAssertEqual(testRange5.count, 1)
+        XCTAssertEqual(test5[testRange5[0]], "abc")
+
+        let test6 = "abc"
+        let testRange6 = test6.findRangeOfCode()
+        XCTAssertEqual(testRange6.count, 0)
+
+        let test7 = "abc`"
+        let testRange7 = test7.findRangeOfCode()
+        XCTAssertEqual(testRange7.count, 0)
+
+        let test8 = "`abc"
+        let testRange8 = test8.findRangeOfCode()
+        XCTAssertEqual(testRange8.count, 0)
+    }
+
+    func testNoteParser_findRangeOfFormula() throws {
+
+        let test1 = "abc(1+2= 3 )efg"
+        let testRange1 = test1.findRangeOfFormula()
+        XCTAssertEqual(testRange1.count, 1)
+        XCTAssertEqual(test1[testRange1[0].formula], "1+2=")
+        XCTAssertEqual(test1[testRange1[0].calculateResult], " 3 ")
+
+        let test2 = "abc((1+2)*2= 6 )efg"
+        let testRange2 = test2.findRangeOfFormula()
+        XCTAssertEqual(testRange2.count, 1)
+        XCTAssertEqual(test2[testRange2[0].formula], "(1+2)*2=")
+        XCTAssertEqual(test2[testRange2[0].calculateResult], " 6 ")
+
+        let test3 = "(1+2= 3 )abc(3*(1+2)= 9 )"
+        let testRange3 = test3.findRangeOfFormula()
+        XCTAssertEqual(testRange3.count, 2)
+        XCTAssertEqual(test3[testRange3[0].formula], "1+2=")
+        XCTAssertEqual(test3[testRange3[0].calculateResult], " 3 ")
+        XCTAssertEqual(test3[testRange3[1].formula], "3*(1+2)=")
+        XCTAssertEqual(test3[testRange3[1].calculateResult], " 9 ")
+
+        let test4 = "(1+2)abc(1/2= 0.5 )"
+        let testRange4 = test4.findRangeOfFormula()
+        XCTAssertEqual(testRange4.count, 1)
+        XCTAssertEqual(test4[testRange4[0].formula], "1/2=")
+        XCTAssertEqual(test4[testRange4[0].calculateResult], " 0.5 ")
+
+        // The Test5 is fail because the Mizuame cannot calculate "test5"
+        // https://github.com/3colorr/Mizuame/issues/143
+        /*
+        let test5 = "(1+2= 3 )abc(3*(1+2= 9 )(5/(5)= 1)(1/2= 0.5 )"
+        let testRange5 = test5.findRangeOfFormula()
+        XCTAssertEqual(testRange5.count, 3)
+        XCTAssertEqual(test5[testRange5[0].formula], "1+2=")
+        XCTAssertEqual(test5[testRange5[0].calculateResult], " 3 ")
+        XCTAssertEqual(test5[testRange5[1].formula], "5/(5)=")
+        XCTAssertEqual(test5[testRange5[1].calculateResult], " 1 ")
+        XCTAssertEqual(test5[testRange5[2].formula], "1/2=")
+        XCTAssertEqual(test5[testRange5[2].calculateResult], " 0.5 ")
+        */
+
+        let test6 = "abc"
+        let testRange6 = test6.findRangeOfFormula()
+        XCTAssertEqual(testRange6.count, 0)
+
+        let test7 = "abc("
+        let testRange7 = test7.findRangeOfFormula()
+        XCTAssertEqual(testRange7.count, 0)
+
+        let test8 = "abc(1+2= 3 "
+        let testRange8 = test8.findRangeOfFormula()
+        XCTAssertEqual(testRange8.count, 0)
     }
 }

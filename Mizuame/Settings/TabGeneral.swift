@@ -16,6 +16,8 @@ struct TabGeneral: View {
 
     @AppStorage(SettingKeys.StickyNote().keyPinNote) private var isPinNote: Bool = SettingKeys.StickyNote().initialPinNote
 
+    @AppStorage(SettingKeys.StickyNote().keyAutomaticallyHideHeader) private var isAutomaticallyHideHeader: Bool = SettingKeys.StickyNote().initialAutomaticallyHideHeader
+
     @AppStorage(SettingKeys.StickyNote.NoteFontColor.Theme().key) private var isApplyThemeColorToFont: Bool = SettingKeys.StickyNote.NoteFontColor.Theme().initialVale
 
     @AppStorage(SettingKeys.StickyNote.NoteFontColor.Black().key) private var isApplyBlackColorToFont: Bool = SettingKeys.StickyNote.NoteFontColor.Black().initialVale
@@ -27,6 +29,9 @@ struct TabGeneral: View {
     @AppStorage(SettingKeys.StickyNote().keyCalculateAction) private var isEnableCalculation: Bool = SettingKeys.StickyNote().initialCalculateAction
     
     @AppStorage(SettingKeys.StickyNote().keyPositionOfRoundsDecimalPoint) private var positionOfRoundsDecimalPoint: Int = SettingKeys.StickyNote().initialPositionOfRoundsDecimalPoint
+
+    @AppStorage(SettingKeys.StickyNote().keyMarkdownAction) private var isEnableMarkdown: Bool = SettingKeys.StickyNote().initialMarkdownAction
+    @AppStorage(SettingKeys.StickyNote().keyShowMarkdownPreview) private var showMarkdownPreview: Bool = SettingKeys.StickyNote().initialShowMarkdownPreview
 
     @State private var isEnableLoginItems: Bool = false
     
@@ -77,6 +82,10 @@ struct TabGeneral: View {
                         }
                         .onAppear {
                             isEnableLoginItems = (SMAppService.mainApp.status == .enabled)
+                        }
+
+                        Toggle(isOn: $isAutomaticallyHideHeader) {
+                            Text("settings.tab.general.note.menubar.automatically.hide")
                         }
                     }
                 }
@@ -195,7 +204,28 @@ struct TabGeneral: View {
                             }
                             .frame(width: 80)
                         }
+                        .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 0))
+
+                        Toggle(isOn: $isEnableMarkdown) {
+                            Text("settings.tab.general.action.markdown")
+                        }
                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+                        .onChange(of: isEnableMarkdown) { newValue in
+
+                            // ** Why do we change "showMarkdownPreview" to FALSE                         **
+                            // ** when the user disables "Markdown preview (turns off isEnableMarkdown)"? **
+                            // When the user enables "Markdown preview (turn on 'isEnableMarkdown')",
+                            // "showMarkdownPreview" will be TRUE every time the user opens a note to the Markdown preview.
+                            // By setting "showMarkdownPreview" to FALSE, the note's menu will be displayed correctly.
+
+                            if !newValue {
+                                showMarkdownPreview = false
+                            }
+                        }
+
+                        Text("settings.tab.help.note.action.markdown.description")
+                            .font(.subheadline)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
                 }
             }
@@ -215,6 +245,9 @@ struct TabGeneral: View {
                     self.isApplyGrayColorToFont = SettingKeys.StickyNote.NoteFontColor.Gray().initialVale
                     self.isEnableCalculation = SettingKeys.StickyNote().initialCalculateAction
                     self.positionOfRoundsDecimalPoint = SettingKeys.StickyNote().initialPositionOfRoundsDecimalPoint
+                    self.isAutomaticallyHideHeader = SettingKeys.StickyNote().initialAutomaticallyHideHeader
+                    self.isEnableMarkdown = SettingKeys.StickyNote().initialMarkdownAction
+                    self.showMarkdownPreview = SettingKeys.StickyNote().initialShowMarkdownPreview
                 }) {
                     Text("settings.tab.general.reset.button.caption")
                         .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))

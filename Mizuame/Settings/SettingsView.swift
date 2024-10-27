@@ -107,7 +107,7 @@ extension SettingsView {
         var frameSize: (width: CGFloat, height: CGFloat) {
             switch self {
             case .general:
-                return (400, 400)
+                return (400, 550)
             case .note:
                 return (400, 500)
             case .print:

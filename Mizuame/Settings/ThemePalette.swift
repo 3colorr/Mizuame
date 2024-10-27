@@ -13,7 +13,9 @@ struct ThemePalette: View {
     @Binding var bodyForeground: String
     @Binding var bodyBackground: String
     @Binding var bodyFrame: String
-    
+    @Binding var markdownCodeBlock: String
+    @Binding var markdownFormulaBlock: String
+
     let lightMint = SettingKeys.ThemePalette.LightMint()
     let lightOrange = SettingKeys.ThemePalette.LightOrange()
     let lightBlue = SettingKeys.ThemePalette.LightBlue()
@@ -27,12 +29,21 @@ struct ThemePalette: View {
     let whiteMint = SettingKeys.ThemePalette.WhiteMint()
     let whiteYellow = SettingKeys.ThemePalette.WhiteYellow()
 
-    init(message: Binding<String>, messagebar: Binding<String>, bodyForeground: Binding<String>, bodyBackground: Binding<String>, bodyFrame: Binding<String>) {
+    init(message: Binding<String>,
+         messagebar: Binding<String>,
+         bodyForeground: Binding<String>,
+         bodyBackground: Binding<String>,
+         bodyFrame: Binding<String>,
+         markdownCodeBlock: Binding<String>,
+         markdownFormulaBlock: Binding<String>) {
+
         _message = message
         _messagebar = messagebar
         _bodyForeground = bodyForeground
         _bodyBackground = bodyBackground
         _bodyFrame = bodyFrame
+        _markdownCodeBlock = markdownCodeBlock
+        _markdownFormulaBlock = markdownFormulaBlock
     }
     
     var body: some View {
@@ -46,6 +57,9 @@ struct ThemePalette: View {
                         bodyForeground = whiteMint.foreground
                         bodyBackground = whiteMint.background
                         bodyFrame = whiteMint.frame
+
+                        markdownCodeBlock = whiteMint.markdownCodeBlock
+                        markdownFormulaBlock = whiteMint.markdownFormulaBlock
 
                     }, label: {
                         if message == whiteMint.message {
@@ -75,6 +89,9 @@ struct ThemePalette: View {
                         bodyBackground = whiteBlue.background
                         bodyFrame = whiteBlue.frame
 
+                        markdownCodeBlock = whiteBlue.markdownCodeBlock
+                        markdownFormulaBlock = whiteBlue.markdownFormulaBlock
+
                     }, label: {
                         if message == whiteBlue.message {
                             Image(systemName: "checkmark.square.fill")
@@ -103,6 +120,9 @@ struct ThemePalette: View {
                         bodyBackground = whitePink.background
                         bodyFrame = whitePink.frame
 
+                        markdownCodeBlock = whitePink.markdownCodeBlock
+                        markdownFormulaBlock = whitePink.markdownFormulaBlock
+
                     }, label: {
                         if message == whitePink.message {
                             Image(systemName: "checkmark.square.fill")
@@ -130,6 +150,9 @@ struct ThemePalette: View {
                         bodyForeground = whiteYellow.foreground
                         bodyBackground = whiteYellow.background
                         bodyFrame = whiteYellow.frame
+
+                        markdownCodeBlock = whiteYellow.markdownCodeBlock
+                        markdownFormulaBlock = whiteYellow.markdownFormulaBlock
 
                     }, label: {
                         if message == whiteYellow.message {
@@ -161,7 +184,10 @@ struct ThemePalette: View {
                         bodyForeground = lightMint.foreground
                         bodyBackground = lightMint.background
                         bodyFrame = lightMint.frame
-                        
+
+                        markdownCodeBlock = lightMint.markdownCodeBlock
+                        markdownFormulaBlock = lightMint.markdownFormulaBlock
+
                     }, label: {
                         if message == lightMint.message {
                             Image(systemName: "checkmark.square.fill")
@@ -189,7 +215,10 @@ struct ThemePalette: View {
                         bodyForeground = lightOrange.foreground
                         bodyBackground = lightOrange.background
                         bodyFrame = lightOrange.frame
-                        
+
+                        markdownCodeBlock = lightOrange.markdownCodeBlock
+                        markdownFormulaBlock = lightOrange.markdownFormulaBlock
+
                     }, label: {
                         if message == lightOrange.message {
                             Image(systemName: "checkmark.square.fill")
@@ -217,7 +246,10 @@ struct ThemePalette: View {
                         bodyForeground = lightBlue.foreground
                         bodyBackground = lightBlue.background
                         bodyFrame = lightBlue.frame
-                        
+
+                        markdownCodeBlock = lightBlue.markdownCodeBlock
+                        markdownFormulaBlock = lightBlue.markdownFormulaBlock
+
                     }, label: {
                         if message == lightBlue.message {
                             Image(systemName: "checkmark.square.fill")
@@ -245,7 +277,10 @@ struct ThemePalette: View {
                         bodyForeground = lightYellow.foreground
                         bodyBackground = lightYellow.background
                         bodyFrame = lightYellow.frame
-                        
+
+                        markdownCodeBlock = lightYellow.markdownCodeBlock
+                        markdownFormulaBlock = lightYellow.markdownFormulaBlock
+
                     }, label: {
                         if message == lightYellow.message {
                             Image(systemName: "checkmark.square.fill")
@@ -276,7 +311,10 @@ struct ThemePalette: View {
                         bodyForeground = MintMint.foreground
                         bodyBackground = MintMint.background
                         bodyFrame = MintMint.frame
-                        
+
+                        markdownCodeBlock = MintMint.markdownCodeBlock
+                        markdownFormulaBlock = MintMint.markdownFormulaBlock
+
                     }, label: {
                         if message == MintMint.message {
                             Image(systemName: "checkmark.square.fill")
@@ -304,7 +342,10 @@ struct ThemePalette: View {
                         bodyForeground = OrangeOrange.foreground
                         bodyBackground = OrangeOrange.background
                         bodyFrame = OrangeOrange.frame
-                        
+
+                        markdownCodeBlock = OrangeOrange.markdownCodeBlock
+                        markdownFormulaBlock = OrangeOrange.markdownFormulaBlock
+
                     }, label: {
                         if message == OrangeOrange.message {
                             Image(systemName: "checkmark.square.fill")
@@ -332,7 +373,10 @@ struct ThemePalette: View {
                         bodyForeground = BlueBlue.foreground
                         bodyBackground = BlueBlue.background
                         bodyFrame = BlueBlue.frame
-                        
+
+                        markdownCodeBlock = BlueBlue.markdownCodeBlock
+                        markdownFormulaBlock = BlueBlue.markdownFormulaBlock
+
                     }, label: {
                         if message == BlueBlue.message {
                             Image(systemName: "checkmark.square.fill")
@@ -360,7 +404,10 @@ struct ThemePalette: View {
                         bodyForeground = YellowYellow.foreground
                         bodyBackground = YellowYellow.background
                         bodyFrame = YellowYellow.frame
-                        
+
+                        markdownCodeBlock = YellowYellow.markdownCodeBlock
+                        markdownFormulaBlock = YellowYellow.markdownFormulaBlock
+
                     }, label: {
                         if message == YellowYellow.message {
                             Image(systemName: "checkmark.square.fill")
@@ -429,6 +476,6 @@ struct ColorBlocks: View {
 
 struct ThemePalette_Previews: PreviewProvider {
     static var previews: some View {
-        ThemePalette(message: .constant("message"), messagebar: .constant("messagebar"), bodyForeground: .constant("foreground"), bodyBackground: .constant("background"), bodyFrame: .constant("frame"))
+        ThemePalette(message: .constant("message"), messagebar: .constant("messagebar"), bodyForeground: .constant("foreground"), bodyBackground: .constant("background"), bodyFrame: .constant("frame"), markdownCodeBlock: .constant("codeblock"), markdownFormulaBlock: .constant("formulablock"))
     }
 }
