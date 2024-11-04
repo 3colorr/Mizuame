@@ -4,12 +4,17 @@
 </div>
 
 The app Mizuame is a note on menu bar of Mac.  
+
+What do you do when you want to store a text for a moment that you don’t mind losing later? In this case, Mizuame may assist you.  
+
 However, this app is NOT a high performance note app so that you should use other better apps to save your important data.  
 
 What is a Good point about the Mizuame?
-- It is simple with a few features.
-- Quick access from the menu bar.
-- Keep your desktop and dock clean.
+- You can access it directly from the menu bar, allowing you to read and write information quickly.
+- It can serve as a temporary clipboard, complementing your work in other robust note apps.
+- Just by writing a simple formula, it calculates automatically.
+- Mizuame supports some Markdown syntax
+  - This means that there are supported syntax elements as well as unsupported ones.
 
 What is NOT SO GOOD point about the Mizuame?
 - You cannot sync data with other devices. (e.g. iPad, Windows)
@@ -63,8 +68,12 @@ What is NOT SO GOOD point about the Mizuame?
 - [x] Pin a note.
 - [x] Calculation.(e.g. If you type "(1+2=)", "(1+2= 3 )" will be displayed.)
    - When automatically calculation is performed, the cursor position move to the end of the note. This is one of the issues with this app.
+- [x] Some Markdown syntax.
+- [] Open with a keyboard shortcut.
 
-something something.
+something something.  
+
+See also...https://3colorr.github.io/Mizuame-pages/features/  
 
 # What is Mizuame?
 This is a mucilaginous candy called `Mizuame` in Japan.  
