@@ -60,63 +60,59 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     }
     
     @objc func showPopover(sender: NSStatusBarButton) {
-        guard let currentEvent = NSApp.currentEvent else {
-            return
-        }
-        
-        guard let unwrappedStatusItem = statusItem else {
-            return
-        }
-        
-        if currentEvent.type == NSEvent.EventType.rightMouseUp {
 
-            let menu = NSMenu()
-            
-            menu.addItem(
-                withTitle: NSLocalizedString("menubar.clickevent.right.menu.item.quit", comment: ""),
-                action: #selector(quitApp),
-                keyEquivalent: ""
-            )
-            
-            unwrappedStatusItem.menu = menu
-            unwrappedStatusItem.button?.performClick(nil)
-            unwrappedStatusItem.menu = nil
-            
-        } else if currentEvent.type == NSEvent.EventType.leftMouseUp {
-            
-            if isPinNote {
-                
-                isOpenNote.toggle()
-                
-                if isOpenNote {
+        if let currentEvent = NSApp.currentEvent, let unwrappedStatusItem = statusItem {
+
+            if currentEvent.type == NSEvent.EventType.rightMouseUp {
+
+                let menu = NSMenu()
+
+                menu.addItem(
+                    withTitle: NSLocalizedString("menubar.clickevent.right.menu.item.quit", comment: ""),
+                    action: #selector(quitApp),
+                    keyEquivalent: ""
+                )
+
+                unwrappedStatusItem.menu = menu
+                unwrappedStatusItem.button?.performClick(nil)
+                unwrappedStatusItem.menu = nil
+
+            } else if currentEvent.type == NSEvent.EventType.leftMouseUp {
+
+                if isPinNote {
+
+                    isOpenNote.toggle()
+
+                    if isOpenNote {
+                        popover.show(relativeTo: sender.bounds, of: sender, preferredEdge: NSRectEdge.maxY)
+
+                        // When the user enables "Markdown preview (turn on 'isEnableMarkdown')",
+                        // "showMarkdownPreview" will be TRUE every time the user opens a note to the Markdown preview.
+                        if isEnableMarkdown {
+                            showMarkdownPreview = true
+                        }
+
+                    } else {
+                        popover.close()
+                    }
+                } else {
                     popover.show(relativeTo: sender.bounds, of: sender, preferredEdge: NSRectEdge.maxY)
+
+                    // Initialize "isOpenNote" when "pin a note" is enable next time.
+                    isOpenNote = false
 
                     // When the user enables "Markdown preview (turn on 'isEnableMarkdown')",
                     // "showMarkdownPreview" will be TRUE every time the user opens a note to the Markdown preview.
                     if isEnableMarkdown {
                         showMarkdownPreview = true
                     }
-
-                } else {
-                    popover.close()
                 }
-            } else {
-                popover.show(relativeTo: sender.bounds, of: sender, preferredEdge: NSRectEdge.maxY)
-                
-                // Initialize "isOpenNote" when "pin a note" is enable next time.
-                isOpenNote = false
 
-                // When the user enables "Markdown preview (turn on 'isEnableMarkdown')",
-                // "showMarkdownPreview" will be TRUE every time the user opens a note to the Markdown preview.
-                if isEnableMarkdown {
-                    showMarkdownPreview = true
+                popover.contentViewController?.view.window?.makeKey()
+
+                if #available(macOS 14, *) {
+                    NSApp.activate(ignoringOtherApps: true)
                 }
-            }
-
-            popover.contentViewController?.view.window?.makeKey()
-            
-            if #available(macOS 14, *) {
-                NSApp.activate(ignoringOtherApps: true)
             }
         }
     }
