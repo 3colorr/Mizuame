@@ -34,6 +34,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     
     private var isOpenNote: Bool = true
     
+    // For keyboard shortcut
+    private weak var statusBarButton: NSStatusBarButton?
+    private var monitor: Any?
+
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(.accessory)
         
@@ -48,6 +52,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
             button.image = NSImage(named: "MenubarIcon")
             button.action = #selector(showPopover)
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
+
+            statusBarButton = button
         }
      
         popover.contentViewController = NSHostingController(rootView: ContentView(delegate: self))
@@ -57,9 +63,37 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         } else {
             disablePinning()
         }
+
+        // Check accessibility permission
+        let options: [String: Bool] = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true]
+        let isTrusted = AXIsProcessTrustedWithOptions(options as CFDictionary)
+
+        if isTrusted {
+            monitor = NSEvent.addGlobalMonitorForEvents(matching: .keyDown) { event in
+                self.handleKeyEvent(event)
+            }
+        }
     }
     
-    @objc func showPopover(sender: NSStatusBarButton) {
+    func applicationWillTerminate(_ aNotification: Notification) {
+        // Remove a handle key event.
+        if let monitor = monitor {
+            NSEvent.removeMonitor(monitor)
+        }
+    }
+
+    private func handleKeyEvent(_ event: NSEvent) {
+
+        if event.modifierFlags.contains([.command, .option, .shift]) && event.charactersIgnoringModifiers == "M" {
+            if let button = statusBarButton {
+                showPopover(sender: button, isGlobalHotKey: true)
+            } else {
+                print("statusBarButton is nil.")
+            }
+        }
+    }
+
+    @objc func showPopover(sender: NSStatusBarButton, isGlobalHotKey: Bool = false) {
 
         if let currentEvent = NSApp.currentEvent, let unwrappedStatusItem = statusItem {
 
@@ -77,7 +111,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
                 unwrappedStatusItem.button?.performClick(nil)
                 unwrappedStatusItem.menu = nil
 
-            } else if currentEvent.type == NSEvent.EventType.leftMouseUp {
+            } else if currentEvent.type == NSEvent.EventType.leftMouseUp || isGlobalHotKey == true {
 
                 if isPinNote {
 
