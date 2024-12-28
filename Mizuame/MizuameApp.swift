@@ -29,6 +29,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     @AppStorage(SettingKeys.StickyNote().keyMarkdownAction) private var isEnableMarkdown: Bool = SettingKeys.StickyNote().initialMarkdownAction
     @AppStorage(SettingKeys.StickyNote().keyShowMarkdownPreview) private var showMarkdownPreview: Bool = SettingKeys.StickyNote().initialShowMarkdownPreview
 
+    @AppStorage(SettingKeys.StickyNote.KeyboardShortcuts().keyKeyboardShortcutAction) private var keyboardShortcutPattern: Int = SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().none
+
     private var statusItem: NSStatusItem?
     private var popover: NSPopover = NSPopover()
     
@@ -37,6 +39,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     // For keyboard shortcut
     private weak var statusBarButton: NSStatusBarButton?
     private var monitor: Any?
+    private var noteOpenCounter: Int = SettingKeys.StickyNote.KeyboardShortcuts().initialNoteOpenCounter
+    private var counterResetTask: Task<Void, Never>?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(.accessory)
@@ -64,13 +68,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
             disablePinning()
         }
 
-        // Check accessibility permission
-        let options: [String: Bool] = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true]
-        let isTrusted = AXIsProcessTrustedWithOptions(options as CFDictionary)
-
-        if isTrusted {
-            monitor = NSEvent.addGlobalMonitorForEvents(matching: .keyDown) { event in
-                self.handleKeyEvent(event)
+        if keyboardShortcutPattern != SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().none {
+            // Check accessibility permission
+            let options: [String: Bool] = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true]
+            let isTrusted = AXIsProcessTrustedWithOptions(options as CFDictionary)
+            
+            if isTrusted {
+                monitor = NSEvent.addGlobalMonitorForEvents(matching: [.flagsChanged]) { event in
+                    self.handleKeyEvent(event)
+                }
             }
         }
     }
@@ -84,12 +90,48 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
 
     private func handleKeyEvent(_ event: NSEvent) {
 
-        if event.modifierFlags.contains([.command, .option, .shift]) && event.charactersIgnoringModifiers == "M" {
-            if let button = statusBarButton {
-                showPopover(sender: button, isGlobalHotKey: true)
-            } else {
-                print("statusBarButton is nil.")
+        /**
+         *  ## How do keyboard shortcuts for opening the note work?
+         *
+         *  When the user types the keyboard shortcut key three times within a very short time, the note will open.
+         *  Each time the user types the shortcut key, the note open counter is decremented.
+         *  If any key other than the shortcut key is pressed, or if the user does not press the shortcut key consecutively within a very short time,
+         *  the note open counter is reset to the initial value.
+         *  
+         *  Additionally, since func handleKeyEvent is called both when a key is pressed and when it is released,
+         *  the initial value of the note open counter must be set to twice the number of times you want the user to press the shortcut key.
+         *
+         */
+        if (event.keyCode == keyboardShortcutPattern)  {
+            noteOpenCounter -= 1;
+
+            if noteOpenCounter <= 0
+            {
+                if let button = statusBarButton {
+                    showPopover(sender: button, isGlobalHotKey: true)
+                }
             }
+
+            counterResetTask?.cancel()
+            
+            counterResetTask = Task {
+                do {
+                    try Task.checkCancellation()
+                    try await Task.sleep(nanoseconds: 3 * 100_000_000)
+                    noteOpenCounter = SettingKeys.StickyNote.KeyboardShortcuts().initialNoteOpenCounter
+
+                } catch {
+                    if Task.isCancelled {
+                        print("Task is Canceled")
+                    } else {
+                        print("Unexcepted error")
+                    }
+                }
+            }
+        }
+        else
+        {
+            noteOpenCounter = SettingKeys.StickyNote.KeyboardShortcuts().initialNoteOpenCounter
         }
     }
 
