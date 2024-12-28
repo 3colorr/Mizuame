@@ -33,6 +33,8 @@ struct TabGeneral: View {
     @AppStorage(SettingKeys.StickyNote().keyMarkdownAction) private var isEnableMarkdown: Bool = SettingKeys.StickyNote().initialMarkdownAction
     @AppStorage(SettingKeys.StickyNote().keyShowMarkdownPreview) private var showMarkdownPreview: Bool = SettingKeys.StickyNote().initialShowMarkdownPreview
 
+    @AppStorage(SettingKeys.StickyNote.KeyboardShortcuts().keyKeyboardShortcutAction) private var keyboardShortcutPattern: Int = SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().none
+
     @State private var isEnableLoginItems: Bool = false
     
     
@@ -174,6 +176,28 @@ struct TabGeneral: View {
                             })
                             .buttonStyle(.plain)
                         }
+                    }
+                }
+
+                HStack(alignment: .top) {
+                    Text("settings.tab.general.note.note.keyboardshortcut")
+                        .frame(width: 100, alignment: .leading)
+                    
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text("settings.tab.general.note.note.keyboardshortcut.title")
+                            .fixedSize(horizontal: false, vertical: true)
+                        Text("settings.tab.general.note.note.keyboardshortcut.description")
+                            .font(.subheadline)
+                            .fixedSize(horizontal: false, vertical: true)
+
+                        Picker("", selection: $keyboardShortcutPattern) {
+                            Text("settings.tab.general.note.note.keyboardshortcut.choice.disable").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().none)
+                            Text("settings.tab.general.note.note.keyboardshortcut.choice.command.left").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().leftCommand)
+                            Text("settings.tab.general.note.note.keyboardshortcut.choice.command.right").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().rightCommand)
+                            Text("settings.tab.general.note.note.keyboardshortcut.choice.control").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().control)
+                            Text("settings.tab.general.note.note.keyboardshortcut.choice.option").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().option)
+                        }
+                        .frame(width: 250)
                     }
                 }
 
