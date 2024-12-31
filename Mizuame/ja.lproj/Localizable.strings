@@ -89,8 +89,8 @@
 "settings.tab.general.note.note.loginitems" = "ログイン項目に追加する";
 "settings.tab.general.note.note.loginitems.description" = "ログインした時にMizuameが自動で起動します";
 "settings.tab.general.note.note.keyboardshortcut" = "キーボード:";
-"settings.tab.general.note.note.keyboardshortcut.title" = "キーボードショートカットを連続で３回押してノートを開きます";
-"settings.tab.general.note.note.keyboardshortcut.description" = "キーボードショートカットを使うためには`[設定] > [プライバシーとセキュリティ] > [アクセシビリティ]`にMizuameを追加して、許可を与えてください";
+"settings.tab.general.note.note.keyboardshortcut.title" = "ショートカットキーを連続で３回押してノートを開く";
+"settings.tab.general.note.note.keyboardshortcut.description" = "ショートカットキーを使うためには`[設定] > [プライバシーとセキュリティ] > [アクセシビリティ]`にMizuameを追加して、許可を与えてください";
 "settings.tab.general.note.note.keyboardshortcut.choice.disable" = "無効にする";
 "settings.tab.general.note.note.keyboardshortcut.choice.command.left" = "左 commandキー";
 "settings.tab.general.note.note.keyboardshortcut.choice.command.right" = "右 commandキー";
