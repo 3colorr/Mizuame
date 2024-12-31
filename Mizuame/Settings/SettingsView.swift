@@ -23,7 +23,7 @@ struct SettingsView: View {
             }
         }
         .frame(width: w, height: h)
-        .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+        .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
     }
     
     @available(macOS 14, *)
