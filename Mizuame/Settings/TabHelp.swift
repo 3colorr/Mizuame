@@ -94,12 +94,13 @@ struct TabHelp: View {
                     
                     if showMarkdownSyntax {
                         SupportMarkdownSyntax()
-                            .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
+                            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 0))
                     }
                 }
 
                 Spacer()
             }
+            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
         }
     }
 }
