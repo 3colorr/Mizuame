@@ -198,7 +198,7 @@ struct TabGeneral: View {
                                 Text("settings.tab.general.note.note.keyboardshortcut.choice.control").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().control)
                                 Text("settings.tab.general.note.note.keyboardshortcut.choice.option").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().option)
                             }
-                            .frame(width: 250)
+                            .frame(width: 180)
                         }
                     }
                     
