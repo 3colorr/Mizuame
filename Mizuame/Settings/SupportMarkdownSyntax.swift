@@ -52,7 +52,8 @@ struct SupportMarkdownSyntax: View {
                 text: markdown,
                 fontSize: fontSize,
                 codeBlockTheme: markdownCodeBlockTheme,
-                formulaBlockTheme: markdownFormulaBlockTheme)
+                formulaBlockTheme: markdownFormulaBlockTheme,
+                lineSpacing: 0)
         }
         .padding(15)
         .background(Color(bodyBackgroundTheme), in: RoundedRectangle(cornerRadius: 10))

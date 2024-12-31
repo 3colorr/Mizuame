@@ -18,12 +18,12 @@ extension View {
     ///   - formulaBlockTheme: The background color to apply to formula blocks.
     /// - Returns: A View with applied styles.
     ///
-    func convertMarkdownTextToView(text: String, fontSize: Int, codeBlockTheme: String, formulaBlockTheme: String) -> some View {
+    func convertMarkdownTextToView(text: String, fontSize: Int, codeBlockTheme: String, formulaBlockTheme: String, lineSpacing: CGFloat) -> some View {
 
         let initialFontSize = CGFloat(SettingKeys.FontSize().initialValue)
         let markdownModels: [MarkdownModel] = text.toMarkdown(size: fontSize)
 
-        return VStack(alignment: .leading) {
+        return VStack(alignment: .leading, spacing: lineSpacing) {
             ForEach(markdownModels) { md in
                 HStack(spacing: 0) {
                     ForEach(md.markdownTextViews) { elem in
