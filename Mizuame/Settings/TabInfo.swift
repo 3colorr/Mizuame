@@ -30,7 +30,7 @@ struct TabInfo: View {
                 }
                 
                 VStack(alignment: .leading, spacing: 5) {
-                    Text("Version: 1.3.0").font(.body)
+                    Text("Version: 1.3.1").font(.body)
                     Text("License: MIT license").font(.body)
                     HStack {
                         Text("settings.tab.info.src").font(.body)
