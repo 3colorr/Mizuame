@@ -11,9 +11,9 @@ struct ChooseFontSizeView: View {
     
     @AppStorage(SettingKeys.FontSize().key) private var fontSize: Int = SettingKeys.FontSize().initialValue
     
-    @State var chooseFontSize: Int = SettingKeys.FontSize().initialValue
+    @State var chooseFontSize: Int = 14
     @State var pickerFontSize: Int = SettingKeys.FontSize().initialValue
-    @State var isPickerFontSize: Bool = true
+    @State var isPickerFontSize: Bool = false
     @State var isNotifyMessage: Bool = false
     
     @Binding var state: Int
