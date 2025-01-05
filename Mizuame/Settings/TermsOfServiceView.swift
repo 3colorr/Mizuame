@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TermsOfServiceView: View {
+
+    @AppStorage(SettingKeys.FontSize().key) private var fontSize: Int = SettingKeys.FontSize().initialValue
+
     @Binding var state: Int
     
     var body: some View {
@@ -20,9 +23,9 @@ struct TermsOfServiceView: View {
                     
                     HStack {
                         Button(action: {
-                            NSApplication.shared.terminate(self)
+                            state = SettingsViewState.CHOOSE_FONTSIZE.rawValue
                         }, label: {
-                            Text("agreement.common.quit")
+                            Text("agreement.common.back")
                                 .foregroundColor(.red)
                                 .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
                         })
@@ -37,7 +40,7 @@ struct TermsOfServiceView: View {
                         })
                     }
                 }
-                .font(.system(size: 15))
+                .font(.system(size: CGFloat(fontSize)))
                 .padding(20)
             }
             .frame(width: 400, height: 600)

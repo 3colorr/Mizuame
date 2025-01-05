@@ -111,6 +111,9 @@ struct ContentView: View {
     
     var body: some View {
         switch viewState {
+        case SettingsViewState.CHOOSE_FONTSIZE.rawValue:
+            ChooseFontSizeView(state: $viewState)
+
         case SettingsViewState.TERMS_OF_SERVICE.rawValue:
             TermsOfServiceView(state: $viewState)
             

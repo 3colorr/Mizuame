@@ -279,6 +279,6 @@ struct SettingKeys {
     }
     struct UserConfirm {
         let keyAgreement: String = "agreement"
-        let initialViewState: Int = SettingsViewState.TERMS_OF_SERVICE.rawValue
+        let initialViewState: Int = SettingsViewState.CHOOSE_FONTSIZE.rawValue
     }
 }

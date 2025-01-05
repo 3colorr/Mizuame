@@ -11,4 +11,5 @@ enum SettingsViewState: Int {
     case PREFERENCE = 0
     case TERMS_OF_SERVICE = 1
     case PRIVACY_POLICY = 2
+    case CHOOSE_FONTSIZE = 3
 }
