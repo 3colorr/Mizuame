@@ -6,6 +6,13 @@
   
 */
 
+"launch.fontsize.introduction" = "はじめに";
+"launch.fontsize.info" = "フォントサイズは後でまた変更できます";
+"launch.fontsize.check" = "どのフォントサイズにしますか？";
+"launch.fontsize.notify" = "フォントサイズを選択してください";
+"launch.common.next" = "次へ";
+"launch.common.quit" = "終了";
+
 "agreement.common.quit" = "終了.";
 "agreement.common.back" = "戻る.";
 "agreement.common.agree" = "同意する.";

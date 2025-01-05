@@ -6,6 +6,13 @@
   
 */
 
+"launch.fontsize.introduction" = "Introduction";
+"launch.fontsize.info" = "You can change the font size later.";
+"launch.fontsize.check" = "Which font size do you want to choose?";
+"launch.fontsize.notify" = "Please, Choose a font size.";
+"launch.common.next" = "Next";
+"launch.common.quit" = "Quit.";
+
 "agreement.common.quit" = "Quit.";
 "agreement.common.back" = "Back.";
 "agreement.common.agree" = "I Agree.";

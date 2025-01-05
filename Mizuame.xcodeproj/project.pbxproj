@@ -34,6 +34,7 @@
 		41790C7D2A1F8D48002D746A /* TabGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41790C7C2A1F8D48002D746A /* TabGeneral.swift */; };
 		41790C812A1F92CA002D746A /* TabHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41790C802A1F92CA002D746A /* TabHelp.swift */; };
 		41790C852A1F92F4002D746A /* TabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41790C842A1F92F4002D746A /* TabInfo.swift */; };
+		41884DB72D2433BF004C8AE2 /* ChooseFontSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41884DB62D2433BF004C8AE2 /* ChooseFontSizeView.swift */; };
 		418A6C632A07E105009C46CD /* MizuameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418A6C622A07E105009C46CD /* MizuameApp.swift */; };
 		418A6C652A07E105009C46CD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418A6C642A07E105009C46CD /* ContentView.swift */; };
 		418A6C672A07E105009C46CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418A6C662A07E105009C46CD /* Assets.xcassets */; };
@@ -92,6 +93,7 @@
 		41790C7C2A1F8D48002D746A /* TabGeneral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabGeneral.swift; sourceTree = "<group>"; };
 		41790C802A1F92CA002D746A /* TabHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabHelp.swift; sourceTree = "<group>"; };
 		41790C842A1F92F4002D746A /* TabInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabInfo.swift; sourceTree = "<group>"; };
+		41884DB62D2433BF004C8AE2 /* ChooseFontSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFontSizeView.swift; sourceTree = "<group>"; };
 		418A6C5F2A07E105009C46CD /* Mizuame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mizuame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		418A6C622A07E105009C46CD /* MizuameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MizuameApp.swift; sourceTree = "<group>"; };
 		418A6C642A07E105009C46CD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				41BD1EB82A277A1200C97A2E /* StickyNotePreview.swift */,
 				41AFAD812A30B05400D01A37 /* ThemePalette.swift */,
 				41F18E8A2C96BEA300374767 /* SupportMarkdownSyntax.swift */,
+				41884DB62D2433BF004C8AE2 /* ChooseFontSizeView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				41790C852A1F92F4002D746A /* TabInfo.swift in Sources */,
 				41C01B702A0D25B500B55670 /* SettingsView.swift in Sources */,
 				41ACD1242A23892B001F111B /* TermsOfServiceView.swift in Sources */,
+				41884DB72D2433BF004C8AE2 /* ChooseFontSizeView.swift in Sources */,
 				413A95DD2A5A499800E735BF /* TabPrint.swift in Sources */,
 				41AE86732A21B1E8000068CA /* SettingKeys.swift in Sources */,
 				41790C812A1F92CA002D746A /* TabHelp.swift in Sources */,
