@@ -195,7 +195,6 @@ struct TabGeneral: View {
                                 Text("settings.tab.general.note.note.keyboardshortcut.choice.disable").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().none)
                                 Text("settings.tab.general.note.note.keyboardshortcut.choice.command.left").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().leftCommand)
                                 Text("settings.tab.general.note.note.keyboardshortcut.choice.command.right").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().rightCommand)
-                                Text("settings.tab.general.note.note.keyboardshortcut.choice.control").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().control)
                                 Text("settings.tab.general.note.note.keyboardshortcut.choice.option").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().option)
                             }
                             .frame(width: 180)

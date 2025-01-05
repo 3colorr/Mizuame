@@ -101,7 +101,6 @@
 "settings.tab.general.note.note.keyboardshortcut.choice.disable" = "無効にする";
 "settings.tab.general.note.note.keyboardshortcut.choice.command.left" = "左 commandキー";
 "settings.tab.general.note.note.keyboardshortcut.choice.command.right" = "右 commandキー";
-"settings.tab.general.note.note.keyboardshortcut.choice.control" = "controlキー";
 "settings.tab.general.note.note.keyboardshortcut.choice.option" = "optionキー";
 "settings.tab.general.font.color.title" = "文字の色:";
 "settings.tab.general.font.color.choice.theme" = "テーマ";

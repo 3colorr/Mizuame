@@ -137,7 +137,6 @@ struct SettingKeys {
                 let none: Int = -1
                 let rightCommand: Int = 54
                 let leftCommand: Int = 55
-                let control: Int = 59
                 let option: Int = 58
             }
         }

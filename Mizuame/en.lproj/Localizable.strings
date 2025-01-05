@@ -101,7 +101,6 @@
 "settings.tab.general.note.note.keyboardshortcut.choice.disable" = "Disable";
 "settings.tab.general.note.note.keyboardshortcut.choice.command.left" = "Left command key";
 "settings.tab.general.note.note.keyboardshortcut.choice.command.right" = "Right command key";
-"settings.tab.general.note.note.keyboardshortcut.choice.control" = "control key";
 "settings.tab.general.note.note.keyboardshortcut.choice.option" = "option key";
 "settings.tab.general.font.color.title" = "Font Color:";
 "settings.tab.general.font.color.choice.theme" = "Theme";
