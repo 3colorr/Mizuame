@@ -78,7 +78,16 @@ struct ChooseFontSizeView: View {
                     }
 
                     HStack() {
+                        Button(action: {
+                            NSApplication.shared.terminate(self)
+                        }, label: {
+                            Text("agreement.common.quit")
+                                .foregroundColor(.red)
+                                .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
+                        })
+
                         Spacer()
+
                         Button(action: {
                             if chooseFontSize != pickerFontSize
                                 && sampleFontSizeArray.contains(chooseFontSize) == false {
