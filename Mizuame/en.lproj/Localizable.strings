@@ -97,7 +97,7 @@
 "settings.tab.general.note.note.loginitems.description" = "Mizuame will start when you login.";
 "settings.tab.general.note.note.keyboardshortcut" = "Keyboard:";
 "settings.tab.general.note.note.keyboardshortcut.title" = "Press the shortcut key 3 times consecutively to open the note.";
-"settings.tab.general.note.note.keyboardshortcut.description" = "To use the shortcut key, please add Mizuame to `[Settings] > [Privacy & Security] > [Accessibility]` and grant it the necessary permissions.";
+"settings.tab.general.note.note.keyboardshortcut.description" = "To use the shortcut key, please add Mizuame to `[Settings] > [Privacy & Security] > [Accessibility]` and grant it accessibility permissions.";
 "settings.tab.general.note.note.keyboardshortcut.choice.disable" = "Disable";
 "settings.tab.general.note.note.keyboardshortcut.choice.command.left" = "Left command key";
 "settings.tab.general.note.note.keyboardshortcut.choice.command.right" = "Right command key";
