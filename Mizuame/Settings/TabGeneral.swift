@@ -191,14 +191,32 @@ struct TabGeneral: View {
                                 .font(.subheadline)
                                 .fixedSize(horizontal: false, vertical: true)
                             
-                            Picker("", selection: $keyboardShortcutPattern) {
-                                Text("settings.tab.general.note.note.keyboardshortcut.choice.disable").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().none)
-                                Text("settings.tab.general.note.note.keyboardshortcut.choice.command.left").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().leftCommand)
-                                Text("settings.tab.general.note.note.keyboardshortcut.choice.command.right").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().rightCommand)
-                                Text("settings.tab.general.note.note.keyboardshortcut.choice.control").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().control)
-                                Text("settings.tab.general.note.note.keyboardshortcut.choice.option").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().option)
+                            if #available(macOS 14, *) {
+                                Picker("", selection: $keyboardShortcutPattern) {
+                                    Text("settings.tab.general.note.note.keyboardshortcut.choice.disable").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().none)
+                                    Text("settings.tab.general.note.note.keyboardshortcut.choice.command.left").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().leftCommand)
+                                    Text("settings.tab.general.note.note.keyboardshortcut.choice.command.right").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().rightCommand)
+                                    Text("settings.tab.general.note.note.keyboardshortcut.choice.control").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().control)
+                                    Text("settings.tab.general.note.note.keyboardshortcut.choice.option").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().option)
+                                }
+                                .frame(width: 180)
+                                .onChange(of: keyboardShortcutPattern) {
+                                    checkAccessibilityPermission()
+                                }
+
+                            } else {
+                                Picker("", selection: $keyboardShortcutPattern) {
+                                    Text("settings.tab.general.note.note.keyboardshortcut.choice.disable").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().none)
+                                    Text("settings.tab.general.note.note.keyboardshortcut.choice.command.left").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().leftCommand)
+                                    Text("settings.tab.general.note.note.keyboardshortcut.choice.command.right").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().rightCommand)
+                                    Text("settings.tab.general.note.note.keyboardshortcut.choice.control").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().control)
+                                    Text("settings.tab.general.note.note.keyboardshortcut.choice.option").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().option)
+                                }
+                                .frame(width: 180)
+                                .onChange(of: keyboardShortcutPattern) { selectedPattern in
+                                    checkAccessibilityPermission()
+                                }
                             }
-                            .frame(width: 180)
                         }
                     }
                     
@@ -281,6 +299,21 @@ struct TabGeneral: View {
                 .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
             }
             .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 20))
+        }
+    }
+
+    private func checkAccessibilityPermission() {
+        if keyboardShortcutPattern != SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().none {
+            let options: [String: Bool] = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true]
+            let isTrusted = AXIsProcessTrustedWithOptions(options as CFDictionary)
+            
+            if isTrusted == false {
+                let alert = NSAlert()
+                alert.messageText = NSLocalizedString("settings.tab.general.note.note.keyboardshortcut.alert.title", comment: "")
+                alert.informativeText = NSLocalizedString("settings.tab.general.note.note.keyboardshortcut.description", comment: "") + "\n\n" + NSLocalizedString("settings.tab.general.note.note.keyboardshortcut.warning", comment: "")
+                alert.addButton(withTitle: "OK")
+                alert.runModal()
+            }
         }
     }
 }
