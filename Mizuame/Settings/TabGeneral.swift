@@ -187,10 +187,20 @@ struct TabGeneral: View {
                         VStack(alignment: .leading, spacing: 5) {
                             Text("settings.tab.general.note.note.keyboardshortcut.title")
                                 .fixedSize(horizontal: false, vertical: true)
+
                             Text("settings.tab.general.note.note.keyboardshortcut.description")
                                 .font(.subheadline)
                                 .fixedSize(horizontal: false, vertical: true)
-                            
+
+                            VStack(alignment: .leading) {
+                                Image(systemName: "exclamationmark.triangle.fill")
+                                Text("settings.tab.general.note.note.keyboardshortcut.warning")
+                                    .font(.subheadline)
+                                    .fixedSize(horizontal: false, vertical: true)
+                            }
+                            .padding(5)
+                            .background(Color("SettingsAccentColor"), in: RoundedRectangle(cornerRadius: 5))
+
                             if #available(macOS 14, *) {
                                 Picker("", selection: $keyboardShortcutPattern) {
                                     Text("settings.tab.general.note.note.keyboardshortcut.choice.disable").tag(SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().none)

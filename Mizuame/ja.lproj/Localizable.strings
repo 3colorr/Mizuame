@@ -98,7 +98,7 @@
 "settings.tab.general.note.note.keyboardshortcut" = "キーボード:";
 "settings.tab.general.note.note.keyboardshortcut.title" = "ショートカットキーを連続で３回押してノートを開く";
 "settings.tab.general.note.note.keyboardshortcut.description" = "ショートカットキーを使うためには`[設定] > [プライバシーとセキュリティ] > [アクセシビリティ]`にMizuameを追加して、アクセシビリティ権限を許可してください";
-"settings.tab.general.note.note.keyboardshortcut.warning" = "もしMizuameにアクセシビリティ権限を付与すると、ショートカットキーが押されたかどうかを検出できるようになります\nしかし、Mizuameはキー入力や履歴を一切保存せず、ネットワークを通じて送信することもありません";
+"settings.tab.general.note.note.keyboardshortcut.warning" = "もしMizuameにアクセシビリティ権限を許可すると、キーが押されたかどうかを検出できるようになります\nしかし、Mizuameはキー入力の履歴を一切保存せず、ネットワークを通じて送信することもありません";
 "settings.tab.general.note.note.keyboardshortcut.alert.title" = "アクセシビリティの権限が必要です";
 "settings.tab.general.note.note.keyboardshortcut.choice.disable" = "無効にする";
 "settings.tab.general.note.note.keyboardshortcut.choice.command.left" = "左 commandキー";
