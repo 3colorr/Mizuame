@@ -126,6 +126,21 @@ struct SettingKeys {
         let initialMarkdownAction: Bool = false
         let keyShowMarkdownPreview: String = "stickyNoteShowMarkdownPreview"
         let initialShowMarkdownPreview: Bool = true
+        
+        struct KeyboardShortcuts {
+            let keyKeyboardShortcutAction: String = "stickyNoteKeyboardShortcutAction"
+            let initialKeyboardShortcutAction: Int = 0
+            
+            let initialNoteOpenCounter: Int = 6
+            
+            struct KeyboardPattern {
+                let none: Int = -1
+                let rightCommand: Int = 54
+                let leftCommand: Int = 55
+                let control: Int = 59
+                let option: Int = 58
+            }
+        }
     }
     
     struct ThemePalette {
@@ -264,6 +279,6 @@ struct SettingKeys {
     }
     struct UserConfirm {
         let keyAgreement: String = "agreement"
-        let initialViewState: Int = SettingsViewState.TERMS_OF_SERVICE.rawValue
+        let initialViewState: Int = SettingsViewState.CHOOSE_FONTSIZE.rawValue
     }
 }

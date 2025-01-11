@@ -16,7 +16,7 @@ struct TabInfo: View {
     private let expandHeightSize: CGFloat = 500
 
     private let projectUrl: String = "https://github.com/3colorr/Mizuame"
-    private let twUrl: String = "https://twitter.com/3colorr"
+    private let twUrl: String = "https://x.com/3colorr"
     private let websiteUrl: String = "https://3colorr.github.io/Mizuame-pages/"
     
     var body: some View {
@@ -30,7 +30,7 @@ struct TabInfo: View {
                 }
                 
                 VStack(alignment: .leading, spacing: 5) {
-                    Text("Version: 1.3.0").font(.body)
+                    Text("Version: 1.3.1").font(.body)
                     Text("License: MIT license").font(.body)
                     HStack {
                         Text("settings.tab.info.src").font(.body)

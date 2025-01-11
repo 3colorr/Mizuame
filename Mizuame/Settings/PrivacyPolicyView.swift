@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct PrivacyPolicyView: View {
+
+    @AppStorage(SettingKeys.FontSize().key) private var fontSize: Int = SettingKeys.FontSize().initialValue
+
     @Binding var state: Int
     
     var body: some View {
@@ -37,7 +40,7 @@ struct PrivacyPolicyView: View {
                         })
                     }
                 }
-                .font(.system(size: 15))
+                .font(.system(size: CGFloat(fontSize)))
                 .padding(20)
             }
             .frame(width: 400, height: 500)

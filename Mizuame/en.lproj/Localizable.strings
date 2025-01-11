@@ -6,6 +6,13 @@
   
 */
 
+"launch.fontsize.introduction" = "Introduction";
+"launch.fontsize.info" = "You can change the font size later.";
+"launch.fontsize.check" = "Which font size do you want to choose?";
+"launch.fontsize.notify" = "Please, Choose a font size.";
+"launch.common.next" = "Next";
+"launch.common.quit" = "Quit.";
+
 "agreement.common.quit" = "Quit.";
 "agreement.common.back" = "Back.";
 "agreement.common.agree" = "I Agree.";
@@ -88,6 +95,16 @@
 "settings.tab.general.note.note.pin" = "Pinning the note to the front";
 "settings.tab.general.note.note.loginitems" = "Add to \"Login Items\"";
 "settings.tab.general.note.note.loginitems.description" = "Mizuame will start when you login.";
+"settings.tab.general.note.note.keyboardshortcut" = "Keyboard:";
+"settings.tab.general.note.note.keyboardshortcut.title" = "Press the shortcut key 3 times consecutively to open the note.";
+"settings.tab.general.note.note.keyboardshortcut.description" = "To use the shortcut key, please add Mizuame to `[Settings] > [Privacy & Security] > [Accessibility]` and grant it accessibility permissions.";
+"settings.tab.general.note.note.keyboardshortcut.warning" = "If you grant Mizuame accessibility permissions, it can detect whether keys are pressed.\nHowever, Mizuame never stores history of key inputs, nor does it transmit them over the network.";
+"settings.tab.general.note.note.keyboardshortcut.alert.title" = "Accessibility permission is required";
+"settings.tab.general.note.note.keyboardshortcut.choice.disable" = "Disable";
+"settings.tab.general.note.note.keyboardshortcut.choice.command.left" = "Left command key";
+"settings.tab.general.note.note.keyboardshortcut.choice.command.right" = "Right command key";
+"settings.tab.general.note.note.keyboardshortcut.choice.control" = "control key";
+"settings.tab.general.note.note.keyboardshortcut.choice.option" = "option key";
 "settings.tab.general.font.color.title" = "Font Color:";
 "settings.tab.general.font.color.choice.theme" = "Theme";
 "settings.tab.general.font.color.choice.black" = "Black";

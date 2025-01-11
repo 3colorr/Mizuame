@@ -23,7 +23,7 @@ struct SettingsView: View {
             }
         }
         .frame(width: w, height: h)
-        .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+        .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
     }
     
     @available(macOS 14, *)
@@ -107,15 +107,15 @@ extension SettingsView {
         var frameSize: (width: CGFloat, height: CGFloat) {
             switch self {
             case .general:
-                return (400, 550)
+                return (450, 550)
             case .note:
-                return (400, 500)
+                return (450, 500)
             case .print:
-                return (400, 500)
+                return (450, 500)
             case .help:
-                return (400, 500)
+                return (450, 500)
             case .info:
-                return (400, 500)
+                return (450, 500)
             }
         }
     }
