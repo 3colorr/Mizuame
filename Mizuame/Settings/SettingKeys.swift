@@ -129,7 +129,7 @@ struct SettingKeys {
         
         struct KeyboardShortcuts {
             let keyKeyboardShortcutAction: String = "stickyNoteKeyboardShortcutAction"
-            let initialKeyboardShortcutAction: Int = 0
+            let initialKeyboardShortcutAction: Int = -1
             
             let initialNoteOpenCounter: Int = 6
             
