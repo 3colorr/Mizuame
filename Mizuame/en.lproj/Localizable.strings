@@ -97,7 +97,7 @@
 "settings.tab.general.note.note.loginitems.description" = "Mizuame will start when you login.";
 "settings.tab.general.note.note.keyboardshortcut" = "Keyboard:";
 "settings.tab.general.note.note.keyboardshortcut.title" = "Press the shortcut key 3 times consecutively to open the note.";
-"settings.tab.general.note.note.keyboardshortcut.description" = "To use the shortcut key, please add Mizuame to `[Settings] > [Privacy & Security] > [Accessibility]` and grant it accessibility permissions.";
+"settings.tab.general.note.note.keyboardshortcut.description" = "To use the shortcut key, please add Mizuame to `[Settings] > [Privacy & Security] > [Accessibility]` and grant it accessibility permissions.\nThen, please restart Mizuame.";
 "settings.tab.general.note.note.keyboardshortcut.warning" = "If you grant Mizuame accessibility permissions, it can detect whether keys are pressed.\nHowever, Mizuame never stores history of key inputs, nor does it transmit them over the network.";
 "settings.tab.general.note.note.keyboardshortcut.alert.title" = "Accessibility permission is required";
 "settings.tab.general.note.note.keyboardshortcut.choice.disable" = "Disable";
