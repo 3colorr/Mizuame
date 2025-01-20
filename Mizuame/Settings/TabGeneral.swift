@@ -301,6 +301,7 @@ struct TabGeneral: View {
                         self.isAutomaticallyHideHeader = SettingKeys.StickyNote().initialAutomaticallyHideHeader
                         self.isEnableMarkdown = SettingKeys.StickyNote().initialMarkdownAction
                         self.showMarkdownPreview = SettingKeys.StickyNote().initialShowMarkdownPreview
+                        self.keyboardShortcutPattern = SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().none
                     }) {
                         Text("settings.tab.general.reset.button.caption")
                             .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))

@@ -11,8 +11,8 @@ struct TabInfo: View {
     @State private var isShowTermsOfService: Bool = false
     @State private var isShowPrivacyPolicy: Bool = false
     
-    @State private var heightSize: CGFloat = 300
-    private let initHeightSize: CGFloat = 300
+    @State private var heightSize: CGFloat = 350
+    private let initHeightSize: CGFloat = 350
     private let expandHeightSize: CGFloat = 500
 
     private let projectUrl: String = "https://github.com/3colorr/Mizuame"
@@ -30,7 +30,18 @@ struct TabInfo: View {
                 }
                 
                 VStack(alignment: .leading, spacing: 5) {
-                    Text("Version: 1.3.1").font(.body)
+                    Text("Version: 1.3.2").font(.body)
+                    HStack {
+                        Text("Web:")
+                        if let url = URL(string: websiteUrl) {
+                            Link(websiteUrl, destination: url)
+                        } else {
+                            Text(websiteUrl)
+                        }
+                    }
+                }
+
+                VStack(alignment: .leading, spacing: 5) {
                     Text("License: MIT license").font(.body)
                     HStack {
                         Text("settings.tab.info.src").font(.body)
@@ -51,14 +62,6 @@ struct TabInfo: View {
                             Link(twUrl, destination: url)
                         } else {
                             Text(twUrl)
-                        }
-                    }
-                    HStack {
-                        Text("Web:")
-                        if let url = URL(string: websiteUrl) {
-                            Link(websiteUrl, destination: url)
-                        } else {
-                            Text(websiteUrl)
                         }
                     }
                 }
