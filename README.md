@@ -40,8 +40,7 @@ What is NOT SO GOOD point about the Mizuame?
   - The branch will be delete when it is merged to `v*.*.*` branch.
 
 # Install
-### AppStore
-![Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg](https://apps.apple.com/app/mizuame/id6458394832?mt=12)
+[![AppStore page](Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg)](https://apps.apple.com/app/mizuame/id6458394832?mt=12)
 
 Sorry, the app is not available in some regions.  
 
