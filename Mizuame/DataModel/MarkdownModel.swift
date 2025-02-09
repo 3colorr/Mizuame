@@ -22,6 +22,10 @@ enum MarkdownTextViewType {
     case list2
     case list3
     case list4
+    case ordered1
+    case ordered2
+    case ordered3
+    case ordered4
 }
 
 struct MarkdownTextView: Identifiable {
