@@ -418,7 +418,7 @@ k `code block` L (1+2= 3 )
 
         let markdownModels: [MarkdownModel] = testNote.toMarkdown(size: 12)
 
-        XCTAssertEqual(markdownModels.count, 37)
+        XCTAssertEqual(markdownModels.count, 38)
 
         XCTAssertEqual(markdownModels[0].markdownTextViews.count, 1)
         XCTAssertEqual(markdownModels[0].markdownTextViews[0].text, "abc")
@@ -620,6 +620,57 @@ k `code block` L (1+2= 3 )
         XCTAssertEqual(markdownModels[36].markdownTextViews[0].text, "ordered a4")
         XCTAssertEqual(markdownModels[36].markdownTextViews[0].viewType, MarkdownTextViewType.ordered1)
         XCTAssertEqual(markdownModels[36].markdownTextViews[0].orderedListNumber, 3)
+
+        XCTAssertEqual(markdownModels[37].markdownTextViews.count, 1)
+        XCTAssertEqual(markdownModels[37].markdownTextViews[0].text, "")
+
+
+        let orderedListTestNote = """
+1. ordered a1
+    1. ordered c1
+1. ordered a2
+      1. ordered d1
+  1. ordered b1
+"""
+
+        let orderedListMarkdownModels: [MarkdownModel] = orderedListTestNote.toMarkdown(size: 12)
+
+        XCTAssertEqual(orderedListMarkdownModels.count, 5)
+
+        /*
+         * The ordered list expected results are as follows.
+         *
+         *  1. ordered a1
+         *      1. ordered c1
+         *  2. ordered a2
+         *        1. ordered d1
+         *    1. ordered b1
+         */
+        XCTAssertEqual(orderedListMarkdownModels[0].markdownTextViews.count, 1)
+        XCTAssertEqual(orderedListMarkdownModels[0].markdownTextViews[0].text, "ordered a1")
+        XCTAssertEqual(orderedListMarkdownModels[0].markdownTextViews[0].viewType, MarkdownTextViewType.ordered1)
+        XCTAssertEqual(orderedListMarkdownModels[0].markdownTextViews[0].orderedListNumber, 0)
+
+        XCTAssertEqual(orderedListMarkdownModels[1].markdownTextViews.count, 1)
+        XCTAssertEqual(orderedListMarkdownModels[1].markdownTextViews[0].text, "ordered c1")
+        XCTAssertEqual(orderedListMarkdownModels[1].markdownTextViews[0].viewType, MarkdownTextViewType.ordered3)
+        XCTAssertEqual(orderedListMarkdownModels[1].markdownTextViews[0].orderedListNumber, 0)
+
+        XCTAssertEqual(orderedListMarkdownModels[2].markdownTextViews.count, 1)
+        XCTAssertEqual(orderedListMarkdownModels[2].markdownTextViews[0].text, "ordered a2")
+        XCTAssertEqual(orderedListMarkdownModels[2].markdownTextViews[0].viewType, MarkdownTextViewType.ordered1)
+        XCTAssertEqual(orderedListMarkdownModels[2].markdownTextViews[0].orderedListNumber, 1)
+
+        XCTAssertEqual(orderedListMarkdownModels[3].markdownTextViews.count, 1)
+        XCTAssertEqual(orderedListMarkdownModels[3].markdownTextViews[0].text, "ordered d1")
+        XCTAssertEqual(orderedListMarkdownModels[3].markdownTextViews[0].viewType, MarkdownTextViewType.ordered4)
+        XCTAssertEqual(orderedListMarkdownModels[3].markdownTextViews[0].orderedListNumber, 0)
+
+        XCTAssertEqual(orderedListMarkdownModels[4].markdownTextViews.count, 1)
+        XCTAssertEqual(orderedListMarkdownModels[4].markdownTextViews[0].text, "ordered b1")
+        XCTAssertEqual(orderedListMarkdownModels[4].markdownTextViews[0].viewType, MarkdownTextViewType.ordered2)
+        XCTAssertEqual(orderedListMarkdownModels[4].markdownTextViews[0].orderedListNumber, 0)
+
     }
 
     func testNoteParser_findRangeOfCode() throws {
