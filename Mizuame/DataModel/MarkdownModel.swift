@@ -34,11 +34,13 @@ struct MarkdownTextView: Identifiable {
     var attributedText: AttributedString
     var viewType: MarkdownTextViewType
     var fontSize: CGFloat
+    var orderedListNumber: Int
 
     init(viewType: MarkdownTextViewType, text: Substring) {
         self.viewType = viewType
         self.text = text
         self.fontSize = 0
+        self.orderedListNumber = -1
 
         do {
             attributedText = try AttributedString(markdown: String(text))
@@ -69,5 +71,17 @@ struct MarkdownModel: Identifiable {
 
         markdownTextViews[0].viewType = newViewType
         return true
+    }
+
+    mutating func setOrderedList(number: Int) {
+        markdownTextViews[0].orderedListNumber = number
+    }
+
+    func orderedListNumber() -> Int {
+        return markdownTextViews[0].orderedListNumber
+    }
+
+    func viewTypeOfFirstMarkdownTextView() -> MarkdownTextViewType {
+        return markdownTextViews[0].viewType
     }
 }
