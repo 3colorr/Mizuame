@@ -127,7 +127,7 @@ extension String {
                         }
                     }
                     
-                    // An ordered list syntax.
+                    // An ordered list syntax: "1. " (We want to get the index of last space)
                     if let orderedListPrefixStartIndex = line.firstIndex(of: "1") {
 
                         let orderedListPrefixEndIndex = line.index(after: orderedListPrefixStartIndex)
@@ -269,11 +269,12 @@ extension String {
                                 elem.viewTypeOfFirstMarkdownTextView() != .ordered3 &&
                                 elem.viewTypeOfFirstMarkdownTextView() != .ordered4 {
 
-                                // Here, we expect the first line to be an ordered line.
+                                // Here, we expect the line the user typed to be the first one with ordered1 view type.
                                 _ = model.setOrderedList(number: 0)
                                 break
                                 
                             } else if elem.viewTypeOfFirstMarkdownTextView() == .ordered1 {
+                                // Here, we expect the line above to have a view type of 'ordered1'.
                                 _ = model.setOrderedList(number: elem.orderedListNumber() + 1)
                                 break
                             }
@@ -301,11 +302,12 @@ extension String {
                                 elem.viewTypeOfFirstMarkdownTextView() != .ordered3 &&
                                 elem.viewTypeOfFirstMarkdownTextView() != .ordered4 {
                                 
-                                // Here, we expect the first line to be an ordered line.
+                                // Here, we expect the line the user typed to be the first one with ordered2 view type.
                                 _ = model.setOrderedList(number: 0)
                                 break
                                 
                             } else if elem.viewTypeOfFirstMarkdownTextView() == .ordered2 {
+                                // Here, we expect the line above to have a view type of 'ordered2'.
                                 _ = model.setOrderedList(number: elem.orderedListNumber() + 1)
                                 break
                             }
@@ -332,11 +334,12 @@ extension String {
                             if elem.viewTypeOfFirstMarkdownTextView() != .ordered3 &&
                                 elem.viewTypeOfFirstMarkdownTextView() != .ordered4 {
                                 
-                                // Here, we expect the first line to be an ordered line.
+                                // Here, we expect the line the user typed to be the first one with ordered3 view type.
                                 _ = model.setOrderedList(number: 0)
                                 break
                                 
                             } else if elem.viewTypeOfFirstMarkdownTextView() == .ordered3 {
+                                // Here, we expect the line above to have a view type of 'ordered3'.
                                 _ = model.setOrderedList(number: elem.orderedListNumber() + 1)
                                 break
                             }
@@ -362,11 +365,12 @@ extension String {
                         for elem in markdown.reversed() {
                             if elem.viewTypeOfFirstMarkdownTextView() != .ordered4 {
                                 
-                                // Here, we expect the first line to be an ordered line.
+                                // Here, we expect the line the user typed to be the first one with ordered4 view type.
                                 _ = model.setOrderedList(number: 0)
                                 break
                                 
                             } else if elem.viewTypeOfFirstMarkdownTextView() == .ordered4 {
+                                // Here, we expect the line above to have a view type of 'ordered4'.
                                 _ = model.setOrderedList(number: elem.orderedListNumber() + 1)
                                 break
                             }
