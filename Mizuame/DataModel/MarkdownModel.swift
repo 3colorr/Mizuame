@@ -73,15 +73,28 @@ struct MarkdownModel: Identifiable {
         return true
     }
 
-    mutating func setOrderedList(number: Int) {
+    mutating func setOrderedList(number: Int) -> Bool {
+        guard markdownTextViews.count != 0 else {
+            return false
+        }
+
         markdownTextViews[0].orderedListNumber = number
+        return true
     }
 
     func orderedListNumber() -> Int {
+        guard markdownTextViews.count != 0 else {
+            return -1
+        }
+
         return markdownTextViews[0].orderedListNumber
     }
 
     func viewTypeOfFirstMarkdownTextView() -> MarkdownTextViewType {
+        guard markdownTextViews.count != 0 else {
+            return .ordered1
+        }
+
         return markdownTextViews[0].viewType
     }
 }
