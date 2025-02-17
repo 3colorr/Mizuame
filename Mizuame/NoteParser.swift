@@ -260,7 +260,7 @@ extension String {
                     _ = model.setFirstMarkdownViewType(to: .ordered1)
 
                     if markdown.count == 0 {
-                        model.setOrderedList(number: 0)
+                        _ = model.setOrderedList(number: 0)
 
                     } else {
                         for elem in markdown.reversed() {
@@ -270,11 +270,11 @@ extension String {
                                 elem.viewTypeOfFirstMarkdownTextView() != .ordered4 {
 
                                 // Here, we expect the first line to be an ordered line.
-                                model.setOrderedList(number: 0)
+                                _ = model.setOrderedList(number: 0)
                                 break
                                 
                             } else if elem.viewTypeOfFirstMarkdownTextView() == .ordered1 {
-                                model.setOrderedList(number: elem.orderedListNumber() + 1)
+                                _ = model.setOrderedList(number: elem.orderedListNumber() + 1)
                                 break
                             }
                         }
@@ -293,7 +293,7 @@ extension String {
                     _ = model.setFirstMarkdownViewType(to: .ordered2)
 
                     if markdown.count == 0 {
-                        model.setOrderedList(number: 0)
+                        _ = model.setOrderedList(number: 0)
 
                     } else {
                         for elem in markdown.reversed() {
@@ -302,11 +302,11 @@ extension String {
                                 elem.viewTypeOfFirstMarkdownTextView() != .ordered4 {
                                 
                                 // Here, we expect the first line to be an ordered line.
-                                model.setOrderedList(number: 0)
+                                _ = model.setOrderedList(number: 0)
                                 break
                                 
                             } else if elem.viewTypeOfFirstMarkdownTextView() == .ordered2 {
-                                model.setOrderedList(number: elem.orderedListNumber() + 1)
+                                _ = model.setOrderedList(number: elem.orderedListNumber() + 1)
                                 break
                             }
                         }
@@ -325,7 +325,7 @@ extension String {
                     _ = model.setFirstMarkdownViewType(to: .ordered3)
 
                     if markdown.count == 0 {
-                        model.setOrderedList(number: 0)
+                        _ = model.setOrderedList(number: 0)
 
                     } else {
                         for elem in markdown.reversed() {
@@ -333,11 +333,11 @@ extension String {
                                 elem.viewTypeOfFirstMarkdownTextView() != .ordered4 {
                                 
                                 // Here, we expect the first line to be an ordered line.
-                                model.setOrderedList(number: 0)
+                                _ = model.setOrderedList(number: 0)
                                 break
                                 
                             } else if elem.viewTypeOfFirstMarkdownTextView() == .ordered3 {
-                                model.setOrderedList(number: elem.orderedListNumber() + 1)
+                                _ = model.setOrderedList(number: elem.orderedListNumber() + 1)
                                 break
                             }
                         }
@@ -356,18 +356,18 @@ extension String {
                     _ = model.setFirstMarkdownViewType(to: .ordered4)
 
                     if markdown.count == 0 {
-                        model.setOrderedList(number: 0)
+                        _ = model.setOrderedList(number: 0)
 
                     } else {
                         for elem in markdown.reversed() {
                             if elem.viewTypeOfFirstMarkdownTextView() != .ordered4 {
                                 
                                 // Here, we expect the first line to be an ordered line.
-                                model.setOrderedList(number: 0)
+                                _ = model.setOrderedList(number: 0)
                                 break
                                 
                             } else if elem.viewTypeOfFirstMarkdownTextView() == .ordered4 {
-                                model.setOrderedList(number: elem.orderedListNumber() + 1)
+                                _ = model.setOrderedList(number: elem.orderedListNumber() + 1)
                                 break
                             }
                         }
