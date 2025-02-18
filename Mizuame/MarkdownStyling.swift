@@ -109,6 +109,34 @@ extension View {
                                 .padding(EdgeInsets(top: 0, leading: 70, bottom: 0, trailing: 8))
                             Text(elem.attributedText)
                                 .font(.system(size: elem.fontSize))
+
+                        case .ordered1:
+                            Text("\(elem.orderedListNumber + 1).")
+                                .font(.system(size: elem.fontSize))
+                                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 5))
+                            Text(elem.attributedText)
+                                .font(.system(size: elem.fontSize))
+
+                        case .ordered2:
+                            Text("\(elem.orderedListNumber + 1).")
+                                .font(.system(size: elem.fontSize))
+                                .padding(EdgeInsets(top: 0, leading: 25, bottom: 0, trailing: 5))
+                            Text(elem.attributedText)
+                                .font(.system(size: elem.fontSize))
+
+                        case .ordered3:
+                            Text("\(elem.orderedListNumber + 1).")
+                                .font(.system(size: elem.fontSize))
+                                .padding(EdgeInsets(top: 0, leading: 40, bottom: 0, trailing: 5))
+                            Text(elem.attributedText)
+                                .font(.system(size: elem.fontSize))
+
+                        case .ordered4:
+                            Text("\(elem.orderedListNumber + 1).")
+                                .font(.system(size: elem.fontSize))
+                                .padding(EdgeInsets(top: 0, leading: 55, bottom: 0, trailing: 5))
+                            Text(elem.attributedText)
+                                .font(.system(size: elem.fontSize))
                         }
                     }
                 }
