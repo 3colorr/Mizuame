@@ -710,27 +710,4 @@ extension String {
             return resultSplitedTextList
     }
 
-    /// # Return an ordered number
-    ///
-    /// - Parameters:
-    ///   - userInputOrderedList: The user inputed an ordered list with the Markdown.
-    ///   - markdown: The Markdown text what splited by "\n".
-    /// - Returns: Ordered list number
-    func getOrderedNumber(of userInputOrderedList: MarkdownTextViewType, in markdown: [MarkdownModel]) -> Int {
-        for elem in markdown.reversed() {
-            if elem.viewTypeOfFirstMarkdownTextView() != .ordered1 &&
-                elem.viewTypeOfFirstMarkdownTextView() != .ordered2 &&
-                elem.viewTypeOfFirstMarkdownTextView() != .ordered3 &&
-                elem.viewTypeOfFirstMarkdownTextView() != .ordered4 {
-                
-                // Here, we expect the first line to be an ordered line.
-                return 0
-
-            } else if elem.viewTypeOfFirstMarkdownTextView() == userInputOrderedList {
-                return elem.orderedListNumber() + 1
-            }
-        }
-        
-        return 0
-    }
 }
