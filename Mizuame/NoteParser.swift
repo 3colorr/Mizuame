@@ -95,6 +95,11 @@ extension String {
     /// - List 1
     ///   - List 2
     ///     - List 3
+    ///       - List 4
+    /// 1. Ordered List 1
+    ///   1.  Ordered List 2
+    ///     1.  Ordered List 3
+    ///       1.  Ordered List 4
     /// `Code block` -> Please check this function: findRangeOfCode( )
     /// (1+2= 3 ) -> Please check this function: findRangeOfFormula( )
     ///
@@ -119,6 +124,16 @@ extension String {
                     if let listPrefixIndex = line.firstIndex(of: "-") {
                         if listPrefixIndex != line.index(before: line.endIndex) {
                             prefixEndIndex = line.index(after: listPrefixIndex)
+                        }
+                    }
+                    
+                    // An ordered list syntax: "1. " (We want to get the index of last space)
+                    if let orderedListPrefixStartIndex = line.firstIndex(of: "1") {
+
+                        let orderedListPrefixEndIndex = line.index(after: orderedListPrefixStartIndex)
+
+                        if orderedListPrefixStartIndex != line.index(before: line.endIndex) && line[orderedListPrefixEndIndex] == "." {
+                            prefixEndIndex = line.index(after: orderedListPrefixEndIndex)
                         }
                     }
                 }
@@ -232,6 +247,136 @@ extension String {
                     var model = MarkdownModel(content: viewModel)
                     model.setFontSizeOfWholeLine(is: CGFloat(fontSize))
                     _ = model.setFirstMarkdownViewType(to: .list4)
+                    markdown.append(model)
+
+                case "1. ":
+                    let stringLine = String(line[line.index(after: prefixEndIndex)..<line.endIndex])
+                    let viewModel = createMarkdownViewFrom(line: stringLine,
+                                                           codeBlockRanges: stringLine.findRangeOfCode(),
+                                                           formulaRanges: stringLine.findRangeOfFormula())
+
+                    var model = MarkdownModel(content: viewModel)
+                    model.setFontSizeOfWholeLine(is: CGFloat(fontSize))
+                    _ = model.setFirstMarkdownViewType(to: .ordered1)
+
+                    if markdown.count == 0 {
+                        _ = model.setOrderedList(number: 0)
+
+                    } else {
+                        for elem in markdown.reversed() {
+                            if elem.viewTypeOfFirstMarkdownTextView() != .ordered1 &&
+                                elem.viewTypeOfFirstMarkdownTextView() != .ordered2 &&
+                                elem.viewTypeOfFirstMarkdownTextView() != .ordered3 &&
+                                elem.viewTypeOfFirstMarkdownTextView() != .ordered4 {
+
+                                // Here, we expect the line the user typed to be the first one with ordered1 view type.
+                                _ = model.setOrderedList(number: 0)
+                                break
+                                
+                            } else if elem.viewTypeOfFirstMarkdownTextView() == .ordered1 {
+                                // Here, we expect the line above to have a view type of 'ordered1'.
+                                _ = model.setOrderedList(number: elem.orderedListNumber() + 1)
+                                break
+                            }
+                        }
+                    }
+
+                    markdown.append(model)
+
+                case "  1. ":
+                    let stringLine = String(line[line.index(after: prefixEndIndex)..<line.endIndex])
+                    let viewModel = createMarkdownViewFrom(line: stringLine,
+                                                           codeBlockRanges: stringLine.findRangeOfCode(),
+                                                           formulaRanges: stringLine.findRangeOfFormula())
+
+                    var model = MarkdownModel(content: viewModel)
+                    model.setFontSizeOfWholeLine(is: CGFloat(fontSize))
+                    _ = model.setFirstMarkdownViewType(to: .ordered2)
+
+                    if markdown.count == 0 {
+                        _ = model.setOrderedList(number: 0)
+
+                    } else {
+                        for elem in markdown.reversed() {
+                            if elem.viewTypeOfFirstMarkdownTextView() != .ordered2 &&
+                                elem.viewTypeOfFirstMarkdownTextView() != .ordered3 &&
+                                elem.viewTypeOfFirstMarkdownTextView() != .ordered4 {
+                                
+                                // Here, we expect the line the user typed to be the first one with ordered2 view type.
+                                _ = model.setOrderedList(number: 0)
+                                break
+                                
+                            } else if elem.viewTypeOfFirstMarkdownTextView() == .ordered2 {
+                                // Here, we expect the line above to have a view type of 'ordered2'.
+                                _ = model.setOrderedList(number: elem.orderedListNumber() + 1)
+                                break
+                            }
+                        }
+                    }
+
+                    markdown.append(model)
+
+                case "    1. ":
+                    let stringLine = String(line[line.index(after: prefixEndIndex)..<line.endIndex])
+                    let viewModel = createMarkdownViewFrom(line: stringLine,
+                                                           codeBlockRanges: stringLine.findRangeOfCode(),
+                                                           formulaRanges: stringLine.findRangeOfFormula())
+
+                    var model = MarkdownModel(content: viewModel)
+                    model.setFontSizeOfWholeLine(is: CGFloat(fontSize))
+                    _ = model.setFirstMarkdownViewType(to: .ordered3)
+
+                    if markdown.count == 0 {
+                        _ = model.setOrderedList(number: 0)
+
+                    } else {
+                        for elem in markdown.reversed() {
+                            if elem.viewTypeOfFirstMarkdownTextView() != .ordered3 &&
+                                elem.viewTypeOfFirstMarkdownTextView() != .ordered4 {
+                                
+                                // Here, we expect the line the user typed to be the first one with ordered3 view type.
+                                _ = model.setOrderedList(number: 0)
+                                break
+                                
+                            } else if elem.viewTypeOfFirstMarkdownTextView() == .ordered3 {
+                                // Here, we expect the line above to have a view type of 'ordered3'.
+                                _ = model.setOrderedList(number: elem.orderedListNumber() + 1)
+                                break
+                            }
+                        }
+                    }
+
+                    markdown.append(model)
+
+                case "      1. ":
+                    let stringLine = String(line[line.index(after: prefixEndIndex)..<line.endIndex])
+                    let viewModel = createMarkdownViewFrom(line: stringLine,
+                                                           codeBlockRanges: stringLine.findRangeOfCode(),
+                                                           formulaRanges: stringLine.findRangeOfFormula())
+
+                    var model = MarkdownModel(content: viewModel)
+                    model.setFontSizeOfWholeLine(is: CGFloat(fontSize))
+                    _ = model.setFirstMarkdownViewType(to: .ordered4)
+
+                    if markdown.count == 0 {
+                        _ = model.setOrderedList(number: 0)
+
+                    } else {
+                        for elem in markdown.reversed() {
+                            if elem.viewTypeOfFirstMarkdownTextView() != .ordered4 {
+                                
+                                // Here, we expect the line the user typed to be the first one with ordered4 view type.
+                                _ = model.setOrderedList(number: 0)
+                                break
+                                
+                            } else if elem.viewTypeOfFirstMarkdownTextView() == .ordered4 {
+                                // Here, we expect the line above to have a view type of 'ordered4'.
+                                _ = model.setOrderedList(number: elem.orderedListNumber() + 1)
+                                break
+                            }
+                        }
+                    }
+
                     markdown.append(model)
 
                 default:
@@ -564,4 +709,5 @@ extension String {
 
             return resultSplitedTextList
     }
+
 }
