@@ -17,11 +17,9 @@ struct SupportMarkdownSyntax: View {
 
     let headerSyntax = "# header 1\n## header 2\n### header 3\n#### header 4\n##### header 5\n###### header 6"
 
-    let listSyntax = """
-        - list1
-          - list 2
-            - list 3
-        """
+    let listSyntax = "- No Spaces\n  - 2 Spaces\n    - 4 Spaces"
+
+    let orderedListSyntax = "1. No Spaces\n  1. 2 Spaces\n    1. 4 Spaces\n      1. 6 Spaces\n      1. 6 Spaces\n    1. 4 Spaces\n      1. 6 Spaces\n"
 
     let boldSyntax = "**Bold**"
     let itaricSyntax = "_Itaric_"
@@ -32,7 +30,6 @@ struct SupportMarkdownSyntax: View {
     var body: some View {
         HStack(alignment: .top) {
             SyntaxBlock(markdown: headerSyntax)
-            SyntaxBlock(markdown: listSyntax)
 
             VStack(alignment: .leading, spacing: 10) {
                 SyntaxBlock(markdown: boldSyntax)
@@ -40,6 +37,11 @@ struct SupportMarkdownSyntax: View {
                 SyntaxBlock(markdown: codeBlockSyntax)
                 SyntaxBlock(markdown: formulaBlockSyntax)
             }
+        }
+
+        HStack(alignment: .top) {
+            SyntaxBlock(markdown: listSyntax)
+            SyntaxBlock(markdown: orderedListSyntax)
         }
     }
 
