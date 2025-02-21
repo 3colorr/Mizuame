@@ -304,17 +304,24 @@ struct ContentView: View {
                 }
 
                 if isPinNote {
-                    Image(systemName: "pin")
-                        .foregroundColor(Color.red)
-                        .onTapGesture {
-                            togglePinningNote()
-                        }
+                    Button(action: {
+                        togglePinningNote()
+                    }, label: {
+                        Image(systemName: "pin")
+                            .foregroundColor(Color.red)
+                    })
+                    .buttonStyle(SettingsLinkStyle())
+                    .keyboardShortcut("p", modifiers: [.command, .option])
+
                 } else {
-                    Image(systemName: "pin.slash")
-                        .foregroundColor(Color(bodyForegroundTheme))
-                        .onTapGesture {
-                            togglePinningNote()
-                        }
+                    Button(action: {
+                        togglePinningNote()
+                    }, label: {
+                        Image(systemName: "pin.slash")
+                            .foregroundColor(Color(bodyForegroundTheme))
+                    })
+                    .buttonStyle(SettingsLinkStyle())
+                    .keyboardShortcut("p", modifiers: [.command, .option])
                 }
                 
                 if !showMarkdownPreview {
