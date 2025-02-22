@@ -303,27 +303,18 @@ struct ContentView: View {
                     }
                 }
 
-                if isPinNote {
-                    Button(action: {
-                        togglePinningNote()
-                    }, label: {
-                        Image(systemName: "pin")
-                            .foregroundColor(Color.red)
-                    })
-                    .buttonStyle(SettingsLinkStyle())
-                    .keyboardShortcut("p", modifiers: [.command, .option])
+                //
+                // Pin
+                //
+                Button(action: {
+                    togglePinningNote()
+                }, label: {
+                    Image(systemName: isPinNote ? "pin" : "pin.slash")
+                        .foregroundColor(isPinNote ? Color.red : Color(bodyForegroundTheme))
+                })
+                .buttonStyle(SettingsLinkStyle())
+                .keyboardShortcut("p", modifiers: [.command, .option])
 
-                } else {
-                    Button(action: {
-                        togglePinningNote()
-                    }, label: {
-                        Image(systemName: "pin.slash")
-                            .foregroundColor(Color(bodyForegroundTheme))
-                    })
-                    .buttonStyle(SettingsLinkStyle())
-                    .keyboardShortcut("p", modifiers: [.command, .option])
-                }
-                
                 if !showMarkdownPreview {
                     Image(systemName: "eraser")
                         .foregroundColor(Color(bodyForegroundTheme))
