@@ -73,7 +73,7 @@ struct TabHelp: View {
 
                     Text("settings.tab.help.note.greeting")
 
-                    HStack {
+                    HStack(alignment: .top) {
                         Image(systemName: "function")
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
                             .bold()
@@ -81,16 +81,35 @@ struct TabHelp: View {
                         Text("settings.tab.help.note.action.calculate.description")
                     }
 
-                    HStack {
+                    HStack(alignment: .top) {
                         Image(systemName: "m.square")
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
                             .imageScale(.large)
                             .bold()
 
                         
-                        VStack(alignment: .leading)  {
+                        VStack(alignment: .leading, spacing: 10)  {
                             Text("settings.tab.help.note.action.markdown.description")
-                            
+
+                            VStack(alignment: .leading, spacing: 5) {
+                                Text("settings.tab.help.note.action.markdown.description.menu")
+                                    .bold()
+
+                                HStack(alignment: .top) {
+                                    Image(systemName: "square.and.pencil")
+                                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
+                                    Text("settings.tab.help.note.action.markdown.description.menu.edit")
+                                        .fixedSize(horizontal: false, vertical: true)
+                                }
+
+                                HStack {
+                                    Image(systemName: "m.square")
+                                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
+                                        .bold()
+                                    Text("settings.tab.help.note.action.markdown.description.menu.preview")
+                                }
+                            }
+
                             Button(showMarkdownSyntax ? "settings.tab.help.note.action.markdown.syntax.close" : "settings.tab.help.note.action.markdown.syntax.open") {
                                 showMarkdownSyntax.toggle()
                             }
