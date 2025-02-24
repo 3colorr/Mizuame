@@ -41,12 +41,16 @@ struct TabHelp: View {
                         Image(systemName: "gearshape.fill")
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
                         Text("settings.tab.help.menu.preference.description")
+                        Spacer()
+                        Text("\u{2318},")
                     }
                     
                     HStack {
                         Image(systemName: "pin")
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
                         Text("settings.tab.help.menu.pin.description")
+                        Spacer()
+                        Text("\u{2318}\u{2325}P")
                     }
                     
                     HStack {
@@ -61,6 +65,7 @@ struct TabHelp: View {
                         Text("settings.tab.help.menu.printer.description")
                     }
                 }
+                .frame(width: 250)
 
                 VStack(alignment: .leading, spacing: 10) {
                     Text("settings.tab.help.note.title")
