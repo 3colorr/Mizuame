@@ -125,7 +125,7 @@ struct SettingKeys {
         let keyMarkdownAction: String = "stickyNoteMarkdownAction"
         let initialMarkdownAction: Bool = false
         let keyShowMarkdownPreview: String = "stickyNoteShowMarkdownPreview"
-        let initialShowMarkdownPreview: Bool = true
+        let initialShowMarkdownPreview: Bool = false
         
         struct KeyboardShortcuts {
             let keyKeyboardShortcutAction: String = "stickyNoteKeyboardShortcutAction"
