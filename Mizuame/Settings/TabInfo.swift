@@ -30,7 +30,7 @@ struct TabInfo: View {
                 }
                 
                 VStack(alignment: .leading, spacing: 5) {
-                    Text("Version: 1.3.2").font(.body)
+                    Text("Version: 1.4.0").font(.body)
                     HStack {
                         Text("Web:")
                         if let url = URL(string: websiteUrl) {
