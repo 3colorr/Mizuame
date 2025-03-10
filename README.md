@@ -21,6 +21,21 @@ What is NOT SO GOOD point about the Mizuame?
 - This app cannot backup your data, so that your data may be lost unintentionally due to device failure.
 - You cannot paste images.
 
+# Our Rules
+We have established **three core rules** as the fundamental design principles for Mizuame.
+
+### Minimalist Functionality
+Mizuame is designed to activate only the essential features by default. This approach is key to delivering the pure experience we intend for Mizuame, ensuring that extraneous functions never dilute its true purpose.
+
+### User-Centric
+Most features are disabled by default, allowing users to enable only the functions that best suit their needs. While we will continue to add new features, we operate on the premise that not every user will require every addition.
+
+### Offline
+Mizuame is built as a completely offline application. Our goal is to provide consistent performance and a sense of security regardless of the network environment.
+
+## If We Were to Break the Rules
+This is purely hypothetical, but in the future we might reconsider our offline-first policy to incorporate benefits such as cross-device synchronization.
+
 # Website
 - Website
   - https://3colorr.github.io/Mizuame-pages/
