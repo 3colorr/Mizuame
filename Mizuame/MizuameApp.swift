@@ -20,6 +20,7 @@ struct Mizuame: App {
     }
 }
 
+@MainActor
 class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
 
     @AppStorage(SettingKeys.UserConfirm().keyAgreement) private var viewState: Int = SettingKeys.UserConfirm().initialViewState
@@ -70,10 +71,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
 
         if keyboardShortcutPattern != SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().none {
             // Check accessibility permission
-            let options: [String: Bool] = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true]
-            let isTrusted = AXIsProcessTrustedWithOptions(options as CFDictionary)
-            
-            if isTrusted {
+            if AXIsProcessTrusted() {
                 monitor = NSEvent.addGlobalMonitorForEvents(matching: [.flagsChanged]) { event in
                     self.handleKeyEvent(event)
                 }
