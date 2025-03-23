@@ -24,6 +24,7 @@ class PrinterModel: ObservableObject {
     @Published var textColor = SettingKeys.StickyNoteColor().initialForegroundTheme
     @Published var textFontSize = SettingKeys.FontSize().initialValue
 
+    @MainActor
     func doPrinting(content: String) {
         let printInfo = NSPrintInfo.shared
         printInfo.topMargin = CGFloat(self.topMargin)
