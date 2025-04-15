@@ -346,6 +346,12 @@ struct ContentView: View {
                         }
                 }
                 
+                Image(systemName: "arrow.down.document")
+                    .foregroundColor(Color(bodyForegroundTheme))
+                    .onTapGesture {
+                        exportData()
+                    }
+
                 if #available(macOS 14, *) {
                     SettingsLink {
                         Image(systemName: "gearshape.fill")
@@ -569,6 +575,15 @@ struct ContentView: View {
         let newData = StickyNote(tab: 1, contents: [newContent])
         
         _ = self.io.writeStickyNote(of: newData)
+        
+        isExecutableSave = true
+    }
+    
+    private func exportData() {
+        let content = Content(markercolor: "000000", body: self.stickyText)
+        let data = StickyNote(tab: 1, contents: [content])
+        
+        _ = self.io.exportNote(of: data)
         
         isExecutableSave = true
     }

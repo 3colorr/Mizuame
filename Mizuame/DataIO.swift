@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppKit
 
 // This is DataIO class.
 // This class has following that read/write private functions for JSON file.
@@ -82,5 +83,26 @@ class DataIO {
             print("Fatal error: Failed to encode data to JSON")
             return false
         }
+    }
+
+    @MainActor
+    public func exportNote(of data: StickyNote) -> Bool {
+        let savePanel = NSSavePanel()
+        savePanel.canCreateDirectories = true
+        savePanel.nameFieldStringValue = "mizuame-notes.json"
+
+        if savePanel.runModal() == .OK, let url = savePanel.url {
+            do {
+                let encoder = JSONEncoder()
+                let json = try encoder.encode(data)
+                try json.write(to: url)
+                return true
+            } catch {
+                print("Error saving file: \(error)")
+                return false
+            }
+        }
+        
+        return false
     }
 }
