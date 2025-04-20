@@ -86,10 +86,15 @@ class DataIO {
     }
 
     @MainActor
-    public func exportNote(of data: StickyNote) -> Bool {
+    public func exportNote(data: StickyNote) -> Bool {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd-HHmmss"
+
         let savePanel = NSSavePanel()
         savePanel.canCreateDirectories = true
-        savePanel.nameFieldStringValue = "mizuame-notes.json"
+        savePanel.allowedContentTypes = [.json]
+        savePanel.nameFieldStringValue = "mizuame-notes-\(dateFormatter.string(from: Date())).json"
+        savePanel.title = String(localized: "sitickynote.savepanel.title")
 
         if savePanel.runModal() == .OK, let url = savePanel.url {
             do {

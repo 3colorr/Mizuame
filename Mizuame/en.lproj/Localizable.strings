@@ -47,6 +47,8 @@
 "sitickynote.messagebar.action.button.ok" = "OK";
 "sitickynote.messagebar.action.button.cancel" = "Cancel";
 
+"sitickynote.savepanel.title" = "Exprot Note";
+
 "settings.tab.system.name.1" = "General";
 "settings.tab.system.name.2" = "Note";
 "settings.tab.system.name.3" = "Help";

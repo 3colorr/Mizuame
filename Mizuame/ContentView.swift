@@ -581,9 +581,9 @@ struct ContentView: View {
     
     private func exportData() {
         let content = Content(markercolor: "000000", body: self.stickyText)
-        let data = StickyNote(tab: 1, contents: [content])
+        let note = StickyNote(tab: 1, contents: [content])
         
-        _ = self.io.exportNote(of: data)
+        _ = self.io.exportNote(data: note)
         
         isExecutableSave = true
     }
