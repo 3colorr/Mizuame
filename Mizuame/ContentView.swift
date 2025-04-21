@@ -585,9 +585,7 @@ struct ContentView: View {
         
         _ = self.io.exportNote(data: note)
         
-        isExecutableSave = true
     }
-    
     private func togglePinningNote() {
         isPinNote.toggle()
         
