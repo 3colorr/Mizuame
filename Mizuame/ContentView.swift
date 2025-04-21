@@ -59,7 +59,8 @@ struct ContentView: View {
     @State private var userAction: MessagebarEnum = .NONE
     
     @State private var isExecutableSave: Bool = true
-    
+    @State private var isShowHiddenMenu: Bool = false
+
     @State private var isDraggableVertical: Bool = false
     @State private var isDraggableHorizontal: Bool = false
     @GestureState private var dragState: CGSize = .zero
@@ -346,12 +347,6 @@ struct ContentView: View {
                         }
                 }
                 
-                Image(systemName: "arrow.down.document")
-                    .foregroundColor(Color(bodyForegroundTheme))
-                    .onTapGesture {
-                        exportData()
-                    }
-
                 if #available(macOS 14, *) {
                     SettingsLink {
                         Image(systemName: "gearshape.fill")
@@ -380,6 +375,25 @@ struct ContentView: View {
                     .buttonStyle(SettingsLinkStyle())
                     .keyboardShortcut(",", modifiers: [.command])
                 }
+
+                Image(systemName: "ellipsis.circle")
+                    .foregroundColor(Color(bodyForegroundTheme))
+                    .onTapGesture {
+                        isShowHiddenMenu.toggle()
+                    }
+                    .popover(isPresented: $isShowHiddenMenu) {
+                        VStack(alignment: .leading, spacing: 5) {
+                            HStack {
+                                Image(systemName: "arrow.down.document")
+                                    .padding(.trailing, 3)
+                                Text("sitickynote.savepanel.title")
+                                    .onTapGesture {
+                                        exportData()
+                                    }
+                            }
+                        }
+                        .padding(10)
+                    }
             }
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
             
