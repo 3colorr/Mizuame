@@ -384,6 +384,14 @@ struct ContentView: View {
                     .popover(isPresented: $isShowHiddenMenu) {
                         VStack(alignment: .leading, spacing: 5) {
                             HStack {
+                                Image(systemName: "arrow.up.document")
+                                    .padding(.trailing, 3)
+                                Text("sitickynote.openpanel.title")
+                                    .onTapGesture {
+                                        exportData()
+                                    }
+                            }
+                            HStack {
                                 Image(systemName: "arrow.down.document")
                                     .padding(.trailing, 3)
                                 Text("sitickynote.savepanel.title")
@@ -598,8 +606,12 @@ struct ContentView: View {
         let note = StickyNote(tab: 1, contents: [content])
         
         _ = self.io.exportNote(data: note)
+    }
+
+    private func importData() {
         
     }
+
     private func togglePinningNote() {
         isPinNote.toggle()
         

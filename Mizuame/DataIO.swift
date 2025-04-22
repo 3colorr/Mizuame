@@ -110,4 +110,10 @@ class DataIO {
         
         return false
     }
+
+    @MainActor
+    public func importNote() -> StickyNote? {
+        
+        return nil
+    }
 }
