@@ -388,7 +388,7 @@ struct ContentView: View {
                                     .padding(.trailing, 3)
                                 Text("sitickynote.openpanel.title")
                                     .onTapGesture {
-                                        exportData()
+                                        importData()
                                     }
                             }
                             HStack {
@@ -609,7 +609,9 @@ struct ContentView: View {
     }
 
     private func importData() {
-        
+        if let data = self.io.importNote() {
+            stickyText = data.contents[0].body
+        }
     }
 
     private func togglePinningNote() {

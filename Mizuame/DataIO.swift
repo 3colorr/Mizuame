@@ -113,6 +113,23 @@ class DataIO {
 
     @MainActor
     public func importNote() -> StickyNote? {
+        let openPanel = NSOpenPanel()
+        openPanel.allowedContentTypes = [.json]
+        openPanel.title = String(localized: "sitickynote.openpanel.title")
+        openPanel.allowsMultipleSelection = false
+        openPanel.canChooseDirectories = false
+        openPanel.canCreateDirectories = false
+
+        if openPanel.runModal() == .OK, let url = openPanel.urls.first {
+            do {
+                let json = try Data(contentsOf: url)
+                let jsonDecoder = JSONDecoder()
+                return try jsonDecoder.decode(StickyNote.self, from: json)
+            } catch {
+                print("Fatal error: Failed to encode data to JSON: \(error)")
+                return nil
+            }
+        }
         
         return nil
     }

@@ -47,6 +47,7 @@
 "sitickynote.messagebar.action.button.ok" = "OK";
 "sitickynote.messagebar.action.button.cancel" = "Cancel";
 
+"sitickynote.openpanel.title" = "Import Note";
 "sitickynote.savepanel.title" = "Export Note";
 
 "settings.tab.system.name.1" = "General";

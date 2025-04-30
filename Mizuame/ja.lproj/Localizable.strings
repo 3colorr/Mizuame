@@ -47,6 +47,7 @@
 "sitickynote.messagebar.action.button.ok" = "OK";
 "sitickynote.messagebar.action.button.cancel" = "キャンセル";
 
+"sitickynote.openpanel.title" = "ノートをインポートする";
 "sitickynote.savepanel.title" = "ノートをエクスポートする";
 
 "settings.tab.system.name.1" = "一般";
