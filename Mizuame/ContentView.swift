@@ -330,21 +330,6 @@ struct ContentView: View {
                                 userAction = .NONE
                             }
                         }
-                    
-                    Image(systemName: "printer")
-                        .foregroundColor(Color(bodyForegroundTheme))
-                        .onTapGesture {
-                            withAnimation {
-                                isShowMessagebar = false
-                            }
-                            
-                            userAction = .NONE
-                            
-                            printer.textFontSize = self.fontSize
-                            printer.textColor = self.bodyForegroundTheme
-                            printer.printSize = NSRect(x: 0, y: 0, width: self.width, height: self.height)
-                            printer.doPrinting(content: stickyText)
-                        }
                 }
                 
                 if #available(macOS 14, *) {
@@ -383,6 +368,32 @@ struct ContentView: View {
                     }
                     .popover(isPresented: $isShowHiddenMenu) {
                         VStack(alignment: .leading, spacing: 5) {
+                            HStack {
+                                Image(systemName: "printer")
+                                    .padding(.trailing, 1)
+                                    .foregroundStyle(showMarkdownPreview ? .gray : .primary)
+                                Text("sitickynote.print.title")
+                                    .foregroundStyle(showMarkdownPreview ? .gray : .primary)
+                                    .onTapGesture {
+                                        if showMarkdownPreview {
+                                            return
+                                        }
+
+                                        withAnimation {
+                                            isShowMessagebar = false
+                                        }
+
+                                        userAction = .NONE
+
+                                        printer.textFontSize = self.fontSize
+                                        printer.textColor = self.bodyForegroundTheme
+                                        printer.printSize = NSRect(x: 0, y: 0, width: self.width, height: self.height)
+                                        printer.doPrinting(content: stickyText)
+                                    }
+                            }
+
+                            Divider()
+
                             HStack {
                                 Image(systemName: "arrow.up.document")
                                     .padding(.trailing, 3)
