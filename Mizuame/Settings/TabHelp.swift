@@ -44,6 +44,7 @@ struct TabHelp: View {
                         Spacer()
                         Text("\u{2318},")
                     }
+                    .frame(width: 250)
                     
                     HStack {
                         Image(systemName: "pin")
@@ -52,6 +53,7 @@ struct TabHelp: View {
                         Spacer()
                         Text("\u{2318}\u{2325}P")
                     }
+                    .frame(width: 250)
                     
                     HStack {
                         Image(systemName: "eraser")
@@ -60,12 +62,39 @@ struct TabHelp: View {
                     }
                     
                     HStack {
-                        Image(systemName: "printer")
+                        Image(systemName: "ellipsis.circle")
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
-                        Text("settings.tab.help.menu.printer.description")
+                        Text("settings.tab.help.menu.others.description")
                     }
+                    
+                    HStack {
+                        RoundedRectangle(cornerRadius: 5)
+                            .frame(width: 1, height: .infinity)
+                            .foregroundColor(.gray)
+                        
+                        VStack(alignment: .leading, spacing: 10) {
+                            HStack {
+                                Image(systemName: "printer")
+                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
+                                Text("settings.tab.help.menu.others.list.printer.description")
+                            }
+                            
+                            HStack {
+                                Image(systemName: "arrow.up.document")
+                                    .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 10))
+                                Text("settings.tab.help.menu.others.list.import.description")
+                            }
+                            
+                            HStack {
+                                Image(systemName: "arrow.down.document")
+                                    .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 10))
+                                Text("settings.tab.help.menu.others.list.export.description")
+                            }
+                        }
+                        .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
+                    }
+                    .padding(.leading, 35)
                 }
-                .frame(width: 250)
 
                 VStack(alignment: .leading, spacing: 10) {
                     Text("settings.tab.help.note.title")
