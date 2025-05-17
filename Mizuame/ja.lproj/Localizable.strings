@@ -48,8 +48,8 @@
 "sitickynote.messagebar.action.button.cancel" = "キャンセル";
 
 "sitickynote.print.title" = "ノートを印刷する";
-"sitickynote.openpanel.title" = "ノートをインポートする";
-"sitickynote.savepanel.title" = "ノートをエクスポートする";
+"sitickynote.openpanel.title" = "ノートをファイルに書き出す";
+"sitickynote.savepanel.title" = "ノートをファイルから読み込む";
 
 "settings.tab.system.name.1" = "一般";
 "settings.tab.system.name.2" = "ノート";
@@ -76,6 +76,10 @@
 "settings.tab.help.menu.eraser.description" = "文章を全て消します。";
 "settings.tab.help.menu.printer.description" = "ノートの内容を全て印刷します。";
 "settings.tab.help.menu.pin.description" = "ノートを開いたままにします。";
+"settings.tab.help.menu.others.description" = "その他のメニューです。";
+"settings.tab.help.menu.others.list.printer.description" = "ノートの内容を全て印刷します。";
+"settings.tab.help.menu.others.list.export.description" = "ノートの内容をファイルに書き出します。";
+"settings.tab.help.menu.others.list.import.description" = "ノートの内容をファイルから読み込みます。";
 
 "settings.tab.stickynote.greeting" = "プレビュー:\nサイズは不正確です。実際にノートを確認してください。ごめんね！";
 "settings.tab.stickynote.font.size" = "文字の大きさ: ";
