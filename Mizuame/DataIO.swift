@@ -94,7 +94,7 @@ class DataIO {
         savePanel.canCreateDirectories = true
         savePanel.allowedContentTypes = [.json]
         savePanel.nameFieldStringValue = "mizuame-notes-\(dateFormatter.string(from: Date())).json"
-        savePanel.title = String(localized: "sitickynote.savepanel.title")
+        savePanel.title = String(localized: "sitickynote.exportpanel.title")
 
         if savePanel.runModal() == .OK, let url = savePanel.url {
             do {
@@ -115,7 +115,7 @@ class DataIO {
     public func importNote() -> StickyNote? {
         let openPanel = NSOpenPanel()
         openPanel.allowedContentTypes = [.json]
-        openPanel.title = String(localized: "sitickynote.openpanel.title")
+        openPanel.title = String(localized: "sitickynote.importpanel.title")
         openPanel.allowsMultipleSelection = false
         openPanel.canChooseDirectories = false
         openPanel.canCreateDirectories = false

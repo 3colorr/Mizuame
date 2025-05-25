@@ -397,17 +397,17 @@ struct ContentView: View {
                             HStack {
                                 Image(systemName: "arrow.up.document")
                                     .padding(.trailing, 3)
-                                Text("sitickynote.openpanel.title")
+                                Text("sitickynote.exportpanel.title")
                                     .onTapGesture {
-                                        importData()
+                                        exportData()
                                     }
                             }
                             HStack {
                                 Image(systemName: "arrow.down.document")
                                     .padding(.trailing, 3)
-                                Text("sitickynote.savepanel.title")
+                                Text("sitickynote.importpanel.title")
                                     .onTapGesture {
-                                        exportData()
+                                        importData()
                                     }
                             }
                         }
