@@ -69,7 +69,7 @@ struct TabHelp: View {
                     
                     HStack {
                         RoundedRectangle(cornerRadius: 5)
-                            .frame(width: 1, height: .infinity)
+                            .frame(width: 1)
                             .foregroundColor(.gray)
                         
                         VStack(alignment: .leading, spacing: 10) {
