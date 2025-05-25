@@ -44,6 +44,7 @@
 "sitickynote.messagebar.message.quit" = "Do you quit the app?";
 "sitickynote.messagebar.message.deleteall" = "Do you delete all?";
 "sitickynote.messagebar.message.notsave" = "Failed to save data. Try again.";
+"sitickynote.messagebar.message.failedimport" = "Failed to import. The JSON file may be corrupted.";
 "sitickynote.messagebar.action.button.ok" = "OK";
 "sitickynote.messagebar.action.button.cancel" = "Cancel";
 

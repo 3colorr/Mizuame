@@ -622,6 +622,13 @@ struct ContentView: View {
     private func importData() {
         if let data = self.io.importNote() {
             stickyText = data.contents[0].body
+
+        } else {
+            userAction = .FAILED_IMPORT_JSON
+
+            withAnimation {
+                isShowMessagebar.toggle()
+            }
         }
     }
 

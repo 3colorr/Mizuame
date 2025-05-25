@@ -44,6 +44,7 @@
 "sitickynote.messagebar.message.quit" = "アプリを終了しますか？";
 "sitickynote.messagebar.message.deleteall" = "すべて削除しますか？";
 "sitickynote.messagebar.message.notsave" = "保存できませんでした。もう一度、保存してください。";
+"sitickynote.messagebar.message.failedimport" = "インポートに失敗しました。JSONファイルが壊れている可能性があります。";
 "sitickynote.messagebar.action.button.ok" = "OK";
 "sitickynote.messagebar.action.button.cancel" = "キャンセル";
 
