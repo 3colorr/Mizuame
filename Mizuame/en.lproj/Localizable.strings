@@ -78,8 +78,8 @@
 "settings.tab.help.menu.pin.description" = "Keep the note open.";
 "settings.tab.help.menu.others.description" = "Other menus.";
 "settings.tab.help.menu.others.list.printer.description" = "Print all note content.";
-"settings.tab.help.menu.others.list.export.description" = "Export the note content to a file.";
-"settings.tab.help.menu.others.list.import.description" = "Import the note content from a file.";
+"settings.tab.help.menu.others.list.export.description" = "Exports the note content as a JSON backup file.";
+"settings.tab.help.menu.others.list.import.description" = "Imports the note content from a JSON backup file.";
 
 "settings.tab.stickynote.greeting" = "Previews:\nSize is NOT correct. Check the real size. Sorry!";
 "settings.tab.stickynote.font.size" = "Font Size: ";
