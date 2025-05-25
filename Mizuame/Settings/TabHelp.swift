@@ -82,13 +82,13 @@ struct TabHelp: View {
                             HStack {
                                 Image(systemName: "arrow.up.document")
                                     .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 10))
-                                Text("settings.tab.help.menu.others.list.import.description")
+                                Text("settings.tab.help.menu.others.list.export.description")
                             }
                             
                             HStack {
                                 Image(systemName: "arrow.down.document")
                                     .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 10))
-                                Text("settings.tab.help.menu.others.list.export.description")
+                                Text("settings.tab.help.menu.others.list.import.description")
                             }
                         }
                         .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
