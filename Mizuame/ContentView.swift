@@ -394,21 +394,41 @@ struct ContentView: View {
 
                             Divider()
 
-                            HStack {
-                                Image(systemName: "arrow.up.document")
-                                    .padding(.trailing, 3)
-                                Text("sitickynote.exportpanel.title")
-                                    .onTapGesture {
-                                        exportData()
-                                    }
-                            }
-                            HStack {
-                                Image(systemName: "arrow.down.document")
-                                    .padding(.trailing, 3)
-                                Text("sitickynote.importpanel.title")
-                                    .onTapGesture {
-                                        importData()
-                                    }
+                            if #available(macOS 15, *) {
+                                HStack {
+                                    Image(systemName: "arrow.up.document")
+                                        .padding(.trailing, 3)
+                                    Text("sitickynote.exportpanel.title")
+                                        .onTapGesture {
+                                            exportData()
+                                        }
+                                }
+                                HStack {
+                                    Image(systemName: "arrow.down.document")
+                                        .padding(.trailing, 3)
+                                    Text("sitickynote.importpanel.title")
+                                        .onTapGesture {
+                                            importData()
+                                        }
+                                }
+
+                            } else {
+                                HStack {
+                                    Image(systemName: "square.and.arrow.up")
+                                        .padding(.trailing, 3)
+                                    Text("sitickynote.exportpanel.title")
+                                        .onTapGesture {
+                                            exportData()
+                                        }
+                                }
+                                HStack {
+                                    Image(systemName: "square.and.arrow.down")
+                                        .padding(.trailing, 3)
+                                    Text("sitickynote.importpanel.title")
+                                        .onTapGesture {
+                                            importData()
+                                        }
+                                }
                             }
                         }
                         .padding(10)
