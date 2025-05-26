@@ -79,16 +79,31 @@ struct TabHelp: View {
                                 Text("settings.tab.help.menu.others.list.printer.description")
                             }
                             
-                            HStack {
-                                Image(systemName: "arrow.up.document")
-                                    .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 10))
-                                Text("settings.tab.help.menu.others.list.export.description")
-                            }
-                            
-                            HStack {
-                                Image(systemName: "arrow.down.document")
-                                    .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 10))
-                                Text("settings.tab.help.menu.others.list.import.description")
+                            if #available(macOS 15, *) {
+                                HStack {
+                                    Image(systemName: "arrow.up.document")
+                                        .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 10))
+                                    Text("settings.tab.help.menu.others.list.export.description")
+                                }
+
+                                HStack {
+                                    Image(systemName: "arrow.down.document")
+                                        .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 10))
+                                    Text("settings.tab.help.menu.others.list.import.description")
+                                }
+
+                            } else {
+                                HStack {
+                                    Image(systemName: "square.and.arrow.up")
+                                        .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 10))
+                                    Text("settings.tab.help.menu.others.list.export.description")
+                                }
+
+                                HStack {
+                                    Image(systemName: "square.and.arrow.down")
+                                        .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 10))
+                                    Text("settings.tab.help.menu.others.list.import.description")
+                                }
                             }
                         }
                         .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
