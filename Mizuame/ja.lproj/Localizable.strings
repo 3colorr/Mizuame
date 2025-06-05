@@ -44,8 +44,13 @@
 "sitickynote.messagebar.message.quit" = "アプリを終了しますか？";
 "sitickynote.messagebar.message.deleteall" = "すべて削除しますか？";
 "sitickynote.messagebar.message.notsave" = "保存できませんでした。もう一度、保存してください。";
+"sitickynote.messagebar.message.failedimport" = "インポートに失敗しました。JSONファイルが壊れている可能性があります。";
 "sitickynote.messagebar.action.button.ok" = "OK";
 "sitickynote.messagebar.action.button.cancel" = "キャンセル";
+
+"sitickynote.print.title" = "ノートを印刷する";
+"sitickynote.exportpanel.title" = "ノートをファイルに書き出す";
+"sitickynote.importpanel.title" = "ノートをファイルから読み込む";
 
 "settings.tab.system.name.1" = "一般";
 "settings.tab.system.name.2" = "ノート";
@@ -72,6 +77,10 @@
 "settings.tab.help.menu.eraser.description" = "文章を全て消します。";
 "settings.tab.help.menu.printer.description" = "ノートの内容を全て印刷します。";
 "settings.tab.help.menu.pin.description" = "ノートを開いたままにします。";
+"settings.tab.help.menu.others.description" = "その他のメニューです。";
+"settings.tab.help.menu.others.list.printer.description" = "ノートの内容を全て印刷します。";
+"settings.tab.help.menu.others.list.export.description" = "ノートの内容をJSONファイルにバックアップとして書き出します。";
+"settings.tab.help.menu.others.list.import.description" = "ノートの内容をバックアップのJSONファイルから読み込みます。";
 
 "settings.tab.stickynote.greeting" = "プレビュー:\nサイズは不正確です。実際にノートを確認してください。ごめんね！";
 "settings.tab.stickynote.font.size" = "文字の大きさ: ";

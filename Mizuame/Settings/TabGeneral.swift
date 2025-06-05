@@ -315,10 +315,7 @@ struct TabGeneral: View {
 
     private func checkAccessibilityPermission() {
         if keyboardShortcutPattern != SettingKeys.StickyNote.KeyboardShortcuts.KeyboardPattern().none {
-            let options: [String: Bool] = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true]
-            let isTrusted = AXIsProcessTrustedWithOptions(options as CFDictionary)
-            
-            if isTrusted == false {
+            if AXIsProcessTrusted() == false {
                 let alert = NSAlert()
                 alert.messageText = NSLocalizedString("settings.tab.general.note.note.keyboardshortcut.alert.title", comment: "")
                 alert.informativeText = NSLocalizedString("settings.tab.general.note.note.keyboardshortcut.description", comment: "") + "\n\n" + NSLocalizedString("settings.tab.general.note.note.keyboardshortcut.warning", comment: "")

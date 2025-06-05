@@ -59,7 +59,8 @@ struct ContentView: View {
     @State private var userAction: MessagebarEnum = .NONE
     
     @State private var isExecutableSave: Bool = true
-    
+    @State private var isShowHiddenMenu: Bool = false
+
     @State private var isDraggableVertical: Bool = false
     @State private var isDraggableHorizontal: Bool = false
     @GestureState private var dragState: CGSize = .zero
@@ -329,21 +330,6 @@ struct ContentView: View {
                                 userAction = .NONE
                             }
                         }
-                    
-                    Image(systemName: "printer")
-                        .foregroundColor(Color(bodyForegroundTheme))
-                        .onTapGesture {
-                            withAnimation {
-                                isShowMessagebar = false
-                            }
-                            
-                            userAction = .NONE
-                            
-                            printer.textFontSize = self.fontSize
-                            printer.textColor = self.bodyForegroundTheme
-                            printer.printSize = NSRect(x: 0, y: 0, width: self.width, height: self.height)
-                            printer.doPrinting(content: stickyText)
-                        }
                 }
                 
                 if #available(macOS 14, *) {
@@ -374,6 +360,79 @@ struct ContentView: View {
                     .buttonStyle(SettingsLinkStyle())
                     .keyboardShortcut(",", modifiers: [.command])
                 }
+
+                Image(systemName: "ellipsis.circle")
+                    .foregroundColor(Color(bodyForegroundTheme))
+                    .onTapGesture {
+                        isShowHiddenMenu.toggle()
+                    }
+                    .popover(isPresented: $isShowHiddenMenu) {
+                        VStack(alignment: .leading, spacing: 5) {
+                            HStack {
+                                Image(systemName: "printer")
+                                    .padding(.trailing, 1)
+                                    .foregroundStyle(showMarkdownPreview ? .gray : .primary)
+                                Text("sitickynote.print.title")
+                                    .foregroundStyle(showMarkdownPreview ? .gray : .primary)
+                                    .onTapGesture {
+                                        if showMarkdownPreview {
+                                            return
+                                        }
+
+                                        withAnimation {
+                                            isShowMessagebar = false
+                                        }
+
+                                        userAction = .NONE
+
+                                        printer.textFontSize = self.fontSize
+                                        printer.textColor = self.bodyForegroundTheme
+                                        printer.printSize = NSRect(x: 0, y: 0, width: self.width, height: self.height)
+                                        printer.doPrinting(content: stickyText)
+                                    }
+                            }
+
+                            Divider()
+
+                            if #available(macOS 15, *) {
+                                HStack {
+                                    Image(systemName: "arrow.up.document")
+                                        .padding(.trailing, 3)
+                                    Text("sitickynote.exportpanel.title")
+                                        .onTapGesture {
+                                            exportData()
+                                        }
+                                }
+                                HStack {
+                                    Image(systemName: "arrow.down.document")
+                                        .padding(.trailing, 3)
+                                    Text("sitickynote.importpanel.title")
+                                        .onTapGesture {
+                                            importData()
+                                        }
+                                }
+
+                            } else {
+                                HStack {
+                                    Image(systemName: "square.and.arrow.up")
+                                        .padding(.trailing, 3)
+                                    Text("sitickynote.exportpanel.title")
+                                        .onTapGesture {
+                                            exportData()
+                                        }
+                                }
+                                HStack {
+                                    Image(systemName: "square.and.arrow.down")
+                                        .padding(.trailing, 3)
+                                    Text("sitickynote.importpanel.title")
+                                        .onTapGesture {
+                                            importData()
+                                        }
+                                }
+                            }
+                        }
+                        .padding(10)
+                    }
             }
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
             
@@ -573,6 +632,26 @@ struct ContentView: View {
         isExecutableSave = true
     }
     
+    private func exportData() {
+        let content = Content(markercolor: "000000", body: self.stickyText)
+        let note = StickyNote(tab: 1, contents: [content])
+        
+        _ = self.io.exportNote(data: note)
+    }
+
+    private func importData() {
+        if let data = self.io.importNote() {
+            stickyText = data.contents[0].body
+
+        } else {
+            userAction = .FAILED_IMPORT_JSON
+
+            withAnimation {
+                isShowMessagebar.toggle()
+            }
+        }
+    }
+
     private func togglePinningNote() {
         isPinNote.toggle()
         

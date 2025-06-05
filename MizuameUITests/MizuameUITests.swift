@@ -7,6 +7,7 @@
 
 import XCTest
 
+@MainActor
 final class MizuameUITests: XCTestCase {
 
     override func setUpWithError() throws {

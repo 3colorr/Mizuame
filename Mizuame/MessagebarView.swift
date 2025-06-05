@@ -31,7 +31,7 @@ struct MessagebarView: View {
             HStack {
                 Spacer()
                 
-                if messageType != .DO_NOT_SAVE_JSON {
+                if messageType != .DO_NOT_SAVE_JSON && messageType != .FAILED_IMPORT_JSON {
                     Button(action: {
                         messageType = .NONE
                         withAnimation {

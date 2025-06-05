@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppKit
 
 // This is DataIO class.
 // This class has following that read/write private functions for JSON file.
@@ -82,5 +83,54 @@ class DataIO {
             print("Fatal error: Failed to encode data to JSON")
             return false
         }
+    }
+
+    @MainActor
+    public func exportNote(data: StickyNote) -> Bool {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd-HHmmss"
+
+        let savePanel = NSSavePanel()
+        savePanel.canCreateDirectories = true
+        savePanel.allowedContentTypes = [.json]
+        savePanel.nameFieldStringValue = "mizuame-notes-\(dateFormatter.string(from: Date())).json"
+        savePanel.title = String(localized: "sitickynote.exportpanel.title")
+
+        if savePanel.runModal() == .OK, let url = savePanel.url {
+            do {
+                let encoder = JSONEncoder()
+                let json = try encoder.encode(data)
+                try json.write(to: url)
+                return true
+            } catch {
+                print("Error saving file: \(error)")
+                return false
+            }
+        }
+        
+        return false
+    }
+
+    @MainActor
+    public func importNote() -> StickyNote? {
+        let openPanel = NSOpenPanel()
+        openPanel.allowedContentTypes = [.json]
+        openPanel.title = String(localized: "sitickynote.importpanel.title")
+        openPanel.allowsMultipleSelection = false
+        openPanel.canChooseDirectories = false
+        openPanel.canCreateDirectories = false
+
+        if openPanel.runModal() == .OK, let url = openPanel.urls.first {
+            do {
+                let json = try Data(contentsOf: url)
+                let jsonDecoder = JSONDecoder()
+                return try jsonDecoder.decode(StickyNote.self, from: json)
+            } catch {
+                print("Fatal error: Failed to encode data to JSON: \(error)")
+                return nil
+            }
+        }
+        
+        return nil
     }
 }
