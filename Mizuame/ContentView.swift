@@ -143,6 +143,7 @@ struct ContentView: View {
                             Rectangle()
                                 .fill(Color(frameTheme))
                                 .frame(width: CGFloat(self.width) + self.dragState.width - 40, height: 7)
+                                .animation(.spring(response: 0.2, dampingFraction: 1.0), value: dragState)
                                 .onHover { isHover in
                                     withAnimation {
                                         self.isShowHeader = isHover
@@ -174,6 +175,7 @@ struct ContentView: View {
                 }
             }
             .frame(width: CGFloat(self.width) + self.dragState.width, height: CGFloat(self.height) + self.dragState.height)
+            .animation(.spring(response: 0.2, dampingFraction: 1.0), value: dragState)
             .gesture(
                 DragGesture(minimumDistance: 1)
                     .updating($dragState) { gestureValue, gestureState, gestureTransaction in
@@ -556,6 +558,7 @@ struct ContentView: View {
                     Rectangle()
                         .fill(Color(frameTheme))
                         .frame(width: 10, height: CGFloat(self.height) + self.dragState.height - 20)
+                        .animation(.spring(response: 0.2, dampingFraction: 1.0), value: dragState)
                         .onHover { isHover in
                             if isHover {
                                 // Prepare to resize the note.
@@ -593,6 +596,7 @@ struct ContentView: View {
                 Rectangle()
                     .fill(Color(frameTheme))
                     .frame(width: CGFloat(self.width) + self.dragState.width - 40, height: 10)
+                    .animation(.spring(response: 0.2, dampingFraction: 1.0), value: dragState)
                     .onHover { isHover in
                         if isHover {
                             // Prepare to resize the note.
