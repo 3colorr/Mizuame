@@ -177,6 +177,11 @@ struct ContentView: View {
             .gesture(
                 DragGesture(minimumDistance: 1)
                     .updating($dragState) { gestureValue, gestureState, gestureTransaction in
+                        
+                        // Fix for macOS rendering issue during resize animation
+                        if #available(macOS 15, *) {
+                            gestureTransaction.animation = .interactiveSpring()
+                        }
 
                         // Update the size only in the directions the user can drag.
                         var draggedWidth: CGFloat = isDraggableHorizontal ? gestureValue.translation.width : 0
