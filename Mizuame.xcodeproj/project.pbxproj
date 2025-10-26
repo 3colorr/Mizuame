@@ -54,6 +54,7 @@
 		41E8B2F32CA04A450019EB09 /* MarkdownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8B2F22CA04A450019EB09 /* MarkdownModel.swift */; };
 		41EEA87F2AC804CE0017E3FC /* SettingsLinkStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EEA87E2AC804CE0017E3FC /* SettingsLinkStyle.swift */; };
 		41F18E8B2C96BEA300374767 /* SupportMarkdownSyntax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F18E8A2C96BEA300374767 /* SupportMarkdownSyntax.swift */; };
+		E9FCC56B2EA362C000DE3831 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = E9FCC56A2EA362C000DE3831 /* AppIcon.icon */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,7 @@
 		41E8B2F22CA04A450019EB09 /* MarkdownModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownModel.swift; sourceTree = "<group>"; };
 		41EEA87E2AC804CE0017E3FC /* SettingsLinkStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLinkStyle.swift; sourceTree = "<group>"; };
 		41F18E8A2C96BEA300374767 /* SupportMarkdownSyntax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportMarkdownSyntax.swift; sourceTree = "<group>"; };
+		E9FCC56A2EA362C000DE3831 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +216,7 @@
 				418A6C662A07E105009C46CD /* Assets.xcassets */,
 				415B97AA2A2C1FE3003B144E /* Localizable.strings */,
 				418A6C702A07E105009C46CD /* Mizuame.entitlements */,
+				E9FCC56A2EA362C000DE3831 /* AppIcon.icon */,
 				418A6C682A07E105009C46CD /* Preview Content */,
 			);
 			path = Mizuame;
@@ -350,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				418A6C6A2A07E105009C46CD /* Preview Assets.xcassets in Resources */,
+				E9FCC56B2EA362C000DE3831 /* AppIcon.icon in Resources */,
 				415B97A82A2C1FE3003B144E /* Localizable.strings in Resources */,
 				418A6C672A07E105009C46CD /* Assets.xcassets in Resources */,
 			);
@@ -520,7 +524,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = 1.5.1;
-				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -581,7 +585,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = 1.5.1;
-				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -601,7 +605,7 @@
 				CODE_SIGN_ENTITLEMENTS = Mizuame/Mizuame.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.5.2;
+				CURRENT_PROJECT_VERSION = 1.5.3;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Mizuame/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
@@ -617,7 +621,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				MARKETING_VERSION = 1.5.2;
+				MARKETING_VERSION = 1.5.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.3colorr.Mizuame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -637,7 +641,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.5.2;
+				CURRENT_PROJECT_VERSION = 1.5.3;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Mizuame/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
@@ -653,7 +657,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				MARKETING_VERSION = 1.5.2;
+				MARKETING_VERSION = 1.5.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.3colorr.mizuame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -673,7 +677,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = 1.5.2;
+				INFOPLIST_KEY_NSHumanReadableCopyright = 1.5.3;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.3colorr.MizuameTests;
@@ -694,7 +698,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = 1.5.2;
+				INFOPLIST_KEY_NSHumanReadableCopyright = 1.5.3;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.3colorr.MizuameTests;
@@ -714,7 +718,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = 1.5.2;
+				INFOPLIST_KEY_NSHumanReadableCopyright = 1.5.3;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.3colorr.MizuameUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -733,7 +737,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = 1.5.2;
+				INFOPLIST_KEY_NSHumanReadableCopyright = 1.5.3;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.3colorr.MizuameUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

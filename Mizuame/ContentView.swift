@@ -342,6 +342,7 @@ struct ContentView: View {
                                     Text("sitickynote.importpanel.title")
                                         .onTapGesture {
                                             importData()
+                                            saveData()
                                         }
                                 }
 
@@ -360,6 +361,7 @@ struct ContentView: View {
                                     Text("sitickynote.importpanel.title")
                                         .onTapGesture {
                                             importData()
+                                            saveData()
                                         }
                                 }
                             }
