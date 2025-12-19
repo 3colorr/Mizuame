@@ -55,9 +55,6 @@ This is purely hypothetical, but in the future we might reconsider our offline-f
   - The branch will be delete when it is merged to `v*.*.*` branch.
 
 # Install
-[![AppStore page](Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg)](https://apps.apple.com/app/mizuame/id6458394832?mt=12)
-
-Sorry, the app is not available in some regions.  
 
 ### Build it yourself
 1. git clone https://github.com/3colorr/Mizuame.git
