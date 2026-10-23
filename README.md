@@ -36,12 +36,6 @@ Mizuame is built as a completely offline application. Our goal is to provide con
 ## If We Were to Break the Rules
 This is purely hypothetical, but in the future we might reconsider our offline-first policy to incorporate benefits such as cross-device synchronization.
 
-# Website
-- Website
-  - https://3colorr.github.io/Mizuame-pages/
-- Repository
-  - https://github.com/3colorr/Mizuame-pages
-
 # Branch
 - `main` branch
   - Represents the stable and productioin-ready code.
@@ -59,8 +53,6 @@ This is purely hypothetical, but in the future we might reconsider our offline-f
 ### Build it yourself
 1. git clone https://github.com/3colorr/Mizuame.git
 2. Build by Xcode
-
-See also https://3colorr.github.io/Mizuame-pages/#install  
 
 # Sample
 <div align="center" style="display: flex;">
@@ -88,8 +80,6 @@ See also https://3colorr.github.io/Mizuame-pages/#install
 - [x] Open with a keyboard shortcut.
 
 something something.  
-
-See also...https://3colorr.github.io/Mizuame-pages/features/  
 
 # What is Mizuame?
 This is a mucilaginous candy called `Mizuame` in Japan.  
